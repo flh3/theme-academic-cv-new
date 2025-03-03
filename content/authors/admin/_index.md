@@ -49,9 +49,11 @@ profiles:
     url: https://orcid.org/my-orcid?orcid=0000-0002-5900-7763
 
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - Analysis of Clustered Data (Multilevel Modeling)
+  - Measurement of School Climate
+  - Evaluation and Causal Inference
+  - Bullying and School Violence
+  - School Discipline
 
 education:
   - area: PhD Research, Statistics, and Evaluation
