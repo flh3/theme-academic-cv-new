@@ -21,6 +21,7 @@ highlight_name: true
 
 # Role/position/tagline
 role: Professor
+role: Methodology Co-Director
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
