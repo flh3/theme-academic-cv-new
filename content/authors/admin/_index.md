@@ -37,13 +37,13 @@ profiles:
     url: 'mailto:huangf@missouri.edu'
     label: E-mail Me
   - icon: brands/x
-    url: https://twitter.com/GetResearchDev
+    url: https://x.com/flhuang
   - icon: brands/instagram
     url: https://www.instagram.com/
   - icon: brands/github
     url: https://github.com/flh3
   - icon: brands/linkedin
-    url: https://www.linkedin.com/
+    url: https://www.linkedin.com/in/francishuang
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=mLNk1a8AAAAJ&hl=en
   - icon: academicons/orcid
@@ -66,28 +66,14 @@ education:
     button:
       text: 'Read Thesis'
       url: 'https://example.com'
-  - area: MEng Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      GPA: 3.8/4.0
-
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      GPA: 3.4/4.0
-      
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - area: MA Instuctional Technology and Media
+    institution: Teacher's College Columbia University
+    date_start: 2006-01-01
+    date_end: 2006-12-31
+  - area: BS Legal Management
+    institution: Ateneo de Manila University
+    date_start: 1988-06-01
+    date_end: 1992-06-01
 work:
   - position: Director of Cloud Infrastructure
     company_name: GenCoin
