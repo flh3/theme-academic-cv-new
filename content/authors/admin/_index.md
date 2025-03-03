@@ -67,7 +67,7 @@ education:
       text: 'Read Thesis'
       url: 'https://example.com'
   - area: MA Instuctional Technology and Media
-    institution: Teacher's College Columbia University
+    institution: Teachers College Columbia University
     date_start: 2006-01-01
     date_end: 2006-12-31
   - area: BS Legal Management
