@@ -3,7 +3,7 @@
 title: Francis Huang
 
 # Name pronunciation (optional)
-name_pronunciation: ''
+name_pronunciation: Francis Huang
 
 # Full name (for SEO)
 first_name: Francis
