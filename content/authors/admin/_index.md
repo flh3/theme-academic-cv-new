@@ -11,7 +11,7 @@ last_name: Huang
 
 # Status emoji
 status:
-  icon: ☕️
+  icon: 🐝
 
 # Is this the primary user of the site?
 superuser: true
@@ -20,8 +20,7 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Professor
-role: Methodology Co-Director
+role: Professor / Methodology Co-Director
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
