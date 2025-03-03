@@ -26,6 +26,8 @@ role: Professor
 organizations:
   - name: University of Missouri
     url: https://www.missouri.edu
+  - name: Missouri Prevention Science Institute
+    url: https://moprevention.org/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
@@ -42,9 +44,9 @@ profiles:
   - icon: brands/linkedin
     url: https://www.linkedin.com/
   - icon: academicons/google-scholar
-    url: https://scholar.google.com/
+    url: https://scholar.google.com/citations?user=mLNk1a8AAAAJ&hl=en
   - icon: academicons/orcid
-    url: https://orcid.org/
+    url: https://orcid.org/my-orcid?orcid=0000-0002-5900-7763
 
 interests:
   - Artificial Intelligence
@@ -180,4 +182,4 @@ awards:
 
 ## About Me
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I am a Professor in the Department of Educational, School, and Counseling Psychology (emphasis: Statistics, Measurement, & Evaluation in Education) Program in the College of Education and Human Development at the University of Missouri-Columbia. I am an applied quantitative methodologist and currently teach courses related to program (impact) evaluation, multilevel modeling, regression, and data management. My research interests focus on the use of applied quantitative methods for policy analysis (e.g., bullying, school violence), school climate, large scale data analysis, and the development and validation of empirically supported measures and scales. My methodological interest focus on the analysis of clustered data (or dealing with nonindependent data structures) and the design and analysis of experiments.
