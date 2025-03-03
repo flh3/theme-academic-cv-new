@@ -3,7 +3,7 @@
 title: Francis Huang
 
 # Name pronunciation (optional)
-name_pronunciation: Francis Huang
+name_pronunciation: ''
 
 # Full name (for SEO)
 first_name: Francis
@@ -61,11 +61,6 @@ education:
     institution: University of Virginia
     date_start: 2006-01-01
     date_end: 2009-07-31
-    summary: |
-      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
-    button:
-      text: 'Read Thesis'
-      url: 'https://example.com'
   - area: MA Instuctional Technology and Media
     institution: Teachers College Columbia University
     date_start: 2006-01-01
