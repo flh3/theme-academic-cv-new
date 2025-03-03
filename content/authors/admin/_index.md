@@ -25,7 +25,7 @@ role: Professor
 # Organizations/Affiliations to display in Biography blox
 organizations:
   - name: University of Missouri
-    url: https://www.missoui.edu
+    url: https://www.missouri.edu
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
@@ -144,10 +144,7 @@ skills:
 languages:
   - name: English
     percent: 100
-  - name: Chinese
-    percent: 75
-  - name: Portuguese
-    percent: 25
+
 
 # Awards.
 #   Add/remove as many awards below as you like.
