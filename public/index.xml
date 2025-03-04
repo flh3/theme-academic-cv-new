@@ -278,7 +278,7 @@
 
 
 
-&lt;div id=&#34;chart-862319457&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-974218653&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -296,7 +296,7 @@
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-862319457&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-974218653&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
@@ -965,6 +965,71 @@ Parallel 4   :         des6, after des4, 1d
   &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.&lt;/span&gt;
 &lt;/div&gt;
 &lt;p&gt;Add the publication&amp;rsquo;s &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; here. You can use rich formatting such as including &lt;a href=&#34;https://docs.hugoblox.com/content/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;code, math, and images&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Job postings (AY 2024-25)</title>
+      <link>http://localhost:1313/post/jobs-2025/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/jobs-2025/</guid>
+      <description>&lt;p&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of &lt;em&gt;&lt;code&gt;r Sys.Date()&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Postings for (2024-2025):&lt;/p&gt;
+&lt;p&gt;As of 2025.01&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Post-doctoral Research Associate- Educational Measurement and Statistics- &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=179041668&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Tennessee&lt;/a&gt;, Knoxville, Knoxville, TN&lt;/li&gt;
+&lt;li&gt;Learning Sciences Faculty Cluster Hires (Open-Rank and Tenure-Track; Educational Data Science and Analytics, AI and Education, and Advanced Quantitative Research Methods, Measurement and/or Evaluation; &lt;strong&gt;5&lt;/strong&gt; positions) &lt;a href=&#34;https://apply.interfolio.com/162168&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Clemson University&lt;/a&gt; in Clemson, SC&lt;/li&gt;
+&lt;li&gt;Assistant Director for Education Research, The &lt;a href=&#34;https://uic.csod.com/ux/ats/careersite/1/home/requisition/13915?c=uic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Illinois at Chicago&lt;/a&gt; in Chicago, IL&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor of Research Design, Methods, and Analysis, &lt;a href=&#34;https://jobs.wm.edu/postings/63482&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William &amp;amp; Mary&lt;/a&gt; in Williamsburg, VA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.12&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Professor in Quantitative Methods in Educational Research, &lt;a href=&#34;https://recruit.ap.ucsb.edu/JPF02883&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UC Santa Barbara&lt;/a&gt; (NOTE: may also be at the Associate level)&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor, Quantitative and/or Mixed Methods Applied Research, &lt;a href=&#34;https://appstate.peopleadmin.com/postings/48926&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Appalachian State University&lt;/a&gt;, North Carolina, United States&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.11&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Professor in Quantitative Methods in Educational Research, &lt;a href=&#34;https://recruit.ap.ucsb.edu/JPF02883&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California&lt;/a&gt; Santa Barbara&lt;/li&gt;
+&lt;li&gt;Tenure Eligible (probationary) Open Rank for the Department of Emergency Medicine as a Research Methodologist, Professor (Open Rank) - R106021
+&lt;a href=&#34;https://uofl.wd1.myworkdayjobs.com/en-US/UofLCareerSite/job/Health-Sciences-Center/Professor--Open-Rank-_R106021?jobFamilyGroup=122eabeb58371000c79b8793f92f0000?source=francish&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Louisville&lt;/a&gt; in Louisville, KY&lt;/li&gt;
+&lt;li&gt;Assistant or Associate Professor of Critical Quantitative Research &lt;a href=&#34;https://aprecruit.ucr.edu/JPF02027&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California&lt;/a&gt;, Riverside, CA&lt;/li&gt;
+&lt;li&gt;Assistant Professor of Psychology - Quantitative Analysis, &lt;a href=&#34;https://jobs.oakland.edu/postings/32847&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Oakland University&lt;/a&gt;, Department of Psychology, Michigan&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor, Educational Research, &lt;a href=&#34;https://usm.csod.com/ats/careersite/JobDetails.aspx?id=4410&amp;amp;site=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Southern Mississippi&lt;/a&gt;, Hattiesburg, MS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.10&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Professor in the SDSU College of Education focused on Quantitative Research Methods, &lt;a href=&#34;https://apply.interfolio.com/156881&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;San Diego State University&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Assistant Professor of Quantitative Methods and Assessment in Education, &lt;a href=&#34;https://uni.wd5.myworkdayjobs.com/en-US/UNI/job/Main-Campus/Assistant-Professor-of-Quantitative-Methods-and-Assessment-in-Education_JR283&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Northern Iowa&lt;/a&gt;, Cedar Falls, IA&lt;/li&gt;
+&lt;li&gt;Assistant Professor-Educational Research, Measurement, and Analysis, &lt;a href=&#34;https://www.auemployment.com/postings/49210&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Auburn University&lt;/a&gt;, Auburn, AL&lt;/li&gt;
+&lt;li&gt;Assistant Professor - Psychology, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178937871&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Arkansas&lt;/a&gt; at Little Rock, AR&lt;/li&gt;
+&lt;li&gt;School Of Education-Tenure-track Assistant Professor- Educational Psychology And Research; Department Human Studies, &lt;a href=&#34;https://uab.peopleadmin.com/postings/23082&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Alabama at Birmingham&lt;/a&gt;, Birmingham, AL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.09&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant/Associate Professor Of Quantitative Methodology, &lt;a href=&#34;https://facultycareers.gsu.edu/postings/4858&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Georgia State University&lt;/a&gt; Atlanta, GA&lt;/li&gt;
+&lt;li&gt;Assistant Professor (Quant Psych), &lt;a href=&#34;https://unc.peopleadmin.com/postings/288570&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of North Carolina&lt;/a&gt; at Chapel Hill&lt;/li&gt;
+&lt;li&gt;Open-Rank Tenure-Track Faculty Position in Quantitative Methods, &lt;a href=&#34;https://usccareers.usc.edu/job/los-angeles/open-rank-tenure-track-faculty-position-in-quantitative-methods-rossier-school-of-education/1209/70221450528&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rossier School of Education&lt;/a&gt;, Los Angeles, California&lt;/li&gt;
+&lt;li&gt;Tenured Associate or Full Professor in Evaluation Studies (# 364671), &lt;a href=&#34;https://hr.myu.umn.edu/psc/hrprd/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&amp;amp;Action=U&amp;amp;SiteId=1&amp;amp;FOCUS=Applicant&amp;amp;JobOpeningId=364671&amp;amp;PostingSeq=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Minnesota&lt;/a&gt;, Twin Cities, MN&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor - QME Educational Statistics, &lt;a href=&#34;https://hr.myu.umn.edu/psc/hrprd/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&amp;amp;Action=U&amp;amp;SiteId=1&amp;amp;FOCUS=Applicant&amp;amp;JobOpeningId=364621&amp;amp;PostingSeq=1&amp;amp;&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Minnesota&lt;/a&gt; Twin Cities, MN&lt;/li&gt;
+&lt;li&gt;Assistant Professor of Quantitative Psychology, &lt;a href=&#34;https://careers.pageuppeople.com/873/lb/en-us/job/541543/assistant-professor-of-quantitative-psychology&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;California State University&lt;/a&gt;, Long Beach&lt;/li&gt;
+&lt;li&gt;Assistant Professor, Quantitative Psychology (Open Area), &lt;a href=&#34;https://webapps.cmc.edu/jobs/faculty/faculty_opening_detail.php?PostingID=17040&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Claremont McKenna College&lt;/a&gt;, California&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor of Evaluation in Education, &lt;a href=&#34;https://recruit.apo.ucla.edu/JPF09709&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California Los Angeles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Associate/Full Professor, Tenured, Quantitative Methods, Educational Psychology, &lt;a href=&#34;https://apply.interfolio.com/153027&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Baylor University&lt;/a&gt;, Waco, TX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.08&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Professor, Psychology (Quantitative) Tenure-track, &lt;a href=&#34;https://jobs.chronicle.com/job/37701200/assistant-professor-psychology-quantitative-tenure-track/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ohio University&lt;/a&gt;, Athens, Ohio&lt;/li&gt;
+&lt;li&gt;Assistant Professor of Quantitative Psychology, &lt;a href=&#34;https://jobs.chronicle.com/job/37695060/assistant-professor-of-quantitative-psychology/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;California State University&lt;/a&gt;, Long Beach&lt;/li&gt;
+&lt;li&gt;Research Assistant Professor, &lt;a href=&#34;https://employment.unl.edu/postings/92950&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nebraska Academy for Methodology, Analytics &amp;amp; Psychometrics&lt;/a&gt;, Nebraska Center for Research on Children, Youth, Families and Schools, College of Education and Human Sciences, University of Nebraska-Lincoln&lt;/li&gt;
+&lt;li&gt;Assistant Professor, Tenure-Track, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178892364&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Educational Data Science&lt;/a&gt; - Counseling, School, and Educational Psychology, University at Buffalo, Buffalo, NY&lt;/li&gt;
+&lt;li&gt;Lecturer, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178889719&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multivariate Statistics&lt;/a&gt;, University of California Santa Barbara, Santa Barbara, CA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.07&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Prof, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178848717&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Educational Studies&lt;/a&gt;, University of Cincinnati, Cincinnati, OH&lt;/li&gt;
+&lt;li&gt;Assistant Professor in Mixed Methods, Qualitative and Quantitative Tenure-Track, &lt;a href=&#34;https://jobs.chronicle.com/job/37678495/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;St. John&amp;rsquo;s University&lt;/a&gt;, New York&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;mdash;END&lt;/p&gt;
 </description>
     </item>
     

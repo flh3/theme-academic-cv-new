@@ -1,0 +1,75 @@
+---
+  title: Job postings (AY 2024-25)
+author: Francis Huang
+date: '2024-07-11'
+slug: jobs2024v2
+categories:
+  - jobs5
+tags:
+  - jobs2024v2 
+header:
+  caption: ''
+image: ''
+preview: yes       
+---
+  
+  List of Research, Statistics, and Evaluation job postings (that I've seen) as of *`r Sys.Date()`*. 
+
+Postings for (2024-2025):     
+
+As of 2025.01 
+
+- Post-doctoral Research Associate- Educational Measurement and Statistics- [University of Tennessee](https://www.higheredjobs.com/details.cfm?JobCode=179041668), Knoxville, Knoxville, TN
+- Learning Sciences Faculty Cluster Hires (Open-Rank and Tenure-Track; Educational Data Science and Analytics, AI and Education, and Advanced Quantitative Research Methods, Measurement and/or Evaluation; **5** positions) [Clemson University](https://apply.interfolio.com/162168) in Clemson, SC
+- Assistant Director for Education Research, The [University of Illinois at Chicago](https://uic.csod.com/ux/ats/careersite/1/home/requisition/13915?c=uic) in Chicago, IL
+- Assistant/Associate Professor of Research Design, Methods, and Analysis, [William & Mary](https://jobs.wm.edu/postings/63482) in Williamsburg, VA
+
+As of 2024.12
+
+- Assistant Professor in Quantitative Methods in Educational Research, [UC Santa Barbara](https://recruit.ap.ucsb.edu/JPF02883) (NOTE: may also be at the Associate level)
+- Assistant/Associate Professor, Quantitative and/or Mixed Methods Applied Research, [Appalachian State University](https://appstate.peopleadmin.com/postings/48926), North Carolina, United States 
+
+As of 2024.11
+
+- Assistant Professor in Quantitative Methods in Educational Research, [University of California](https://recruit.ap.ucsb.edu/JPF02883) Santa Barbara
+- Tenure Eligible (probationary) Open Rank for the Department of Emergency Medicine as a Research Methodologist, Professor (Open Rank) - R106021
+[University of Louisville](https://uofl.wd1.myworkdayjobs.com/en-US/UofLCareerSite/job/Health-Sciences-Center/Professor--Open-Rank-_R106021?jobFamilyGroup=122eabeb58371000c79b8793f92f0000?source=francish) in Louisville, KY
+- Assistant or Associate Professor of Critical Quantitative Research [University of California](https://aprecruit.ucr.edu/JPF02027), Riverside, CA
+- Assistant Professor of Psychology - Quantitative Analysis, [Oakland University](https://jobs.oakland.edu/postings/32847), Department of Psychology, Michigan
+- Assistant/Associate Professor, Educational Research, [University of Southern Mississippi](https://usm.csod.com/ats/careersite/JobDetails.aspx?id=4410&site=1), Hattiesburg, MS
+
+As of 2024.10 
+
+- Assistant Professor in the SDSU College of Education focused on Quantitative Research Methods, [San Diego State University](https://apply.interfolio.com/156881)
+- Assistant Professor of Quantitative Methods and Assessment in Education, [University of Northern Iowa](https://uni.wd5.myworkdayjobs.com/en-US/UNI/job/Main-Campus/Assistant-Professor-of-Quantitative-Methods-and-Assessment-in-Education_JR283), Cedar Falls, IA
+- Assistant Professor-Educational Research, Measurement, and Analysis, [Auburn University](https://www.auemployment.com/postings/49210), Auburn, AL
+- Assistant Professor - Psychology, [University of Arkansas](https://www.higheredjobs.com/details.cfm?JobCode=178937871) at Little Rock, AR
+- School Of Education-Tenure-track Assistant Professor- Educational Psychology And Research; Department Human Studies, [University of Alabama at Birmingham](https://uab.peopleadmin.com/postings/23082), Birmingham, AL
+
+As of 2024.09
+
+- Assistant/Associate Professor Of Quantitative Methodology, [Georgia State University](https://facultycareers.gsu.edu/postings/4858) Atlanta, GA
+- Assistant Professor (Quant Psych), [University of North Carolina](https://unc.peopleadmin.com/postings/288570) at Chapel Hill
+- Open-Rank Tenure-Track Faculty Position in Quantitative Methods, [Rossier School of Education](https://usccareers.usc.edu/job/los-angeles/open-rank-tenure-track-faculty-position-in-quantitative-methods-rossier-school-of-education/1209/70221450528), Los Angeles, California
+- Tenured Associate or Full Professor in Evaluation Studies (# 364671), [University of Minnesota](https://hr.myu.umn.edu/psc/hrprd/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&Action=U&SiteId=1&FOCUS=Applicant&JobOpeningId=364671&PostingSeq=1), Twin Cities, MN
+- Assistant/Associate Professor - QME Educational Statistics, [University of Minnesota](https://hr.myu.umn.edu/psc/hrprd/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&Action=U&SiteId=1&FOCUS=Applicant&JobOpeningId=364621&PostingSeq=1&) Twin Cities, MN
+- Assistant Professor of Quantitative Psychology, [California State University](https://careers.pageuppeople.com/873/lb/en-us/job/541543/assistant-professor-of-quantitative-psychology), Long Beach
+- Assistant Professor, Quantitative Psychology (Open Area), [Claremont McKenna College](https://webapps.cmc.edu/jobs/faculty/faculty_opening_detail.php?PostingID=17040), California
+- Assistant/Associate Professor of Evaluation in Education, [University of California Los Angeles](https://recruit.apo.ucla.edu/JPF09709)
+- Associate/Full Professor, Tenured, Quantitative Methods, Educational Psychology, [Baylor University](https://apply.interfolio.com/153027), Waco, TX
+
+As of 2024.08 
+
+- Assistant Professor, Psychology (Quantitative) Tenure-track, [Ohio University](https://jobs.chronicle.com/job/37701200/assistant-professor-psychology-quantitative-tenure-track/), Athens, Ohio
+- Assistant Professor of Quantitative Psychology, [California State University](https://jobs.chronicle.com/job/37695060/assistant-professor-of-quantitative-psychology/), Long Beach
+- Research Assistant Professor, [Nebraska Academy for Methodology, Analytics & Psychometrics](https://employment.unl.edu/postings/92950), Nebraska Center for Research on Children, Youth, Families and Schools, College of Education and Human Sciences, University of Nebraska-Lincoln
+- Assistant Professor, Tenure-Track, [Educational Data Science](https://www.higheredjobs.com/details.cfm?JobCode=178892364) - Counseling, School, and Educational Psychology, University at Buffalo, Buffalo, NY
+- Lecturer, [Multivariate Statistics](https://www.higheredjobs.com/details.cfm?JobCode=178889719), University of California Santa Barbara, Santa Barbara, CA
+
+As of 2024.07
+
+- Assistant Prof, [Educational Studies](https://www.higheredjobs.com/details.cfm?JobCode=178848717), University of Cincinnati, Cincinnati, OH
+- Assistant Professor in Mixed Methods, Qualitative and Quantitative Tenure-Track, [St. John's University](https://jobs.chronicle.com/job/37678495/), New York
+
+
+---END

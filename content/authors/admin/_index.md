@@ -60,7 +60,7 @@ education:
     institution: University of Virginia
     date_start: 2006-01-01
     date_end: 2009-07-31
-  - area: MA Instuctional Technology and Media
+  - area: MA Instructional Technology and Media
     institution: Teachers College Columbia University
     date_start: 2006-01-01
     date_end: 2006-12-31
@@ -69,35 +69,32 @@ education:
     date_start: 1988-06-01
     date_end: 1992-06-01
 work:
-  - position: Director of Cloud Infrastructure
-    company_name: GenCoin
-    company_url: ''
+  - position: Professor
+    company_name: University of Missouri
+    company_url: 'https://www.missouri.edu'
     company_logo: ''
-    date_start: 2021-01-01
+    date_start: 2023-09-01
     date_end: ''
-    summary: |2-
-      Responsibilities include:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - position: Backend Software Engineer
-    company_name: X
-    company_url: ''
-    company_logo: ''
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      Responsibilities include:
-      - Migrated infrastructure to a new data center
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
 
+  - position: Associate Professor
+    company_name: University of Missouri
+    company_url: 'https://www.missouri.edu'
+    company_logo: ''
+    date_start: 2018-09-01
+    date_end: 2023-08-31
+
+  - position: Assistant Professor
+    company_name: University of Missouri
+    company_url: 'https://www.missouri.edu'
+    company_logo: ''
+    date_start: 2014-01-01
+    date_end: 2018-08-31
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
 skills:
   - name: Technical Skills
     items:
-      - name: Python
+      - name: R
         description: ''
         percent: 80
         icon: code-bracket
