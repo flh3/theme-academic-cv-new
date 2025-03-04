@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: http://localhost:1313/sitemap.xml
+Sitemap: https://flh3v2.netlify.app/sitemap.xml
