@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Racial Disparities | FLH Website</title>
-    <link>https://flh3v2.netlify.app/tags/racial-disparities/</link>
-      <atom:link href="https://flh3v2.netlify.app/tags/racial-disparities/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/racial-disparities/</link>
+      <atom:link href="http://localhost:1313/tags/racial-disparities/index.xml" rel="self" type="application/rss+xml" />
     <description>Racial Disparities</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Feb 2017 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://flh3v2.netlify.app/media/icon_hu_645fa481986063ef.png</url>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
       <title>Racial Disparities</title>
-      <link>https://flh3v2.netlify.app/tags/racial-disparities/</link>
+      <link>http://localhost:1313/tags/racial-disparities/</link>
     </image>
     
     <item>
       <title>Student attitudes and behaviors as explanations for the Black-White suspension gap</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/huang-student-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-student-2017/</link>
       <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/huang-student-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-student-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>

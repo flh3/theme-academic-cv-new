@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rs | FLH Website</title>
+    <link>http://localhost:1313/r/</link>
+      <atom:link href="http://localhost:1313/r/index.xml" rel="self" type="application/rss+xml" />
+    <description>Rs</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
+      <title>Rs</title>
+      <link>http://localhost:1313/r/</link>
+    </image>
+    
+    <item>
+      <title>CR2</title>
+      <link>http://localhost:1313/r/cr2/cr2/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/r/cr2/cr2/</guid>
+      <description>&lt;p&gt;R Packages&lt;/p&gt;
+&lt;p&gt;CR2: Compute CR0, CR1, CR2 cluster robust standard errors with empirical-degrees of freedom adjustments. (July 2022).&lt;/p&gt;
+&lt;p&gt;This is now on CRAN so can be installed using: install.packages(&amp;lsquo;CR2&amp;rsquo;). The development version can also be installed using: &lt;code&gt;devtools::install_github(&amp;quot;flh3/CR2&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;https://cranlogs.r-pkg.org/badges/CR2&#34;&gt;
+&lt;/figure&gt;
+&lt;figure&gt;&lt;img src=&#34;https://cranlogs.r-pkg.org/badges/grand-total/CR2&#34;&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The SPSS version is available &lt;a href=&#34;https://github.com/flh3/CR2/tree/master/SPSS&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For more details:&lt;/p&gt;
+&lt;p&gt;Huang, F. &amp;amp; Li, X. (2022). Using cluster robust standard errors when analyzing group randomized trials with few clusters. Behavior Research Methods, 54, 1181-1199. doi: 10.3758/s13428-021-01627-0&lt;/p&gt;
+&lt;p&gt;Huang, F., Wiedermann, W., &amp;amp; Zhang, B. (2022). Accounting for heteroskedasticity resulting from between-group differences in multilevel models. Multivariate Behavioral Research. doi: 10.1080⁄00273171.2022.2077290.&lt;/p&gt;
+&lt;p&gt;Huang, F., Zhang, B., &amp;amp; Li, X. (2022). Using robust standard errors for the analysis of binary outcomes with a small number of clusters. Journal of Research on Educational Effectiveness. &lt;a href=&#34;https://doi.org/10.1080/19345747.2022.2100301&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.1080/19345747.2022.2100301&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>gendata</title>
+      <link>http://localhost:1313/r/gendata/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/r/gendata/</guid>
+      <description>&lt;p&gt;Gendata&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

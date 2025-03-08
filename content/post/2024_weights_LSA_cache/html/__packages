@@ -1,0 +1,8 @@
+knitr
+pandoc
+rmarkdown
+modelsummary
+Matrix
+lme4
+WeMix
+broom

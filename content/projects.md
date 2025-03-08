@@ -11,12 +11,12 @@ design:
 sections:
   - block: collection
     content:
-      title: Selected Projects
-      text: I enjoy making things. Here are a selection of projects that I have worked on over the years.
+      title: Projects
+      text: Here are a few projects I am working on.
       filters:
         folders:
           - project
-    design:
+design:
       view: article-grid
       fill_image: false
       columns: 3

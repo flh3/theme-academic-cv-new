@@ -8,14 +8,22 @@ main:
     url: /
     weight: 10
   - name: Papers
+    parent: Research
     url: /#papers
     weight: 11
+  - name: R Packages
+    parent: Research
+    url: /R
+    weight: 12
   - name: Talks
     url: /#talks
     weight: 12
   - name: News
     url: /#news
     weight: 13
+  - name: MLMusingR
+    url: MLMusingR/
+    weight: 14
   - name: Experience
     url: experience/
     weight: 20
@@ -25,3 +33,7 @@ main:
   - name: Teaching
     url: teaching/
     weight: 40
+  - name: Service
+    url: service/
+    weight: 50
+

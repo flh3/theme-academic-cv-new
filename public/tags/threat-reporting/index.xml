@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Threat Reporting | FLH Website</title>
-    <link>https://flh3v2.netlify.app/tags/threat-reporting/</link>
-      <atom:link href="https://flh3v2.netlify.app/tags/threat-reporting/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/threat-reporting/</link>
+      <atom:link href="http://localhost:1313/tags/threat-reporting/index.xml" rel="self" type="application/rss+xml" />
     <description>Threat Reporting</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Apr 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://flh3v2.netlify.app/media/icon_hu_645fa481986063ef.png</url>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
       <title>Threat Reporting</title>
-      <link>https://flh3v2.netlify.app/tags/threat-reporting/</link>
+      <link>http://localhost:1313/tags/threat-reporting/</link>
     </image>
     
     <item>
       <title>Student perceptions of school resource officers and threat reporting</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/crichlow-ball-student-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/crichlow-ball-student-2022/</link>
       <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/crichlow-ball-student-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/crichlow-ball-student-2022/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>

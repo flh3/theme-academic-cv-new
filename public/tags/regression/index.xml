@@ -5,12 +5,695 @@
     <link>http://localhost:1313/tags/regression/</link>
       <atom:link href="http://localhost:1313/tags/regression/index.xml" rel="self" type="application/rss+xml" />
     <description>Regression</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
       <title>Regression</title>
       <link>http://localhost:1313/tags/regression/</link>
     </image>
+    
+    <item>
+      <title>Selecting the proper weights in LSAs with multilevel models</title>
+      <link>http://localhost:1313/post/lsawt/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/lsawt/</guid>
+      <description>&lt;div id=&#34;which-weights-to-use-with-multilevel-models&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Which weights to use with multilevel models?&lt;/h1&gt;
+&lt;p&gt;A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.&lt;/p&gt;
+&lt;p&gt;Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).&lt;/p&gt;
+&lt;p&gt;To illustrate this using R (with the &lt;code&gt;mixPV&lt;/code&gt; function):&lt;/p&gt;
+&lt;div id=&#34;load-in-the-needed-functions-and-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Load in the needed functions and data&lt;/h2&gt;
+&lt;p&gt;First, load in the &lt;code&gt;mixPV&lt;/code&gt; function. Load in the &lt;code&gt;pisa2012&lt;/code&gt; dataset as well.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(modelsummary)
+source(&amp;quot;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&amp;quot;)
+data(pisa2012, package = &amp;#39;MLMusingR&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;By default, the &lt;code&gt;WeMix&lt;/code&gt; package uses conditional weights = FALSE or &lt;code&gt;cWeights = FALSE&lt;/code&gt; (no need to specify). This makes it easier so users don’t have to compute the conditional weights (conditional on the school being selected) and can just use the total weight supplied in many datasets. You have to make sure which type of weight you are using. NOTE: the &lt;code&gt;mc = TRUE&lt;/code&gt; option is used to shorten computing time (turning on the use of multiple cores). The following just uses the raw weights at both levels:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1a &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+               sc14q02 + st04q01 + escs + (1|schoolid), 
+             weights = c(&amp;#39;w_fstuwt&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
+             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However, if you use software such as Mplus or SAS, you need to specify the conditional weights. To compute the conditional weights (if you are specifying weights at both levels), it is the total weight divided by the school weight.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pisa2012$cweight &amp;lt;- pisa2012$w_fstuwt / pisa2012$w_fschwt&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can then use this when we fit the model and we include &lt;code&gt;cWeights = TRUE&lt;/code&gt;. We can compare the output in a while.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1b &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+               sc14q02 + st04q01 + escs + (1|schoolid), 
+             weights = c(&amp;#39;cweight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
+             cWeight = TRUE,
+             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I will include the example if we just use the conditional weight (as you would with other software packages) but DO NOT turn on the &lt;code&gt;cWeights&lt;/code&gt; option.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1c &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+               sc14q02 + st04q01 + escs + (1|schoolid), 
+             weights = c(&amp;#39;cweight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
+             #cWeight = TRUE,  ## for illustrative purposes only
+             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can compare results side-by-side.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;modelsummary(list(&amp;quot;default&amp;quot; = m1a, &amp;quot;cweights&amp;quot; = m1b, &amp;quot;wrong&amp;quot; = m1c),
+  stars = TRUE, gof_map = NA)&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- preamble start --&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+  function styleCell_tpg3fmfzg2xr99z92e2s(i, j, css_id) {
+    var table = document.getElementById(&amp;quot;tinytable_tpg3fmfzg2xr99z92e2s&amp;quot;);
+    table.rows[i].cells[j].classList.add(css_id);
+  }
+  function insertSpanRow(i, colspan, content) {
+    var table = document.getElementById(&#39;tinytable_tpg3fmfzg2xr99z92e2s&#39;);
+    var newRow = table.insertRow(i);
+    var newCell = newRow.insertCell(0);
+    newCell.setAttribute(&amp;quot;colspan&amp;quot;, colspan);
+    // newCell.innerText = content;
+    // this may be unsafe, but innerText does not interpret &amp;lt;br&amp;gt;
+    newCell.innerHTML = content;
+  }
+  function spanCell_tpg3fmfzg2xr99z92e2s(i, j, rowspan, colspan) {
+    var table = document.getElementById(&amp;quot;tinytable_tpg3fmfzg2xr99z92e2s&amp;quot;);
+    const targetRow = table.rows[i];
+    const targetCell = targetRow.cells[j];
+    for (let r = 0; r &amp;lt; rowspan; r++) {
+      // Only start deleting cells to the right for the first row (r == 0)
+      if (r === 0) {
+        // Delete cells to the right of the target cell in the first row
+        for (let c = colspan - 1; c &amp;gt; 0; c--) {
+          if (table.rows[i + r].cells[j + c]) {
+            table.rows[i + r].deleteCell(j + c);
+          }
+        }
+      }
+      // For rows below the first, delete starting from the target column
+      if (r &amp;gt; 0) {
+        for (let c = colspan - 1; c &amp;gt;= 0; c--) {
+          if (table.rows[i + r] &amp;amp;&amp;amp; table.rows[i + r].cells[j]) {
+            table.rows[i + r].deleteCell(j);
+          }
+        }
+      }
+    }
+    // Set rowspan and colspan of the target cell
+    targetCell.rowSpan = rowspan;
+    targetCell.colSpan = colspan;
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 0, &amp;rsquo;tinytable_css_id33r6av160gggqyj4uftq&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 1, &amp;rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 2, &amp;rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 3, &amp;rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 1, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 2, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 3, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
+&lt;/script&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+.table td.tinytable_css_id33r6av160gggqyj4uftq, .table th.tinytable_css_id33r6av160gggqyj4uftq {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_idu07fh71s8b54pdrm00pi, .table th.tinytable_css_idu07fh71s8b54pdrm00pi {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_idxuo2fqnerpnyvos1l2je, .table th.tinytable_css_idxuo2fqnerpnyvos1l2je {  text-align: left; }
+.table td.tinytable_css_ide4slf7iwqvreor6a5l79, .table th.tinytable_css_ide4slf7iwqvreor6a5l79 {  text-align: center; }
+&amp;lt;/style&amp;gt;
+&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+  &amp;lt;table class=&amp;quot;table table-borderless&amp;quot; id=&amp;quot;tinytable_tpg3fmfzg2xr99z92e2s&amp;quot; style=&amp;quot;width: auto; margin-left: auto; margin-right: auto;&amp;quot; data-quarto-disable-processing=&#39;true&#39;&amp;gt;
+    &amp;lt;thead&amp;gt;
+    
+          &amp;lt;tr&amp;gt;
+            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt; &amp;lt;/th&amp;gt;
+            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;default&amp;lt;/th&amp;gt;
+            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;cweights&amp;lt;/th&amp;gt;
+            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;wrong&amp;lt;/th&amp;gt;
+          &amp;lt;/tr&amp;gt;
+    &amp;lt;/thead&amp;gt;
+    &amp;lt;tfoot&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=&#39;4&#39;&amp;gt;+ p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/tfoot&amp;gt;
+    &amp;lt;tbody&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;(Intercept)          &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;470.498*** &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;470.498*** &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;479.535*** &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(7.103)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(7.103)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(4.876)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;sc14q02Very little   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-20.910    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-20.910    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-8.561     &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(15.710)   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(15.710)   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(6.421)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;sc14q02To some extent&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-16.131    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-16.131    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-27.209**  &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(11.823)   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(11.823)   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(8.611)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;sc14q02A lot         &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-25.224**  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-25.224**  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-23.765*** &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(7.614)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(7.614)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(6.635)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;st04q01Male          &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;9.529**    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;9.529**    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;10.784**   &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(3.097)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(3.097)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(4.163)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;escs                 &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;26.300***  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;26.300***  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;35.847***  &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(2.210)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(2.210)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(2.158)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;schoolid.(Intercept) &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;1344.166***&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;1344.166***&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;0.000      &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(300.241)  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(300.241)  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(0.000)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;Residual             &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;5418.299***&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;5418.299***&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;6701.321***&amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(160.102)  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(160.102)  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(210.501)  &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+    &amp;lt;/tbody&amp;gt;
+  &amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- hack to avoid NA insertion in last line --&gt;
+&lt;p&gt;The first two models have identical results. The third model (which is incorrectly specified) results differ and the level-2 variance here is zero.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-about-scaling-level-1-weights&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. What about scaling level-1 weights?&lt;/h2&gt;
+&lt;p&gt;Asparouhov (2005) suggested scaling the weights at level 1. The following formulas (and explanations) can be seen at the Mplus website at &lt;a href=&#34;https://statmodel.com/download/Scaling3.pdf&#34; class=&#34;uri&#34;&gt;https://statmodel.com/download/Scaling3.pdf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The unscaled weight is &lt;span class=&#34;math inline&#34;&gt;\(w^*_{ij}=w_{ij}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;What Mplus calls the cluster weight has scaled weights that add up to the cluster sample size. Carle (2009) refers to this as Method A. It is computed using:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(w^*_{ij}=w_{ij}\frac{n_j}{\Sigma_i w_{ij}}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Here, &lt;span class=&#34;math inline&#34;&gt;\(n_j\)&lt;/span&gt; is the number of sample units in cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;. This is the default scaling method in Mplus and has generally been shown to perform well (see Asparouhov, 2006).&lt;/p&gt;
+&lt;p&gt;Another scaling approach is referred to as the ecluster method which is the effective cluster sample size method. This is referred to as Method B by Carle (2009) (though the formula in his appendix seems to differ slightly):&lt;/p&gt;
+&lt;p&gt;This is similar to the cluster method except that the numerator is &lt;span class=&#34;math inline&#34;&gt;\(n^*_j\)&lt;/span&gt; instead and is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(w^*_{ij}=w_{ij}\frac{n^*_j}{\Sigma_i w_{ij}}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The numerator is computed using:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n^*_{j}=\frac{(\Sigma_i w_{ij})^2}{\Sigma_i w^2_{ij}}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;To compute the scaled weights, we can use the &lt;code&gt;wscale&lt;/code&gt; function (note the options). The cluster variable, dataset, conditional cluster weight,
+and type of scaling need to be specified:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pisa2012$cl_weight &amp;lt;- wscale(cluster = &amp;#39;schoolid&amp;#39;, data = pisa2012, 
+                             wt = &amp;#39;cweight&amp;#39;, type = &amp;#39;cluster&amp;#39;)
+pisa2012$es_weight &amp;lt;- wscale(cluster = &amp;#39;schoolid&amp;#39;, data = pisa2012, 
+                             wt = &amp;#39;cweight&amp;#39;, type = &amp;#39;ecluster&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After I wrote the function above, I found a function that does the scaling. The results are the same:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xx &amp;lt;- datawizard::rescale_weights(pisa2012, &amp;quot;schoolid&amp;quot;, &amp;quot;w_fstuwt&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can compare results to those of Mplus. This is using cluster weights:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+              1 + (1|schoolid), 
+            weights = c(&amp;#39;cl_weight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
+            cWeight = TRUE,
+            data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ex)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Results of multilevel analyses with 5 plausible values.
+Number of observations: 3136 
+&lt;h2 id=&#34;residual--------------572658----23329-----2455---906-2e-16-&#34;&gt;Estimates for random effects:
+estimate std.error statistic     df Pr(&amp;gt;t) &lt;br&gt;
+schoolid.(Intercept)  1825.03    436.26      4.18 2719.0 &amp;lt;2e-16 ***
+Residual              5726.58    233.29     24.55   90.6 &amp;lt;2e-16 ***&lt;/h2&gt;
+&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/p&gt;
+&lt;h2 id=&#34;intercept---47339------703-----6733-1777-2e-16-&#34;&gt;Estimates for fixed effects:
+estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
+(Intercept)   473.39      7.03     67.33 1777 &amp;lt;2e-16 ***&lt;/h2&gt;
+&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Comparing to Mplus output shows similar results (SEs might differ slightly):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;                Estimate       S.E.  Est./S.E.    P-Value
+&lt;p&gt;Within Level&lt;/p&gt;
+&lt;p&gt;Variances
+MATH            5726.580    234.000     24.473      0.000&lt;/p&gt;
+&lt;p&gt;Between Level&lt;/p&gt;
+&lt;p&gt;Means
+MATH             473.390      7.387     64.088      0.000&lt;/p&gt;
+&lt;p&gt;Variances
+MATH            1825.021    464.365      3.930      0.000&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;This is using the ecluster option:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex2 &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+               1 + (1|schoolid), 
+             weights = c(&amp;#39;es_weight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
+             cWeight = TRUE,
+             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ex2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Results of multilevel analyses with 5 plausible values.
+Number of observations: 3136 
+&lt;h2 id=&#34;residual--------------572756----23336-----2454---902-2e-16-&#34;&gt;Estimates for random effects:
+estimate std.error statistic     df Pr(&amp;gt;t) &lt;br&gt;
+schoolid.(Intercept)  1821.40    434.62      4.19 2714.0 &amp;lt;2e-16 ***
+Residual              5727.56    233.36     24.54   90.2 &amp;lt;2e-16 ***&lt;/h2&gt;
+&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/p&gt;
+&lt;h2 id=&#34;intercept---47340------702-----6739-1776-2e-16-&#34;&gt;Estimates for fixed effects:
+estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
+(Intercept)   473.40      7.02     67.39 1776 &amp;lt;2e-16 ***&lt;/h2&gt;
+&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;                Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+Variances
+MATH            5727.560    234.056     24.471      0.000
+
+Between Level
+
+Means
+MATH             473.403      7.379     64.156      0.000
+
+Variances
+MATH            1821.389    462.665      3.937      0.000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is unscaled:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex3 &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+               1 + (1|schoolid), 
+             weights = c(&amp;#39;cweight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
+             cWeight = TRUE,
+             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ex3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Results of multilevel analyses with 5 plausible values.
+Number of observations: 3136 
+&lt;h2 id=&#34;residual--------------589585----17505-----3368--876-2e-16-&#34;&gt;Estimates for random effects:
+estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
+schoolid.(Intercept)  2126.22    503.39      4.22 3099 &amp;lt;2e-16 ***
+Residual              5895.85    175.05     33.68  876 &amp;lt;2e-16 ***&lt;/h2&gt;
+&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/p&gt;
+&lt;h2 id=&#34;intercept---47235------733-----6444-1470-2e-16-&#34;&gt;Estimates for fixed effects:
+estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
+(Intercept)   472.35      7.33     64.44 1470 &amp;lt;2e-16 ***&lt;/h2&gt;
+&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;                 Estimate       S.E.  Est./S.E.    P-Value
+Within Level
+
+Variances
+MATH            5895.849    174.758     33.737      0.000
+
+Between Level
+
+Means
+MATH             472.349      7.750     60.950      0.000
+
+Variances
+MATH            2126.477    535.991      3.967      0.000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Results differ based on the scaling option and results are all similar to those generated by Mplus.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-about-just-using-level-2-weights&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. What about just using level-2 weights?&lt;/h2&gt;
+&lt;p&gt;A simpler option may just be to use level-2 weights (as suggested by Mang et al., 2021 as well as our own simulation results [under review]). To do so, when using R, we need to need to set the weight at level 1 to 1 &lt;em&gt;and&lt;/em&gt; use conditional weights.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pisa2012$one &amp;lt;- 1 #level-1 weight
+m1d &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+               sc14q02 + st04q01 + escs + (1|schoolid), 
+             weights = c(&amp;#39;one&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = T,
+             cWeight = TRUE,
+             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For comparison, I will show results also using the scaled weights:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1e &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+               sc14q02 + st04q01 + escs + (1|schoolid), 
+             weights = c(&amp;#39;cl_weight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
+             cWeight = TRUE,
+             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1f&amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
+              sc14q02 + st04q01 + escs + (1|schoolid), 
+            weights = c(&amp;#39;es_weight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
+            cWeight = TRUE,
+            data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;modelsummary(list(&amp;quot;l2only&amp;quot; = m1d, &amp;#39;cluster&amp;#39; = m1e, &amp;quot;ecluster&amp;quot; = m1f), 
+             stars = TRUE, gof_map = NA)&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- preamble start --&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+  function styleCell_fceikz071u4rc9r35hd0(i, j, css_id) {
+    var table = document.getElementById(&amp;quot;tinytable_fceikz071u4rc9r35hd0&amp;quot;);
+    table.rows[i].cells[j].classList.add(css_id);
+  }
+  function insertSpanRow(i, colspan, content) {
+    var table = document.getElementById(&#39;tinytable_fceikz071u4rc9r35hd0&#39;);
+    var newRow = table.insertRow(i);
+    var newCell = newRow.insertCell(0);
+    newCell.setAttribute(&amp;quot;colspan&amp;quot;, colspan);
+    // newCell.innerText = content;
+    // this may be unsafe, but innerText does not interpret &amp;lt;br&amp;gt;
+    newCell.innerHTML = content;
+  }
+  function spanCell_fceikz071u4rc9r35hd0(i, j, rowspan, colspan) {
+    var table = document.getElementById(&amp;quot;tinytable_fceikz071u4rc9r35hd0&amp;quot;);
+    const targetRow = table.rows[i];
+    const targetCell = targetRow.cells[j];
+    for (let r = 0; r &amp;lt; rowspan; r++) {
+      // Only start deleting cells to the right for the first row (r == 0)
+      if (r === 0) {
+        // Delete cells to the right of the target cell in the first row
+        for (let c = colspan - 1; c &amp;gt; 0; c--) {
+          if (table.rows[i + r].cells[j + c]) {
+            table.rows[i + r].deleteCell(j + c);
+          }
+        }
+      }
+      // For rows below the first, delete starting from the target column
+      if (r &amp;gt; 0) {
+        for (let c = colspan - 1; c &amp;gt;= 0; c--) {
+          if (table.rows[i + r] &amp;amp;&amp;amp; table.rows[i + r].cells[j]) {
+            table.rows[i + r].deleteCell(j);
+          }
+        }
+      }
+    }
+    // Set rowspan and colspan of the target cell
+    targetCell.rowSpan = rowspan;
+    targetCell.colSpan = colspan;
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 0, &amp;rsquo;tinytable_css_idursl1izjvzpe6k200g1u&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 1, &amp;rsquo;tinytable_css_idplfkcmtth40ibm8od257&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 2, &amp;rsquo;tinytable_css_idplfkcmtth40ibm8od257&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 3, &amp;rsquo;tinytable_css_idplfkcmtth40ibm8od257&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 1, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 2, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 3, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
+&lt;/script&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+.table td.tinytable_css_idursl1izjvzpe6k200g1u, .table th.tinytable_css_idursl1izjvzpe6k200g1u {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_idplfkcmtth40ibm8od257, .table th.tinytable_css_idplfkcmtth40ibm8od257 {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_iddyb4tn1th5w1sdrgzko1, .table th.tinytable_css_iddyb4tn1th5w1sdrgzko1 {  text-align: left; }
+.table td.tinytable_css_id510qm05c38l0etux1mb8, .table th.tinytable_css_id510qm05c38l0etux1mb8 {  text-align: center; }
+&amp;lt;/style&amp;gt;
+&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+  &amp;lt;table class=&amp;quot;table table-borderless&amp;quot; id=&amp;quot;tinytable_fceikz071u4rc9r35hd0&amp;quot; style=&amp;quot;width: auto; margin-left: auto; margin-right: auto;&amp;quot; data-quarto-disable-processing=&#39;true&#39;&amp;gt;
+    &amp;lt;thead&amp;gt;
+    
+          &amp;lt;tr&amp;gt;
+            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt; &amp;lt;/th&amp;gt;
+            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;l2only&amp;lt;/th&amp;gt;
+            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;cluster&amp;lt;/th&amp;gt;
+            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;ecluster&amp;lt;/th&amp;gt;
+          &amp;lt;/tr&amp;gt;
+    &amp;lt;/thead&amp;gt;
+    &amp;lt;tfoot&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=&#39;4&#39;&amp;gt;+ p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/tfoot&amp;gt;
+    &amp;lt;tbody&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;(Intercept)          &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;469.276*** &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;469.241*** &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;469.233*** &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(7.049)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(7.088)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(7.082)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;sc14q02Very little   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-18.928    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-18.795    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-18.800    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(13.537)   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(13.624)   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(13.614)   &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;sc14q02To some extent&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-14.990    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-15.337    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-15.339    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(11.902)   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(12.117)   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(12.111)   &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;sc14q02A lot         &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-23.536**  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-23.265**  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;-23.273**  &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(7.952)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(8.088)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(8.083)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;st04q01Male          &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;12.296**   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;12.051**   &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;12.084**   &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(4.320)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(4.345)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(4.349)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;escs                 &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;29.086***  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;29.045***  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;29.049***  &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(2.698)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(2.685)    &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(2.688)    &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;schoolid.(Intercept) &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;1054.672***&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;1069.977***&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;1067.115***&amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(258.981)  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(260.180)  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(259.201)  &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;Residual             &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;5223.750***&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;5219.380***&amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;5220.383***&amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(206.297)  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(204.390)  &amp;lt;/td&amp;gt;
+              &amp;lt;td&amp;gt;(204.518)  &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+    &amp;lt;/tbody&amp;gt;
+  &amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- hack to avoid NA insertion in last line --&gt;
+&lt;p&gt;Results are very similar.&lt;/p&gt;
+&lt;p&gt;A reason for this is that the level-1 scaled weights are all very close to 1 (or even equal to 1). If there is no variation within cluster, the weights will be 1.&lt;/p&gt;
+&lt;p&gt;If we examine the original conditional weights, there is quite some variability:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;range(pisa2012$cweight) #the original conditional weight&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1]  1.228571 37.018006&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However, compared to the scaled weights, they are all very close to 1. Which is why the results shown above are all very similar.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;range(pisa2012$es_weight)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 0.7635826 1.3325292&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;range(pisa2012$cl_weight)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 0.7820465 1.3559951&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(pisa2012$es_weight)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 0.9962017&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(pisa2012$cl_weight)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;Takeaway&lt;/em&gt;: when running multilevel models with weights at different levels, make sure you are specifying the correct weights. If the residual variance at the second level is close to zero, you should probably revisit your syntax.&lt;/p&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;p&gt;Asparouhov, T. (2006). General Multi-Level Modeling with Sampling Weights Communications in Statistics - Theory and Methods, 35: 439-460.&lt;/p&gt;
+&lt;p&gt;Carle, A. (2009). Fitting multilevel models in complex survey data with design weights: Recommendations BMC Medical Research Methodology, 9(49): 1-13.&lt;/p&gt;
+&lt;p&gt;Mang, J., Küchenhoff, H., Meinck, S., &amp;amp; Prenzel, M. (2021). Sampling weights in multilevel modelling: An investigation using PISA sampling structures. Large-Scale Assessments in Education, 9(1), 6. &lt;a href=&#34;https://doi.org/10.1186/s40536-021-00099-0&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1186/s40536-021-00099-0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;END&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

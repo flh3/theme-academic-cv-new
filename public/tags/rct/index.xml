@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RCT | FLH Website</title>
+    <link>http://localhost:1313/tags/rct/</link>
+      <atom:link href="http://localhost:1313/tags/rct/index.xml" rel="self" type="application/rss+xml" />
+    <description>RCT</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
+      <title>RCT</title>
+      <link>http://localhost:1313/tags/rct/</link>
+    </image>
+    
+    <item>
+      <title>Program Evaluation</title>
+      <link>http://localhost:1313/teaching/eval/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/teaching/eval/</guid>
+      <description>&lt;p&gt;Evaluating the quantifiable impact of social programs is a key task that policy makers, governments, and program funders perform. In education and the social sciences, a fundamental question asked is “How do we know our policy or program works?” Topics to be covered will include the analysis of experimental data, clustered data (e.g., multilevel models, fixed effect models- as most data in education involve nested data), the use of difference in difference models, regression discontinuity designs, and power analysis.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

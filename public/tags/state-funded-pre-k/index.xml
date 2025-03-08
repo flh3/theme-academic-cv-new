@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>State-Funded Pre-K | FLH Website</title>
-    <link>https://flh3v2.netlify.app/tags/state-funded-pre-k/</link>
-      <atom:link href="https://flh3v2.netlify.app/tags/state-funded-pre-k/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/state-funded-pre-k/</link>
+      <atom:link href="http://localhost:1313/tags/state-funded-pre-k/index.xml" rel="self" type="application/rss+xml" />
     <description>State-Funded Pre-K</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Jan 2012 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://flh3v2.netlify.app/media/icon_hu_645fa481986063ef.png</url>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
       <title>State-Funded Pre-K</title>
-      <link>https://flh3v2.netlify.app/tags/state-funded-pre-k/</link>
+      <link>http://localhost:1313/tags/state-funded-pre-k/</link>
     </image>
     
     <item>
       <title>The differential effects of preschool: Evidence from Virginia</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/huang-differential-2012/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-differential-2012/</link>
       <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/huang-differential-2012/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-differential-2012/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>

@@ -2,201 +2,201 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publications | FLH Website</title>
-    <link>https://flh3v2.netlify.app/publication/</link>
-      <atom:link href="https://flh3v2.netlify.app/publication/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/publication/</link>
+      <atom:link href="http://localhost:1313/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://flh3v2.netlify.app/media/icon_hu_645fa481986063ef.png</url>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
       <title>Publications</title>
-      <link>https://flh3v2.netlify.app/publication/</link>
+      <link>http://localhost:1313/publication/</link>
     </image>
     
     <item>
       <title>Restorative justice conferences in elementary and secondary schools</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/gregory-restorative-2025/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/gregory-restorative-2025/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/gregory-restorative-2025/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/gregory-restorative-2025/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Replication studies using secondary or nonexperimental datasets</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/huang-replication-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-replication-2024/</link>
       <pubDate>Mon, 01 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/huang-replication-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-replication-2024/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Steadfast implementation of restorative practices during the Covid-19 pandemic: A case study of consultancy and leadership in an elementary school</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/gregory-steadfast-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/gregory-steadfast-2023/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/gregory-steadfast-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/gregory-steadfast-2023/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Practical multilevel modeling using R</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/huang-practical-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-practical-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/huang-practical-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-practical-2023/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Teacher Perceptions of School Resource Officers and Associations with School Safety</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/maeng-teacher-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/maeng-teacher-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/maeng-teacher-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/maeng-teacher-2023/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Student perceptions of school resource officers and threat reporting</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/crichlow-ball-student-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/crichlow-ball-student-2022/</link>
       <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/crichlow-ball-student-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/crichlow-ball-student-2022/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>The association between student socioeconomic status and student–teacher relationships on math achievement.</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/olsen-association-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/olsen-association-2021/</link>
       <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/olsen-association-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/olsen-association-2021/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Teacher support for zero tolerance is associated with higher suspension rates and lower feelings of safety</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/huang-teacher-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-teacher-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/huang-teacher-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-teacher-2021/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Student threat assessment as an alternative to exclusionary discipline</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/maeng-student-2020/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/maeng-student-2020/</link>
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/maeng-student-2020/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/maeng-student-2020/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Prior problem behaviors do not account for the racial suspension gap</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/huang-prior-2020/</link>
+      <link>http://localhost:1313/publication/journal-article/huang-prior-2020/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/huang-prior-2020/</guid>
+      <guid>http://localhost:1313/publication/journal-article/huang-prior-2020/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Student and teacher perceptions on student-teacher relationship quality: A middle school perspective</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/prewett-student-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/prewett-student-2019/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/prewett-student-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/prewett-student-2019/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>School teasing and bullying after the presidential election</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/huang-school-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-school-2019/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/huang-school-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-school-2019/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>School threat assessment versus suicide assessment: Statewide prevalence and case characteristics</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/burnette-school-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/burnette-school-2019/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/burnette-school-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/burnette-school-2019/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Teacher job satisfaction by principal support and teacher cooperation: Results from the Schools and Staffing Survey</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/olsen-teacher-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/olsen-teacher-2019/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/olsen-teacher-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/olsen-teacher-2019/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Student Threat Assessment as a Standard School Safety Practice: Results From a Statewide Implementation Study.</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/cornell-student-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/cornell-student-2017/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/cornell-student-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/cornell-student-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Student attitudes and behaviors as explanations for the Black-White suspension gap</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/huang-student-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-student-2017/</link>
       <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/huang-student-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-student-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Racial/ethnic differences in perceptions of school climate and its association with student engagement and peer aggression</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/konold-racialethnic-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/konold-racialethnic-2017/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/konold-racialethnic-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/konold-racialethnic-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Question order affects the measurement of bullying victimization among middle school students</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/huang-question-2016/</link>
+      <link>http://localhost:1313/publication/journal-article/huang-question-2016/</link>
       <pubDate>Sat, 01 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/huang-question-2016/</guid>
+      <guid>http://localhost:1313/publication/journal-article/huang-question-2016/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>School counselor use of peer nominations to identify victims of bullying</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/cornell-school-2015/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/cornell-school-2015/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/cornell-school-2015/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/cornell-school-2015/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Successive teacher expectation effects across the early school years</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/rubie-davies-successive-2014/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/rubie-davies-successive-2014/</link>
       <pubDate>Thu, 01 May 2014 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/rubie-davies-successive-2014/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/rubie-davies-successive-2014/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>The differential effects of preschool: Evidence from Virginia</title>
-      <link>https://flh3v2.netlify.app/publication/journal-article/test2/huang-differential-2012/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-differential-2012/</link>
       <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
-      <guid>https://flh3v2.netlify.app/publication/journal-article/test2/huang-differential-2012/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-differential-2012/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>

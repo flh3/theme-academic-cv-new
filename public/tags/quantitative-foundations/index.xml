@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quantitative-Foundations | FLH Website</title>
+    <link>http://localhost:1313/tags/quantitative-foundations/</link>
+      <atom:link href="http://localhost:1313/tags/quantitative-foundations/index.xml" rel="self" type="application/rss+xml" />
+    <description>Quantitative-Foundations</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
+      <title>Quantitative-Foundations</title>
+      <link>http://localhost:1313/tags/quantitative-foundations/</link>
+    </image>
+    
+    <item>
+      <title>Quantitative Foundations</title>
+      <link>http://localhost:1313/teaching/quantfound/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/teaching/quantfound/</guid>
+      <description>&lt;p&gt;This course is designed to provide students the fundamental and necessary quantitative methods in educational research. Topics include one-way and factorial analysis of variance (ANOVA), analysis of covariance (ANCOVA), multiple regression, regression diagnostics, basic mediation analysis, and statistical power analysis.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
