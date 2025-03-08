@@ -61,5 +61,5 @@ projects:
   - MLM
 ---
 
-
+![lecture](lecture.jpg "Our team from MU, AIR and IEA.")
 

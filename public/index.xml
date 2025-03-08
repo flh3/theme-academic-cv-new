@@ -58,6 +58,34 @@
   &lt;span class=&#34;dark:text-neutral-300&#34;&gt;&lt;p&gt;Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.&lt;/p&gt;
 &lt;h1&gt;&lt;/h1&gt;&lt;/span&gt;
 &lt;/div&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;lecture&#34; srcset=&#34;
+               /event/example/lecture_hu_72803af5273a7270.webp 400w,
+               /event/example/lecture_hu_f445ed1fac9e8a49.webp 760w,
+               /event/example/lecture_hu_80229ba9a13b0c49.webp 1200w&#34;
+               src=&#34;http://localhost:1313/event/example/lecture_hu_72803af5273a7270.webp&#34;
+               width=&#34;608&#34;
+               height=&#34;398&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 </description>
     </item>
     
@@ -66,7 +94,37 @@
       <link>http://localhost:1313/event/mlm_ph/</link>
       <pubDate>Wed, 10 Apr 2024 13:00:00 +0000</pubDate>
       <guid>http://localhost:1313/event/mlm_ph/</guid>
-      <description></description>
+      <description>&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-our-team-from-mu-air-and-iea&#34;&gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;lecture&#34; srcset=&#34;
+               /event/mlm_ph/lecture_hu_993d7e4e9432b042.webp 400w,
+               /event/mlm_ph/lecture_hu_391cd18ed58d733c.webp 760w,
+               /event/mlm_ph/lecture_hu_243d7193e5c88939.webp 1200w&#34;
+               src=&#34;http://localhost:1313/event/mlm_ph/lecture_hu_993d7e4e9432b042.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;570&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Our team from MU, AIR and IEA.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -76,20 +134,6 @@
       <guid>http://localhost:1313/publication/journal-article/test2/huang-replication-2024/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Data Management (using R)</title>
-      <link>http://localhost:1313/mlmusingr/dm/</link>
-      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/mlmusingr/dm/</guid>
-      <description>&lt;p&gt;Good data management is a prerequisite for successful research, needed for reproducibility of results, and essential when collaborating with others.&lt;/p&gt;
-&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;&lt;a href=&#34;https://dm2023.netlify.app/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://dm2023.netlify.app/&lt;/a&gt;&lt;/span&gt;
-&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -360,7 +404,7 @@
 
 
 
-&lt;div id=&#34;chart-482573619&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-798123654&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -378,7 +422,7 @@
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-482573619&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-798123654&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
