@@ -12,7 +12,7 @@ header:
   image: ''
 ---
 
-## Variance/Covariance
+## Variance/Covariancexxx
 
 To start off, the sample variance formula is:
 

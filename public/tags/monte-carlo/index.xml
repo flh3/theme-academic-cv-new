@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monte Carlo | FLH Website</title>
+    <link>http://localhost:1313/tags/monte-carlo/</link>
+      <atom:link href="http://localhost:1313/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+    <description>Monte Carlo</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 27 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
+      <title>Monte Carlo</title>
+      <link>http://localhost:1313/tags/monte-carlo/</link>
+    </image>
+    
+    <item>
+      <title>🖩 Logistic regression with matrices</title>
+      <link>http://localhost:1313/post/test3/</link>
+      <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/test3/</guid>
+      <description>
+
+
+&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
+  &lt;summary&gt;Table of Contents&lt;/summary&gt;
+  &lt;div class=&#34;text-sm&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;&lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;p&gt;Logistic regression is a modeling technique that has attracted a lot of attention, especially from folks interested in classification, machine learning, and prediction using binary outcomes. One of the neat things about using R is that users can revisit commonly used procedures and figure out how they work.&lt;/p&gt;
+&lt;p&gt;What follows are some logistic regression notes (this is not on interpreting results). Even though I’ve written about how other &lt;a href=&#34;../applied-example-for-alternatives-to-logistic-regression/&#34;&gt;alternatives&lt;/a&gt; might be simpler than logistic regression or that there are challenges when comparing coefficients across &lt;a href=&#34;../comparing-coefficients-across-logistic-regression-models/&#34;&gt;models&lt;/a&gt;, it is interesting to see how the procedure works.&lt;/p&gt;
+&lt;p&gt;I show a few things:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;How to use some matrices for getting logistic regression results (in terms of point estimates and standard errors);&lt;/li&gt;
+&lt;li&gt;How to compute cluster robust standard errors too;&lt;/li&gt;
+&lt;li&gt;How to manually run iteratively weighted least squares to get the same results from scratch.&lt;/li&gt;
+&lt;li&gt;I added a section later on to do this using &lt;a href=&#34;../logistic-regression-fisher-scoring/&#34;&gt;Fisher Scoring&lt;/a&gt; as well.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;first-create-a-clustered-dataset&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;First, create a (clustered) dataset&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(1234) #clustered example:: just for sim
+pp &amp;lt;- function(x) exp(x) / (1 + exp(x))
+NG &amp;lt;- 20 #number of groups
+GS &amp;lt;- 15 #group size
+total &amp;lt;- NG * GS
+tr &amp;lt;- rep(sample(c(0,1), NG, 1), each = GS)
+w1 &amp;lt;- rep(rnorm(NG), each = GS)
+e2 &amp;lt;- rep(rnorm(NG, 0, .5), each = GS)
+school &amp;lt;- rep(1:NG, each = GS)
+x1 &amp;lt;- rnorm(total)
+x2 &amp;lt;- rbinom(total, 1, .5)
+ystar &amp;lt;- 1 + tr * .5 + w1 * .3 + x1 * .6 + x2 * -.4 + e2
+y &amp;lt;- rbinom(total, 1, pp(ystar))
+dat &amp;lt;- data.frame(y, school, tr, w1, x1, x2)
+sel &amp;lt;- sample(total, 100) #randomly select data to remove
+dat &amp;lt;- dat[-sel, ] #remove to create unbalanced data&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run a logistic regression model predicting &lt;code&gt;y&lt;/code&gt; (&lt;code&gt;tr&lt;/code&gt; and &lt;code&gt;w1&lt;/code&gt; are actually level-2 variables but we’ll ignore the clustering first).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(dat)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        y            school            tr              w1          
+##  Min.   :0.00   Min.   : 1.00   Min.   :0.000   Min.   :-1.44820  
+##  1st Qu.:0.00   1st Qu.: 6.00   1st Qu.:0.000   1st Qu.:-0.91120  
+##  Median :1.00   Median :11.00   Median :1.000   Median :-0.49069  
+##  Mean   :0.65   Mean   :10.71   Mean   :0.725   Mean   :-0.26632  
+##  3rd Qu.:1.00   3rd Qu.:16.00   3rd Qu.:1.000   3rd Qu.: 0.08187  
+##  Max.   :1.00   Max.   :20.00   Max.   :1.000   Max.   : 2.41584  
+##        x1                 x2     
+##  Min.   :-2.85576   Min.   :0.0  
+##  1st Qu.:-0.63885   1st Qu.:0.0  
+##  Median :-0.09820   Median :0.5  
+##  Mean   :-0.02651   Mean   :0.5  
+##  3rd Qu.: 0.51302   3rd Qu.:1.0  
+##  Max.   : 2.91914   Max.   :1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nrow(dat)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 200&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1 &amp;lt;- glm(y ~ tr + w1 + x1 + x2,
+          data = dat, 
+          family = binomial)
+summary(m1)$coef #results are in logits&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                Estimate Std. Error     z value    Pr(&amp;gt;|z|)
+## (Intercept)  0.23069482  0.3482386  0.66246188 0.507675259
+## tr           0.93184838  0.3465455  2.68896434 0.007167408
+## w1           0.60952221  0.2296481  2.65415706 0.007950681
+## x1           0.57411101  0.1852548  3.09903484 0.001941522
+## x2          -0.01320503  0.3218338 -0.04103058 0.967271514&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;extract-matrices&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Extract matrices&lt;/h2&gt;
+&lt;p&gt;The standard formula for the coefficients in linear regression is &lt;span class=&#34;math inline&#34;&gt;\((X&amp;#39;X)^{-1}(X&amp;#39;y)\)&lt;/span&gt;. However, in a generalized linear model, a difference is that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is now &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; (see computation) and weights are estimated as well. The GzLM formula for the betas is now: &lt;span class=&#34;math inline&#34;&gt;\((X&amp;#39;WX)^{-1}(X&amp;#39;Wz)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The explanation of the matrices is shown at the latter part of this post (when computing this manually) which describes what goes into the computation. We’ll use the &lt;code&gt;m1&lt;/code&gt; object just created and extract elements from it that can be used to cobble together the same results.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;X &amp;lt;- model.matrix(m1) #the X matrix
+y &amp;lt;- m1$y #the outcome
+eta &amp;lt;- X %*% coef(m1) #predicted values
+mu &amp;lt;- as.vector(1 / (1 + exp(-eta))) #transformed predicted values
+z &amp;lt;- eta + (y - mu) * (1 / (mu * (1 - mu)))
+Ws &amp;lt;- diag(weights(m1, &amp;#39;working&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After the matrices are created, can use the formulas to get the same results (compare below):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;### point estimates (similar)
+solve(t(X) %*% Ws %*% X) %*% 
+  t(X) %*% Ws %*% z&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                    [,1]
+## (Intercept)  0.23069529
+## tr           0.93184794
+## w1           0.60952156
+## x1           0.57411052
+## x2          -0.01320591&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;coef(m1) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)          tr          w1          x1          x2 
+##  0.23069482  0.93184838  0.60952221  0.57411101 -0.01320503&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For standard errors, this is just the square root of the diagonal of &lt;span class=&#34;math inline&#34;&gt;\((X&amp;#39;WX)^{-1}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sqrt(diag(solve(t(X) %*% Ws %*% X)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)          tr          w1          x1          x2 
+##   0.3482386   0.3465455   0.2296481   0.1852548   0.3218338&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sqrt(diag(vcov(m1))) #same&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)          tr          w1          x1          x2 
+##   0.3482386   0.3465455   0.2296481   0.1852548   0.3218338&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;we-can-also-compute-cluster-robust-standard-errors&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;We can also compute cluster robust standard errors&lt;/h2&gt;
+&lt;p&gt;I’ve written about &lt;a href=&#34;https://francish.netlify.app/post/note-on-robust-standard-errors/&#34;&gt;robust SEs&lt;/a&gt; in another post but in this case, the residuals are different as seen in the syntax. I saw in this &lt;a href=&#34;https://stats.stackexchange.com/questions/283801/how-are-robust-standard-errors-calculated-in-the-case-of-logistic-regression&#34;&gt;post&lt;/a&gt; that you can extract the weighted residuals shown below.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;X &amp;lt;- model.matrix(m1) * sqrt(weights(m1, &amp;quot;working&amp;quot;))
+u &amp;lt;- residuals(m1, &amp;quot;working&amp;quot;)  * sqrt(weights(m1, &amp;quot;working&amp;quot;)) #residuals
+&lt;p&gt;cdata &amp;lt;- data.frame(cluster = dat$school, r = u)
+(m &amp;lt;- length(table(cdata$cluster))) #number of clusters&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 20&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- nobs(m1) #number of observations
+k &amp;lt;- m1$rank
+dfa &amp;lt;- (m/(m-1)) * ((n-1)/(n-k)) #degrees of freedom adjustment
+gs &amp;lt;- names(table(cdata$cluster)) #cluster names
+u &amp;lt;- matrix(NA, nrow = m, ncol = k) #clusters x rank:: creating a new u matrix
+
+for(i in 1:m){
+  u[i,] &amp;lt;- t(cdata$r[cdata$cluster == gs[i]]) %*% X[dat$school == gs[i], 1:k]
+} 
+
+br &amp;lt;- solve(t(X) %*% X) #the bread
+mt &amp;lt;- t(u) %*% u #the meat
+(clvc &amp;lt;- (br %*% mt %*% br * dfa)) #cluster robust VCOV manually computed&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              (Intercept)           tr           w1           x1           x2
+## (Intercept)  0.161369126 -0.137857215  0.017878858 -0.001318135 -0.054932212
+## tr          -0.137857215  0.184883609 -0.004615105  0.001738463 -0.004407959
+## w1           0.017878858 -0.004615105  0.053945127  0.021829090 -0.012319716
+## x1          -0.001318135  0.001738463  0.021829090  0.051276709  0.005750240
+## x2          -0.054932212 -0.004407959 -0.012319716  0.005750240  0.129468425&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(sandwich) #to &amp;#39;automatically&amp;#39; compute
+vcovCL(m1, cluster = dat$school, type = &amp;#39;HC1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              (Intercept)           tr           w1           x1           x2
+## (Intercept)  0.161369126 -0.137857215  0.017878858 -0.001318135 -0.054932212
+## tr          -0.137857215  0.184883609 -0.004615105  0.001738463 -0.004407959
+## w1           0.017878858 -0.004615105  0.053945127  0.021829090 -0.012319716
+## x1          -0.001318135  0.001738463  0.021829090  0.051276709  0.005750240
+## x2          -0.054932212 -0.004407959 -0.012319716  0.005750240  0.129468425&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;all.equal(clvc, vcovCL(m1, cluster = dat$school, type = &amp;#39;HC1&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;manually-performing-a-logistic-regression&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Manually performing a logistic regression&lt;/h2&gt;
+&lt;p&gt;A GLM requires several quantities (in this case, shown are the ones for a binomial family using a logit link– this will differ based on both the link and the family)&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the link function: &lt;span class=&#34;math inline&#34;&gt;\(g(\mu)=log(\frac{\mu}{1 - \mu})\)&lt;/span&gt; known as the log odds&lt;/li&gt;
+&lt;li&gt;the inverse link: &lt;span class=&#34;math inline&#34;&gt;\(g^{-1}(\mu) =\frac{1}{1 + exp(-\eta)}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;the variance function: &lt;span class=&#34;math inline&#34;&gt;\(V(\mu) = \mu(1 - \mu)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;the first derivative: &lt;span class=&#34;math inline&#34;&gt;\(g&amp;#39;(\mu) = \frac{1}{\mu(1 - \mu)}\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The generic GLM algorithm uses the following computations (substitute the values from above):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(diag[\frac{1}{V(\mu)g&amp;#39;(\mu)^2}]\)&lt;/span&gt; : weights&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(z = \eta + (y - \mu)g&amp;#39;(\mu)\)&lt;/span&gt; : working response&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\eta = X\beta\)&lt;/span&gt; : linear prediction&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\mu = g^{-1}(\eta)\)&lt;/span&gt; : the fitted values&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;X &amp;lt;- model.matrix(~tr + w1 + x1 + x2, data = dat) #just to quickly get this
+#this is not the same as the weighted one
+tol &amp;lt;- 1e-6 #tolerance: if change is low, then stop
+y &amp;lt;- dat$y
+mu &amp;lt;- (y + mean(y))/2 #for convergence
+#eta &amp;lt;- log(mu) ## Poisson link
+eta &amp;lt;- log(mu / (1 - mu)) #logit
+&lt;p&gt;dev &amp;lt;- 0 #deviance
+delta.dev &amp;lt;- 1
+i &amp;lt;- 1 #iteration number&lt;/p&gt;
+&lt;p&gt;while(i &amp;lt; 50 &amp;amp; abs(delta.dev) &amp;gt; tol) { #repeat until deviance change is minimal
+tmp &amp;lt;- mu * (1 - mu) #since I use this over and over again
+W &amp;lt;- diag(1 / (tmp * (1/tmp)^2))
+z &amp;lt;- eta + (y - mu) * (1 / tmp)
+b &amp;lt;- solve(t(X) %&lt;em&gt;% W %&lt;/em&gt;% X) %&lt;em&gt;% t(X) %&lt;/em&gt;% W %&lt;em&gt;% z #these are the cofficients
+eta &amp;lt;- X %&lt;/em&gt;% b #update eta
+mu &amp;lt;- as.vector( 1 / (1 + exp(-eta)))
+dev0 &amp;lt;- dev
+#dev &amp;lt;- -2 * sum(y * log(y/mu) + (1 - y) * (1 -log(y/mu)), na.rm = T)
+dev &amp;lt;- -2 * sum((y * log(mu)) + ((1 - y) * log(1 - mu))) #deviance
+delta.dev &amp;lt;- dev - dev0 #assess change in deviance for logistic reg
+cat(i, dev, &amp;quot;::&amp;quot;)
+i &amp;lt;- i + 1 #increment by 1
+}&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 1 234.3943 ::2 233.4394 ::3 233.4389 ::4 233.4389 ::&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The solution was reached after five iterations. Note: the deviance (which is -2 log likelihood) is the same using our manual method and the built-in function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;deviance(m1) #using the results from glm&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 233.4389&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dev #manually computed&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 233.4389&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;logLik(m1) * -2 #showing this is -2 x log likelihood&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;log Lik.&amp;#39; 233.4389 (df=5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To compute the standard errors:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;serror &amp;lt;- sqrt(diag(solve(t(X) %*% W %*% X)))
+# compare results
+data.frame(B.manual = as.numeric(b), se.manual = serror)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                B.manual se.manual
+## (Intercept)  0.23069482 0.3482383
+## tr           0.93184838 0.3465451
+## w1           0.60952221 0.2296474
+## x1           0.57411101 0.1852545
+## x2          -0.01320503 0.3218335&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(m1)$coef[,1:2] #using the glm function&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                Estimate Std. Error
+## (Intercept)  0.23069482  0.3482386
+## tr           0.93184838  0.3465455
+## w1           0.60952221  0.2296481
+## x1           0.57411101  0.1852548
+## x2          -0.01320503  0.3218338&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Standard errors are the same (to the sixth decimal place) as those estimated using the &lt;code&gt;glm&lt;/code&gt; function.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;heres-a-final-short-example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Here’s a final short example&lt;/h2&gt;
+&lt;p&gt;Just using the small, built-in &lt;code&gt;mtcars&lt;/code&gt; dataset:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data(mtcars)
+table(mtcars$am) #the car transmission; just a toy outcome&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  0  1 
+## 19 13&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m2 &amp;lt;- glm(am ~ mpg + wt, family = binomial, data = mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Computing this ‘manually’ using extracted matrices (object is now &lt;code&gt;m2&lt;/code&gt; for model 2):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;X &amp;lt;- model.matrix(m2)
+eta &amp;lt;- X %*% coef(m2)
+mu &amp;lt;- as.vector(1 / (1 + exp(-eta)))
+zz &amp;lt;- eta + (mtcars$am - mu) * (1 / (mu * (1 - mu)))
+Ws &amp;lt;- diag(weights(m2, &amp;#39;working&amp;#39;))
+estimate &amp;lt;- solve(t(X) %*% Ws %*% X) %*% t(X) %*% Ws %*% zz #est
+se &amp;lt;- sqrt(diag(solve(t(X) %*% Ws %*% X))) #SE
+z &amp;lt;- estimate / se
+pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Put it all together and compare results:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data.frame(estimate, se, z, pv)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               estimate        se         z         pv
+## (Intercept) 25.8865522 12.193529  2.122975 0.03375598
+## mpg         -0.3241639  0.239499 -1.353508 0.17589325
+## wt          -6.4161717  2.546606 -2.519500 0.01175218&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(m2)$coef #based on GLM function&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               Estimate Std. Error   z value   Pr(&amp;gt;|z|)
+## (Intercept) 25.8865540  12.193529  2.122975 0.03375597
+## mpg         -0.3241639   0.239499 -1.353509 0.17589322
+## wt          -6.4161721   2.546606 -2.519500 0.01175217&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes footnotes-end-of-document&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Based on the notes from Dr. Wolfgang Wiedermann’s GLM course&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

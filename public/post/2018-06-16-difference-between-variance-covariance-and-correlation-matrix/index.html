@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: March 8, 2025 --><html lang="en-us" dir="ltr"
+<!-- Last Published: March 10, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="system">
   
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
@@ -42,7 +42,7 @@
     
   
   <meta name="description" content="Variance/Covariance To start off, the sample variance formula is:
-$$s^2 = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})^2} {n - 1 }$$First of all, $x - \overline{x}$ is a deviation score (deviation from what? deviation from the mean). Summing the deviations will just get us zero so the deviations are squared and then added together. The numerator of this formula is then called the sum of squared deviations which is literally what it is. This is not yet what we refer to as the variance (s2). We have to divide this by n − 1 which is the sample degrees of freedom.
+$$s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})^2} {n - 1 }$$First of all, $x - \overline{x}$ is a deviation score (deviation from what? deviation from the mean). Summing the deviations will just get us zero so the deviations are squared and then added together. The numerator of this formula is then called the sum of squared deviations which is literally what it is. This is not yet what we refer to as the variance (s2). We have to divide this by n − 1 which is the sample degrees of freedom.
 " />
 
   
@@ -190,10 +190,10 @@ $$s^2 = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})^2} {n - 1 }$$First of all, $x
   
   <meta property="og:site_name" content="FLH Website" />
   <meta property="og:url" content="http://localhost:1313/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/" />
-  <meta property="og:title" content="FLH Website" />
+  <meta property="og:title" content="🧠 Difference between correlation and covariance matrices | FLH Website" />
   <meta property="og:description" content="Variance/Covariance
 To start off, the sample variance formula is:
-$$s^2 = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})^2} {n - 1 }$$First of all, $x - \overline{x}$ is a deviation score (deviation from
+$$s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})^2} {n - 1 }$$First of all, $x - \overline{x}$ is a deviation score (deviation from
 what? deviation from the mean). Summing the deviations will just get us
 zero so the deviations are squared and then added together. The
 numerator of this formula is then called the sum of squared
@@ -203,7 +203,12 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
     <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_645fa481986063ef.png" /><meta property="og:locale" content="en-us" />
   
     
+      <meta
+        property="article:published_time"
+        content="2023-10-26T00:00:00&#43;00:00"
+      />
     
+    <meta property="article:modified_time" content="2023-10-26T00:00:00&#43;00:00">
   
 
   
@@ -213,7 +218,7 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
   
 
 
-  <title>FLH Website</title>
+  <title>🧠 Difference between correlation and covariance matrices | FLH Website</title>
 
   
   
@@ -241,25 +246,9 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
 
 
   
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
+  
+  
+  
   
   
   
@@ -354,157 +343,84 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
   
   
   
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-  
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-  
-    
   
   
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
     
   
   
@@ -634,7 +550,6 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
       
       
     
-  
   
   
   
@@ -990,20 +905,6 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
         <a
           class="nav-link "
           
-          href="/"
-        >Bio</a
-        >
-      </li>
-      
-      
-      
-      
-      
-      
-      <li class="nav-item">
-        <a
-          class="nav-link "
-          
           href="/#talks"
         >Talks</a
         >
@@ -1225,6 +1126,27 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
     <ul class="flex flex-col gap-1 lg:hidden">
       
       
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/mlmusingr/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/r/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/service/"
+    
+  >
+    </a></li>
         <li class=""><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
@@ -1549,6 +1471,45 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/get-started2/"
+    
+  >🎉 Easily create your own simple yet highly customizable blog
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/test3/"
+    
+  >🖩 Logistic regression with matrices
+    </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/"
+    
+  >🧠 Difference between correlation and covariance matrices
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#variancecovariance"
+                class="hb-docs-link"
+              >Variance/Covariance</a>
+            </li>
+          <li>
+              <a
+                href="#correlation"
+                class="hb-docs-link"
+              >Correlation</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
     href="/post/second-brain/"
     
   >🧠 Sharpen your thinking with a second brain
@@ -1578,29 +1539,6 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
   >✅ Manage your projects
     </a>
               
-            </li><li class="flex flex-col open"><a
-    class="hb-sidebar-custom-link
-      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
-    href="/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/"
-    
-  >2018-06-16-difference-between-variance-covariance-and-correlation-matrix
-    </a>
-  
-    <ul class="hb-sidebar-mobile-toc"><li>
-              <a
-                href="#variancecovariance"
-                class="hb-docs-link"
-              >Variance/Covariance</a>
-            </li>
-          <li>
-              <a
-                href="#correlation"
-                class="hb-docs-link"
-              >Correlation</a>
-            </li>
-          </ul>
-  
-              
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
@@ -1617,49 +1555,6 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
     href="/experience/"
     
   >Experience
-    </a></li>
-        <li class=""><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/r/"
-    
-  >Rs
-        <span data-hb-sidebar-toggle>
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
-        </span>
-    </a><div class="ltr:pr-0 overflow-hidden">
-        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/r/cr2/cr2/"
-    
-  >CR2
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/r/gendata/"
-    
-  >gendata
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/r/mlm/"
-    
-  >MLMusingR
-    </a>
-              
-            </li></ul>
-      </div></li>
-        <li class=""><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/mlmusingr/"
-    
-  >Multilevel Modeling Using R
     </a></li>
     </ul>
 
@@ -1719,10 +1614,21 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
 
       
 
-      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100"></h1>
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">🧠 Difference between correlation and covariance matrices</h1>
 
       <div class="mt-4 mb-16">
-      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2">
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Oct 26, 2023</span><span class="mx-1">·</span>
+        
+          
+          
+          <div class="group inline-flex items-center text-current gap-x-1.5 mx-1">
+            
+            
+            <img src="/author/francis-huang/avatar_hu_332976a1b81beb6b.webp" alt="Francis Huang" class="inline-block h-4 w-4 rounded-full border border-current" loading="lazy" />
+            
+            <div >Francis Huang</div>
+          </div>
+          
         
 
         
@@ -1755,7 +1661,7 @@ n − 1 which is the sample degrees of freedom." /><meta property="og:image"
       <div class="prose prose-slate lg:prose-xl dark:prose-invert">
         <h2 id="variancecovariance">Variance/Covariance</h2>
 <p>To start off, the sample variance formula is:</p>
-$$s^2 = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})^2} {n - 1 }$$<p>First of all, $x - \overline{x}$ is a deviation score (deviation from
+$$s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})^2} {n - 1 }$$<p>First of all, $x - \overline{x}$ is a deviation score (deviation from
 what? deviation from the mean). Summing the deviations will just get us
 zero so the deviations are squared and then added together. The
 numerator of this formula is then called the <strong>sum of squared
@@ -1765,12 +1671,12 @@ refer to as the variance (<em>s</em><sup>2</sup>). We have to divide this by
 <p>If you have two variables, x and y, those two variables can covary. The
 formula is similar– instead of squaring the deviation scores, the
 product of the deviation scores of the two variables are used.</p>
-$$cov(x, y) = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})(y\_i - \overline{y})} {n - 1 }$$<p>The numerator is also called the sum of <strong>cross products</strong> (which is
+$$cov(x, y) = \frac{\sum_{i=1}^{n}(x_i - \overline{x})(y_i - \overline{y})} {n - 1 }$$<p>The numerator is also called the sum of <strong>cross products</strong> (which is
 what it is). Then dividing this by <em>n</em> − 1 is the <strong>covariance</strong>. The
 covariance of a variable with itself is also the <strong>variance</strong> which
 makes sense (instead of the cross product, you are multiplying the
 deviance with itself or just squaring it).</p>
-$$cov(x, x) = s^2 = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})(x\_i - \overline{x})} {n - 1 }$$<p>That is pretty useful to know. However, the covariance though is not
+$$cov(x, x) = s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})(x_i - \overline{x})} {n - 1 }$$<p>That is pretty useful to know. However, the covariance though is not
 easy to interpret because it is dependent on the <strong>scale</strong> of your
 variables. For example, if you get the covariance of height and weight–
 one is measured in inches (or cm) and the other in pounds (or kg).
@@ -1812,7 +1718,7 @@ think about it is that the covariance matrix is a bit hard to interpret
 (the covariances) because they are a mix of different units of measure.
 A way we get around that is standardizing the measures by converting
 them to z scores:</p>
-$$z-scores = \frac{(x\_i - \overline{x})} {SD\_x  }$$<p>The scores then have a distribution with a M = 0 and SD = 1 (w/c also
+$$z-scores = \frac{(x_i - \overline{x})} {SD\_x  }$$<p>The scores then have a distribution with a M = 0 and SD = 1 (w/c also
 means a variance of 1). NOTE: how we can access variables in the data
 frame using the $ sign.</p>
 <p>We can convert by using:</p>
@@ -1934,7 +1840,10 @@ covariance matrix if all you had is the correlation matrix?</p>
 
       </div>
 
-      <div class="mt-16"></div>
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2023-10-26T00:00:00.000Z">
+    <span>Last updated on</span>
+    Oct 26, 2023</time>
 
       <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
         
@@ -1943,6 +1852,14 @@ covariance matrix if all you had is the correlation matrix?</p>
   
 
   
+
+<div class="flex justify-center">
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/second-brain/">Second Brain</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/markdown/">Markdown</a>
+  
+</div>
 
 
   
@@ -1958,7 +1875,7 @@ covariance matrix if all you had is the correlation matrix?</p>
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F&amp;text="
+    href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F&amp;text=%F0%9F%A7%A0&#43;Difference&#43;between&#43;correlation&#43;and&#43;covariance&#43;matrices"
     title="X"
     aria-label="X"
     id="share-link-x"
@@ -1976,7 +1893,7 @@ covariance matrix if all you had is the correlation matrix?</p>
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F&amp;t="
+    href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F&amp;t=%F0%9F%A7%A0&#43;Difference&#43;between&#43;correlation&#43;and&#43;covariance&#43;matrices"
     title="Facebook"
     aria-label="Facebook"
     id="share-link-facebook"
@@ -1996,7 +1913,7 @@ covariance matrix if all you had is the correlation matrix?</p>
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="mailto:?subject=&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F"
+    href="mailto:?subject=%F0%9F%A7%A0%20Difference%20between%20correlation%20and%20covariance%20matrices&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F"
     title="Email"
     aria-label="Email"
     id="share-link-email"
@@ -2014,7 +1931,7 @@ covariance matrix if all you had is the correlation matrix?</p>
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F&amp;title="
+    href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F&amp;title=%F0%9F%A7%A0&#43;Difference&#43;between&#43;correlation&#43;and&#43;covariance&#43;matrices"
     title="LinkedIn"
     aria-label="LinkedIn"
     id="share-link-linkedin"
@@ -2032,7 +1949,7 @@ covariance matrix if all you had is the correlation matrix?</p>
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="whatsapp://send?text=%20http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F"
+    href="whatsapp://send?text=%F0%9F%A7%A0&#43;Difference&#43;between&#43;correlation&#43;and&#43;covariance&#43;matrices%20http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2018-06-16-difference-between-variance-covariance-and-correlation-matrix%2F"
     title="WhatsApp"
     aria-label="WhatsApp"
     id="share-link-whatsapp"
@@ -2054,6 +1971,7 @@ covariance matrix if all you had is the correlation matrix?</p>
 
   
   
+    
 
 
 
@@ -2207,6 +2125,7 @@ covariance matrix if all you had is the correlation matrix?</p>
 
 
 
+  
 
 
 
@@ -2224,17 +2143,17 @@ covariance matrix if all you had is the correlation matrix?</p>
   <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
     <div class="">
       
-        <a class="group flex no-underline" href="/post/project-management/">
+        <a class="group flex no-underline" href="/post/test3/">
           <span
             class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
           ><span class="ltr:inline rtl:hidden">&larr;</span></span>
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >✅ Manage your projects</span>
+            >🖩 Logistic regression with matrices</span>
             <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
               
-                Oct 23, 2023
+                Oct 27, 2023
               
             </span>
           </span>
@@ -2243,15 +2162,15 @@ covariance matrix if all you had is the correlation matrix?</p>
     </div>
     <div class="">
       
-        <a class="group flex text-right no-underline" href="/post/jobs-2025/">
+        <a class="group flex text-right no-underline" href="/post/second-brain/">
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >Job postings (AY 2024-25)</span
+            >🧠 Sharpen your thinking with a second brain</span
             >
             <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
               
-                Jan 1, 0001
+                Oct 26, 2023
               
             </span>
           </span>

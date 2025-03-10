@@ -1,8 +1,21 @@
+---
+title: 🧠 Difference between correlation and covariance matrices
+summary: 
+date: 2023-10-26
+authors:
+  - admin
+tags:
+  - Second Brain
+  - Markdown
+image:
+  caption: 'Image credit: [**Unsplash**](https://unsplash.com)'
+---
+
 ## Variance/Covariance
 
 To start off, the sample variance formula is:
 
-$$s^2 = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})^2} {n - 1 }$$
+$$s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})^2} {n - 1 }$$
 
 First of all, $x - \overline{x}$ is a deviation score (deviation from
 what? deviation from the mean). Summing the deviations will just get us
@@ -16,7 +29,7 @@ If you have two variables, x and y, those two variables can covary. The
 formula is similar– instead of squaring the deviation scores, the
 product of the deviation scores of the two variables are used.
 
-$$cov(x, y) = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})(y\_i - \overline{y})} {n - 1 }$$
+$$cov(x, y) = \frac{\sum_{i=1}^{n}(x_i - \overline{x})(y_i - \overline{y})} {n - 1 }$$
 
 The numerator is also called the sum of **cross products** (which is
 what it is). Then dividing this by *n* − 1 is the **covariance**. The
@@ -24,7 +37,7 @@ covariance of a variable with itself is also the **variance** which
 makes sense (instead of the cross product, you are multiplying the
 deviance with itself or just squaring it).
 
-$$cov(x, x) = s^2 = \frac{\sum\_{i=1}^{n}(x\_i - \overline{x})(x\_i - \overline{x})} {n - 1 }$$
+$$cov(x, x) = s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})(x_i - \overline{x})} {n - 1 }$$
 
 That is pretty useful to know. However, the covariance though is not
 easy to interpret because it is dependent on the **scale** of your
@@ -72,7 +85,7 @@ think about it is that the covariance matrix is a bit hard to interpret
 A way we get around that is standardizing the measures by converting
 them to z scores:
 
-$$z-scores = \frac{(x\_i - \overline{x})} {SD\_x  }$$
+$$z-scores = \frac{(x_i - \overline{x})} {SD\_x  }$$
 
 The scores then have a distribution with a M = 0 and SD = 1 (w/c also
 means a variance of 1). NOTE: how we can access variables in the data

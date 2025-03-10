@@ -1,13 +1,14 @@
 ---
-title: "Multilevel Modeling Using R"  # Add a page title.
-summary: "Hello!"  # Add a page description.
-date: "2019-01-01"  # Add today's date.
+title: ""  # Add a page title.
+summary: ""  # Add a page description.
+date: "2025-03-03"  # Add today's date.
 type: "widget_page"  # Page type is a Widget Page
 share: true 
 ---
 
 {{< toc >}} 
 
+## Multilevel Modeling Using R
 ![book cover](mlmcover.jpg)
 **Practical Multilevel Modeling Using R** provides students with a step-by-step guide for running their own multilevel analyses. Detailed examples illustrate the conceptual and statistical issues that multilevel modeling addresses in a way that is clear and relevant to students in applied disciplines. Clearly annotated R syntax illustrates how multilevel modeling (MLM) can be used, and real-world examples show why and how modeling decisions can affect results. The book covers all the basics but also important advanced topics such as diagnostics, detecting and handling heteroscedasticity, power analysis, and missing data handling methods. Unlike other detailed texts on MLM which are written at a very high level, this text with its applied focus and use of R software to run the analyses is much more suitable for students who have substantive research areas but are not training to be methodologists or statisticians. At the end of the chapters, a Test Yourself section is also provided (with answers available on the password-protected instructor website at https://edge.sagepub.com/huang1e so that questions can be assigned for homework). A companion R package (“MLMusingR”) is also available at https://cran.r-project.org/ which contains the datasets and helper functions used in the book.
 

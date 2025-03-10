@@ -11,12 +11,12 @@ design:
 sections:
   - block: collection
     content:
-      title: Projects
-      text: Here are a few projects I am working on.
+      title: Selected Projects
+      text: Here are a few projects/labs that I am working on/with.
       filters:
         folders:
           - project
-design:
+    design:
       view: article-grid
       fill_image: false
       columns: 3
