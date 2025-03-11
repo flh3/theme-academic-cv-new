@@ -262,7 +262,15 @@
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>http://localhost:1313/tags/ccrem/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>http://localhost:1313/publication_types/chapter/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/crse/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -403,10 +411,6 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>http://localhost:1313/publication_types/book/</loc>
-    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://localhost:1313/tags/crse/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
