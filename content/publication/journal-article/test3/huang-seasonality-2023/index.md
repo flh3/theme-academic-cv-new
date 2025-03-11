@@ -37,7 +37,8 @@ abstract: 'Although several studies have focused on why school climate is import
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: []
+tags: 
+- school climate
 
 # Display this page in a list of Featured pages?
 featured: false

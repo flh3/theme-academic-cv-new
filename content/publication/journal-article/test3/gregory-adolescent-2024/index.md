@@ -47,7 +47,9 @@ abstract: This study investigated whether a restorative practice initiative impr
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: []
+tags: 
+- restorative practices
+- restorative justice
 
 # Display this page in a list of Featured pages?
 featured: false

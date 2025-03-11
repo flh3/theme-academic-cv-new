@@ -36,7 +36,7 @@ header:
     show_search: true
     show_theme_chooser: true
     logo:
-      text: "Francis Huang"
+      text: "Francis L. Huang"
 
 # Site footer
 footer:
@@ -44,7 +44,7 @@ footer:
     notice: '© {year} Grumblesquasher. This work is licensed under {license}'
     license:
       enable: true
-      allow_derivatives: false
+      allow_derivatives: true
       share_alike: true
       allow_commercial: false
 

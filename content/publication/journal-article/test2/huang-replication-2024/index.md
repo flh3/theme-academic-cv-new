@@ -34,7 +34,8 @@ abstract: 'Replication studies have been promoted as a means to investigate the 
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: []
+tags: 
+- replication studies
 
 # Display this page in a list of Featured pages?
 featured: true

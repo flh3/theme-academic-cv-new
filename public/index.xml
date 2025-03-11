@@ -1587,7 +1587,7 @@ covariance matrix if all you had is the correlation matrix?&lt;/p&gt;
 
 
 
-&lt;div id=&#34;chart-147396582&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-746528931&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -1605,7 +1605,7 @@ covariance matrix if all you had is the correlation matrix?&lt;/p&gt;
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-147396582&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-746528931&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
@@ -1976,11 +1976,60 @@ Parallel 4   :         des6, after des4, 1d
     </item>
     
     <item>
+      <title>The impact of restorative practices on the use of out-of-school suspensions: Results from a cluster randomized controlled trial</title>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-impact-2023/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-impact-2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The relationship between teacher stress and job satisfaction as moderated by coping</title>
+      <link>http://localhost:1313/publication/journal-article/test3/woods-relationship-2023/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/woods-relationship-2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Usability and social consequences of the early identification system as a universal screener for social, emotional, and behavioral risks.</title>
+      <link>http://localhost:1313/publication/journal-article/test3/herman-usability-2023/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/herman-usability-2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Missouri Prevention Science Institute</title>
       <link>http://localhost:1313/project/mpsi/</link>
       <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/project/mpsi/</guid>
       <description>&lt;p&gt;The Missouri Prevention Science Institute (MPSI) brings community members and researchers together to help schools and families apply techniques that promote social and academic success. Through community outreach, the institute&amp;rsquo;s staff provides parent training and teacher consultation services&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Accounting for heteroskedasticity resulting from between-group differences in multilevel models</title>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-accounting-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-accounting-2023/</guid>
+      <description>&lt;p&gt;Robust standard errors for multilevel models.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Advanced categorical data analysis in prevention science</title>
+      <link>http://localhost:1313/publication/journal-article/test3/wiedermann-advanced-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/wiedermann-advanced-2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>In-school and out-of-school suspension: Behavioral and psychological outcomes in a predominately black sample of middle school students</title>
+      <link>http://localhost:1313/publication/journal-article/test3/cohen-school-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/cohen-school-2023/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -1994,11 +2043,28 @@ Parallel 4   :         des6, after des4, 1d
     
     <item>
       <title>Teacher Perceptions of School Resource Officers and Associations with School Safety</title>
-      <link>http://localhost:1313/publication/journal-article/test2/maeng-teacher-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/maeng-teacher-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/test2/maeng-teacher-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/maeng-teacher-2023/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Using robust standard errors for the analysis of binary outcomes with a small number of clusters</title>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</guid>
+      <description>&lt;p&gt;CR2 plug in for SPSS can be downloaded from: &lt;a href=&#34;https://github.com/flh3/CR2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Interaction of socioeconomic status and class relations on reading</title>
+      <link>http://localhost:1313/publication/journal-article/2022/olsen-interaction-2022/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/olsen-interaction-2022/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -2006,6 +2072,80 @@ Parallel 4   :         des6, after des4, 1d
       <link>http://localhost:1313/publication/journal-article/test2/crichlow-ball-student-2022/</link>
       <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/test2/crichlow-ball-student-2022/</guid>
+      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Examining the validity of the Early Identification System – Student Version for screening in an elementary school sample</title>
+      <link>http://localhost:1313/publication/journal-article/2022/reinke-examining-2022/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/reinke-examining-2022/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Alternatives to logistic regression models in experimental studies</title>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-alternatives-2022/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-alternatives-2022/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analyzing cross-sectionally clustered data using generalized estimating equations</title>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</guid>
+      <description>&lt;p&gt;As of 2024.10.03, the most read article on JEBS (for the last 6 months).&lt;/p&gt;
+&lt;p&gt;In the original paper draft, I had a section which showed how much more widely used mixed models (i.e., MLMs, HLMs) were compared to GEEs but was asked to remove that. I thought the usage was interesting so I am including it here:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In psychology, mixed model studies are much more popular than studies using GEEs by a ratio of 15:1 (Bauer &amp;amp; Sterba, 2011).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Citations in JEBS:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In the Journal of Educational and Behavioral Statistics (JEBS): one article on how to use multilevel models by Singer (1998) has over 3,300 citations (as of 2020.06.11, Google Scholar)&lt;/li&gt;
+&lt;li&gt;In the same journal, Ghisletta &amp;amp; Sini (2004) provided an introduction to GEEs. This article has 329 citations. GS wrote (p. 431):&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Although GEEs are widely applied in biological, pharmacological, and closely related disciplines, their application in educational and social sciences remains relatively scarce.&lt;/p&gt;
+&lt;p&gt;There is a difference of 6 years but the Singer article has been cited over &lt;strong&gt;10&lt;/strong&gt; times more! If using average citations per year, &lt;strong&gt;7.5&lt;/strong&gt; times more.&lt;/p&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;p&gt;Ghisletta, P., &amp;amp; Spini, D. (2004). An introduction to generalized estimating equations and an application to assess selectivity effects in a longitudinal study on very old individuals. Journal of Educational and Behavioral Statistics, 29(4), 421-437.&lt;/p&gt;
+&lt;p&gt;Singer, J. D. (1998). Using SAS PROC MIXED to fit multilevel models, hierarchical models, and individual growth models. Journal of Educational and Behavioral Statistics, 23(4), 323-355.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Evaluation of a bibliotherapy-based stress intervention for teachers</title>
+      <link>http://localhost:1313/publication/journal-article/2022/eddy-evaluation-2022/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/eddy-evaluation-2022/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using cluster-robust standard errors when analyzing group-randomized trials with few clusters</title>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</guid>
+      <description>&lt;p&gt;The SPSS version can be accessed here: &lt;a href=&#34;https://github.com/flh3/CR2/tree/master/SPSS&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2/tree/master/SPSS&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Individual and school predictors of teacher stress, coping, and wellness during the COVID-19 pandemic.</title>
+      <link>http://localhost:1313/publication/journal-article/2022/herman-individual-2021/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/herman-individual-2021/</guid>
+      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The association between student socioeconomic status and student–teacher relationships on math achievement.</title>
+      <link>http://localhost:1313/publication/journal-article/2022/olsen-association-2021/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/olsen-association-2021/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
@@ -2020,10 +2160,37 @@ Parallel 4   :         des6, after des4, 1d
     </item>
     
     <item>
+      <title>Does worrying matter? Priming and attitudes towards mask wearing in a midwestern state</title>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-does-2021/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-does-2021/</guid>
+      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>High school graduation outcomes of student threat assessment</title>
+      <link>http://localhost:1313/publication/journal-article/2022/stohlman-high-2021/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/stohlman-high-2021/</guid>
+      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Advancing diversity, equity, and inclusion in school psychology: Be the      change.</title>
       <link>http://localhost:1313/publication/journal-article/test3/jimerson-advancing-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/test3/jimerson-advancing-2021/</guid>
+      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An investigation of the psychometric properties of the Early Identification System–student report in a middle school sample.</title>
+      <link>http://localhost:1313/publication/journal-article/2022/herman-investigation-2021/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/herman-investigation-2021/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Generalized Estimating Equations | FLH Website</title>
+    <link>http://localhost:1313/tags/generalized-estimating-equations/</link>
+      <atom:link href="http://localhost:1313/tags/generalized-estimating-equations/index.xml" rel="self" type="application/rss+xml" />
+    <description>Generalized Estimating Equations</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
+      <title>Generalized Estimating Equations</title>
+      <link>http://localhost:1313/tags/generalized-estimating-equations/</link>
+    </image>
+    
+    <item>
+      <title>Analyzing cross-sectionally clustered data using generalized estimating equations</title>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</guid>
+      <description>&lt;p&gt;As of 2024.10.03, the most read article on JEBS (for the last 6 months).&lt;/p&gt;
+&lt;p&gt;In the original paper draft, I had a section which showed how much more widely used mixed models (i.e., MLMs, HLMs) were compared to GEEs but was asked to remove that. I thought the usage was interesting so I am including it here:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In psychology, mixed model studies are much more popular than studies using GEEs by a ratio of 15:1 (Bauer &amp;amp; Sterba, 2011).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Citations in JEBS:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In the Journal of Educational and Behavioral Statistics (JEBS): one article on how to use multilevel models by Singer (1998) has over 3,300 citations (as of 2020.06.11, Google Scholar)&lt;/li&gt;
+&lt;li&gt;In the same journal, Ghisletta &amp;amp; Sini (2004) provided an introduction to GEEs. This article has 329 citations. GS wrote (p. 431):&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Although GEEs are widely applied in biological, pharmacological, and closely related disciplines, their application in educational and social sciences remains relatively scarce.&lt;/p&gt;
+&lt;p&gt;There is a difference of 6 years but the Singer article has been cited over &lt;strong&gt;10&lt;/strong&gt; times more! If using average citations per year, &lt;strong&gt;7.5&lt;/strong&gt; times more.&lt;/p&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;p&gt;Ghisletta, P., &amp;amp; Spini, D. (2004). An introduction to generalized estimating equations and an application to assess selectivity effects in a longitudinal study on very old individuals. Journal of Educational and Behavioral Statistics, 29(4), 421-437.&lt;/p&gt;
+&lt;p&gt;Singer, J. D. (1998). Using SAS PROC MIXED to fit multilevel models, hierarchical models, and individual growth models. Journal of Educational and Behavioral Statistics, 23(4), 323-355.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

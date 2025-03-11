@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Francis Huang
+title: Francis L. Huang
 
 # Name pronunciation (optional)
 name_pronunciation: ''

@@ -26,7 +26,9 @@ publishDate: '2024-05-01T00:00:00Z'
 authors:
   - admin
 
-tags: []
+tags: 
+- large scale assessments
+- ILSA
 
 # Is this a featured talk? (true/false)
 featured: true
