@@ -41,13 +41,13 @@ tags:
 featured: true
 
 # Links
-url_pdf: '/publication/journal-article/2022/huang-analyzing-2022/GEE_Jebs_appendices.pdf'
+url_pdf: 'GEE_Jebs_appendices.pdf'
 url_code: 'https://github.com/flh3/jebsgee'
 url_dataset: 'cont_binary.sav'
 url_poster: ''
 url_project: ''
-url_slides: ''
-url_source: ''
+url_slides: 'GEE_Jebs_appendices.pdf'
+url_source: 'GEE_Jebs_appendices.pdf'
 url_video: ''
 
 # Custom links (uncomment lines below)
@@ -70,7 +70,9 @@ image:
 projects: []
 ---
 
-As of 2024.10.03, the most read article on JEBS (for the last 6 months).
+As of 2024.10.03, the most read article on JEBS (for the last 6 months)!
+
+![jebs_most_read.png](jebs_most_read.png)
 
 In the original paper draft, I had a section which showed how much more widely used mixed models (i.e., MLMs, HLMs) were compared to GEEs but was asked to remove that. I thought the usage was interesting so I am including it here:
 
