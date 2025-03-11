@@ -21,6 +21,30 @@
     </item>
     
     <item>
+      <title>Behavioral threat assessment and equity in exclusionary school discipline</title>
+      <link>http://localhost:1313/publication/journal-article/2025/cornell-behavioral-2025/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2025/cornell-behavioral-2025/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cluster-robust standard errors with three-level data</title>
+      <link>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Referral rates for school threat assessment</title>
+      <link>http://localhost:1313/publication/journal-article/2025/cornell-referral-2025/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2025/cornell-referral-2025/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Restorative justice conferences in elementary and secondary schools</title>
       <link>http://localhost:1313/publication/journal-article/test2/gregory-restorative-2025/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
@@ -263,6 +287,14 @@
       <link>http://localhost:1313/publication/journal-article/test3/gregory-adolescent-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/test3/gregory-adolescent-2024/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Investigating the use of robust standard errors to account for two-way clustering in cross-classified data structures</title>
+      <link>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</guid>
       <description></description>
     </item>
     
@@ -1052,7 +1084,7 @@ covariance matrix if all you had is the correlation matrix?&lt;/p&gt;
 
 
 
-&lt;div id=&#34;chart-612875934&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-156793482&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -1070,7 +1102,7 @@ covariance matrix if all you had is the correlation matrix?&lt;/p&gt;
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-612875934&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-156793482&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();

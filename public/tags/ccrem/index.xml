@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CCREM | FLH Website</title>
+    <link>http://localhost:1313/tags/ccrem/</link>
+      <atom:link href="http://localhost:1313/tags/ccrem/index.xml" rel="self" type="application/rss+xml" />
+    <description>CCREM</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <title>CCREM</title>
+      <link>http://localhost:1313/tags/ccrem/</link>
+    </image>
+    
+    <item>
+      <title>Investigating the use of robust standard errors to account for two-way clustering in cross-classified data structures</title>
+      <link>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

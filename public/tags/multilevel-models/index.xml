@@ -5,12 +5,20 @@
     <link>http://localhost:1313/tags/multilevel-models/</link>
       <atom:link href="http://localhost:1313/tags/multilevel-models/index.xml" rel="self" type="application/rss+xml" />
     <description>Multilevel Models</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Feb 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
       <title>Multilevel Models</title>
       <link>http://localhost:1313/tags/multilevel-models/</link>
     </image>
+    
+    <item>
+      <title>Cluster-robust standard errors with three-level data</title>
+      <link>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Accounting for heteroskedasticity resulting from between-group differences in multilevel models</title>
