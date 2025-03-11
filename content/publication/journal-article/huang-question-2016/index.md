@@ -30,7 +30,7 @@ publication_short: ''
 
 doi: 10.1177/0013164415622664
 
-abstract: ''
+abstract: 'Bullying among youth is recognized as a serious student problem, especially in middle school. The most common approach to measuring bullying is through student self-report surveys that ask questions about different types of bullying victimization. Although prior studies have shown that question-order effects may influence participant responses, no study has examined these effects with middle school students. A randomized experiment (n = 5,951 middle school students) testing the question-order effect found that changing the sequence of questions can result in 45% higher prevalence rates. These findings raise questions about the accuracy of several widely used bullying surveys.'
 
 # Summary. An optional shortened abstract.
 summary: ''
@@ -38,7 +38,7 @@ summary: ''
 tags: []
 
 # Display this page in a list of Featured pages?
-featured: true
+featured: false
 
 # Links
 url_pdf: ''
@@ -73,4 +73,3 @@ links:
   url: http://epm.sagepub.com/cgi/doi/10.1177/0013164415622664
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

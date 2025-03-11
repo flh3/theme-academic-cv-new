@@ -10,7 +10,7 @@ authors:
 - Timothy Konold
 - Dewey Cornell
 - Kathan Shukla
-- Francis Huang
+- admin
 
 # Author notes (such as 'Equal Contribution')
 # A YAML list of notes for each author in the above `authors` list
@@ -32,7 +32,7 @@ publication_short: ''
 
 doi: 10.1007/s10964-016-0576-1
 
-abstract: ''
+abstract: 'Research indicates that a positive school climate is associated with higher levels of student engagement and lower rates of peer aggression. However, less attention has been given to whether such findings are consistent across racial/ethnic groups. The current study examined whether Black, Hispanic, and White high school students differed in their perceptions of school climate, student engagement, and peer aggression as measured by the Authoritative School Climate survey. In addition, the study tested whether the associations between school climate and both student engagement and peer aggression varied as a function of racial/ethnic group. The sample consisted of 48,027 students in grades 9–12 (51.4 % female; 17.9 % Black, 10.5 % Hispanic, 56.7 % White, and 14.9 % other) attending 323 high schools. Regression models that contrasted racial/ethnic groups controlled for the nesting of students within schools and used student covariates of parent education, student gender, and percentage of schoolmates sharing the same race/ethnicity, as well as school covariates of school size and school percentage of students eligible for free- or reduced-price meals. Perceptions of school climate differed between Black and White groups, but not between Hispanic and White groups. However, race/ethnicity did not moderate the associations between school climate and either engagement or peer aggression. Although correlational and cross-sectional in nature, these results are consistent with the conclusion that a positive school climate holds similar benefits of promoting student engagement and reducing victimization experiences across Black, Hispanic, and White groups.'
 
 # Summary. An optional shortened abstract.
 summary: ''
@@ -40,7 +40,7 @@ summary: ''
 tags: []
 
 # Display this page in a list of Featured pages?
-featured: true
+featured: false
 
 # Links
 url_pdf: ''
@@ -75,4 +75,3 @@ links:
   url: http://link.springer.com/10.1007/s10964-016-0576-1
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

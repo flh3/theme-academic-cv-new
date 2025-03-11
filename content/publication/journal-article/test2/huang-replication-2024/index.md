@@ -29,7 +29,7 @@ publication_short: ''
 
 doi: 10.1080/2372966X.2024.2346781
 
-abstract: ''
+abstract: 'Replication studies have been promoted as a means to investigate the fragility or robustness of findings from prior studies. However, less well known is that replication studies can be done with nonexperimental or secondary datasets and are not just for experimental studies. We present a framework of different types of replication studies with nonexperimental or secondary data and provide examples in the context of school psychology. We show that replication studies can be used as robustness checks, as a means of testing the generalizability of existing theories, and as a way of extending findings of prior studies. We advocate for the thoughtful use of replication studies and highlight some of the benefits of replications.'
 
 # Summary. An optional shortened abstract.
 summary: ''
@@ -37,10 +37,10 @@ summary: ''
 tags: []
 
 # Display this page in a list of Featured pages?
-featured: false
+featured: true
 
 # Links
-url_pdf: ''
+url_pdf: 'https://www.tandfonline.com/doi/abs/10.1080/2372966X.2024.2346781'
 url_code: ''
 url_dataset: ''
 url_poster: ''
@@ -72,4 +72,4 @@ links:
   url: https://www.tandfonline.com/doi/full/10.1080/2372966X.2024.2346781
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+We present a framework of different types of replication studies with nonexperimental or secondary data and provide examples in the context of school psychology.
