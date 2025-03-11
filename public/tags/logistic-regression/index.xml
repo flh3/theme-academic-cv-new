@@ -7,7 +7,7 @@
     <description>Logistic Regression</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 27 Oct 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
       <title>Logistic Regression</title>
       <link>http://localhost:1313/tags/logistic-regression/</link>
     </image>
@@ -257,6 +257,14 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Alternatives to logistic regression models in experimental studies</title>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-alternatives-2022/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-alternatives-2022/</guid>
+      <description></description>
     </item>
     
   </channel>
