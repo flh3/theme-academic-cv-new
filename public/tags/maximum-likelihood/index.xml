@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maximum Likelihood | FLH Website</title>
+    <link>http://localhost:1313/tags/maximum-likelihood/</link>
+      <atom:link href="http://localhost:1313/tags/maximum-likelihood/index.xml" rel="self" type="application/rss+xml" />
+    <description>Maximum Likelihood</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <title>Maximum Likelihood</title>
+      <link>http://localhost:1313/tags/maximum-likelihood/</link>
+    </image>
+    
+    <item>
+      <title>🎉 Using maximum likelihood</title>
+      <link>http://localhost:1313/post/ml/</link>
+      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/ml/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;em&gt;Notes to self.&lt;/em&gt; Often, discussions related to maximum likelihood refer to (A) estimating parameters likely to have come from some (B) probability distribution (PD) by (C) maximizing a likelihood function (from Wikipedia).&lt;/p&gt;
+&lt;p&gt;In many cases, (A) is the unknown which we want to figure out (e.g., means, variances, regression coefficients). We make an assumption about the PD where the data come from and determine the likelihood or the log likelihood of observing the datum. Get the product of all the likelihoods (multiplicative) or the sum of the log likelihoods (additive) and you will get the total likelihood.&lt;/p&gt;
+&lt;p&gt;An example will help:&lt;/p&gt;
+&lt;div id=&#34;simulate-some-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simulate some data&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
+x &amp;lt;- rnorm(10, mean = 110, sd = 3) #make up some data
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 108.3186 109.3095 114.6761 110.2115 110.3879 115.1452 111.3827 106.2048
+##  [9] 107.9394 108.6630&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 110.2239&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sd(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 2.861352&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have a vector with 10 elements. We can easily get the mean of this by just typing &lt;code&gt;mean(x)&lt;/code&gt; but this is for illustrative purposes.&lt;/p&gt;
+&lt;p&gt;We create a likelihood function &lt;code&gt;llike&lt;/code&gt; based on a normal distribution using:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x; \mu, \sigma^2) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This take the sums of the log likelihood of whatever data is in x with a specified mean (&lt;code&gt;mu&lt;/code&gt;) and standard deviation &lt;code&gt;sigma&lt;/code&gt;– the later two we “don’t” know. There is also the built-in function of &lt;code&gt;dnorm&lt;/code&gt; which we can use to check if we are getting the same results.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;llike &amp;lt;- function(x, mu, sigma){
+  sum(log((1 / (sigma * sqrt(2 * pi))) * exp(-.5 * ((x - mu) / sigma)^2)))
+}
+&lt;p&gt;llike(x, 100, 10) #testing function to see if this works&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -37.81005&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#just checking if we specify m = 100, sd = 10
+sum(dnorm(x, mean = 100, sd = 10, log = T)) #using built-in function&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -37.81005&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We get the same result using a specified mean of 100 and an SD of 10.&lt;/p&gt;
+&lt;p&gt;We can take a series of means (&lt;code&gt;mu&lt;/code&gt; below) and see where the sum of the ll is at the highest.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mu &amp;lt;- seq(100, 120, .1) #set of values to test
+ll &amp;lt;- sapply(mu, function(z)
+  llike(x, z, 10) #find the log likelihood
+)
+&lt;p&gt;plot(ll ~ mu) #plot &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mu[which(ll == max(ll))] #which mu had the highest point&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 110.2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Based on the results, it peaks around 110.&lt;/p&gt;
+&lt;p&gt;We can use another function to find the maximum point (optimizing involves either finding the maximum or minimum). A lot of these ideas come from the very useful and accessible book of Hilbe and Robinson (2013) &lt;em&gt;Methods of Statistical Model Estimation&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## another function to optimize
+bb &amp;lt;- function(p, x){
+  sum(dnorm(x, mean = p[1], sd = p[2], log = T))
+}
+&lt;h2 id=&#34;finding-the-maximum-likelihood-using-39optim39&#34;&gt;finding the maximum likelihood using &#39;optim&#39;&lt;/h2&gt;
+&lt;p&gt;fit &amp;lt;- optim(c(mean = 100, sd = 10), #starting values or guesses
+fn = bb, x = x,
+control = list(fnscale = -1)) #-1 to maximize
+fit$par #contain the mean and the SD&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##       mean         sd 
+## 110.224295   2.715141&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 110.2239&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sd(x) #this is the actual variance&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 2.861352&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sqrt(sum((x - mean(x))^2) / length(x)) #this is the ML variance&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 2.714517&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# (SS / n), not n - 1
+# based on ML
+# the variance is under estimated&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-about-using-ml-in-a-regression&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What about using ML in a regression?&lt;/h1&gt;
+&lt;p&gt;I have not seen examples showing this. I’ve only seen examples of the first kind shown (e.g., getting the mean).&lt;/p&gt;
+&lt;p&gt;First, create some data with two variables (&lt;code&gt;x1&lt;/code&gt; and &lt;code&gt;x2&lt;/code&gt;):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## simulate some data
+set.seed(2468)
+ns &amp;lt;- 1000
+x1 &amp;lt;- rnorm(ns)
+x2 &amp;lt;- rnorm(ns)
+e1 &amp;lt;- rnorm(ns)
+y &amp;lt;- 10 + 1 * x1 + .5 * x2 + e1
+dat &amp;lt;- data.frame(y = y, x1 = x1, x2 = x2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Prepare the formula and some matrices:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fml &amp;lt;- formula(&amp;#39;y ~ x1 + x2&amp;#39;)
+df &amp;lt;- model.frame(fml, dat)
+y &amp;lt;- model.response(df)
+X &amp;lt;- model.matrix(fml, df)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Create another function to optimize:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## log likelihood for continuous variables
+ll.cont &amp;lt;- function(p, X, y){
+  len &amp;lt;- length(p)
+  betas &amp;lt;- p
+  mu &amp;lt;- X %*% betas
+  sum((y - mu)^2) #minimize this, sum of squared residuals
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this case, we want to minimize the sums of squared residuals (error)– that’s what the best fitting line does.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;start &amp;lt;- ncol(X) #how many start values
+fit &amp;lt;- optim(p = rep(1, start), #repeat 1 
+      fn = ll.cont, 
+      X = X, y = y) #this minimizes the SSR
+fit$par #compare with results below &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 9.9952812 1.0151535 0.5098497&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## values are for the intercept / Bx1 / Bx2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Compare to using our standard &lt;code&gt;lm&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;t1 &amp;lt;- lm(y ~ x1 + x2, data = df)
+summary(t1)$coef&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              Estimate Std. Error   t value      Pr(&amp;gt;|t|)
+## (Intercept) 9.9950936 0.03144700 317.83937  0.000000e+00
+## x1          1.0153582 0.03116854  32.57638 4.166280e-159
+## x2          0.5096043 0.03093340  16.47424  4.091831e-54&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Instead of minimizing the error, what if we want to maximize the likelihoods again?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ll.cont.mx &amp;lt;- function(p, X, y){
+  len &amp;lt;- length(p)
+  betas &amp;lt;- p[-len]
+  mu &amp;lt;- X %*% betas
+  sds &amp;lt;- p[len]
+  sum(dnorm(y, mean = mu, sd = sds, log = T)) #maximize this
+  #sum((y - mu)^2) #minimize this
+}
+&lt;p&gt;start &amp;lt;- ncol(X) + 1 #add one w/c is the variance
+fit &amp;lt;- optim(p = rep(1, start), #starting values
+fn = ll.cont.mx, #function to use
+X = X, y = y, #pass this to our
+hessian = T, #to get standard errors
+control = list(fnscale = -1, #to maximize
+reltol = 1e-10) #change in deviance to converge
+)
+b &amp;lt;- fit$par[1:3] #the betas
+ll &amp;lt;- fit$value #the log likelihood
+conv &amp;lt;- fit$convergence #value of zero means convergence
+ses &amp;lt;- sqrt(diag(solve(-fit$hessian)))[1:3] #get the SE from the inverse of the Hessian matrix
+df &amp;lt;- data.frame(b, ses, t = b/ses)    &lt;br&gt;
+rownames(df) &amp;lt;- colnames(X)
+df #putting it all together   &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##                     b        ses         t
+## (Intercept) 9.9951172 0.03139866 318.32944
+## x1          1.0153670 0.03112063  32.62681
+## x2          0.5095777 0.03088585  16.49874&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ll #the log likelihood&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -1411.179&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;t1 &amp;lt;- lm(y ~ x1 + x2, data = df)
+summary(t1)$coef&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              Estimate Std. Error   t value      Pr(&amp;gt;|t|)
+## (Intercept) 9.9950936 0.03144700 317.83937  0.000000e+00
+## x1          1.0153582 0.03116854  32.57638 4.166280e-159
+## x2          0.5096043 0.03093340  16.47424  4.091831e-54&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;logLik(t1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;log Lik.&amp;#39; -1411.179 (df=4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Similar coefficients, standard errors, and the same log likelihood.&lt;/p&gt;
+&lt;p&gt;— END&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

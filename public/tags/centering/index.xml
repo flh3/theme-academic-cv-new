@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Centering | FLH Website</title>
+    <link>http://localhost:1313/tags/centering/</link>
+      <atom:link href="http://localhost:1313/tags/centering/index.xml" rel="self" type="application/rss+xml" />
+    <description>Centering</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <title>Centering</title>
+      <link>http://localhost:1313/tags/centering/</link>
+    </image>
+    
+    <item>
+      <title>🎉 Why does centering reduce multicollinearity?</title>
+      <link>http://localhost:1313/post/centering/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/centering/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Centering often reduces the correlation between the individual variables (x1, x2) and the product term (x1 &lt;span class=&#34;math inline&#34;&gt;\(\times\)&lt;/span&gt; x2). In the example below, r(x1, x1x2) = .80. With the centered variables, r(x1c, x1x2c) = -.15.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NOTE:&lt;/em&gt; For examples of when centering may &lt;strong&gt;not&lt;/strong&gt; reduce multicollinearity but may make it worse, see &lt;a href=&#34;https://pubmed.ncbi.nlm.nih.gov/31488914/&#34;&gt;EPM article&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
+x1 &amp;lt;- rnorm(100, 10, 1)
+x2 &amp;lt;- rnorm(100, 15, 1) 
+x1x2 &amp;lt;- x1*x2
+x1c &amp;lt;- x1 - mean(x1)
+x2c &amp;lt;- x2 - mean(x2)
+x1x2c &amp;lt;- x1c * x2c
+dat &amp;lt;- data.frame(x1, x2, x1x2, x1c, x2c, x1x2c)
+round(cor(dat), 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          x1    x2  x1x2   x1c   x2c x1x2c
+## x1     1.00 -0.05  0.80  1.00 -0.05 -0.15
+## x2    -0.05  1.00  0.55 -0.05  1.00 -0.17
+## x1x2   0.80  0.55  1.00  0.80  0.55 -0.17
+## x1c    1.00 -0.05  0.80  1.00 -0.05 -0.15
+## x2c   -0.05  1.00  0.55 -0.05  1.00 -0.17
+## x1x2c -0.15 -0.17 -0.17 -0.15 -0.17  1.00&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A question though may be raised why centering reduces collinearity?&lt;/p&gt;
+&lt;p&gt;Consider the basic equation for a correlation:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{(X, Y)} = \frac{cov(X,Y)}{\sqrt{(var(X) \cdot var(Y))}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;For the product score (X1X2) and X1:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{(X1X2, X1) = \frac{cov(X1X2, X1)}{\sqrt{(var(X1X2) \cdot var(X1))}}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Focusing only on the &lt;em&gt;numerator&lt;/em&gt; and using covariance algebra, the covariance of a product score (X1X2) with another variable (X1) can be written as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[cov(AB, C) = \mathbb{E}(A) \cdot cov(B, C) + \mathbb{E}(B) \cdot cov(A, C)\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[= \mathbb{E}(X1) \cdot cov(X2, X1) + \mathbb{E}(X2) \cdot cov(X1, X1)\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[= \mathbb{E}(X1) \cdot cov(X2, X1) + \mathbb{E}(X2) \cdot var(X1)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;With &lt;strong&gt;mean-centered&lt;/strong&gt; variables:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_{((X1 - \bar{X}1)(X2 - \bar{X}2), (X1 - \bar{X}1))} = \frac{cov((X1 - \bar{X}1)(X2 - \bar{X}2), (X1 - \bar{X}1))}{\sqrt{var((X1 - \bar{X}1)(X2 - \bar{X}2)) \cdot var((X1 - \bar{X}1))}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Focusing only on the &lt;em&gt;numerator&lt;/em&gt; again:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[= \mathbb{E}(X1 - \bar{X}1) \cdot cov(X2 - \bar{X}2, X1 - \bar{X}1) + \mathbb{E}(X2 - \bar{X}2) \cdot cov(X1 - \bar{X}1, X1 - \bar{X}1)\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[= \mathbb{E}(X1 - \bar{X}1)  \cdot cov(X2 - \bar{X}2, X1 - \bar{X}1) + \mathbb{E}(X2 - \bar{X}2)  \cdot var(X1 - \bar{X}1)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The expected value though of a mean centered variable is zero. So if the numerator is zero, the whole equation reduces to zero (on average).&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[= 0  \cdot cov(X2 - \bar{X}2, X1 - \bar{X}1) + 0 \cdot var(X1 - \bar{X}1)\]&lt;/span&gt;&lt;/p&gt;
+&lt;div id=&#34;using-a-short-simulation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using a short simulation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Randomly generate 100 x1 and x2 variables&lt;/li&gt;
+&lt;li&gt;Mean center the variables&lt;/li&gt;
+&lt;li&gt;Compute corresponding interactions (x1x2 and x1x2c)&lt;/li&gt;
+&lt;li&gt;Get the correlations of the variables and the product term (&lt;code&gt;r&lt;/code&gt; is for the raw variables, &lt;code&gt;cr&lt;/code&gt; is for the centered variables)&lt;/li&gt;
+&lt;li&gt;Get the average of the terms over the replications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(4567)
+reps &amp;lt;- 1000
+r1 &amp;lt;- r2 &amp;lt;- cr1 &amp;lt;- cr2 &amp;lt;- numeric(reps)
+for (i in 1:reps){
+  x1 &amp;lt;- rnorm(100, 10, 1) #mean of 10, SD = 1
+  x2 &amp;lt;- rnorm(100, 15, 1) #mean of 15, SD = 1 
+  x1x2 &amp;lt;- x1*x2
+  x1c &amp;lt;- x1 - mean(x1)
+  x2c &amp;lt;- x2 - mean(x2)
+  x1x2c &amp;lt;- x1c * x2c
+  cr1[i] &amp;lt;- cor(x1c, x1x2c)
+  cr2[i] &amp;lt;- cor(x2c, x1x2c)
+  r1[i] &amp;lt;- cor(x1, x1x2)
+  r2[i] &amp;lt;- cor(x2, x1x2)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;r(x1,x2) should be zero because they were generated independently.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;
+res &amp;lt;- data.frame(r1, r2, cr1, cr2)
+round(colMeans(res), 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     r1     r2    cr1    cr2 
+##  0.829  0.551 -0.001  0.008&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;On average, the correlations of the centered variables are 0 or near 0. They are not always zero and plotting the distribution shows the range of correlations.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+library(tidyr)
+library(ggplot2)
+mm &amp;lt;- gather(res, key = &amp;#39;vars&amp;#39;, value = &amp;#39;r&amp;#39;)
+mm %&amp;gt;% ggplot(aes(x = r)) +
+  geom_histogram(bins = 60) + facet_grid(~vars) +
+  theme_bw()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;– END&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

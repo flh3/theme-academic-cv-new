@@ -267,5 +267,458 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
       <description></description>
     </item>
     
+    <item>
+      <title>🎉 Comparing coefficients across logistic regression models</title>
+      <link>http://localhost:1313/post/compare/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/compare/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;ROUGH NOTES&lt;/strong&gt;: &lt;span style=&#34;color: red;&#34;&gt;&lt;em&gt;[let me know if you spot any errors– there might be a couple!]&lt;/em&gt;&lt;/span&gt; Often, in randomized control trial where individuals are randomly assigned to treatment and control conditions, covariates are included to improve precision by reducing error and improving statistical power. However, when binary outcomes are used (e.g., patient recovers or not), there are several additional concerns that have gone unnoticed by many applied researchers.&lt;/p&gt;
+&lt;p&gt;Take a simulated example where our true model data generating process is (to keep things simple, the intercept is zero and the parameters are both set to 1):&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[log(\frac{p}{1 - p}) = 1 + 1 \times (tr) + 1 \times (x2)\]&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(summarytools)
+library(stargazer)
+&lt;p&gt;pp &amp;lt;- function(x) exp(x) / (1 + exp(x)) #convert logit to prob
+set.seed(2468)
+ns &amp;lt;- 10000
+tr &amp;lt;- rbinom(ns, 1, .50) #50% treat / 50% control
+x2 &amp;lt;- rnorm(ns, 0 , 2) #uncorrelated x2
+ystar &amp;lt;- 1 + 1 * tr + 1 * x2 #all get a unit weight to keep it simple
+y &amp;lt;- rbinom(ns, 1, pp(ystar))
+ctable(y, tr, prop = &#39;c&#39;)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Cross-Tabulation, Column Proportions  
+## y * tr  
+## 
+## ------- ---- --------------- --------------- ----------------
+##           tr               0               1            Total
+##       y                                                      
+##       0        1756 ( 35.0%)   1165 ( 23.3%)    2921 ( 29.2%)
+##       1        3254 ( 65.0%)   3825 ( 76.7%)    7079 ( 70.8%)
+##   Total        5010 (100.0%)   4990 (100.0%)   10000 (100.0%)
+## ------- ---- --------------- --------------- ----------------&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In our example, think about y = 1 as recovered from illness and y = 0 as did not recover from illness. In the treatment group, &lt;em&gt;77%&lt;/em&gt; recovered vs. &lt;em&gt;65%&lt;/em&gt;. This is a difference of around 12 percentage points or a higher rate of recovery by a factor of 1.18 (77/65).&lt;/p&gt;
+&lt;p&gt;Note that the two predictor variables are not correlated with each other:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- data.frame(y, tr, x2)
+round(cor(df), 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        y     tr     x2
+## y  1.000  0.129  0.569
+## tr 0.129  1.000 -0.017
+## x2 0.569 -0.017  1.000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When running a logistic regression model, notice how the coefficient changes even if &lt;code&gt;x2&lt;/code&gt; is not correlated with &lt;code&gt;tr&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reduced &amp;lt;- glm(y ~ tr, family = binomial)
+full &amp;lt;- update(reduced, . ~ . + x2)
+stargazer(reduced, full, star.cutoffs = c(.05, .01, .001),
+          no.space = T, type = &amp;#39;text&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ================================================
+##                        Dependent variable:      
+##                   ------------------------------
+##                                 y               
+##                         (1)            (2)      
+## ------------------------------------------------
+## tr                   0.572***        1.005***   
+##                       (0.045)        (0.059)    
+## x2                                   1.040***   
+##                                      (0.023)    
+## Constant             0.617***        1.019***   
+##                       (0.030)        (0.041)    
+## ------------------------------------------------
+## Observations          10,000          10,000    
+## Log Likelihood      -5,956.977      -3,883.476  
+## Akaike Inf. Crit.   11,917.950      7,772.952   
+## ================================================
+## Note:              *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The true effect should be around 1.0 (these are in logit units). In this basic example, there are several things to notice:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;The coefficient for &lt;code&gt;tr&lt;/code&gt; is &lt;strong&gt;underestimated&lt;/strong&gt; in the first model (remember, I specified that the value should be 1).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The coefficients for &lt;code&gt;tr&lt;/code&gt; (treatment status) change with the inclusion of &lt;code&gt;x2&lt;/code&gt;. &lt;code&gt;x2&lt;/code&gt; is not your typical confounder which is associated both with y and the treatment status.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The standard error increases in the 2nd model– it does not decrease as one might expect.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As a result, this makes a few things problematic– even in the presence of randomization.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;We might conclude that &lt;code&gt;x2&lt;/code&gt; is a suppressor variable– but it is not!&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;This makes comparing results across models even within the same sample problematic. Results can change as long as variables predict the outcome.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We will never have all predictors of interest in a model (w/c is why we don’t get an &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; of 1.00).&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Another question that might be raised is if model 1 is really incorrect. We know that the coefficient is lower than 1 but then by looking at the crosstabs, this actually matches what was shown earlier:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pp(.617) #control:: 65%&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.6495359&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pp(.617 + .572) #treatment:: 77%&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.7665622&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we take the model 2 coefficients (and holding &lt;code&gt;x2&lt;/code&gt; at its average of zero), the coefficients are correct (controlling for &lt;code&gt;x2&lt;/code&gt;) but then this is not reflected in the crosstabs:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pp(1) #control:: 73%&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.7310586&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pp(1 + 1) #treatment: 88%&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.8807971&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;why-does-that-happen-with-lrms&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why does that happen with LRMs?&lt;/h2&gt;
+&lt;p&gt;In a standard OLS model, we have the intercept, slope, and the residual.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[y = \beta_0 + \beta_1  x_1 + e\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The residuals have a mean of 0 and variance, &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2_e\)&lt;/span&gt;. The residual variance depends on the model and students of OLS regression know that if a predictor is added to the model, the residual variance decreases (even if it is a useless variable; w/c is why we at times use adjusted R2 vs R2).&lt;/p&gt;
+&lt;p&gt;However, in a logistic regression model, the variance of the error term is fixed to &lt;span class=&#34;math inline&#34;&gt;\(\frac{\pi^2}{3}\)&lt;/span&gt; or 3.29, which is the variance of a logistic distribution. Adding predictors to the model does not change the residual variance. As a result, the added variability is absorbed in the other parts of the model (at times referred to as an issue or rescaling or unobserved heterogeneity).&lt;/p&gt;
+&lt;p&gt;Over three decades ago, Winship and Mare (1984, p. 517) stated:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Adding new independent variables to an equation alters the variance of Y and thus the remaining coefficients in the model, even if the new independent variables are uncorrelated with the original independent variables.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Mood (2010) more recently indicated (based off what WM wrote) that what is actually being estimated (&lt;span class=&#34;math inline&#34;&gt;\(b_1\)&lt;/span&gt;) in the first model is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[b_1 \approx \beta_1 \times \frac{\sqrt{3.29}}{\sqrt{3.29 + \beta^2_2var(x_2)}} = 1.0 \times \frac{\sqrt{3.29}}{\sqrt{3.29 + 1^2 (4) }}\]&lt;/span&gt;
+As long as the denominator is greater than &lt;span class=&#34;math inline&#34;&gt;\(\sqrt{3.29}\)&lt;/span&gt;, the estimated coefficient with the missing &lt;span class=&#34;math inline&#34;&gt;\(b_2\)&lt;/span&gt; will be underestimated. The underestimation depends on effect and variability of &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The reason why coefficients may change when variables are added to the model may be due to:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;real confounding (the control variable is correlated with BOTH the treatment and the outcome) and/or&lt;/li&gt;
+&lt;li&gt;rescaling.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In the full model (with both &lt;code&gt;tr&lt;/code&gt; and &lt;code&gt;x2&lt;/code&gt;), the variability of the latent y variable (which causes y) is: &lt;span class=&#34;math inline&#34;&gt;\(1 * .25 + 1 * 4 + 3.29 = 7.54\)&lt;/span&gt;. The .25 is the variability of the treatment variable which is .5 * (1 - .5). In the reduced model (w/c omits &lt;code&gt;x2&lt;/code&gt;), the variability is: &lt;span class=&#34;math inline&#34;&gt;\(1 * .25 + 3.29 = 3.54\)&lt;/span&gt;. The variability– even though the same sample is being used– differs between models. &lt;strong&gt;This is an approximation? Does not result in the latent y var exactly.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-then-do-we-compare-results-across-models&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How then do we compare results across models?&lt;/h2&gt;
+&lt;p&gt;If we stick with logistic regression, we have a few options.&lt;/p&gt;
+&lt;div id=&#34;y-standardization&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Y standardization&lt;/h3&gt;
+&lt;p&gt;Y standardization has been around for a while (Winship &amp;amp; Mare, 1984). Involves taking the standard deviation of the latent y and using this as a scaling factor to create standardized coefficients for the predictors. Here’s a small function &lt;code&gt;ystd&lt;/code&gt; that will compute the y standardized variables to be used with the model coefficients. Basically, this takes the variance of the predicted logits from the model estimated, adds the constant of 3.29 which results in the total variance of the outcome. Then take the square root of the variance which is the standard deviation. Divide the coefficients by the SD of y* (y* is referred to as the latent y; above which some threshold, y = 1, if else, y = 0).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ystd &amp;lt;- function(x){
+  evar &amp;lt;- (pi ^ 2) / 3 #3.29 #constant
+  vr &amp;lt;- var(predict(x)) + evar #variance of predicted logits + evar
+  sdy &amp;lt;- sqrt(vr) #getting the sd
+  coef(x) / sdy
+}
+&lt;p&gt;ystd(reduced)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)          tr 
+##   0.3359345   0.3115061&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ystd(full)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)          tr          x2 
+##   0.3628906   0.3578878   0.3701445&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The resulting coefficients can be interpreted as the usual standardized beta– for a one standard deviation increase in the predictor, results in a std coef change in the outcome (i.e., .31 and .36). However, for binary predictors, that doesn’t make much sense to me (e.g., a SD coefficient change in gender, race, etc.) since you have a unit change or nothing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;karlson-holm-breen-khb-method&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Karlson, Holm, &amp;amp; Breen (khb) method&lt;/h3&gt;
+&lt;p&gt;Again, this involves comparing the full and reduced models. Two ways to think about it. We need to estimate the reduced model but include &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt; &lt;em&gt;without really including it&lt;/em&gt;. A way to do that is to get the residuals of &lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt; regressed on treatment (can just use OLS) and then include that residual as a predictor (don’t interpret it) in the model. The output below (.93) is much closer to 1.0.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;res &amp;lt;- resid(lm(x2 ~ tr))
+reduced2 &amp;lt;- glm(y ~ tr + res, family = binomial)
+stargazer(reduced, reduced2, full,
+          star.cutoffs = c(.05, .01, .001),
+          no.space = T, type = &amp;#39;text&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ==================================================
+##                         Dependent variable:       
+##                   --------------------------------
+##                                  y                
+##                      (1)        (2)        (3)    
+## --------------------------------------------------
+## tr                 0.572***   0.933***   1.005*** 
+##                    (0.045)    (0.058)    (0.059)  
+## res                           1.040***            
+##                               (0.023)             
+## x2                                       1.040*** 
+##                                          (0.023)  
+## Constant           0.617***   1.034***   1.019*** 
+##                    (0.030)    (0.041)    (0.041)  
+## --------------------------------------------------
+## Observations        10,000     10,000     10,000  
+## Log Likelihood    -5,956.977 -3,883.476 -3,883.476
+## Akaike Inf. Crit. 11,917.950 7,772.952  7,772.952 
+## ==================================================
+## Note:                *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Another way to think about it is to get the predicted logits (the estimated y*) from the full model and then just use that as the outcome in a linear regression (since the predicted logits are not anymore ones and zeroes but are continuous). [I am not sure about the standard errors in these models, just the point estimates/coefficients: &lt;code&gt;reduced2&lt;/code&gt; is fine though].&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;predy &amp;lt;- predict(full) #gets logits, do not use fitted which returns prob
+reduced3 &amp;lt;- glm(predy ~ tr)
+stargazer(reduced, reduced2, reduced3, full,
+          star.cutoffs = c(.05, .01, .001),
+          no.space = T, type = &amp;#39;text&amp;#39;,
+          omit.stat = c(&amp;#39;f&amp;#39;, &amp;#39;ll&amp;#39;, &amp;#39;ser&amp;#39;, &amp;#39;rsq&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ===========================================================
+##                              Dependent variable:           
+##                   -----------------------------------------
+##                            y             predy        y    
+##                         logistic         normal   logistic 
+##                      (1)        (2)       (3)        (4)   
+## -----------------------------------------------------------
+## tr                 0.572***  0.933***   0.933***  1.005*** 
+##                    (0.045)    (0.058)   (0.042)    (0.059) 
+## res                          1.040***                      
+##                               (0.023)                      
+## x2                                                1.040*** 
+##                                                    (0.023) 
+## Constant           0.617***  1.034***   1.034***  1.019*** 
+##                    (0.030)    (0.041)   (0.030)    (0.041) 
+## -----------------------------------------------------------
+## Observations        10,000    10,000     10,000    10,000  
+## Akaike Inf. Crit. 11,917.950 7,772.952 43,161.080 7,772.952
+## ===========================================================
+## Note:                         *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;use-the-khb-package&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Use the khb package&lt;/h4&gt;
+&lt;p&gt;Another way is to use the &lt;code&gt;khb&lt;/code&gt; package. Compare results with what was computed earlier.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(khb)
+compareModels(reduced, full, method = &amp;#39;naive&amp;#39;) #no adjustments&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             Reduced  Full    perc   
+## (Intercept) 0.61685  1.0194  -65.253
+## tr          0.57199  1.0053  -75.756
+## x2                   1.0397         
+##                                     
+## Pseudo R2   0.023544 0.49965        
+## Dev.        11914    7767           
+## Null        12080    12080          
+## Chisq       166.47   4313.5         
+## Sig         ***      ***            
+## Dl          1        2              
+## BIC         11923    7785.4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;compareModels(reduced, full, method = &amp;#39;ystand&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             Reduced  Full    perc    
+## (Intercept) 0.33593  0.36289  -8.0242
+## tr          0.31151  0.35789 -14.8895
+## x2                   0.37014         
+##                                      
+## Pseudo R2   0.023544 0.49965         
+## Dev.        11914    7767            
+## Null        12080    12080           
+## Chisq       166.47   4313.5          
+## Sig         ***      ***             
+## Dl          1        2               
+## BIC         11923    7785.4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;compareModels(reduced, full, method = &amp;#39;khb&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             Reduced Full    perc   
+## (Intercept) 1.03378 1.0194   1.3950
+## tr          0.93291 1.0053  -7.7599
+## Resid(x2)   1.03973                
+## x2                  1.0397         
+##                                    
+## Pseudo R2   0.49965 0.49965        
+## Dev.        7767    7767           
+## Null        12080   12080          
+## Chisq       4313.5  4313.5         
+## Sig         ***     ***            
+## Dl          2       2              
+## BIC         7785.4  7785.4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;k &amp;lt;- khb(reduced, full) #to compare and get SEs
+print(k)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## KHB method
+## Model type: glm lm (logit) 
+## Variables of interest: tr
+## Z variables (mediators): x2
+## 
+## Summary of confounding
+##       Ratio Percentage Rescaling
+## tr  0.92799   -7.75989     1.631
+## ------------------------------------------------------------------
+## tr :
+##          Estimate Std. Error z value Pr(&amp;gt;|z|)    
+## Reduced  0.932912   0.058321 15.9963  &amp;lt; 2e-16 ***
+## Full     1.005305   0.058673 17.1340  &amp;lt; 2e-16 ***
+## Diff    -0.072393   0.041898 -1.7278  0.08402 .&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;kb&lt;/code&gt; results indicate that the difference between the full and reduced model shown are not statistically significant (p = .08; i.e., not different from zero).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;use-alternative-procedures&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Use alternative procedures&lt;/h2&gt;
+&lt;p&gt;NOTE: if we use alternative procedures such as a linear probability model (LPM) or a modified Poisson regression (I’m not adjusting for overdisperson in the example, just focusing on the regression coefficients), these are not subject to the same issues. In particular, the LPM works as we would expect where the coefficient for &lt;code&gt;tr&lt;/code&gt; is relatively unchanged and the standard errors decrease. I’ve also shown this in a prior study (Huang, 2019).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reduced.ols &amp;lt;- glm(y ~ tr, family = gaussian) #normal
+full.ols &amp;lt;- update(reduced.ols, . ~ . + x2)
+reduced.poisson &amp;lt;- glm(y ~ tr, family = poisson) #normal
+full.poisson &amp;lt;- update(reduced.poisson, . ~ . + x2)
+stargazer(reduced.ols, full.ols, 
+          reduced.poisson, full.poisson,
+          star.cutoffs = c(.05, .01, .001),
+          no.space = T, type = &amp;#39;text&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## =============================================================
+##                               Dependent variable:            
+##                   -------------------------------------------
+##                                        y                     
+##                          normal                Poisson       
+##                      (1)        (2)        (3)        (4)    
+## -------------------------------------------------------------
+## tr                 0.117***   0.126***   0.166***   0.180*** 
+##                    (0.009)    (0.007)    (0.024)    (0.024)  
+## x2                            0.129***              0.182*** 
+##                               (0.002)               (0.006)  
+## Constant           0.650***   0.648***  -0.432***  -0.502*** 
+##                    (0.006)    (0.005)    (0.018)    (0.018)  
+## -------------------------------------------------------------
+## Observations        10,000     10,000     10,000     10,000  
+## Log Likelihood    -6,226.338 -4,209.938 -9,500.248 -9,023.055
+## Akaike Inf. Crit. 12,456.670 8,425.875  19,004.500 18,052.110
+## =============================================================
+## Note:                           *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you compare the results above to the crosstabs shown at the start, we find that the treatment group is around 12 percentage points higher than the control (shown using OLS) and the the rate of recovery of the treatment group is higher by a factor of ~1.2 (&lt;code&gt;exp(.18)&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Huang, F. (2019). Alternatives to logistic regression models with binary outcomes. Journal of Experimental Education. doi: 10.1080/00220973.2019.1699769&lt;/p&gt;
+&lt;p&gt;Karlson, KB, Holm, A, &amp;amp; Breen, R (2012). Comparing regression coefficients between same-sample nested mModels using logit and probit: A new method. Sociological Methodology, 42(1), pp 286-313.&lt;/p&gt;
+&lt;p&gt;Mood, C. (2010). Logistic regression: Why we cannot do what we think we can do, and what we can do about it. European Sociological Review, 26, 67-82. &lt;a href=&#34;https://doi.org/10.1093/esr/jcp006&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1093/esr/jcp006&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Studer, M. (2014). khb: Comparing nonlinear regression models. R package version 0.1.&lt;/p&gt;
+&lt;p&gt;Winship, C., &amp;amp; Mare, R. D. (1984). Regression models with ordinal variables. American Sociological Review, 49, 512-525.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>🎉 Applied example for alternatives to logistic regression</title>
+      <link>http://localhost:1313/post/applied/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/applied/</guid>
+      <description>&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Logistic regression is often used to analyze experiments with binary outcomes (e.g., pass vs fail) and binary predictors (e.g., treatment vs control). Although appropriate, there are other possible models that can be run that may provide easier to interpret results.&lt;/p&gt;
+&lt;p&gt;In addition, some of these models may be quicker to run. Some may say that this point is moot given the availability of computing power today but if you’ve ever tried to run a hierarchical generalized linear model with a logit link function and a binary outcome, you know that when using R (using &lt;code&gt;glmer&lt;/code&gt; or &lt;code&gt;nlme&lt;/code&gt;) this may take quite a long time (and cross your fingers that you don’t have convergence issues).&lt;/p&gt;
+&lt;p&gt;The following code replicates the example (see the manuscript for details) in the &lt;a href=&#34;https://www.tandfonline.com/eprint/YS723ZYEIB2CPWKBEMPZ/full?target=10.1080/00220973.2019.1699769&#34;&gt;article&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Huang, F. (2019). Alternatives to logistic regression models with binary outcomes. Journal of Experimental Education. doi: 10.1080/00220973.2019.1699769&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Data are based on the article of Huang and Cornell (2015). Using an online survey, investigators tested for the presence of the question-order effect. Based on a random number generated when the students took the survey, they were placed in either the treatment (n = 1037) or control (n = 963) condition. Students in the treatment condition were asked four specific types bullying questions (i.e., verbal, physical, social, cyber) and then were asked a general bullying question (“I have been bullied in the past year”). Students in the control condition were asked the general bullying question first and then the specific bullying questions. We hypothesized that students who were asked the specific bullying questions first would report overall higher bullying vs the control group.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;examining-cross-tabs&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Examining cross tabs&lt;/h2&gt;
+&lt;p&gt;Load in the required packages:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr) #just for the pipe, %&amp;gt;%
+library(logbin) #to run a log binomial model with a function
+library(summarytools) #for nicer crosstabs
+library(jtools) #for easier exp, confints, and adjusted standard errors&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Load and examine the data frame:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#specify the location on website
+dat &amp;lt;- url(&amp;quot;http://faculty.missouri.edu/huangf/data/jxe2019/jxe.rdata&amp;quot;) 
+load(dat) #load in data from the website
+summary(jxe) #name of the data.frame&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      abully           tord            female          gl      race    
+##  Min.   :0.000   Min.   :0.0000   Min.   :0.0000   9th :446   w:1278  
+##  1st Qu.:0.000   1st Qu.:0.0000   1st Qu.:0.0000   10th:530   b: 287  
+##  Median :0.000   Median :1.0000   Median :1.0000   11th:517   h: 170  
+##  Mean   :0.126   Mean   :0.5185   Mean   :0.5005   12th:507   a:  79  
+##  3rd Qu.:0.000   3rd Qu.:1.0000   3rd Qu.:1.0000              o: 186  
+##  Max.   :1.000   Max.   :1.0000   Max.   :1.0000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(jxe)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      abully tord female   gl race
+## 6910      0    0      1 10th    w
+## 8394      0    0      0  9th    w
+## 7293      0    1      1  9th    w
+## 8491      0    1      0 10th    w
+## 4374      1    1      0 10th    w
+## 1594      0    1      1 10th    b&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dim(jxe)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 2000    5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Review some crosstabs. All computations are based on the table below. &lt;code&gt;tord&lt;/code&gt; is the treatment variable. &lt;code&gt;abully&lt;/code&gt; indicates if the respondent had been bullied.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt &amp;lt;- ctable(jxe$abully, jxe$tord, prop = &amp;#39;c&amp;#39;)
+tt&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Cross-Tabulation, Column Proportions  
+## abully * tord  
+## Data Frame: jxe  
+## 
+## -------- ------ -------------- --------------- ---------------
+##            tord              0               1           Total
+##   abully                                                      
+##        0          863 ( 89.6%)    885 ( 85.3%)   1748 ( 87.4%)
+##        1          100 ( 10.4%)    152 ( 14.7%)    252 ( 12.6%)
+##    Total          963 (100.0%)   1037 (100.0%)   2000 (100.0%)
+## -------- ------ -------------- --------------- ---------------&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt$cross_table #crosstabs&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        tord
+## abully     0    1 Total
+##   0      863  885  1748
+##   1      100  152   252
+##   Total  963 1037  2000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt$proportions #proportions&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               0         1 Total
+## 0     0.8961578 0.8534233 0.874
+## 1     0.1038422 0.1465767 0.126
+## Total 1.0000000 1.0000000 1.000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(14.66 / 85.34) / (10.38 / 89.62) #OR = 1.48 &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.483163&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;14.66 - 10.38 #risk difference: 4.28&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 4.28&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;14.66 / 10.38 #risk ratio: 1.41&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.412331&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;models-without-covariates&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Models without covariates&lt;/h2&gt;
+&lt;p&gt;For comparability, see how the results above map on to the first set of regressions without covariates:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.log1 &amp;lt;- glm(abully ~ tord, data = jxe, family = binomial)
+summ(tab6.log1, exp = T)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
+## (Intercept)     0.116 0.094 0.143 -20.404 0.000
+## tord            1.482 1.132 1.940   2.865 0.004&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.lpm1 &amp;lt;- glm(abully ~ tord, data = jxe) #risk difference
+summ(tab6.lpm1, confint = T, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              Est.  2.5% 97.5% t val.     p
+## (Intercept) 0.104 0.085 0.123 10.553 0.000
+## tord        0.043 0.014 0.072  2.896 0.004&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.poi1 &amp;lt;- glm(abully ~ tord, data = jxe, family = poisson) #risk ratio
+summ(tab6.poi1, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               Est.  S.E.  z val.     p
+## (Intercept) -2.265 0.095 -23.900 0.000
+## tord         0.345 0.121   2.852 0.004&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you want to run a log-binomial model&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;logb &amp;lt;- update(tab6.lpm1, family = binomial(link = &amp;#39;log&amp;#39;))
+#logb &amp;lt;- logbin(abully ~ tord, data = jxe)
+summ(logb, exp = T, digits = 3, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
+## (Intercept)     0.104 0.086 0.125 -23.900 0.000
+## tord            1.412 1.114 1.789   2.852 0.004&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;models-with-covariates&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Models with covariates&lt;/h2&gt;
+&lt;p&gt;Compare these to the results in Table 6 in the article with the covariates:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.log2 &amp;lt;- glm(abully ~ tord + female + gl + race, data = jxe, family = binomial)
+summ(tab6.log2, exp = T)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
+## (Intercept)     0.149 0.105 0.211 -10.706 0.000
+## tord            1.487 1.134 1.951   2.866 0.004
+## female          1.184 0.906 1.547   1.239 0.215
+## gl10th          0.749 0.525 1.068  -1.597 0.110
+## gl11th          0.633 0.438 0.914  -2.439 0.015
+## gl12th          0.515 0.348 0.761  -3.333 0.001
+## raceb           0.646 0.411 1.015  -1.895 0.058
+## raceh           1.227 0.780 1.929   0.885 0.376
+## racea           1.512 0.826 2.769   1.340 0.180
+## raceo           1.165 0.747 1.815   0.674 0.501&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.lpm2 &amp;lt;- update(tab6.log2, family = gaussian)
+summ(tab6.lpm2, confint = T, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               Est.   2.5%  97.5% t val.     p
+## (Intercept)  0.138  0.098  0.178  6.707 0.000
+## tord         0.042  0.013  0.071  2.873 0.004
+## female       0.018 -0.011  0.047  1.231 0.218
+## gl10th      -0.038 -0.083  0.008 -1.631 0.103
+## gl11th      -0.055 -0.100 -0.011 -2.440 0.015
+## gl12th      -0.074 -0.117 -0.030 -3.331 0.001
+## raceb       -0.040 -0.077 -0.003 -2.109 0.035
+## raceh        0.024 -0.033  0.081  0.825 0.409
+## racea        0.051 -0.035  0.138  1.161 0.246
+## raceo        0.017 -0.037  0.071  0.625 0.532&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.poi2 &amp;lt;- update(tab6.log2, family = poisson)
+summ(tab6.poi2, exp = T, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
+## (Intercept)     0.128 0.096 0.172 -13.815 0.000
+## tord            1.411 1.114 1.787   2.852 0.004
+## female          1.157 0.917 1.458   1.232 0.218
+## gl10th          0.785 0.581 1.060  -1.581 0.114
+## gl11th          0.678 0.494 0.929  -2.421 0.015
+## gl12th          0.563 0.401 0.793  -3.295 0.001
+## raceb           0.678 0.449 1.024  -1.845 0.065
+## raceh           1.190 0.811 1.746   0.888 0.374
+## racea           1.417 0.858 2.339   1.363 0.173
+## raceo           1.140 0.781 1.664   0.678 0.498&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.logbin &amp;lt;- update(tab6.log2, family = binomial(link = &amp;#39;log&amp;#39;))
+## using logbinomial, adding `em` to speed up the estimation
+## tab6.logbin &amp;lt;- logbin(abully ~ tord + female + gl + race, 
+##              data = jxe, method = &amp;#39;em&amp;#39;)
+summ(tab6.logbin, exp = T, confint = T, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
+## (Intercept)     0.128 0.096 0.171 -13.869 0.000
+## tord            1.412 1.115 1.788   2.866 0.004
+## female          1.165 0.924 1.468   1.291 0.197
+## gl10th          0.780 0.578 1.052  -1.628 0.104
+## gl11th          0.672 0.491 0.921  -2.470 0.013
+## gl12th          0.565 0.402 0.794  -3.288 0.001
+## raceb           0.674 0.446 1.019  -1.872 0.061
+## raceh           1.187 0.809 1.741   0.876 0.381
+## racea           1.422 0.863 2.342   1.382 0.167
+## raceo           1.142 0.782 1.666   0.687 0.492&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The pattern of results are similar. The Poisson, log-binomial, and linear probability models however may provide results that are easier to understand (especially if communicating results to a lay audience who do not understand odds ratios).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Huang, F., &amp;amp; Cornell, D. (2015). Order and definitional effects in bullying surveys: Results from an experimental study. &lt;em&gt;Psychological Assessment, 27,&lt;/em&gt; 1484-1493. doi: &lt;a href=&#34;http://dx.doi.org/10.1037/pas0000149&#34; class=&#34;uri&#34;&gt;http://dx.doi.org/10.1037/pas0000149&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;– END&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
