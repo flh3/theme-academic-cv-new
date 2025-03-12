@@ -538,6 +538,18 @@
     <lastmod>2020-06-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>http://localhost:1313/post/mdata/</loc>
+    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/fiml/</loc>
+    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/missing-data/</loc>
+    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>http://localhost:1313/publication/journal-article/test2/prewett-student-2019/</loc>
     <lastmod>2019-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>

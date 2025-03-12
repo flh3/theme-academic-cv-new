@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FIML | FLH Website</title>
+    <link>http://localhost:1313/tags/fiml/</link>
+      <atom:link href="http://localhost:1313/tags/fiml/index.xml" rel="self" type="application/rss+xml" />
+    <description>FIML</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <title>FIML</title>
+      <link>http://localhost:1313/tags/fiml/</link>
+    </image>
+    
+    <item>
+      <title>🎉 Using FIML and MI in R</title>
+      <link>http://localhost:1313/post/mdata/</link>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/mdata/</guid>
+      <description>&lt;div id=&#34;using-fiml-in-r-part-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using FIML in R (Part 2)&lt;/h2&gt;
+&lt;p&gt;A recurring question that I get asked is how to handle missing data when researchers are interested in performing a multiple regression analysis. There are so many excellent articles, books, and websites that discuss the theory and rationale behind what can be done. Often, what is recommended is to either use full information likelihood (FIML) or multiple imputation (MI). Many excellent articles explain in detail how these work. The purpose though of this post is to show &lt;em&gt;how&lt;/em&gt; (again) to just run these models in &lt;code&gt;R&lt;/code&gt; (the examples I show here are just for single-level data). I had already shown some of this before over &lt;a href=&#34;https://francish.netlify.com/post/01_missing/&#34;&gt;here&lt;/a&gt; though I am adding to those notes to show some comparability with Mplus results. I will use &lt;code&gt;lavaan&lt;/code&gt; for getting FIML results.&lt;/p&gt;
+&lt;div id=&#34;read-in-the-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Read in the data&lt;/h3&gt;
+&lt;p&gt;For purposes of comparability, I will just use the &lt;em&gt;High School and Beyond&lt;/em&gt; demo data (n = 200) found on the &lt;a href=&#34;https://stats.idre.ucla.edu/mplus/seminars/mplus-class-notes/analyze/&#34;&gt;UCLA Statistical Computing&lt;/a&gt; website which shows how to use FIML with Mplus. We first read in the &lt;em&gt;complete&lt;/em&gt; data which we can use later when comparing results when using the dataset with missing data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr) #for selecting and using the pipe
+hsbnomiss &amp;lt;- read.csv(&amp;#39;https://stats.idre.ucla.edu/wp-content/uploads/2016/02/hsbdemo.dat&amp;#39;, 
+    header = F)
+#note when data prepared for Mplus, there are no headers
+#indicating the variable names 
+hsbnomiss2 &amp;lt;- select(hsbnomiss, 2, 6:8) 
+#only select columns we want
+names(hsbnomiss2) &amp;lt;- c(&amp;#39;female&amp;#39;, &amp;#39;read&amp;#39;, &amp;#39;write&amp;#39;, &amp;#39;math&amp;#39;) 
+#name the columns
+head(hsbnomiss2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   female read write math
+## 1      1   34    35   41
+## 2      0   34    33   41
+## 3      0   39    39   44
+## 4      0   37    37   42
+## 5      0   39    31   40
+## 6      1   42    36   42&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(hsbnomiss2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    200 obs. of  4 variables:
+##  $ female: int  1 0 0 0 0 1 0 0 1 0 ...
+##  $ read  : int  34 34 39 37 39 42 31 50 39 34 ...
+##  $ write : int  35 33 39 37 31 36 36 31 41 37 ...
+##  $ math  : int  41 41 44 42 40 42 46 40 33 46 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-the-regression-complete-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Run the regression (complete data)&lt;/h3&gt;
+&lt;p&gt;In this example, we want to predict &lt;code&gt;write&lt;/code&gt; using &lt;code&gt;female&lt;/code&gt;, &lt;code&gt;read&lt;/code&gt;, and &lt;code&gt;math&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nomiss1 &amp;lt;- lm(write ~ female + read + math, data = hsbnomiss2)
+summary(nomiss1)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             Estimate Std. Error t value Pr(&amp;gt;|t|)
+## (Intercept)   11.896      2.863   4.155        0
+## female         5.443      0.935   5.822        0
+## read           0.325      0.061   5.355        0
+## math           0.397      0.066   5.986        0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can also do this using &lt;code&gt;lavaan&lt;/code&gt; and the &lt;code&gt;sem&lt;/code&gt; function. &lt;strong&gt;Note, in this case, the formula I specified is in between quotes.&lt;/strong&gt; &lt;code&gt;lavaan&lt;/code&gt; is often used for cfa and sem where the interrelationships between variables and latent factors are specified. Since this is just a regression with all observed variables, we can specify this in just one line (representing the formula).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lavaan)
+nomiss2 &amp;lt;- sem(&amp;#39;write ~ female + read + math&amp;#39;, data = hsbnomiss2)
+summary(nomiss2) #lot more information&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-5 ended normally after 17 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                          4
+##                                                       
+##   Number of observations                           200
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
+## 
+## Parameter Estimates:
+## 
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+##   Standard errors                             Standard
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##   write ~                                             
+##     female            5.443    0.926    5.881    0.000
+##     read              0.325    0.060    5.409    0.000
+##     math              0.397    0.066    6.047    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##    .write            42.368    4.237   10.000    0.000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These results provide a benchmark of what the results should be when data are not missing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;read-in-missing-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Read in missing data&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hsbwmiss &amp;lt;- read.csv(&amp;#39;https://stats.idre.ucla.edu/wp-content/uploads/2017/04/hsbmis2.dat&amp;#39;, 
+    header = F)
+#missing data are coded as -9999, recode to NA
+hsbwmiss[hsbwmiss == -9999] &amp;lt;- NA
+#I know you can do this in dplyr using some command
+#but this is quick and basic
+hsbwmiss2 &amp;lt;- dplyr::select(hsbwmiss, 2, 8:10)
+names(hsbwmiss2) &amp;lt;- c(&amp;#39;female&amp;#39;, &amp;#39;read&amp;#39;, &amp;#39;write&amp;#39;, &amp;#39;math&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can just look at the patterns of missing data quickly too using the &lt;code&gt;mice&lt;/code&gt; package.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mice)
+md.pattern(hsbwmiss2, rotate.names = T)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##    write read math female    
+## 76     1    1    1      1   0
+## 39     1    1    1      0   1
+## 34     1    1    0      1   1
+## 14     1    1    0      0   2
+## 19     1    0    1      1   1
+## 9      1    0    1      0   2
+## 6      1    0    0      1   2
+## 3      1    0    0      0   3
+##        0   37   57     65 159&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The missing data patterns show a lot of missing data. We can run a naive regression and compare results to the complete case analysis. Also shows that only 48% of respondents have complete data. NOTE: There is no threshold as to what is considered an unacceptable amount of missing data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;wmiss1 &amp;lt;- lm(write ~ female + read + math, data = hsbwmiss2)
+library(stargazer) #to show side-by-side output&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Please cite as:&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  R package version 5.2.2. https://CRAN.R-project.org/package=stargazer&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stargazer(nomiss1, wmiss1, 
+          star.cutoffs = c(.05, .01, .001), 
+  no.space = T, type = &amp;#39;text&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ==================================================================
+##                                  Dependent variable:              
+##                     ----------------------------------------------
+##                                         write                     
+##                               (1)                    (2)          
+## ------------------------------------------------------------------
+## female                     5.443***                7.247***       
+##                             (0.935)                (1.620)        
+## read                       0.325***                 0.167         
+##                             (0.061)                (0.107)        
+## math                       0.397***                0.447***       
+##                             (0.066)                (0.117)        
+## Constant                   11.896***              17.160***       
+##                             (2.863)                (4.964)        
+## ------------------------------------------------------------------
+## Observations                  200                     76          
+## R2                           0.526                  0.468         
+## Adjusted R2                  0.519                  0.446         
+## Residual Std. Error    6.575 (df = 196)        6.966 (df = 72)    
+## F Statistic         72.518*** (df = 3; 196) 21.111*** (df = 3; 72)
+## ==================================================================
+## Note:                                *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Regressions here show different results with reading not being predictive anymore of writing and the strength of the female coefficient increasing (and SEs are much higher).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-the-model-accounting-for-missing-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Run the model accounting for missing data&lt;/h3&gt;
+&lt;p&gt;We will now use FIML to account for the missing data. We will again use the &lt;code&gt;sem&lt;/code&gt; function but will some additional options:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;wmiss2 &amp;lt;- sem(&amp;#39;write ~ female + read + math&amp;#39;, data = hsbwmiss2, 
+  missing = &amp;#39;fiml&amp;#39;, fixed.x = F)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We specify &lt;code&gt;missing = &#34;fiml&#34;&lt;/code&gt; which then uses fiml to account for the missing data. In addition, we include: &lt;code&gt;fixed.x = F&lt;/code&gt;. FIML works by estimating the relationships of the variables with each other and requires estimating the means and variances of the variables. If &lt;code&gt;fixed.x = T&lt;/code&gt; (the default), then the variances and covariances are fixed and are based on the existing sample values and are not estimated. You can specify the means and variances to be estimated in the model but requires more typing.&lt;/p&gt;
+&lt;p&gt;View the results:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(wmiss2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan 0.6-5 ended normally after 46 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         14
+##                                                       
+##   Number of observations                           200
+##   Number of missing patterns                         8
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
+## 
+## Parameter Estimates:
+## 
+##   Information                                 Observed
+##   Observed information based on                Hessian
+##   Standard errors                             Standard
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##   write ~                                             
+##     female            5.436    1.130    4.809    0.000
+##     read              0.298    0.073    4.080    0.000
+##     math              0.401    0.078    5.117    0.000
+## 
+## Covariances:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##   female ~~                                           
+##     read             -0.255    0.462   -0.551    0.582
+##     math              0.080    0.451    0.177    0.860
+##   read ~~                                             
+##     math             68.122    9.634    7.071    0.000
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##    .write            12.949    3.013    4.298    0.000
+##     female            0.591    0.041   14.384    0.000
+##     read             51.898    0.776   66.855    0.000
+##     math             52.724    0.756   69.714    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##    .write            41.622    4.744    8.773    0.000
+##     female            0.238    0.029    8.321    0.000
+##     read            107.510   11.881    9.049    0.000
+##     math             95.591   10.940    8.737    0.000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The summary presents more information and shows that the analysis is based on the 200 observations. The intercept here is shown under &lt;code&gt;Intercepts&lt;/code&gt; –&amp;gt; &lt;code&gt;.write&lt;/code&gt;. Results are much closer to the original results with no missing data (shown again below):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;            Estimate Std. Error t value Pr(&amp;gt;|t|)
+(Intercept)   11.896      2.863   4.155        0
+female         5.443      0.935   5.822        0
+read           0.325      0.061   5.355        0
+math           0.397      0.066   5.986        0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you just want the coefficients without the summary statistics (but still showing all the variances and covariances indicated by &lt;code&gt;~~&lt;/code&gt; and the means denoted by &lt;code&gt;~&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;parameterestimates(wmiss2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       lhs op    rhs     est     se      z pvalue ci.lower ci.upper
+## 1   write  ~ female   5.436  1.130  4.809  0.000    3.221    7.651
+## 2   write  ~   read   0.298  0.073  4.080  0.000    0.155    0.442
+## 3   write  ~   math   0.401  0.078  5.117  0.000    0.247    0.554
+## 4   write ~~  write  41.622  4.744  8.773  0.000   32.324   50.920
+## 5  female ~~ female   0.238  0.029  8.321  0.000    0.182    0.294
+## 6  female ~~   read  -0.255  0.462 -0.551  0.582   -1.160    0.651
+## 7  female ~~   math   0.080  0.451  0.177  0.860   -0.804    0.964
+## 8    read ~~   read 107.510 11.881  9.049  0.000   84.223  130.796
+## 9    read ~~   math  68.122  9.634  7.071  0.000   49.240   87.004
+## 10   math ~~   math  95.591 10.940  8.737  0.000   74.148  117.034
+## 11  write ~1         12.949  3.013  4.298  0.000    7.044   18.854
+## 12 female ~1          0.591  0.041 14.384  0.000    0.511    0.672
+## 13   read ~1         51.898  0.776 66.855  0.000   50.377   53.420
+## 14   math ~1         52.724  0.756 69.714  0.000   51.242   54.206&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can compare the results with those derived using Mplus. Results are comparable:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MODEL RESULTS
+&lt;pre&gt;&lt;code&gt;                                                Two-Tailed
+                Estimate       S.E.  Est./S.E.    P-Value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WRITE    ON
+FEMALE             5.435      1.121      4.847      0.000
+READ               0.298      0.072      4.168      0.000
+MATH               0.401      0.077      5.236      0.000&lt;/p&gt;
+&lt;p&gt;Intercepts
+WRITE             12.950      2.951      4.388      0.000&lt;/p&gt;
+&lt;p&gt;Residual Variances
+WRITE             41.622      4.716      8.825      0.000
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Try estimating the model using MI (see my previous post). Are results similar to the complete case results?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;imp &amp;lt;- mice(hsbwmiss2, m = 50, seed = 1234)
+mi1 &amp;lt;- with(imp, lm(write ~ female + read + math))
+round(summary(pool(mi1)), 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
