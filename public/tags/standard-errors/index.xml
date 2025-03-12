@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Standard Errors | FLH Website</title>
+    <link>http://localhost:1313/tags/standard-errors/</link>
+      <atom:link href="http://localhost:1313/tags/standard-errors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Standard Errors</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 28 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <title>Standard Errors</title>
+      <link>http://localhost:1313/tags/standard-errors/</link>
+    </image>
+    
+    <item>
+      <title>🎉 Class Example- Standard Errors Too Small</title>
+      <link>http://localhost:1313/post/se/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/se/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

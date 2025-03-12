@@ -1,19 +1,14 @@
 ---
-  title: Job postings (AY 2024-25)
-author: Francis Huang
-date: '2024-07-11'
-slug: jobs2024v2
-categories:
-  - jobs5
+title: 🎉 Job postings 2024-2025
+summary: Job postings
+date: 2025-02-27
+authors:
+- admin
 tags:
-  - jobs2024v2 
-header:
-  caption: ''
-image: ''
-preview: yes       
+- job postings
 ---
   
-  List of Research, Statistics, and Evaluation job postings (that I've seen) as of *`r Sys.Date()`*. 
+**List of Research, Statistics, and Evaluation job postings (that I've seen) as of Feb 2025.**
 
 Postings for (2024-2025):     
 

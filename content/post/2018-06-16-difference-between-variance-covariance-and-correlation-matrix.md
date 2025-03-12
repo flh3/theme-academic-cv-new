@@ -1,12 +1,11 @@
 ---
 title: 🧠 Difference between correlation and covariance matrices
 summary: 
-date: 2023-10-26
+date: 2018-10-26
 authors:
   - admin
 tags:
-  - Second Brain
-  - Markdown
+  - Correlation matrix
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com)'
 ---
