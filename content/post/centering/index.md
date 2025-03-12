@@ -14,6 +14,11 @@ authors:
 tags:
   - Centering
   - multicollinearity
+  
+design:
+  spacing:
+    # Customize the section spacing. Order is top, right, bottom, left.
+    padding: ['20px', '0', '20px', '0']
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
