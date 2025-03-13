@@ -7,7 +7,7 @@ title: Teacher support for zero tolerance is associated with higher suspension r
 # If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
 # write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
-- Francis L. Huang
+- admin
 - Dewey G. Cornell
 
 # Author notes (such as 'Equal Contribution')
@@ -30,7 +30,7 @@ publication_short: ''
 
 doi: ''
 
-abstract: ''
+abstract: 'Zero tolerance as an approach to school safety has been around for almost 3 decades. Despite widespread criticisms of zero tolerance policies, few empirical studies have investigated the relationship of zero tolerance with school safety. More generally, the Government Accountability Office report on school shootings noted the need for research on the link between school discipline and school safety. Using a statewide survey from 108,888 students and 10,990 teachers from almost all Virginia middle schools, we found that a majority of surveyed teachers (74%) supported the use of zero tolerance as an effective discipline practice. Analysis using both linear and logistic regression indicated that support for zero tolerance was associated with higher rates of out-of-school suspension. Contrary to the goals of zero tolerance, both students and teachers in schools with greater support for zero tolerance had lower feelings of safety at school, even after controlling for school and student characteristics associated with safety. These findings offer new evidence to support efforts by school psychologists to discourage the use of zero tolerance and promote more effective school discipline practices.'
 
 # Summary. An optional shortened abstract.
 summary: ''
@@ -72,5 +72,3 @@ links:
 - name: URL
   url: https://www.tandfonline.com/doi/abs/10.1080/2372966X.2020.1832865
 ---
-
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

@@ -1,5 +1,5 @@
 ---
-title: 'Advancing diversity, equity, and inclusion in school psychology: Be the      change.'
+title: 'Advancing diversity, equity, and inclusion in school psychology: Be the change'
 
 # Authors
 # A YAML list of author names
@@ -13,7 +13,7 @@ authors:
 - Dorothy L. Espelage
 - Jorge E. Gonzalez
 - Scott L. Graves
-- Francis L. Huang
+- admin
 - Stacy-Ann A. January
 - Tyler L. Renshaw
 
@@ -76,5 +76,3 @@ image:
 #   Otherwise, set `projects: []`.
 projects: []
 ---
-
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

@@ -41,13 +41,13 @@ tags:
 featured: true
 
 # Links
-url_pdf: 'GEE_Jebs_appendices.pdf'
+url_pdf: 'publication/journal-article/2022/huang-analyzing-2022/GEE_Jebs_appendices.pdf'
 url_code: 'https://github.com/flh3/jebsgee'
 url_dataset: 'cont_binary.sav'
 url_poster: ''
 url_project: ''
-url_slides: 'GEE_Jebs_appendices.pdf'
-url_source: 'GEE_Jebs_appendices.pdf'
+url_slides: ''
+url_source: ''
 url_video: ''
 
 # Custom links (uncomment lines below)

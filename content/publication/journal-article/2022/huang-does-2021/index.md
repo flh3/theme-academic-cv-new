@@ -7,7 +7,7 @@ title: Does worrying matter? Priming and attitudes towards mask wearing in a mid
 # If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
 # write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
-- Francis L. Huang
+- admin
 - Wendy Reinke
 - Keith Herman
 
@@ -85,5 +85,3 @@ links:
 - name: URL
   url: http://journals.sagepub.com/doi/10.1177/21582440211058194
 ---
-
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

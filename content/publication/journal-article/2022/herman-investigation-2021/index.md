@@ -1,6 +1,6 @@
 ---
 title: An investigation of the psychometric properties of the Early Identification
-  System–student report in a middle school sample.
+  System–student report in a middle school sample
 
 # Authors
 # A YAML list of author names
@@ -9,7 +9,7 @@ title: An investigation of the psychometric properties of the Early Identificati
 authors:
 - Keith C. Herman
 - Wendy M. Reinke
-- Francis L. Huang
+- admin
 - Aaron M. Thompson
 - Levi Doyle-Barker
 
@@ -33,7 +33,7 @@ publication_short: ''
 
 doi: 10.1037/spq0000414
 
-abstract: ''
+abstract: 'Early adolescence represents a critical developmental period for the identification, prevention, and early intervention of mental health concerns. The Early Identification System–Student Report (EIS-SR) was developed as a user-friendly, accessible, and cost-efficient method for identifying youth at risk for mental health concerns. The present study examined the psychometric properties of the EIS-SR in a sample of middle school students in the Midwest. Two confirmatory factor analyses (N₁ = 2,404, N₂ = 2,404) supported the hypothesized seven correlated factor model showing adequate model fit and subscale reliability (range = .68–.90). Subsequent analyses found that many of the EIS-SR subscales predicted office discipline referrals, suspensions, and standardized academic achievement performance. Additionally, the subscales correlated in expected ways with subscales of the Behavior Assessment Scales for Children (3rd edition). These findings suggest that the EIS-SR is promising for identifying youth in early adolescence who are at risk for mental health concerns in addition to being a free and efficient universal screening tool.'
 
 # Summary. An optional shortened abstract.
 summary: ''
@@ -75,5 +75,3 @@ links:
 - name: URL
   url: http://doi.apa.org/getdoi.cfm?doi=10.1037/spq0000414
 ---
-
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

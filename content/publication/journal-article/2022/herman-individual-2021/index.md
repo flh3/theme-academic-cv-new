@@ -1,6 +1,6 @@
 ---
 title: Individual and school predictors of teacher stress, coping, and wellness during
-  the COVID-19 pandemic.
+  the COVID-19 pandemic
 
 # Authors
 # A YAML list of author names
@@ -10,7 +10,7 @@ authors:
 - Keith C. Herman
 - James Sebastian
 - Wendy M. Reinke
-- Francis L. Huang
+- admin
 
 # Author notes (such as 'Equal Contribution')
 # A YAML list of notes for each author in the above `authors` list
@@ -32,7 +32,7 @@ publication_short: ''
 
 doi: 10.1037/spq0000456
 
-abstract: ''
+abstract: 'The Coronavirus disease 2019 (COVID-19) pandemic created unprecedented challenges for the U.S. education system and for teachers. The present study examined correlates and predictors of teacher well-being in the immediate aftermath of school closures related to the pandemic. Data were collected as part of a larger group randomized trial. Six hundred and thirty-nine teachers completed surveys about their stress, coping, health, job satisfaction, and internalizing symptoms in Fall 2019, before the pandemic, and May 2020, during the pandemic. Teachers also provided ratings during COVID-19 of their teaching, student attendance and engagement, and concern about students and families. Teachers reported lower levels of work-related stress after the pandemic’s onset compared to their prepandemic levels. Multilevel regression analyses revealed teacher confidence in their ability to manage student behaviors as a consistent and robust predictor of teacher well-being outcomes. Additionally, pre-COVID-19 school-level factors measured in Fall 2019, including collegial school leadership and fair and equitable school discipline structures, also predicted aspects of teacher well-being at the onset of COVID-19. Findings suggest the importance of teacher competence and perceived efficacy in managing student behavior and engaging them in learning to help them adapt to the stressors of a pandemic. Additionally, aspects of organizational health and climate may also help facilitate or hinder teacher adjustment. '
 
 # Summary. An optional shortened abstract.
 summary: ''
@@ -74,5 +74,3 @@ links:
 - name: URL
   url: http://doi.apa.org/getdoi.cfm?doi=10.1037/spq0000456
 ---
-
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

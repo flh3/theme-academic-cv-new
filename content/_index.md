@@ -73,7 +73,7 @@ sections:
   - block: collection
     id: news
     content:
-      title: Recent News
+      title: Posts
       subtitle: ''
       text: ''
       # Page type to display. E.g. post, talk, publication...
@@ -99,6 +99,7 @@ sections:
       # Reduce spacing
       spacing:
         padding: [0, 0, 0, 0]
+ 
   - block: cta-card
     demo: true # Only display this section in the Hugo Blox Builder demo site
     content:

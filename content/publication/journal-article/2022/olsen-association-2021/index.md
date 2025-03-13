@@ -1,6 +1,6 @@
 ---
 title: The association between student socioeconomic status and student–teacher relationships
-  on math achievement.
+  on math achievement
 
 # Authors
 # A YAML list of author names
@@ -8,7 +8,7 @@ title: The association between student socioeconomic status and student–teache
 # write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
 - Amanda A. Olsen
-- Francis L. Huang
+- admin
 
 # Author notes (such as 'Equal Contribution')
 # A YAML list of notes for each author in the above `authors` list
@@ -30,7 +30,7 @@ publication_short: ''
 
 doi: 10.1037/spq0000455
 
-abstract: ''
+abstract: 'The importance of math achievement in the early grades has been well documented. Two variables that have independently been found to be strong predictors of math achievement are student–teacher relationships (STR) and socioeconomic status (SES). The present study investigates the interaction between STR and SES on student math achievement using the Early Childhood Longitudinal Study, a nationally representative data set. The participants included approximately 8,380 first-grade students, 2,930 teachers, and 860 schools, representing a weighted sample of approximately 3.15 million students or 90% of the population. Multilevel modeling, controlling for student-, teacher-, and school-level factors, found that both STR and SES had a strong relationship with student math achievement. There was also a statistically significant moderation effect between close STR and SES on math achievement, suggesting that close STR are beneficial for all students, but are especially beneficial for students from low SES backgrounds. Further, educational implications for research, policy, and practice are provided.'
 
 # Summary. An optional shortened abstract.
 summary: ''

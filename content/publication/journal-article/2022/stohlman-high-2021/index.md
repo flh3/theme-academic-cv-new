@@ -7,7 +7,7 @@ title: High school graduation outcomes of student threat assessment
 # write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
 - Shelby Stohlman
-- Francis Huang
+- admin
 - Dewey Cornell
 
 # Author notes (such as 'Equal Contribution')
@@ -30,7 +30,7 @@ publication_short: ''
 
 doi: 10.1080/1045988X.2021.1980851
 
-abstract: ''
+abstract: 'School threat assessment is a violence prevention strategy that has become widely used over the past 20 years; however, the procedures for a threat assessment are not well-known in education and it has received relatively little research attention. This article describes the rationale, procedures, and empirical support for the Comprehensive School Threat Assessment Guidelines and also presents new findings from a study of graduation rates for 146 students who received a threat assessment in two large school districts. The graduation rate for these students was 83%, which was lower than the graduation rate for the general school population but comparable to the rate for control students with similar risk factors.'
 
 # Summary. An optional shortened abstract.
 summary: ''
@@ -73,4 +73,3 @@ links:
   url: https://www.tandfonline.com/doi/full/10.1080/1045988X.2021.1980851
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
