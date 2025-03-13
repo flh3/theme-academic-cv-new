@@ -6,7 +6,7 @@ title: 'MANOVA: A procedure whose time has passed?'
 # If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
 # write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
-- Francis L. Huang
+- admin
 
 # Author notes (such as 'Equal Contribution')
 # A YAML list of notes for each author in the above `authors` list
@@ -26,14 +26,16 @@ publication_types:
 publication: '*Gifted Child Quarterly*'
 publication_short: ''
 
-doi: ''
+doi: 'https://journals.sagepub.com/doi/10.1177/0016986219887200'
 
-abstract: ''
+abstract: 'Multivariate analysis of variance (MANOVA) is a statistical procedure commonly used in fields such as education and psychology. However, MANOVA’s popularity may actually be for the wrong reasons. The large majority of published research using MANOVA focus on univariate research questions rather than on the multivariate questions that MANOVA is said to specifically address. Given the more complicated and limited nature of interpreting MANOVA effects (which researchers may not actually be interested in given the actual post hoc strategies employed) and that various flexible and well-known statistical alternatives are available, I suggest that researchers consult these better known, robust, and flexible procedures instead, given the proper match with the research question of interest. Just because a researcher has multiple dependent variables of interest does not mean that a MANOVA should be used at all.'
 
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: []
+tags: 
+- alternatives
+- MANOVA
 
 # Display this page in a list of Featured pages?
 featured: false
@@ -67,5 +69,3 @@ image:
 #   Otherwise, set `projects: []`.
 projects: []
 ---
-
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

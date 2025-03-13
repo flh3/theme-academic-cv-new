@@ -6,7 +6,7 @@ title: School teasing and bullying after the presidential election
 # If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
 # write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
-- F. L. Huang
+- admin
 - Dewey G. Cornell
 
 # Author notes (such as 'Equal Contribution')
@@ -29,7 +29,7 @@ publication_short: ''
 
 doi: 10.3102/0013189X18820291
 
-abstract: ''
+abstract: 'In response to media reports of increased teasing and bullying in schools following the 2016 U.S. presidential election, we investigated its prevalence with a Virginia school climate survey completed by approximately 155,000 seventh- and eighth-grade students in 2013, 2015, and 2017. Survey results were mapped onto presidential election results for each school division’s locality. In localities favoring the Republican candidate, there were higher adjusted rates of students reporting that (a) they had experienced some form of bullying in the past year (18% higher) and (b) “students in this school are teased or put down because of their race or ethnicity” (9% higher). For these two outcomes, there were no meaningful differences prior to the election. These results provide modest support for educator concerns about increased teasing and bullying since the 2016 presidential election in some schools and warrant further investigation.'
 
 # Summary. An optional shortened abstract.
 summary: ''

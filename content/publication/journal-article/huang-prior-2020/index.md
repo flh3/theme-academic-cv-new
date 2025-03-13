@@ -80,5 +80,3 @@ links:
 - name: URL
   url: http://journals.sagepub.com/doi/10.3102/0013189X20932474
 ---
-
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
