@@ -56,6 +56,7 @@ interests:
   - Evaluation and Causal Inference
   - Bullying and School Violence
   - School Discipline
+  - Large-scale Assessments
 
 education:
   - area: PhD Research, Statistics, and Evaluation

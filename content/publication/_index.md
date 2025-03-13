@@ -1,7 +1,7 @@
 ---
 title: Publications
 cms_exclude: false
-
+share: true
 # View.
 view: citation
 

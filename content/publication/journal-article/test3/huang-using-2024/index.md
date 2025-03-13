@@ -52,7 +52,7 @@ featured: true
 
 # Links
 url_pdf: ''
-url_code: ''
+url_code: 'https://github.com/flh3/pubdata/tree/main/mixPV'
 url_dataset: ''
 url_poster: ''
 url_project: ''
@@ -83,5 +83,5 @@ links:
   url: 
     https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0
 ---
-
-The `mixPV` function can now be accessed by installing the `MLMusingR` package.
+![logo](https://upload.wikimedia.org/wikipedia/commons/f/f3/Open_Access_PLoS.svg)
+Article is open access. The `mixPV` function can now be accessed by installing the `MLMusingR` package.
