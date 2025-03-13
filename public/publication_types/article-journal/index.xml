@@ -183,8 +183,7 @@
       <link>http://localhost:1313/publication/journal-article/test3/maeng-teacher-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/test3/maeng-teacher-2023/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -359,8 +358,15 @@
       <link>http://localhost:1313/publication/journal-article/2020/huang-authoritative-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/2020/huang-authoritative-2021/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
-</description>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Authoritative school climate and out-of-school suspensions: Results from a nationally-representative survey of 10th grade students</title>
+      <link>http://localhost:1313/publication/journal-article/psf/huang-authoritative-2021/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/psf/huang-authoritative-2021/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -368,8 +374,7 @@
       <link>http://localhost:1313/publication/journal-article/2020/thompson-confirmatory-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/2020/thompson-confirmatory-2021/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -382,15 +387,6 @@
     
     <item>
       <title>Student threat assessment as an alternative to exclusionary discipline</title>
-      <link>http://localhost:1313/publication/journal-article/2020/maeng-student-2020/</link>
-      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2020/maeng-student-2020/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Student threat assessment as an alternative to exclusionary discipline</title>
       <link>http://localhost:1313/publication/journal-article/test2/maeng-student-2020/</link>
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/test2/maeng-student-2020/</guid>
@@ -399,11 +395,19 @@
     </item>
     
     <item>
+      <title>The role of the perceptions of school climate and teacher victimization by students</title>
+      <link>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Does teacher emotional exhaustion and efficacy predict student discipline sanctions?</title>
       <link>http://localhost:1313/publication/journal-article/2020/eddy-does-2020/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/2020/eddy-does-2020/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
+      <description>&lt;p&gt;[School Psychology Review, article of the year]&lt;/p&gt;
 </description>
     </item>
     
@@ -412,8 +416,7 @@
       <link>http://localhost:1313/publication/journal-article/huang-prior-2020/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/huang-prior-2020/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -421,8 +424,7 @@
       <link>http://localhost:1313/publication/journal-article/2020/huang-manova-2020/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/2020/huang-manova-2020/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -430,8 +432,7 @@
       <link>http://localhost:1313/publication/journal-article/2020/huang-relationship-2020/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/2020/huang-relationship-2020/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>

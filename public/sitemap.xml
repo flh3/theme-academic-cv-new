@@ -534,6 +534,10 @@
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>http://localhost:1313/publication/journal-article/psf/huang-authoritative-2021/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>http://localhost:1313/publication/journal-article/2020/thompson-confirmatory-2021/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -558,11 +562,11 @@
     <lastmod>2020-11-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/publication/journal-article/2020/maeng-student-2020/</loc>
+    <loc>http://localhost:1313/publication/journal-article/test2/maeng-student-2020/</loc>
     <lastmod>2020-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/publication/journal-article/test2/maeng-student-2020/</loc>
+    <loc>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</loc>
     <lastmod>2020-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -600,6 +604,14 @@
   </url><url>
     <loc>http://localhost:1313/tags/missing-data/</loc>
     <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/alternatives/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/manova/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>http://localhost:1313/publication/journal-article/2020/huang-manova-2020/</loc>

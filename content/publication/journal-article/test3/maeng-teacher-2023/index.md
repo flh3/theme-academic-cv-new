@@ -70,10 +70,8 @@ image:
 #   Simply enter your project's folder or file name without extension.
 #   E.g. `projects: ['internal-project']` links to `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
-projects: []
+projects: ['uva']
 links:
 - name: URL
   url: https://www.tandfonline.com/doi/full/10.1080/15388220.2022.2146127
 ---
-
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

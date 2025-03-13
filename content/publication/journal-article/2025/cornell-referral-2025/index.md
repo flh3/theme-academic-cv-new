@@ -94,7 +94,7 @@ image:
 #   Simply enter your project's folder or file name without extension.
 #   E.g. `projects: ['internal-project']` links to `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
-projects: []
+projects: ['uva']
 links:
 - name: URL
   url: https://onlinelibrary.wiley.com/doi/10.1002/pits.23399

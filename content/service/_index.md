@@ -2,8 +2,9 @@
 title: ""  # Add a page title.
 summary: ""  # Add a page description.
 date: "2025-03-03"  # Add today's date.
-type: "widget_page"  # Page type is a Widget Page
+type: pages  # Page type is a Widget Page
 share: true 
+show_date: true
 ---
 
 {{< toc >}} 
@@ -13,6 +14,7 @@ share: true
 Ongoing:
 
 * Xiuhan Chen
+* Seijoon Park
 * Bridget Disney
 
 ### University of Missouri
@@ -53,8 +55,8 @@ Ongoing:
 
 ## Editorial boards
 * [School Psychology](http://www.apa.org/pubs/journals/spq/) (2014-2016; 2016-present) [formerly called School Psychology Quarterly]
-* [School Psychology Review](https://naspjournals.org/loi/spsr) (2019)
-* [AERA Open](http://ero.sagepub.com/) (2017-present)
+* [School Psychology Review](https://naspjournals.org/loi/spsr) (2019-present)
+* [AERA Open](http://ero.sagepub.com/) (2017-2022)
 * [Prevention Science](https://www.springer.com/journal/11121) (2021-present)
 * [Gifted Child Quarterly](http://journals.sagepub.com/home/gcq/) (2011-2020)
 

@@ -200,8 +200,7 @@
       <link>http://localhost:1313/publication/journal-article/test3/maeng-teacher-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/test3/maeng-teacher-2023/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -405,6 +404,14 @@
     </item>
     
     <item>
+      <title>The role of the perceptions of school climate and teacher victimization by students</title>
+      <link>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Does teacher emotional exhaustion and efficacy predict student discipline sanctions?</title>
       <link>http://localhost:1313/publication/journal-article/2020/eddy-does-2020/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
@@ -480,14 +487,6 @@
       <guid>http://localhost:1313/publication/journal-article/test2/cornell-student-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>The role of the perceptions of school climate and teacher victimization by students</title>
-      <link>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</link>
-      <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</guid>
-      <description></description>
     </item>
     
     <item>
