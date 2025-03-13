@@ -37,8 +37,10 @@ profiles:
     label: E-mail Me
   - icon: brands/x
     url: https://x.com/flhuang
+  - icon: custom/bluesky
+    url: https://bsky.app/profile/flhuang2000.bsky.social
   - icon: brands/instagram
-    url: https://www.instagram.com/
+    url: https://www.instagram.com/flh3/
   - icon: brands/github
     url: https://github.com/flh3
   - icon: brands/linkedin
@@ -46,7 +48,7 @@ profiles:
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=mLNk1a8AAAAJ&hl=en
   - icon: academicons/orcid
-    url: https://orcid.org/my-orcid?orcid=0000-0002-5900-7763
+    url: https://orcid.org/0000-0002-5900-7763
 
 interests:
   - Analysis of Clustered Data (Multilevel Modeling)
@@ -114,10 +116,6 @@ skills:
         description: ''
         percent: 60
         icon: person-simple-walk
-      - name: Cats
-        description: ''
-        percent: 100
-        icon: cat
       - name: Photography
         description: ''
         percent: 80
