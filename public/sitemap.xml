@@ -178,7 +178,7 @@
     <lastmod>2024-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/post/lsa2/</loc>
+    <loc>http://localhost:1313/post/pv3/</loc>
     <lastmod>2024-06-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -282,7 +282,7 @@
     <lastmod>2024-03-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/post/lsa_1/</loc>
+    <loc>http://localhost:1313/post/pv/</loc>
     <lastmod>2024-01-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -494,7 +494,7 @@
     <lastmod>2022-05-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/post/2022_cr2/</loc>
+    <loc>http://localhost:1313/post/robust-standard-errors/</loc>
     <lastmod>2022-05-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -510,7 +510,7 @@
     <lastmod>2022-04-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/post/2022-fscoring/</loc>
+    <loc>http://localhost:1313/post/logistic-regression-fisher-scoring/</loc>
     <lastmod>2022-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -567,7 +567,7 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>http://localhost:1313/post/gee/</loc>
-    <lastmod>2021-09-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>http://localhost:1313/publication/journal-article/test3/jimerson-advancing-2021/</loc>

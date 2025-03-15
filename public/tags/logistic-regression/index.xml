@@ -261,9 +261,9 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
     
     <item>
       <title>Logistic regression from scratch (Newton Raphson and Fisher Scoring)</title>
-      <link>http://localhost:1313/post/2022-fscoring/</link>
+      <link>http://localhost:1313/post/logistic-regression-fisher-scoring/</link>
       <pubDate>Tue, 15 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2022-fscoring/</guid>
+      <guid>http://localhost:1313/post/logistic-regression-fisher-scoring/</guid>
       <description>&lt;h2&gt;&lt;/h2&gt;
 &lt;p&gt;In an earlier &lt;a href=&#34;../logistic-regression-using-matrices/&#34;&gt;post&lt;/a&gt;, I had shown this using iteratively reweighted least squares (IRLS). This is just an alternative method using Newton Raphson and the Fisher scoring algorithm. For further details, you can look here as &lt;a href=&#34;http://www.jtrive.com/estimating-logistic-regression-coefficents-from-scratch-r-version.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;well&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MLMusingR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;

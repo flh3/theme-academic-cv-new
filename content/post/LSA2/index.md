@@ -1,7 +1,9 @@
 ---
 title: Using Plausible Values with Multilevel Models Using R (update)
 author: Francis Huang
-date: '2024-06-08'
+date: 2024-06-08
+show_date: true
+reading_time: true
 slug: pv3
 categories:
   - wemix

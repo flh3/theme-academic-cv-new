@@ -21,10 +21,10 @@ sections:
     design:
       css_class: dark
       background:
-        color: black
+        color: lightblue
         image:
           # Add your image background to `assets/media/`.
-          filename: stacked-peaks.svg
+          filename: 
           filters:
             brightness: .6
           size: cover
@@ -79,7 +79,7 @@ sections:
       # Page type to display. E.g. post, talk, publication...
       page_type: post
       # Choose how many pages you would like to display (0 = all pages)
-      count: 5
+      count: 6
       # Filter on criteria
       filters:
         author: ""

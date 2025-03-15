@@ -1,15 +1,11 @@
 ---
-title: Getting GEE estimates using iteratively reweighted least squares (IRLS)
-summary:
-author: Francis Huang
-date: 2021-09-15
-slug: GEE
-categories:
-  - R
+title: 🎉 Analyzing clustered data using GEEs
+summary: Generalized estimating equations
+date: 2021-02-27
+authors:
+- admin
 tags:
-  - generalized estimating equations
-  - clustered data
-
+- generalized estimating equations
 ---
 
 

@@ -64,9 +64,9 @@
     </item>
     
     <item>
-      <title>Getting GEE estimates using iteratively reweighted least squares (IRLS)</title>
+      <title>🎉 Analyzing clustered data using GEEs</title>
       <link>http://localhost:1313/post/gee/</link>
-      <pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/post/gee/</guid>
       <description>&lt;p&gt;I show this in a recent JEBS article on using Generalized Estimating Equations (GEEs). Shown below is some annotated syntax and examples.&lt;/p&gt;
 &lt;blockquote&gt;

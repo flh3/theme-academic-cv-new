@@ -1294,9 +1294,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R (update)</title>
-      <link>http://localhost:1313/post/lsa2/</link>
+      <link>http://localhost:1313/post/pv3/</link>
       <pubDate>Sat, 08 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/lsa2/</guid>
+      <guid>http://localhost:1313/post/pv3/</guid>
       <description>&lt;p&gt;This is an update to:&lt;/p&gt;
 &lt;p&gt;Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. &lt;a href=&#34;https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Large-scale Assessments in Education.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This is an update to &lt;code&gt;mixPV&lt;/code&gt;, load it using this function:&lt;/p&gt;
@@ -1451,9 +1451,9 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R</title>
-      <link>http://localhost:1313/post/lsa_1/</link>
+      <link>http://localhost:1313/post/pv/</link>
       <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/lsa_1/</guid>
+      <guid>http://localhost:1313/post/pv/</guid>
       <description>&lt;p&gt;Syntax to accompany the article:&lt;/p&gt;
 &lt;p&gt;Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. &lt;a href=&#34;https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Large-scale Assessments in Education.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;When fitting multilevel models using large scale assessments such as PISA or TIMSS, it is important to account for:&lt;/p&gt;

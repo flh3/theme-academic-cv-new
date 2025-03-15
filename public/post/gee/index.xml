@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Getting GEE estimates using iteratively reweighted least squares (IRLS) | FLH Website</title>
+    <title>🎉 Analyzing clustered data using GEEs | FLH Website</title>
     <link>http://localhost:1313/post/gee/</link>
       <atom:link href="http://localhost:1313/post/gee/index.xml" rel="self" type="application/rss+xml" />
-    <description>Getting GEE estimates using iteratively reweighted least squares (IRLS)</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 15 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <description>🎉 Analyzing clustered data using GEEs</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 27 Feb 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
-      <title>Getting GEE estimates using iteratively reweighted least squares (IRLS)</title>
+      <title>🎉 Analyzing clustered data using GEEs</title>
       <link>http://localhost:1313/post/gee/</link>
     </image>
     

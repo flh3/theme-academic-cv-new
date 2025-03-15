@@ -14,9 +14,9 @@
     
     <item>
       <title>Robust standard errors in mixed models</title>
-      <link>http://localhost:1313/post/2022_cr2/</link>
+      <link>http://localhost:1313/post/robust-standard-errors/</link>
       <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2022_cr2/</guid>
+      <guid>http://localhost:1313/post/robust-standard-errors/</guid>
       <description>&lt;p&gt;In a recent article in &lt;em&gt;Multivariate Behavioral Research&lt;/em&gt;, we (Huang, Wiedermann, and Zhang; HWZ; doi: 10.1080/00273171.2022.2077290) discuss a robust standard error that can be used with mixed models that accounts for violations of homogeneity. Note that these robust standard errors have been around for years though are not always provided in statistical software. These can also be computed using the &lt;code&gt;CR2&lt;/code&gt; package or the &lt;code&gt;clubSandwich&lt;/code&gt; package. This page shows how to compute the traditional Liang and Zeger (1986) robust standard errors (CR0) and the CR2 estimator- see Bell and McCaffrey (2002) as well as McCaffrey, Bell, and Botts (2001) (BM and MBB).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Cluster robust standard errors can also be computed using our &lt;strong&gt;SPSS&lt;/strong&gt; add-on available here: &lt;a href=&#34;https://github.com/flh3/CR2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2&lt;/a&gt;. This doesn&amp;rsquo;t work though with mixed models.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;d1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rio&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;import&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;https://github.com/flh3/evalclass/raw/main/ccrem/ccrem.sav&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
