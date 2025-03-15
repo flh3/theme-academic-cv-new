@@ -1,7 +1,7 @@
 ---
 title: 🎉 Job postings 2023-2024
 summary: Job postings
-date: 2024-02-27
+date: 2024-01-01
 authors:
 - admin
 tags:

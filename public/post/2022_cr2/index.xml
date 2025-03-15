@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Robust standard errors in mixed models | FLH Website</title>
+    <link>http://localhost:1313/post/2022_cr2/</link>
+      <atom:link href="http://localhost:1313/post/2022_cr2/index.xml" rel="self" type="application/rss+xml" />
+    <description>Robust standard errors in mixed models</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 24 May 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <title>Robust standard errors in mixed models</title>
+      <link>http://localhost:1313/post/2022_cr2/</link>
+    </image>
+    
+  </channel>
+</rss>

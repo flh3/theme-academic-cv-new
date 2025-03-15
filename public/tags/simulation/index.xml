@@ -399,5 +399,69 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
 </description>
     </item>
     
+    <item>
+      <title>Fun with residuals</title>
+      <link>http://localhost:1313/post/residuals/</link>
+      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/residuals/</guid>
+      <description>&lt;h2 id=&#34;random-stuff-ii-plotting-residuals&#34;&gt;Random stuff II: Plotting residuals&lt;/h2&gt;
+&lt;p&gt;I was poking around my old teaching files and I found an old file and I wasn&amp;rsquo;t sure what it was:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/main/Stefanski_2007/mizzo_1_data_yx1x5.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;##       V1       V2      V3       V4      V5       V6
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 1 -0.224  0.00546  0.3803  0.01351  0.2092  0.14671
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 2  0.844  0.10737 -0.0265  0.04586  0.0130 -0.02719
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 3  1.062  0.09112  0.1813  0.05017 -0.1887 -0.01208
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 4 -1.042  0.44049  0.2460  0.00542 -0.2129  0.10152
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 5  0.157 -0.17051  0.1476  0.08363 -0.0953 -0.00785
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 6 -0.135  0.06160 -0.8041 -0.02595  0.2917 -0.07838
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;dim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## [1] 3785    6
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Turns out it was an old data file I had used in class discussing regression diagnostics. We often talk about the assumption of the homoskedasticity of residuals and we graphically depict that by plotting the fitted values on the X axis and the residuals on the y axis. If all is well, we are told that we should have any discernible pattern.&lt;/p&gt;
+&lt;p&gt;So this is a dataset of 3,785 observations and 6 variables. We can predict the first variable (&lt;code&gt;V1&lt;/code&gt;) using all the other variables in the dataset (&lt;code&gt;V2&lt;/code&gt; to &lt;code&gt;V6&lt;/code&gt;).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;lm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;V1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;.,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If we plot the residuals, we get:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;fitted&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;resid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;plot of chunk unnamed-chunk-3&#34; srcset=&#34;
+               /post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp 400w,
+               /post/residuals/unnamed-chunk-3-1_hu_551e92a96ff14f04.webp 760w,
+               /post/residuals/unnamed-chunk-3-1_hu_5d481a04fc9b0af8.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
+               width=&#34;504&#34;
+               height=&#34;504&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Just thought that was neat. This is based on the work of:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Stefanski, L. A. (2007). Residual (sur)realism. The American Statistician, 61(2), 163-177. &lt;a href=&#34;https://doi.org/10.1198/000313007X190079&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.1198/000313007X190079&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I can&amp;rsquo;t find the original website where this came from but definitely check out the paper!&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the original image:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Missouri_Tigers_logo.svg/300px-Missouri_Tigers_logo.svg.png&#34; alt=&#34;MU TIGERS&#34; width=&#34;65%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;MU TIGERS&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;ndash; END&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

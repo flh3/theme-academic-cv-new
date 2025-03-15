@@ -1,0 +1,2664 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: March 15, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="system">
+  
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.1" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Francis L. Huang" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Francis Huang / projects / research." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://localhost:1313/post/2024_lsa/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/blue.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.css" rel="stylesheet" />
+  
+
+  
+  
+  
+
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="alternate" href="/post/2024_lsa/index.xml" type="application/rss+xml" title="FLH Website" />
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu_8d92228bfbb2ace7.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_2b4ad1f159ffa531.png" />
+
+  <link rel="canonical" href="http://localhost:1313/post/2024_lsa/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@GetResearchDev" />
+    <meta property="twitter:creator" content="@GetResearchDev" />
+  
+  <meta property="og:site_name" content="FLH Website" />
+  <meta property="og:url" content="http://localhost:1313/post/2024_lsa/" />
+  <meta property="og:title" content="Selecting the proper weights in LSAs with multilevel models | FLH Website" />
+  <meta property="og:description" content="Francis Huang / projects / research." /><meta property="og:image" content="http://localhost:1313/media/icon_hu_258291280f5c9c98.png" />
+    <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_258291280f5c9c98.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="og:updated_time" content="2024-09-01T00:00:00&#43;00:00" />
+    
+  
+
+  
+
+
+
+
+  <title>Selecting the proper weights in LSAs with multilevel models | FLH Website</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let element = document.getElementById('search');
+    let trigger = document.getElementById('search_toggle');
+
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        element.classList.toggle('hidden');
+        element.querySelector("input").value = ""
+        element.querySelector("input").focus()
+
+        if (!element.classList.contains('hidden')) {
+          let clear_trigger = document.querySelector('.pagefind-ui__search-clear');
+
+          if (clear_trigger && !clear_trigger.hasAttribute('listenerOnClick')) {
+            clear_trigger.setAttribute('listenerOnClick', 'true');
+
+            clear_trigger.addEventListener('click', () => {
+              element.classList.toggle('hidden');
+            });
+          }
+        }
+
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.js"
+    integrity=""
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="FLH Website">
+        Francis L. Huang
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#talks"
+        >Talks</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#news"
+        >Posts</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/MLMusingR/"
+        >MLMusingR</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/projects/"
+        >Projects</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/teaching/"
+        >Teaching</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/service/"
+        >Service</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item nav-dropdown group relative">
+            <span
+              class="nav-link 
+                
+                
+                
+              
+                
+                
+                
+               inline-flex items-center">
+              Research
+              <svg class="h-4 w-4 fill-current inline-block" viewBox="0 0 20 20">
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </span>
+        <ul
+          class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/#papers">
+              Papers
+            </a>
+          </li>
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/r">
+              R Packages
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        id="search_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<div id="search" class="hidden p-3"></div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+<div class="max-w-prose mx-auto flex justify-center">
+  <article class="prose prose-slate lg:prose-xl dark:prose-invert">
+    <h1 class="lg:text-6xl">Selecting the proper weights in LSAs with multilevel models</h1>
+    <h1 id="which-weights-to-use-with-multilevel-models">Which weights to use with multilevel models?</h1>
+<p>A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.</p>
+<p>Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).</p>
+<p>To illustrate this using R (with the <code>mixPV</code> function):</p>
+<h2 id="1-load-in-the-needed-functions-and-data">1. Load in the needed functions and data</h2>
+<p>First, load in the <code>mixPV</code> function. Load in the <code>pisa2012</code> dataset as well.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">modelsummary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">source</span><span class="p">(</span><span class="s">&#34;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">pisa2012</span><span class="p">,</span> <span class="n">package</span> <span class="o">=</span> <span class="s">&#39;MLMusingR&#39;</span><span class="p">)</span> 
+</span></span></code></pre></div><p>By default, the <code>WeMix</code> package uses conditional weights = FALSE or <code>cWeights = FALSE</code> (no need to specify). This makes it easier so users don&rsquo;t have to compute the conditional weights (conditional on the school being selected) and can just use the total weight supplied in many datasets. You have to make sure which type of weight you are using. NOTE: the <code>mc = TRUE</code> option is used to shorten computing time (turning on the use of multiple cores). The following just uses the raw weights at both levels:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1a</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;w_fstuwt&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><p>However, if you use software such as Mplus or SAS, you need to specify the conditional weights. To compute the conditional weights (if you are specifying weights at both levels), it is the total weight divided by the school weight.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pisa2012</span><span class="o">$</span><span class="n">cweight</span> <span class="o">&lt;-</span> <span class="n">pisa2012</span><span class="o">$</span><span class="n">w_fstuwt</span> <span class="o">/</span> <span class="n">pisa2012</span><span class="o">$</span><span class="n">w_fschwt</span>
+</span></span></code></pre></div><p>We can then use this when we fit the model and we include <code>cWeights = TRUE</code>. We can compare the output in a while.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1b</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><p>I will include the example if we just use the conditional weight (as you would with other software packages) but DO NOT turn on the <code>cWeights</code> option.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1c</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="c1">#cWeight = TRUE,  ## for illustrative purposes only</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><p>We can compare results side-by-side.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">modelsummary</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="s">&#34;default&#34;</span> <span class="o">=</span> <span class="n">m1a</span><span class="p">,</span> <span class="s">&#34;cweights&#34;</span> <span class="o">=</span> <span class="n">m1b</span><span class="p">,</span> <span class="s">&#34;wrong&#34;</span> <span class="o">=</span> <span class="n">m1c</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">stars</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">gof_map</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="s">&#39;gt&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><!--html_preserve--><div id="fjhjfswqvu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fjhjfswqvu table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fjhjfswqvu thead, #fjhjfswqvu tbody, #fjhjfswqvu tfoot, #fjhjfswqvu tr, #fjhjfswqvu td, #fjhjfswqvu th {
+  border-style: none;
+}
+
+#fjhjfswqvu p {
+  margin: 0;
+  padding: 0;
+}
+
+#fjhjfswqvu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fjhjfswqvu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fjhjfswqvu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fjhjfswqvu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fjhjfswqvu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fjhjfswqvu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fjhjfswqvu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fjhjfswqvu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fjhjfswqvu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fjhjfswqvu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fjhjfswqvu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fjhjfswqvu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fjhjfswqvu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fjhjfswqvu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_left {
+  text-align: left;
+}
+
+#fjhjfswqvu .gt_center {
+  text-align: center;
+}
+
+#fjhjfswqvu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fjhjfswqvu .gt_font_normal {
+  font-weight: normal;
+}
+
+#fjhjfswqvu .gt_font_bold {
+  font-weight: bold;
+}
+
+#fjhjfswqvu .gt_font_italic {
+  font-style: italic;
+}
+
+#fjhjfswqvu .gt_super {
+  font-size: 65%;
+}
+
+#fjhjfswqvu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fjhjfswqvu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fjhjfswqvu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fjhjfswqvu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fjhjfswqvu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fjhjfswqvu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fjhjfswqvu .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fjhjfswqvu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fjhjfswqvu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="default">default</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="cweights">cweights</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="wrong">wrong</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers=" " class="gt_row gt_left">(Intercept)</td>
+<td headers="default" class="gt_row gt_center">470.498***</td>
+<td headers="cweights" class="gt_row gt_center">470.498***</td>
+<td headers="wrong" class="gt_row gt_center">479.535***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(7.103)</td>
+<td headers="cweights" class="gt_row gt_center">(7.103)</td>
+<td headers="wrong" class="gt_row gt_center">(4.876)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02Very little</td>
+<td headers="default" class="gt_row gt_center">-20.910</td>
+<td headers="cweights" class="gt_row gt_center">-20.910</td>
+<td headers="wrong" class="gt_row gt_center">-8.561</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(15.710)</td>
+<td headers="cweights" class="gt_row gt_center">(15.710)</td>
+<td headers="wrong" class="gt_row gt_center">(6.421)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02To some extent</td>
+<td headers="default" class="gt_row gt_center">-16.131</td>
+<td headers="cweights" class="gt_row gt_center">-16.131</td>
+<td headers="wrong" class="gt_row gt_center">-27.209**</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(11.823)</td>
+<td headers="cweights" class="gt_row gt_center">(11.823)</td>
+<td headers="wrong" class="gt_row gt_center">(8.611)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02A lot</td>
+<td headers="default" class="gt_row gt_center">-25.224**</td>
+<td headers="cweights" class="gt_row gt_center">-25.224**</td>
+<td headers="wrong" class="gt_row gt_center">-23.765***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(7.614)</td>
+<td headers="cweights" class="gt_row gt_center">(7.614)</td>
+<td headers="wrong" class="gt_row gt_center">(6.635)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">st04q01Male</td>
+<td headers="default" class="gt_row gt_center">9.529**</td>
+<td headers="cweights" class="gt_row gt_center">9.529**</td>
+<td headers="wrong" class="gt_row gt_center">10.784**</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(3.097)</td>
+<td headers="cweights" class="gt_row gt_center">(3.097)</td>
+<td headers="wrong" class="gt_row gt_center">(4.163)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">escs</td>
+<td headers="default" class="gt_row gt_center">26.300***</td>
+<td headers="cweights" class="gt_row gt_center">26.300***</td>
+<td headers="wrong" class="gt_row gt_center">35.847***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(2.210)</td>
+<td headers="cweights" class="gt_row gt_center">(2.210)</td>
+<td headers="wrong" class="gt_row gt_center">(2.158)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">schoolid.(Intercept)</td>
+<td headers="default" class="gt_row gt_center">1344.166***</td>
+<td headers="cweights" class="gt_row gt_center">1344.166***</td>
+<td headers="wrong" class="gt_row gt_center">0.000</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(300.241)</td>
+<td headers="cweights" class="gt_row gt_center">(300.241)</td>
+<td headers="wrong" class="gt_row gt_center">(0.000)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Residual</td>
+<td headers="default" class="gt_row gt_center">5418.299***</td>
+<td headers="cweights" class="gt_row gt_center">5418.299***</td>
+<td headers="wrong" class="gt_row gt_center">6701.321***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(160.102)</td>
+<td headers="cweights" class="gt_row gt_center">(160.102)</td>
+<td headers="wrong" class="gt_row gt_center">(210.501)</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+    </tr>
+  </tfoot>
+</table>
+</div><!--/html_preserve-->
+<p>The first two models have identical results. The third model (which is incorrectly specified) results differ and the level-2 variance here is zero.</p>
+<h2 id="2-what-about-scaling-level-1-weights">2. What about scaling level-1 weights?</h2>
+<p>Asparouhov (2005) suggested scaling the weights at level 1. The following formulas (and explanations) can be seen at the Mplus website at <a href="https://statmodel.com/download/Scaling3.pdf" target="_blank" rel="noopener">https://statmodel.com/download/Scaling3.pdf</a>.</p>
+<p>The unscaled weight is $w^*_{ij}=w_{ij}$.</p>
+<p>What Mplus calls the cluster weight has scaled weights that add up to the cluster sample size. Carle (2009) refers to this as Method A. It is computed using:</p>
+<p>$w^*_{ij}=w_{ij}\frac{n_j}{\Sigma_i w_{ij}}$</p>
+<p>Here, $n_j$ is the number of sample units in cluster $j$. This is the default scaling method in Mplus and has generally been shown to perform well (see Asparouhov, 2006).</p>
+<p>Another scaling approach is referred to as the ecluster method which is the effective cluster sample size method. This is referred to as Method B by Carle (2009) (though the formula in his appendix seems to differ slightly):</p>
+<p>This is similar to the cluster method except that the numerator is $n^*_j$ instead and is:</p>
+<p>$w^*_{ij}=w_{ij}\frac{n^*_j}{\Sigma_i w_{ij}}$.</p>
+<p>The numerator is computed using:</p>
+<p>$n^*_{j}=\frac{(\Sigma_i w_{ij})^2}{\Sigma_i w^2_{ij}}$.</p>
+<p>To compute the scaled weights, we can use the <code>wscale</code> function (note the options). The cluster variable, dataset, conditional cluster weight,
+and type of scaling need to be specified:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pisa2012</span><span class="o">$</span><span class="n">cl_weight</span> <span class="o">&lt;-</span> <span class="nf">wscale</span><span class="p">(</span><span class="n">cluster</span> <span class="o">=</span> <span class="s">&#39;schoolid&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                             <span class="n">wt</span> <span class="o">=</span> <span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#39;cluster&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pisa2012</span><span class="o">$</span><span class="n">es_weight</span> <span class="o">&lt;-</span> <span class="nf">wscale</span><span class="p">(</span><span class="n">cluster</span> <span class="o">=</span> <span class="s">&#39;schoolid&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                             <span class="n">wt</span> <span class="o">=</span> <span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#39;ecluster&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>After I wrote the function above, I found a function that does the scaling. The results are the same:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">xx &lt;- datawizard::rescale_weights(pisa2012, &#34;schoolid&#34;, &#34;w_fstuwt&#34;)
+</span></span></code></pre></div><p>We can compare results to those of Mplus. This is using cluster weights:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ex</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">              <span class="m">1</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cl_weight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Results of multilevel analyses with 5 plausible values.
+</span></span><span class="line"><span class="cl">Number of observations: 3136 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for random effects: 
+</span></span><span class="line"><span class="cl">                     estimate std.error statistic     df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">schoolid.(Intercept)  1825.03    436.26      4.18 2719.0 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">Residual              5726.58    233.29     24.55   90.6 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for fixed effects: 
+</span></span><span class="line"><span class="cl">            estimate std.error statistic   df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">(Intercept)   473.39      7.03     67.33 1777 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span></code></pre></div><p>Comparing to Mplus output shows similar results (SEs might differ slightly):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                Estimate       S.E.  Est./S.E.    P-Value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Within Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            5726.580    234.000     24.473      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Between Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Means
+</span></span><span class="line"><span class="cl">MATH             473.390      7.387     64.088      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            1825.021    464.365      3.930      0.000
+</span></span></code></pre></div><p>This is using the ecluster option:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ex2</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="m">1</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;es_weight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">ex2</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Results of multilevel analyses with 5 plausible values.
+</span></span><span class="line"><span class="cl">Number of observations: 3136 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for random effects: 
+</span></span><span class="line"><span class="cl">                     estimate std.error statistic     df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">schoolid.(Intercept)  1821.40    434.62      4.19 2714.0 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">Residual              5727.56    233.36     24.54   90.2 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for fixed effects: 
+</span></span><span class="line"><span class="cl">            estimate std.error statistic   df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">(Intercept)   473.40      7.02     67.39 1776 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                Estimate       S.E.  Est./S.E.    P-Value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Within Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            5727.560    234.056     24.471      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Between Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Means
+</span></span><span class="line"><span class="cl">MATH             473.403      7.379     64.156      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            1821.389    462.665      3.937      0.000
+</span></span></code></pre></div><p>This is unscaled:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ex3</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="m">1</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">ex3</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Results of multilevel analyses with 5 plausible values.
+</span></span><span class="line"><span class="cl">Number of observations: 3136 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for random effects: 
+</span></span><span class="line"><span class="cl">                     estimate std.error statistic   df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">schoolid.(Intercept)  2126.22    503.39      4.22 3099 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">Residual              5895.85    175.05     33.68  876 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for fixed effects: 
+</span></span><span class="line"><span class="cl">            estimate std.error statistic   df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">(Intercept)   472.35      7.33     64.44 1470 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                 Estimate       S.E.  Est./S.E.    P-Value
+</span></span><span class="line"><span class="cl">Within Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            5895.849    174.758     33.737      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Between Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Means
+</span></span><span class="line"><span class="cl">MATH             472.349      7.750     60.950      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            2126.477    535.991      3.967      0.000
+</span></span></code></pre></div><p>Results differ based on the scaling option and results are all similar to those generated by Mplus.</p>
+<h2 id="3-what-about-just-using-level-2-weights">3. What about just using level-2 weights?</h2>
+<p>A simpler option may just be to use level-2 weights (as suggested by Mang et al., 2021 as well as our own simulation results [under review]). To do so, when using R, we need to need to set the weight at level 1 to 1 <em>and</em> use conditional weights.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pisa2012</span><span class="o">$</span><span class="n">one</span> <span class="o">&lt;-</span> <span class="m">1</span> <span class="c1">#level-1 weight</span>
+</span></span><span class="line"><span class="cl"><span class="n">m1d</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;one&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><p>For comparison, I will show results also using the scaled weights:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1e</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cl_weight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1f</span><span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">              <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;es_weight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">modelsummary</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="s">&#34;l2only&#34;</span> <span class="o">=</span> <span class="n">m1d</span><span class="p">,</span> <span class="s">&#39;cluster&#39;</span> <span class="o">=</span> <span class="n">m1e</span><span class="p">,</span> <span class="s">&#34;ecluster&#34;</span> <span class="o">=</span> <span class="n">m1f</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">stars</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">gof_map</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="s">&#39;gt&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><!--html_preserve--><div id="pjojxhhbnr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pjojxhhbnr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pjojxhhbnr thead, #pjojxhhbnr tbody, #pjojxhhbnr tfoot, #pjojxhhbnr tr, #pjojxhhbnr td, #pjojxhhbnr th {
+  border-style: none;
+}
+
+#pjojxhhbnr p {
+  margin: 0;
+  padding: 0;
+}
+
+#pjojxhhbnr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pjojxhhbnr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pjojxhhbnr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pjojxhhbnr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pjojxhhbnr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pjojxhhbnr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pjojxhhbnr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pjojxhhbnr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pjojxhhbnr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pjojxhhbnr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pjojxhhbnr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pjojxhhbnr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pjojxhhbnr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pjojxhhbnr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_left {
+  text-align: left;
+}
+
+#pjojxhhbnr .gt_center {
+  text-align: center;
+}
+
+#pjojxhhbnr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pjojxhhbnr .gt_font_normal {
+  font-weight: normal;
+}
+
+#pjojxhhbnr .gt_font_bold {
+  font-weight: bold;
+}
+
+#pjojxhhbnr .gt_font_italic {
+  font-style: italic;
+}
+
+#pjojxhhbnr .gt_super {
+  font-size: 65%;
+}
+
+#pjojxhhbnr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pjojxhhbnr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pjojxhhbnr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pjojxhhbnr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pjojxhhbnr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pjojxhhbnr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pjojxhhbnr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pjojxhhbnr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pjojxhhbnr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="l2only">l2only</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="cluster">cluster</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="ecluster">ecluster</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers=" " class="gt_row gt_left">(Intercept)</td>
+<td headers="l2only" class="gt_row gt_center">469.276***</td>
+<td headers="cluster" class="gt_row gt_center">469.241***</td>
+<td headers="ecluster" class="gt_row gt_center">469.233***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(7.049)</td>
+<td headers="cluster" class="gt_row gt_center">(7.088)</td>
+<td headers="ecluster" class="gt_row gt_center">(7.082)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02Very little</td>
+<td headers="l2only" class="gt_row gt_center">-18.928</td>
+<td headers="cluster" class="gt_row gt_center">-18.795</td>
+<td headers="ecluster" class="gt_row gt_center">-18.800</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(13.537)</td>
+<td headers="cluster" class="gt_row gt_center">(13.624)</td>
+<td headers="ecluster" class="gt_row gt_center">(13.614)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02To some extent</td>
+<td headers="l2only" class="gt_row gt_center">-14.990</td>
+<td headers="cluster" class="gt_row gt_center">-15.337</td>
+<td headers="ecluster" class="gt_row gt_center">-15.339</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(11.902)</td>
+<td headers="cluster" class="gt_row gt_center">(12.117)</td>
+<td headers="ecluster" class="gt_row gt_center">(12.111)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02A lot</td>
+<td headers="l2only" class="gt_row gt_center">-23.536**</td>
+<td headers="cluster" class="gt_row gt_center">-23.265**</td>
+<td headers="ecluster" class="gt_row gt_center">-23.273**</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(7.952)</td>
+<td headers="cluster" class="gt_row gt_center">(8.088)</td>
+<td headers="ecluster" class="gt_row gt_center">(8.083)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">st04q01Male</td>
+<td headers="l2only" class="gt_row gt_center">12.296**</td>
+<td headers="cluster" class="gt_row gt_center">12.051**</td>
+<td headers="ecluster" class="gt_row gt_center">12.084**</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(4.320)</td>
+<td headers="cluster" class="gt_row gt_center">(4.345)</td>
+<td headers="ecluster" class="gt_row gt_center">(4.349)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">escs</td>
+<td headers="l2only" class="gt_row gt_center">29.086***</td>
+<td headers="cluster" class="gt_row gt_center">29.045***</td>
+<td headers="ecluster" class="gt_row gt_center">29.049***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(2.698)</td>
+<td headers="cluster" class="gt_row gt_center">(2.685)</td>
+<td headers="ecluster" class="gt_row gt_center">(2.688)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">schoolid.(Intercept)</td>
+<td headers="l2only" class="gt_row gt_center">1054.672***</td>
+<td headers="cluster" class="gt_row gt_center">1069.977***</td>
+<td headers="ecluster" class="gt_row gt_center">1067.115***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(258.981)</td>
+<td headers="cluster" class="gt_row gt_center">(260.180)</td>
+<td headers="ecluster" class="gt_row gt_center">(259.201)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Residual</td>
+<td headers="l2only" class="gt_row gt_center">5223.750***</td>
+<td headers="cluster" class="gt_row gt_center">5219.380***</td>
+<td headers="ecluster" class="gt_row gt_center">5220.383***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(206.297)</td>
+<td headers="cluster" class="gt_row gt_center">(204.390)</td>
+<td headers="ecluster" class="gt_row gt_center">(204.518)</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+    </tr>
+  </tfoot>
+</table>
+</div><!--/html_preserve-->
+<p>Results are very similar.</p>
+<p>A reason for this is that the level-1 scaled weights are all very close to 1 (or even equal to 1). If there is no variation within cluster, the weights will be 1.</p>
+<p>If we examine the original conditional weights, there is quite some variability:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">range</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">cweight</span><span class="p">)</span> <span class="c1">#the original conditional weight</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1]  1.23 37.02
+</span></span></code></pre></div><p>However, compared to the scaled weights, they are all very close to 1. Which is why the results shown above are all very similar.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">range</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">es_weight</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 0.764 1.333
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">range</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">cl_weight</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 0.782 1.356
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">mean</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">es_weight</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 0.996
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">mean</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">cl_weight</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 1
+</span></span></code></pre></div><p><em>Takeaway</em>: when running multilevel models with weights at different levels, make sure you are specifying the correct weights. If the residual variance at the second level is close to zero, you should probably revisit your syntax.</p>
+<h3 id="references">References</h3>
+<p>Asparouhov, T. (2006). General Multi-Level Modeling with Sampling Weights Communications in Statistics - Theory and Methods, 35: 439-460.</p>
+<p>Carle, A. (2009). Fitting multilevel models in complex survey data with design weights: Recommendations BMC Medical Research Methodology, 9(49): 1-13.</p>
+<p>Mang, J., Kuchenhoff, H., Meinck, S., &amp; Prenzel, M. (2021). Sampling weights in multilevel modelling: An investigation using PISA sampling structures. Large-Scale Assessments in Education, 9(1), 6. <a href="https://doi.org/10.1186/s40536-021-00099-0" target="_blank" rel="noopener">https://doi.org/10.1186/s40536-021-00099-0</a></p>
+<p>END</p>
+
+  </article>
+</div>
+
+
+
+
+<div class="flex flex-col items-center">
+
+  <div class="container max-w-[65ch] mx-auto bg-white dark:bg-zinc-900 rounded-xl border-gray-100 dark:border-gray-700 border shadow-md overflow-hidden my-5">
+
+
+  
+  
+
+  </div>
+
+
+  
+
+
+</div>
+
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Grumblesquasher. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-sa fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -7,691 +7,1288 @@
     <description>Weights</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
       <title>Weights</title>
       <link>http://localhost:1313/tags/weights/</link>
     </image>
     
     <item>
       <title>Selecting the proper weights in LSAs with multilevel models</title>
-      <link>http://localhost:1313/post/lsawt/</link>
+      <link>http://localhost:1313/post/2024_lsa/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/lsawt/</guid>
-      <description>&lt;div id=&#34;which-weights-to-use-with-multilevel-models&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Which weights to use with multilevel models?&lt;/h1&gt;
+      <guid>http://localhost:1313/post/2024_lsa/</guid>
+      <description>&lt;h1 id=&#34;which-weights-to-use-with-multilevel-models&#34;&gt;Which weights to use with multilevel models?&lt;/h1&gt;
 &lt;p&gt;A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.&lt;/p&gt;
 &lt;p&gt;Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).&lt;/p&gt;
 &lt;p&gt;To illustrate this using R (with the &lt;code&gt;mixPV&lt;/code&gt; function):&lt;/p&gt;
-&lt;div id=&#34;load-in-the-needed-functions-and-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. Load in the needed functions and data&lt;/h2&gt;
+&lt;h2 id=&#34;1-load-in-the-needed-functions-and-data&#34;&gt;1. Load in the needed functions and data&lt;/h2&gt;
 &lt;p&gt;First, load in the &lt;code&gt;mixPV&lt;/code&gt; function. Load in the &lt;code&gt;pisa2012&lt;/code&gt; dataset as well.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(modelsummary)
-source(&amp;quot;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&amp;quot;)
-data(pisa2012, package = &amp;#39;MLMusingR&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;By default, the &lt;code&gt;WeMix&lt;/code&gt; package uses conditional weights = FALSE or &lt;code&gt;cWeights = FALSE&lt;/code&gt; (no need to specify). This makes it easier so users don’t have to compute the conditional weights (conditional on the school being selected) and can just use the total weight supplied in many datasets. You have to make sure which type of weight you are using. NOTE: the &lt;code&gt;mc = TRUE&lt;/code&gt; option is used to shorten computing time (turning on the use of multiple cores). The following just uses the raw weights at both levels:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1a &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&amp;#39;w_fstuwt&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
-             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;However, if you use software such as Mplus or SAS, you need to specify the conditional weights. To compute the conditional weights (if you are specifying weights at both levels), it is the total weight divided by the school weight.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pisa2012$cweight &amp;lt;- pisa2012$w_fstuwt / pisa2012$w_fschwt&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can then use this when we fit the model and we include &lt;code&gt;cWeights = TRUE&lt;/code&gt;. We can compare the output in a while.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1b &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&amp;#39;cweight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
-             cWeight = TRUE,
-             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I will include the example if we just use the conditional weight (as you would with other software packages) but DO NOT turn on the &lt;code&gt;cWeights&lt;/code&gt; option.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1c &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&amp;#39;cweight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
-             #cWeight = TRUE,  ## for illustrative purposes only
-             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can compare results side-by-side.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;modelsummary(list(&amp;quot;default&amp;quot; = m1a, &amp;quot;cweights&amp;quot; = m1b, &amp;quot;wrong&amp;quot; = m1c),
-  stars = TRUE, gof_map = NA)&lt;/code&gt;&lt;/pre&gt;
-&lt;!-- preamble start --&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
-  function styleCell_tpg3fmfzg2xr99z92e2s(i, j, css_id) {
-    var table = document.getElementById(&amp;quot;tinytable_tpg3fmfzg2xr99z92e2s&amp;quot;);
-    table.rows[i].cells[j].classList.add(css_id);
-  }
-  function insertSpanRow(i, colspan, content) {
-    var table = document.getElementById(&#39;tinytable_tpg3fmfzg2xr99z92e2s&#39;);
-    var newRow = table.insertRow(i);
-    var newCell = newRow.insertCell(0);
-    newCell.setAttribute(&amp;quot;colspan&amp;quot;, colspan);
-    // newCell.innerText = content;
-    // this may be unsafe, but innerText does not interpret &amp;lt;br&amp;gt;
-    newCell.innerHTML = content;
-  }
-  function spanCell_tpg3fmfzg2xr99z92e2s(i, j, rowspan, colspan) {
-    var table = document.getElementById(&amp;quot;tinytable_tpg3fmfzg2xr99z92e2s&amp;quot;);
-    const targetRow = table.rows[i];
-    const targetCell = targetRow.cells[j];
-    for (let r = 0; r &amp;lt; rowspan; r++) {
-      // Only start deleting cells to the right for the first row (r == 0)
-      if (r === 0) {
-        // Delete cells to the right of the target cell in the first row
-        for (let c = colspan - 1; c &amp;gt; 0; c--) {
-          if (table.rows[i + r].cells[j + c]) {
-            table.rows[i + r].deleteCell(j + c);
-          }
-        }
-      }
-      // For rows below the first, delete starting from the target column
-      if (r &amp;gt; 0) {
-        for (let c = colspan - 1; c &amp;gt;= 0; c--) {
-          if (table.rows[i + r] &amp;amp;&amp;amp; table.rows[i + r].cells[j]) {
-            table.rows[i + r].deleteCell(j);
-          }
-        }
-      }
-    }
-    // Set rowspan and colspan of the target cell
-    targetCell.rowSpan = rowspan;
-    targetCell.colSpan = colspan;
-  }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 0, &amp;rsquo;tinytable_css_id33r6av160gggqyj4uftq&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 1, &amp;rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 2, &amp;rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 3, &amp;rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 1, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 2, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 3, &amp;rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 0, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 1, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 2, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 3, &amp;rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&amp;rsquo;) })
-&lt;/script&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
-.table td.tinytable_css_id33r6av160gggqyj4uftq, .table th.tinytable_css_id33r6av160gggqyj4uftq {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_idu07fh71s8b54pdrm00pi, .table th.tinytable_css_idu07fh71s8b54pdrm00pi {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_idxuo2fqnerpnyvos1l2je, .table th.tinytable_css_idxuo2fqnerpnyvos1l2je {  text-align: left; }
-.table td.tinytable_css_ide4slf7iwqvreor6a5l79, .table th.tinytable_css_ide4slf7iwqvreor6a5l79 {  text-align: center; }
-&amp;lt;/style&amp;gt;
-&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
-  &amp;lt;table class=&amp;quot;table table-borderless&amp;quot; id=&amp;quot;tinytable_tpg3fmfzg2xr99z92e2s&amp;quot; style=&amp;quot;width: auto; margin-left: auto; margin-right: auto;&amp;quot; data-quarto-disable-processing=&#39;true&#39;&amp;gt;
-    &amp;lt;thead&amp;gt;
-    
-          &amp;lt;tr&amp;gt;
-            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt; &amp;lt;/th&amp;gt;
-            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;default&amp;lt;/th&amp;gt;
-            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;cweights&amp;lt;/th&amp;gt;
-            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;wrong&amp;lt;/th&amp;gt;
-          &amp;lt;/tr&amp;gt;
-    &amp;lt;/thead&amp;gt;
-    &amp;lt;tfoot&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=&#39;4&#39;&amp;gt;+ p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/tfoot&amp;gt;
-    &amp;lt;tbody&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;(Intercept)          &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;470.498*** &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;470.498*** &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;479.535*** &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(7.103)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(7.103)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(4.876)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;sc14q02Very little   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-20.910    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-20.910    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-8.561     &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(15.710)   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(15.710)   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(6.421)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;sc14q02To some extent&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-16.131    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-16.131    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-27.209**  &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(11.823)   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(11.823)   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(8.611)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;sc14q02A lot         &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-25.224**  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-25.224**  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-23.765*** &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(7.614)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(7.614)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(6.635)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;st04q01Male          &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;9.529**    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;9.529**    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;10.784**   &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(3.097)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(3.097)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(4.163)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;escs                 &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;26.300***  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;26.300***  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;35.847***  &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(2.210)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(2.210)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(2.158)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;schoolid.(Intercept) &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;1344.166***&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;1344.166***&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;0.000      &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(300.241)  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(300.241)  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(0.000)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;Residual             &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;5418.299***&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;5418.299***&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;6701.321***&amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(160.102)  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(160.102)  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(210.501)  &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-    &amp;lt;/tbody&amp;gt;
-  &amp;lt;/table&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;!-- hack to avoid NA insertion in last line --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;modelsummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;MLMusingR&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By default, the &lt;code&gt;WeMix&lt;/code&gt; package uses conditional weights = FALSE or &lt;code&gt;cWeights = FALSE&lt;/code&gt; (no need to specify). This makes it easier so users don&amp;rsquo;t have to compute the conditional weights (conditional on the school being selected) and can just use the total weight supplied in many datasets. You have to make sure which type of weight you are using. NOTE: the &lt;code&gt;mc = TRUE&lt;/code&gt; option is used to shorten computing time (turning on the use of multiple cores). The following just uses the raw weights at both levels:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;n&#34;&gt;sc14q02&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;st04q01&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;escs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;w_fstuwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, if you use software such as Mplus or SAS, you need to specify the conditional weights. To compute the conditional weights (if you are specifying weights at both levels), it is the total weight divided by the school weight.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cweight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w_fstuwt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w_fschwt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can then use this when we fit the model and we include &lt;code&gt;cWeights = TRUE&lt;/code&gt;. We can compare the output in a while.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;n&#34;&gt;sc14q02&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;st04q01&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;escs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;cweight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;cWeight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I will include the example if we just use the conditional weight (as you would with other software packages) but DO NOT turn on the &lt;code&gt;cWeights&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;n&#34;&gt;sc14q02&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;st04q01&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;escs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;cweight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;c1&#34;&gt;#cWeight = TRUE,  ## for illustrative purposes only&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can compare results side-by-side.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;modelsummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;cweights&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;wrong&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;stars&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gof_map&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;NA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;gt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!--html_preserve--&gt;&lt;div id=&#34;fjhjfswqvu&#34; style=&#34;padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;
+&lt;style&gt;#fjhjfswqvu table {
+  font-family: system-ui, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif, &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;, &#39;Noto Color Emoji&#39;;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fjhjfswqvu thead, #fjhjfswqvu tbody, #fjhjfswqvu tfoot, #fjhjfswqvu tr, #fjhjfswqvu td, #fjhjfswqvu th {
+  border-style: none;
+}
+
+#fjhjfswqvu p {
+  margin: 0;
+  padding: 0;
+}
+
+#fjhjfswqvu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fjhjfswqvu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fjhjfswqvu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fjhjfswqvu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fjhjfswqvu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fjhjfswqvu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fjhjfswqvu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fjhjfswqvu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fjhjfswqvu .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#fjhjfswqvu .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#fjhjfswqvu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fjhjfswqvu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fjhjfswqvu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fjhjfswqvu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_left {
+  text-align: left;
+}
+
+#fjhjfswqvu .gt_center {
+  text-align: center;
+}
+
+#fjhjfswqvu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fjhjfswqvu .gt_font_normal {
+  font-weight: normal;
+}
+
+#fjhjfswqvu .gt_font_bold {
+  font-weight: bold;
+}
+
+#fjhjfswqvu .gt_font_italic {
+  font-style: italic;
+}
+
+#fjhjfswqvu .gt_super {
+  font-size: 65%;
+}
+
+#fjhjfswqvu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fjhjfswqvu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fjhjfswqvu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fjhjfswqvu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fjhjfswqvu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fjhjfswqvu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fjhjfswqvu .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fjhjfswqvu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fjhjfswqvu div.Reactable &gt; div.rt-table &gt; div.rt-thead &gt; div.rt-tr.rt-tr-group-header &gt; div.rt-th-group:after {
+  height: 0px !important;
+}
+&lt;/style&gt;
+&lt;table class=&#34;gt_table&#34; data-quarto-disable-processing=&#34;false&#34; data-quarto-bootstrap=&#34;false&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr class=&#34;gt_col_headings&#34;&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34; scope=&#34;col&#34; id=&#34; &#34;&gt; &lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34; scope=&#34;col&#34; id=&#34;default&#34;&gt;default&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34; scope=&#34;col&#34; id=&#34;cweights&#34;&gt;cweights&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34; scope=&#34;col&#34; id=&#34;wrong&#34;&gt;wrong&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;(Intercept)&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;470.498***&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;470.498***&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;479.535***&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;(7.103)&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;(7.103)&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;(4.876)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;sc14q02Very little&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;-20.910&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;-20.910&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;-8.561&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;(15.710)&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;(15.710)&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;(6.421)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;sc14q02To some extent&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;-16.131&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;-16.131&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;-27.209**&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;(11.823)&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;(11.823)&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;(8.611)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;sc14q02A lot&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;-25.224**&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;-25.224**&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;-23.765***&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;(7.614)&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;(7.614)&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;(6.635)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;st04q01Male&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;9.529**&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;9.529**&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;10.784**&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;(3.097)&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;(3.097)&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;(4.163)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;escs&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;26.300***&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;26.300***&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;35.847***&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;(2.210)&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;(2.210)&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;(2.158)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;schoolid.(Intercept)&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;1344.166***&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;1344.166***&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;0.000&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;(300.241)&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;(300.241)&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;(0.000)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;Residual&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;5418.299***&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;5418.299***&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;6701.321***&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;default&#34; class=&#34;gt_row gt_center&#34;&gt;(160.102)&lt;/td&gt;
+&lt;td headers=&#34;cweights&#34; class=&#34;gt_row gt_center&#34;&gt;(160.102)&lt;/td&gt;
+&lt;td headers=&#34;wrong&#34; class=&#34;gt_row gt_center&#34;&gt;(210.501)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot class=&#34;gt_sourcenotes&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_sourcenote&#34; colspan=&#34;4&#34;&gt;+ p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;/div&gt;&lt;!--/html_preserve--&gt;
 &lt;p&gt;The first two models have identical results. The third model (which is incorrectly specified) results differ and the level-2 variance here is zero.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-about-scaling-level-1-weights&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. What about scaling level-1 weights?&lt;/h2&gt;
-&lt;p&gt;Asparouhov (2005) suggested scaling the weights at level 1. The following formulas (and explanations) can be seen at the Mplus website at &lt;a href=&#34;https://statmodel.com/download/Scaling3.pdf&#34; class=&#34;uri&#34;&gt;https://statmodel.com/download/Scaling3.pdf&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The unscaled weight is &lt;span class=&#34;math inline&#34;&gt;\(w^*_{ij}=w_{ij}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;2-what-about-scaling-level-1-weights&#34;&gt;2. What about scaling level-1 weights?&lt;/h2&gt;
+&lt;p&gt;Asparouhov (2005) suggested scaling the weights at level 1. The following formulas (and explanations) can be seen at the Mplus website at &lt;a href=&#34;https://statmodel.com/download/Scaling3.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://statmodel.com/download/Scaling3.pdf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The unscaled weight is $w^*_{ij}=w_{ij}$.&lt;/p&gt;
 &lt;p&gt;What Mplus calls the cluster weight has scaled weights that add up to the cluster sample size. Carle (2009) refers to this as Method A. It is computed using:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(w^*_{ij}=w_{ij}\frac{n_j}{\Sigma_i w_{ij}}\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Here, &lt;span class=&#34;math inline&#34;&gt;\(n_j\)&lt;/span&gt; is the number of sample units in cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;. This is the default scaling method in Mplus and has generally been shown to perform well (see Asparouhov, 2006).&lt;/p&gt;
+&lt;p&gt;$w^*_{ij}=w_{ij}\frac{n_j}{\Sigma_i w_{ij}}$&lt;/p&gt;
+&lt;p&gt;Here, $n_j$ is the number of sample units in cluster $j$. This is the default scaling method in Mplus and has generally been shown to perform well (see Asparouhov, 2006).&lt;/p&gt;
 &lt;p&gt;Another scaling approach is referred to as the ecluster method which is the effective cluster sample size method. This is referred to as Method B by Carle (2009) (though the formula in his appendix seems to differ slightly):&lt;/p&gt;
-&lt;p&gt;This is similar to the cluster method except that the numerator is &lt;span class=&#34;math inline&#34;&gt;\(n^*_j\)&lt;/span&gt; instead and is:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(w^*_{ij}=w_{ij}\frac{n^*_j}{\Sigma_i w_{ij}}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;This is similar to the cluster method except that the numerator is $n^*_j$ instead and is:&lt;/p&gt;
+&lt;p&gt;$w^*_{ij}=w_{ij}\frac{n^*_j}{\Sigma_i w_{ij}}$.&lt;/p&gt;
 &lt;p&gt;The numerator is computed using:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n^*_{j}=\frac{(\Sigma_i w_{ij})^2}{\Sigma_i w^2_{ij}}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;$n^*_{j}=\frac{(\Sigma_i w_{ij})^2}{\Sigma_i w^2_{ij}}$.&lt;/p&gt;
 &lt;p&gt;To compute the scaled weights, we can use the &lt;code&gt;wscale&lt;/code&gt; function (note the options). The cluster variable, dataset, conditional cluster weight,
 and type of scaling need to be specified:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pisa2012$cl_weight &amp;lt;- wscale(cluster = &amp;#39;schoolid&amp;#39;, data = pisa2012, 
-                             wt = &amp;#39;cweight&amp;#39;, type = &amp;#39;cluster&amp;#39;)
-pisa2012$es_weight &amp;lt;- wscale(cluster = &amp;#39;schoolid&amp;#39;, data = pisa2012, 
-                             wt = &amp;#39;cweight&amp;#39;, type = &amp;#39;ecluster&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;After I wrote the function above, I found a function that does the scaling. The results are the same:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;xx &amp;lt;- datawizard::rescale_weights(pisa2012, &amp;quot;schoolid&amp;quot;, &amp;quot;w_fstuwt&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can compare results to those of Mplus. This is using cluster weights:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-              1 + (1|schoolid), 
-            weights = c(&amp;#39;cl_weight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
-            cWeight = TRUE,
-            data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ex)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Results of multilevel analyses with 5 plausible values.
-Number of observations: 3136 
-&lt;h2 id=&#34;residual--------------572658----23329-----2455---906-2e-16-&#34;&gt;Estimates for random effects:
-estimate std.error statistic     df Pr(&amp;gt;t) &lt;br&gt;
-schoolid.(Intercept)  1825.03    436.26      4.18 2719.0 &amp;lt;2e-16 ***
-Residual              5726.58    233.29     24.55   90.6 &amp;lt;2e-16 ***&lt;/h2&gt;
-&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/p&gt;
-&lt;h2 id=&#34;intercept---47339------703-----6733-1777-2e-16-&#34;&gt;Estimates for fixed effects:
-estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
-(Intercept)   473.39      7.03     67.33 1777 &amp;lt;2e-16 ***&lt;/h2&gt;
-&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;Comparing to Mplus output shows similar results (SEs might differ slightly):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;                Estimate       S.E.  Est./S.E.    P-Value
-&lt;p&gt;Within Level&lt;/p&gt;
-&lt;p&gt;Variances
-MATH            5726.580    234.000     24.473      0.000&lt;/p&gt;
-&lt;p&gt;Between Level&lt;/p&gt;
-&lt;p&gt;Means
-MATH             473.390      7.387     64.088      0.000&lt;/p&gt;
-&lt;p&gt;Variances
-MATH            1825.021    464.365      3.930      0.000&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;This is using the ecluster option:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex2 &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               1 + (1|schoolid), 
-             weights = c(&amp;#39;es_weight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
-             cWeight = TRUE,
-             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ex2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Results of multilevel analyses with 5 plausible values.
-Number of observations: 3136 
-&lt;h2 id=&#34;residual--------------572756----23336-----2454---902-2e-16-&#34;&gt;Estimates for random effects:
-estimate std.error statistic     df Pr(&amp;gt;t) &lt;br&gt;
-schoolid.(Intercept)  1821.40    434.62      4.19 2714.0 &amp;lt;2e-16 ***
-Residual              5727.56    233.36     24.54   90.2 &amp;lt;2e-16 ***&lt;/h2&gt;
-&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/p&gt;
-&lt;h2 id=&#34;intercept---47340------702-----6739-1776-2e-16-&#34;&gt;Estimates for fixed effects:
-estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
-(Intercept)   473.40      7.02     67.39 1776 &amp;lt;2e-16 ***&lt;/h2&gt;
-&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;                Estimate       S.E.  Est./S.E.    P-Value
-
-Within Level
-
-Variances
-MATH            5727.560    234.056     24.471      0.000
-
-Between Level
-
-Means
-MATH             473.403      7.379     64.156      0.000
-
-Variances
-MATH            1821.389    462.665      3.937      0.000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is unscaled:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ex3 &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               1 + (1|schoolid), 
-             weights = c(&amp;#39;cweight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
-             cWeight = TRUE,
-             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ex3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Results of multilevel analyses with 5 plausible values.
-Number of observations: 3136 
-&lt;h2 id=&#34;residual--------------589585----17505-----3368--876-2e-16-&#34;&gt;Estimates for random effects:
-estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
-schoolid.(Intercept)  2126.22    503.39      4.22 3099 &amp;lt;2e-16 ***
-Residual              5895.85    175.05     33.68  876 &amp;lt;2e-16 ***&lt;/h2&gt;
-&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/p&gt;
-&lt;h2 id=&#34;intercept---47235------733-----6444-1470-2e-16-&#34;&gt;Estimates for fixed effects:
-estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
-(Intercept)   472.35      7.33     64.44 1470 &amp;lt;2e-16 ***&lt;/h2&gt;
-&lt;p&gt;Signif. codes:  0 &#39;&lt;em&gt;&lt;strong&gt;&#39; 0.001 &#39;&lt;/strong&gt;&#39; 0.01 &#39;&lt;/em&gt;&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;                 Estimate       S.E.  Est./S.E.    P-Value
-Within Level
-
-Variances
-MATH            5895.849    174.758     33.737      0.000
-
-Between Level
-
-Means
-MATH             472.349      7.750     60.950      0.000
-
-Variances
-MATH            2126.477    535.991      3.967      0.000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Results differ based on the scaling option and results are all similar to those generated by Mplus.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-about-just-using-level-2-weights&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. What about just using level-2 weights?&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cl_weight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;wscale&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;schoolid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                             &lt;span class=&#34;n&#34;&gt;wt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;cweight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;es_weight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;wscale&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cluster&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;schoolid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                             &lt;span class=&#34;n&#34;&gt;wt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;cweight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;ecluster&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After I wrote the function above, I found a function that does the scaling. The results are the same:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xx &amp;lt;- datawizard::rescale_weights(pisa2012, &amp;#34;schoolid&amp;#34;, &amp;#34;w_fstuwt&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can compare results to those of Mplus. This is using cluster weights:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;cl_weight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;cWeight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Results of multilevel analyses with 5 plausible values.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Number of observations: 3136 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Estimates for random effects: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                     estimate std.error statistic     df Pr(&amp;gt;t)    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;schoolid.(Intercept)  1825.03    436.26      4.18 2719.0 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Residual              5726.58    233.29     24.55   90.6 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Estimates for fixed effects: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            estimate std.error statistic   df Pr(&amp;gt;t)    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(Intercept)   473.39      7.03     67.33 1777 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Comparing to Mplus output shows similar results (SEs might differ slightly):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                Estimate       S.E.  Est./S.E.    P-Value
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Within Level
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Variances
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH            5726.580    234.000     24.473      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Between Level
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Means
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH             473.390      7.387     64.088      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Variances
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH            1825.021    464.365      3.930      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is using the ecluster option:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ex2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;es_weight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;cWeight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ex2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Results of multilevel analyses with 5 plausible values.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Number of observations: 3136 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Estimates for random effects: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                     estimate std.error statistic     df Pr(&amp;gt;t)    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;schoolid.(Intercept)  1821.40    434.62      4.19 2714.0 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Residual              5727.56    233.36     24.54   90.2 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Estimates for fixed effects: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            estimate std.error statistic   df Pr(&amp;gt;t)    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(Intercept)   473.40      7.02     67.39 1776 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                Estimate       S.E.  Est./S.E.    P-Value
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Within Level
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Variances
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH            5727.560    234.056     24.471      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Between Level
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Means
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH             473.403      7.379     64.156      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Variances
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH            1821.389    462.665      3.937      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is unscaled:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ex3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;cweight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;cWeight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ex3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Results of multilevel analyses with 5 plausible values.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Number of observations: 3136 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Estimates for random effects: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                     estimate std.error statistic   df Pr(&amp;gt;t)    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;schoolid.(Intercept)  2126.22    503.39      4.22 3099 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Residual              5895.85    175.05     33.68  876 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Estimates for fixed effects: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            estimate std.error statistic   df Pr(&amp;gt;t)    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(Intercept)   472.35      7.33     64.44 1470 &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 Estimate       S.E.  Est./S.E.    P-Value
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Within Level
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Variances
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH            5895.849    174.758     33.737      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Between Level
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Means
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH             472.349      7.750     60.950      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Variances
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MATH            2126.477    535.991      3.967      0.000
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Results differ based on the scaling option and results are all similar to those generated by Mplus.&lt;/p&gt;
+&lt;h2 id=&#34;3-what-about-just-using-level-2-weights&#34;&gt;3. What about just using level-2 weights?&lt;/h2&gt;
 &lt;p&gt;A simpler option may just be to use level-2 weights (as suggested by Mang et al., 2021 as well as our own simulation results [under review]). To do so, when using R, we need to need to set the weight at level 1 to 1 &lt;em&gt;and&lt;/em&gt; use conditional weights.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pisa2012$one &amp;lt;- 1 #level-1 weight
-m1d &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&amp;#39;one&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = T,
-             cWeight = TRUE,
-             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For comparison, I will show results also using the scaled weights:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1e &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&amp;#39;cl_weight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
-             cWeight = TRUE,
-             data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1f&amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-              sc14q02 + st04q01 + escs + (1|schoolid), 
-            weights = c(&amp;#39;es_weight&amp;#39;, &amp;#39;w_fschwt&amp;#39;), mc = TRUE,
-            cWeight = TRUE,
-            data = pisa2012)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;modelsummary(list(&amp;quot;l2only&amp;quot; = m1d, &amp;#39;cluster&amp;#39; = m1e, &amp;quot;ecluster&amp;quot; = m1f), 
-             stars = TRUE, gof_map = NA)&lt;/code&gt;&lt;/pre&gt;
-&lt;!-- preamble start --&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;script&amp;gt;
-  function styleCell_fceikz071u4rc9r35hd0(i, j, css_id) {
-    var table = document.getElementById(&amp;quot;tinytable_fceikz071u4rc9r35hd0&amp;quot;);
-    table.rows[i].cells[j].classList.add(css_id);
-  }
-  function insertSpanRow(i, colspan, content) {
-    var table = document.getElementById(&#39;tinytable_fceikz071u4rc9r35hd0&#39;);
-    var newRow = table.insertRow(i);
-    var newCell = newRow.insertCell(0);
-    newCell.setAttribute(&amp;quot;colspan&amp;quot;, colspan);
-    // newCell.innerText = content;
-    // this may be unsafe, but innerText does not interpret &amp;lt;br&amp;gt;
-    newCell.innerHTML = content;
-  }
-  function spanCell_fceikz071u4rc9r35hd0(i, j, rowspan, colspan) {
-    var table = document.getElementById(&amp;quot;tinytable_fceikz071u4rc9r35hd0&amp;quot;);
-    const targetRow = table.rows[i];
-    const targetCell = targetRow.cells[j];
-    for (let r = 0; r &amp;lt; rowspan; r++) {
-      // Only start deleting cells to the right for the first row (r == 0)
-      if (r === 0) {
-        // Delete cells to the right of the target cell in the first row
-        for (let c = colspan - 1; c &amp;gt; 0; c--) {
-          if (table.rows[i + r].cells[j + c]) {
-            table.rows[i + r].deleteCell(j + c);
-          }
-        }
-      }
-      // For rows below the first, delete starting from the target column
-      if (r &amp;gt; 0) {
-        for (let c = colspan - 1; c &amp;gt;= 0; c--) {
-          if (table.rows[i + r] &amp;amp;&amp;amp; table.rows[i + r].cells[j]) {
-            table.rows[i + r].deleteCell(j);
-          }
-        }
-      }
-    }
-    // Set rowspan and colspan of the target cell
-    targetCell.rowSpan = rowspan;
-    targetCell.colSpan = colspan;
-  }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 0, &amp;rsquo;tinytable_css_idursl1izjvzpe6k200g1u&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 1, &amp;rsquo;tinytable_css_idplfkcmtth40ibm8od257&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 2, &amp;rsquo;tinytable_css_idplfkcmtth40ibm8od257&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 3, &amp;rsquo;tinytable_css_idplfkcmtth40ibm8od257&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 1, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 2, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 3, &amp;rsquo;tinytable_css_id510qm05c38l0etux1mb8&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 0, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 1, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 2, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-window.addEventListener(&amp;rsquo;load&amp;rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 3, &amp;rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&amp;rsquo;) })
-&lt;/script&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
-.table td.tinytable_css_idursl1izjvzpe6k200g1u, .table th.tinytable_css_idursl1izjvzpe6k200g1u {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_idplfkcmtth40ibm8od257, .table th.tinytable_css_idplfkcmtth40ibm8od257 {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_iddyb4tn1th5w1sdrgzko1, .table th.tinytable_css_iddyb4tn1th5w1sdrgzko1 {  text-align: left; }
-.table td.tinytable_css_id510qm05c38l0etux1mb8, .table th.tinytable_css_id510qm05c38l0etux1mb8 {  text-align: center; }
-&amp;lt;/style&amp;gt;
-&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
-  &amp;lt;table class=&amp;quot;table table-borderless&amp;quot; id=&amp;quot;tinytable_fceikz071u4rc9r35hd0&amp;quot; style=&amp;quot;width: auto; margin-left: auto; margin-right: auto;&amp;quot; data-quarto-disable-processing=&#39;true&#39;&amp;gt;
-    &amp;lt;thead&amp;gt;
-    
-          &amp;lt;tr&amp;gt;
-            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt; &amp;lt;/th&amp;gt;
-            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;l2only&amp;lt;/th&amp;gt;
-            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;cluster&amp;lt;/th&amp;gt;
-            &amp;lt;th scope=&amp;quot;col&amp;quot;&amp;gt;ecluster&amp;lt;/th&amp;gt;
-          &amp;lt;/tr&amp;gt;
-    &amp;lt;/thead&amp;gt;
-    &amp;lt;tfoot&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=&#39;4&#39;&amp;gt;+ p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/tfoot&amp;gt;
-    &amp;lt;tbody&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;(Intercept)          &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;469.276*** &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;469.241*** &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;469.233*** &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(7.049)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(7.088)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(7.082)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;sc14q02Very little   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-18.928    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-18.795    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-18.800    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(13.537)   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(13.624)   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(13.614)   &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;sc14q02To some extent&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-14.990    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-15.337    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-15.339    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(11.902)   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(12.117)   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(12.111)   &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;sc14q02A lot         &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-23.536**  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-23.265**  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;-23.273**  &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(7.952)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(8.088)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(8.083)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;st04q01Male          &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;12.296**   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;12.051**   &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;12.084**   &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(4.320)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(4.345)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(4.349)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;escs                 &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;29.086***  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;29.045***  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;29.049***  &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(2.698)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(2.685)    &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(2.688)    &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;schoolid.(Intercept) &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;1054.672***&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;1069.977***&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;1067.115***&amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(258.981)  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(260.180)  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(259.201)  &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;Residual             &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;5223.750***&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;5219.380***&amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;5220.383***&amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-              &amp;lt;td&amp;gt;                     &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(206.297)  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(204.390)  &amp;lt;/td&amp;gt;
-              &amp;lt;td&amp;gt;(204.518)  &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-    &amp;lt;/tbody&amp;gt;
-  &amp;lt;/table&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;!-- hack to avoid NA insertion in last line --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;one&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#level-1 weight&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1d&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;n&#34;&gt;sc14q02&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;st04q01&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;escs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;one&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;cWeight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For comparison, I will show results also using the scaled weights:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;n&#34;&gt;sc14q02&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;st04q01&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;escs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;cl_weight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;cWeight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;n&#34;&gt;sc14q02&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;st04q01&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;escs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;schoolid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;es_weight&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;w_fschwt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;cWeight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;modelsummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;l2only&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;cluster&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ecluster&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;n&#34;&gt;stars&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gof_map&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;NA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;gt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!--html_preserve--&gt;&lt;div id=&#34;pjojxhhbnr&#34; style=&#34;padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;
+&lt;style&gt;#pjojxhhbnr table {
+  font-family: system-ui, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif, &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;, &#39;Noto Color Emoji&#39;;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pjojxhhbnr thead, #pjojxhhbnr tbody, #pjojxhhbnr tfoot, #pjojxhhbnr tr, #pjojxhhbnr td, #pjojxhhbnr th {
+  border-style: none;
+}
+
+#pjojxhhbnr p {
+  margin: 0;
+  padding: 0;
+}
+
+#pjojxhhbnr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pjojxhhbnr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pjojxhhbnr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pjojxhhbnr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pjojxhhbnr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pjojxhhbnr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pjojxhhbnr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pjojxhhbnr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pjojxhhbnr .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#pjojxhhbnr .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#pjojxhhbnr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pjojxhhbnr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pjojxhhbnr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pjojxhhbnr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_left {
+  text-align: left;
+}
+
+#pjojxhhbnr .gt_center {
+  text-align: center;
+}
+
+#pjojxhhbnr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pjojxhhbnr .gt_font_normal {
+  font-weight: normal;
+}
+
+#pjojxhhbnr .gt_font_bold {
+  font-weight: bold;
+}
+
+#pjojxhhbnr .gt_font_italic {
+  font-style: italic;
+}
+
+#pjojxhhbnr .gt_super {
+  font-size: 65%;
+}
+
+#pjojxhhbnr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pjojxhhbnr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pjojxhhbnr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pjojxhhbnr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pjojxhhbnr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pjojxhhbnr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pjojxhhbnr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pjojxhhbnr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pjojxhhbnr div.Reactable &gt; div.rt-table &gt; div.rt-thead &gt; div.rt-tr.rt-tr-group-header &gt; div.rt-th-group:after {
+  height: 0px !important;
+}
+&lt;/style&gt;
+&lt;table class=&#34;gt_table&#34; data-quarto-disable-processing=&#34;false&#34; data-quarto-bootstrap=&#34;false&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr class=&#34;gt_col_headings&#34;&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34; scope=&#34;col&#34; id=&#34; &#34;&gt; &lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34; scope=&#34;col&#34; id=&#34;l2only&#34;&gt;l2only&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34; scope=&#34;col&#34; id=&#34;cluster&#34;&gt;cluster&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34; scope=&#34;col&#34; id=&#34;ecluster&#34;&gt;ecluster&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;(Intercept)&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;469.276***&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;469.241***&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;469.233***&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;(7.049)&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;(7.088)&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;(7.082)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;sc14q02Very little&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;-18.928&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;-18.795&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;-18.800&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;(13.537)&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;(13.624)&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;(13.614)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;sc14q02To some extent&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;-14.990&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;-15.337&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;-15.339&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;(11.902)&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;(12.117)&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;(12.111)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;sc14q02A lot&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;-23.536**&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;-23.265**&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;-23.273**&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;(7.952)&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;(8.088)&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;(8.083)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;st04q01Male&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;12.296**&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;12.051**&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;12.084**&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;(4.320)&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;(4.345)&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;(4.349)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;escs&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;29.086***&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;29.045***&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;29.049***&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;(2.698)&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;(2.685)&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;(2.688)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;schoolid.(Intercept)&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;1054.672***&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;1069.977***&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;1067.115***&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;(258.981)&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;(260.180)&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;(259.201)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;Residual&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;5223.750***&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;5219.380***&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;5220.383***&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td headers=&#34; &#34; class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+&lt;td headers=&#34;l2only&#34; class=&#34;gt_row gt_center&#34;&gt;(206.297)&lt;/td&gt;
+&lt;td headers=&#34;cluster&#34; class=&#34;gt_row gt_center&#34;&gt;(204.390)&lt;/td&gt;
+&lt;td headers=&#34;ecluster&#34; class=&#34;gt_row gt_center&#34;&gt;(204.518)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot class=&#34;gt_sourcenotes&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_sourcenote&#34; colspan=&#34;4&#34;&gt;+ p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;/div&gt;&lt;!--/html_preserve--&gt;
 &lt;p&gt;Results are very similar.&lt;/p&gt;
 &lt;p&gt;A reason for this is that the level-1 scaled weights are all very close to 1 (or even equal to 1). If there is no variation within cluster, the weights will be 1.&lt;/p&gt;
 &lt;p&gt;If we examine the original conditional weights, there is quite some variability:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;range(pisa2012$cweight) #the original conditional weight&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;[1]  1.228571 37.018006&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;However, compared to the scaled weights, they are all very close to 1. Which is why the results shown above are all very similar.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;range(pisa2012$es_weight)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;[1] 0.7635826 1.3325292&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;range(pisa2012$cl_weight)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;[1] 0.7820465 1.3559951&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(pisa2012$es_weight)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;[1] 0.9962017&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(pisa2012$cl_weight)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;[1] 1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;em&gt;Takeaway&lt;/em&gt;: when running multilevel models with weights at different levels, make sure you are specifying the correct weights. If the residual variance at the second level is close to zero, you should probably revisit your syntax.&lt;/p&gt;
-&lt;div id=&#34;references&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;References&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cweight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#the original conditional weight&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[1]  1.23 37.02
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, compared to the scaled weights, they are all very close to 1. Which is why the results shown above are all very similar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;es_weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[1] 0.764 1.333
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cl_weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[1] 0.782 1.356
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;es_weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[1] 0.996
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cl_weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[1] 1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Takeaway&lt;/em&gt;: when running multilevel models with weights at different levels, make sure you are specifying the correct weights. If the residual variance at the second level is close to zero, you should probably revisit your syntax.&lt;/p&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
 &lt;p&gt;Asparouhov, T. (2006). General Multi-Level Modeling with Sampling Weights Communications in Statistics - Theory and Methods, 35: 439-460.&lt;/p&gt;
 &lt;p&gt;Carle, A. (2009). Fitting multilevel models in complex survey data with design weights: Recommendations BMC Medical Research Methodology, 9(49): 1-13.&lt;/p&gt;
-&lt;p&gt;Mang, J., Küchenhoff, H., Meinck, S., &amp;amp; Prenzel, M. (2021). Sampling weights in multilevel modelling: An investigation using PISA sampling structures. Large-Scale Assessments in Education, 9(1), 6. &lt;a href=&#34;https://doi.org/10.1186/s40536-021-00099-0&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1186/s40536-021-00099-0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mang, J., Kuchenhoff, H., Meinck, S., &amp;amp; Prenzel, M. (2021). Sampling weights in multilevel modelling: An investigation using PISA sampling structures. Large-Scale Assessments in Education, 9(1), 6. &lt;a href=&#34;https://doi.org/10.1186/s40536-021-00099-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.1186/s40536-021-00099-0&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;END&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     

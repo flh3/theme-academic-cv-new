@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Selecting the proper weights in LSAs with multilevel models | FLH Website</title>
+    <link>http://localhost:1313/post/2024_lsa/</link>
+      <atom:link href="http://localhost:1313/post/2024_lsa/index.xml" rel="self" type="application/rss+xml" />
+    <description>Selecting the proper weights in LSAs with multilevel models</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <title>Selecting the proper weights in LSAs with multilevel models</title>
+      <link>http://localhost:1313/post/2024_lsa/</link>
+    </image>
+    
+  </channel>
+</rss>
