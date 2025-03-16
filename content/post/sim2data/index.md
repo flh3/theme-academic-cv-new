@@ -1,7 +1,7 @@
 ---
 title: 🎉 Simulating two level data
 summary: How to simulate multilevel data using a Monte Carlo simulation.
-date: 2023-10-27
+date: 2018-10-27
 
 # Featured image
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
@@ -17,7 +17,7 @@ tags:
   - Simulation
 ---
 
-{{< toc mobile_only=true is_open=true >}}
+{{< toc >}}
 
 <p>Researchers may want to simulate a two-level model (i.e., a hierarchical linear model, a random effects model, etc.). The following code illustrates how to generate the data and compares analytic techniques using MLM and OLS.</p>
 <div id="simulate-the-data" class="section level2">

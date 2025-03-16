@@ -195,10 +195,10 @@
     
       <meta
         property="article:published_time"
-        content="2023-10-27T00:00:00&#43;00:00"
+        content="2018-10-27T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2023-10-27T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2018-10-27T00:00:00&#43;00:00">
   
 
   
@@ -650,6 +650,9 @@
       
       
     
+  
+  
+  
   
   
   
@@ -1387,14 +1390,13 @@
   >🎉 Job postings 2023-2024
     </a>
               
-            </li><li class="flex flex-col open"><a
+            </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
-      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
-    href="/post/sim2data/"
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gd_example/"
     
-  >🎉 Simulating two level data
+  >Gradient descent example 1
     </a>
-  
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
@@ -1442,6 +1444,14 @@
     href="/post/logistic-regression-fisher-scoring/"
     
   >Logistic regression from scratch (Newton Raphson and Fisher Scoring)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/extracting-v-matrix/"
+    
+  >Extracting the V matrix for MLMs
     </a>
               
             </li><li class="flex flex-col "><a
@@ -1499,6 +1509,15 @@
     
   >🎉 Why does centering reduce multicollinearity?
     </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/sim2data/"
+    
+  >🎉 Simulating two level data
+    </a>
+  
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
@@ -2168,7 +2187,7 @@
       <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">🎉 Simulating two level data</h1>
 
       <div class="mt-4 mb-16">
-      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Oct 27, 2023</span><span class="mx-1">·</span>
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Oct 27, 2018</span><span class="mx-1">·</span>
         
           
           
@@ -2213,7 +2232,7 @@
         
 
 
-<details class="print:hidden xl:hidden" open>
+<details class="print:hidden xl:hidden" >
   <summary>Table of Contents</summary>
   <div class="text-sm">
   <nav id="TableOfContents"></nav>
@@ -2346,9 +2365,9 @@ ols1 &lt;- lm(y ~ l2 + l1, data = dat)
       </div>
 
       
-  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2023-10-27T00:00:00.000Z">
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2018-10-27T00:00:00.000Z">
     <span>Last updated on</span>
-    Oct 27, 2023</time>
+    Oct 27, 2018</time>
 
       <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
         
@@ -2671,17 +2690,17 @@ ols1 &lt;- lm(y ~ l2 + l1, data = dat)
   <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
     <div class="">
       
-        <a class="group flex no-underline" href="/post/jobs-2024/">
+        <a class="group flex no-underline" href="/post/centering/">
           <span
             class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
           ><span class="ltr:inline rtl:hidden">&larr;</span></span>
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >🎉 Job postings 2023-2024</span>
+            >🎉 Why does centering reduce multicollinearity?</span>
             <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
               
-                Jan 1, 2024
+                Oct 27, 2019
               
             </span>
           </span>
@@ -2690,15 +2709,15 @@ ols1 &lt;- lm(y ~ l2 + l1, data = dat)
     </div>
     <div class="">
       
-        <a class="group flex text-right no-underline" href="/post/test3/">
+        <a class="group flex text-right no-underline" href="/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/">
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >🖩 Logistic regression with matrices</span
+            >🧠 Difference between correlation and covariance matrices</span
             >
             <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
               
-                Oct 27, 2023
+                Oct 26, 2018
               
             </span>
           </span>
@@ -2716,16 +2735,6 @@ ols1 &lt;- lm(y ~ l2 + l1, data = dat)
   
 
   
-  
-<hr class="border-dotted border-neutral-300 dark:border-neutral-600">
-  <div class="text-sm">
-    <h3>Related</h3>
-    <ul>
-      
-      <li><a href="/post/test3/">🖩 Logistic regression with matrices</a></li>
-      
-    </ul>
-  </div>
   
 
 

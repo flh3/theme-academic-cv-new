@@ -13,146 +13,6 @@
     </image>
     
     <item>
-      <title>🎉 Simulating two level data</title>
-      <link>http://localhost:1313/post/sim2data/</link>
-      <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/sim2data/</guid>
-      <description>
-
-
-&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
-  &lt;summary&gt;Table of Contents&lt;/summary&gt;
-  &lt;div class=&#34;text-sm&#34;&gt;
-  &lt;nav id=&#34;TableOfContents&#34;&gt;&lt;/nav&gt;
-  &lt;/div&gt;
-&lt;/details&gt;
-
-&lt;p&gt;Researchers may want to simulate a two-level model (i.e., a hierarchical linear model, a random effects model, etc.). The following code illustrates how to generate the data and compares analytic techniques using MLM and OLS.&lt;/p&gt;
-&lt;div id=&#34;simulate-the-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. Simulate the data&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(1234) #for reproducability
-nG &amp;lt;- 20 #number of groups
-nJ &amp;lt;- 30 #cluster size
-W1 &amp;lt;- 2 #level 2 coeff
-X1 &amp;lt;- 3 #level 1 coeff
-&lt;p&gt;tmp2 &amp;lt;- rnorm(nG) #generate 20 random numbers, m = 0, sd = 1
-l2 &amp;lt;- rep(tmp2, each = nJ) #all units in l2 have the same value
-group &amp;lt;- gl(nG, k = nJ) #creating cluster variable
-tmp2 &amp;lt;- rnorm(nG) #error term for level 2
-err2 &amp;lt;- rep(tmp2, each = nJ) #all units in l2 have the same value&lt;/p&gt;
-&lt;p&gt;l1 &amp;lt;- rnorm(nG * nJ) #total sample size is nG * nJ
-err1 &amp;lt;- rnorm(nG * nJ) #level 1&lt;/p&gt;
-&lt;p&gt;#putting it all together
-y &amp;lt;- W1 * l2 + X1 * l1 + err2 + err1
-dat &amp;lt;- data.frame(y, group, l2, err2,l1, err1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;To vary the intraclass correlation (ICC or &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;), users must specify what the variance of the error terms should be (while taking into account the variance of the variables). There is a difference between the &lt;em&gt;unconditional&lt;/em&gt; vs &lt;em&gt;conditional&lt;/em&gt; ICC (often, in education, we want to know the unconditional first). Use covariance algebra to figure this out.&lt;/p&gt;
-&lt;p&gt;For example, for two variables (X and Y):&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Var(X + Y) = Var(X) + Var(Y) + 2cov(X, Y)\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;In our case, the variables are not related with each other so the last part is 0.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;The level 2 variance (due to l2) should be 4 (in our case, it is 3.912).&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The level 1 variance (due to l1) should be 9 (in our case, it is 9.285).&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The errors both have 1 as the variance. So, in our models, the overall variance of y should be: (4 + 1) + (9 + 1) = 15. For the one simulated run above, the variance of y is 14.341. This is close. The theoretical unconditional ICC should be: 5/15 or .33. In our example, the standard errors turned out to be larger.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;analyze-the-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. Analyze the data&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lme4) #to run multilevel models
-library(jtools) #to get nicer output
-mlm0 &amp;lt;- lmer(y ~ (1|group), data = dat) #unconditional
-summ(mlm0) #shows the ICC, close&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## MODEL INFO:
-## Observations: 600
-## Dependent Variable: y
-## Type: Mixed effects linear regression 
-## 
-## MODEL FIT:
-## AIC = 3166.12, BIC = 3179.31
-## Pseudo-R² (fixed effects) = 0.00
-## Pseudo-R² (total) = 0.28 
-## 
-## FIXED EFFECTS:
-##              Est. S.E. t val.    p  
-## (Intercept) -1.08 0.47  -2.28 0.03 *
-## 
-## p values calculated using Kenward-Roger d.f. = 19 
-## 
-## RANDOM EFFECTS:
-##     Group   Parameter Std. Dev.
-##     group (Intercept)      2.02
-##  Residual                  3.23
-## 
-## Grouping variables:
-##  Group # groups  ICC
-##  group       20 0.28&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mlm1 &amp;lt;- lmer(y ~ l2 + l1  + (1|group), data = dat)
-ols1 &amp;lt;- lm(y ~ l2 + l1, data = dat)
-&lt;p&gt;#export_summs(mlm1, ols1, model.names = c(&#39;MLM&#39;, &#39;OLS&#39;))&lt;/p&gt;
-&lt;p&gt;stargazer::stargazer(mlm1, ols1, type = &#39;text&#39;, no.space = T, star.cutoffs = c(.05,.01,.001))&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## ============================================================
-##                               Dependent variable:           
-##                     ----------------------------------------
-##                                        y                    
-##                        linear                OLS            
-##                     mixed-effects                           
-##                          (1)                 (2)            
-## ------------------------------------------------------------
-## l2                    1.778***             1.777***         
-##                        (0.173)             (0.049)          
-## l1                    3.024***             3.047***         
-##                        (0.039)             (0.048)          
-## Constant              -0.663***           -0.663***         
-##                        (0.176)             (0.050)          
-## ------------------------------------------------------------
-## Observations             600                 600            
-## R2                                          0.901           
-## Adjusted R2                                 0.900           
-## Log Likelihood        -861.194                              
-## Akaike Inf. Crit.     1,732.389                             
-## Bayesian Inf. Crit.   1,754.373                             
-## Residual Std. Error                    1.195 (df = 597)     
-## F Statistic                       2,708.287*** (df = 2; 597)
-## ============================================================
-## Note:                          *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can compare the results using MLM vs. OLS. The standard error for the level 2 variable is much smaller using the OLS model. Here we see why we can get Type I errors so easily (in this case, both are statistically significant though). The coefficients are similar to each other because the variables were generated to both be uncorrelated with each other.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;other-items-of-interest&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. Other items of interest&lt;/h2&gt;
-&lt;p&gt;To see how these results may differ, readers can check out:&lt;/p&gt;
-&lt;p&gt;Huang, F. (2018). Multilevel modeling and ordinary least squares: How comparable are they? &lt;em&gt;Journal of Experimental Education, 86&lt;/em&gt;, 265-281. &lt;a href=&#34;https://doi.org/10.1080/00220973.2016.1277339&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1080/00220973.2016.1277339&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.tandfonline.com/eprint/WHmbzEjIhPidHtbt7IRk/full&#34; class=&#34;uri&#34;&gt;http://www.tandfonline.com/eprint/WHmbzEjIhPidHtbt7IRk/full&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;For more info comparing the two approaches:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://faculty.missouri.edu/huangf/data/pubdata/jxe/online%20appendix%20A%20formatted.pdf&#34;&gt;http://faculty.missouri.edu/huangf/data/pubdata/jxe/online%20appendix%20A%20formatted.pdf&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://faculty.missouri.edu/huangf/data/pubdata/jxe/&#34; class=&#34;uri&#34;&gt;http://faculty.missouri.edu/huangf/data/pubdata/jxe/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;NOTE: a simpler way to get corrected level 2 standard errors is to use cluster robust standard errors. However, take note, that adjusted standard errors may often still be underestimated when the number of clusters is low (e.g., &amp;lt; 50).&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;jtools::summ&lt;/code&gt; function makes getting cluster robust standard errors easier! Without having to run other functions before hand.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summ(ols1, cluster = &amp;#39;group&amp;#39;, robust = T)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## MODEL INFO:
-## Observations: 600
-## Dependent Variable: y
-## Type: OLS linear regression 
-## 
-## MODEL FIT:
-## F(2,597) = 2708.29, p = 0.00
-## R² = 0.90
-## Adj. R² = 0.90 
-## 
-## Standard errors: Cluster-robust, type = HC3
-##              Est. S.E. t val.    p    
-## (Intercept) -0.66 0.20  -3.25 0.00  **
-## l2           1.78 0.25   7.23 0.00 ***
-## l1           3.05 0.05  65.98 0.00 ***&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;See:&lt;/p&gt;
-&lt;p&gt;Huang, F. (2016). Alternatives to multilevel modeling for the analysis of clustered data. &lt;em&gt;Journal of Experimental Education, 84&lt;/em&gt;, 175-196. doi: 10.1080/00220973.2014.952397&lt;/p&gt;
-&lt;p&gt;– END&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>🖩 Logistic regression with matrices</title>
       <link>http://localhost:1313/post/test3/</link>
       <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
@@ -460,6 +320,146 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
 &lt;p class=&#34;caption&#34;&gt;MU TIGERS&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;&amp;ndash; END&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>🎉 Simulating two level data</title>
+      <link>http://localhost:1313/post/sim2data/</link>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/sim2data/</guid>
+      <description>
+
+
+&lt;details class=&#34;print:hidden xl:hidden&#34; &gt;
+  &lt;summary&gt;Table of Contents&lt;/summary&gt;
+  &lt;div class=&#34;text-sm&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;&lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;p&gt;Researchers may want to simulate a two-level model (i.e., a hierarchical linear model, a random effects model, etc.). The following code illustrates how to generate the data and compares analytic techniques using MLM and OLS.&lt;/p&gt;
+&lt;div id=&#34;simulate-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Simulate the data&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(1234) #for reproducability
+nG &amp;lt;- 20 #number of groups
+nJ &amp;lt;- 30 #cluster size
+W1 &amp;lt;- 2 #level 2 coeff
+X1 &amp;lt;- 3 #level 1 coeff
+&lt;p&gt;tmp2 &amp;lt;- rnorm(nG) #generate 20 random numbers, m = 0, sd = 1
+l2 &amp;lt;- rep(tmp2, each = nJ) #all units in l2 have the same value
+group &amp;lt;- gl(nG, k = nJ) #creating cluster variable
+tmp2 &amp;lt;- rnorm(nG) #error term for level 2
+err2 &amp;lt;- rep(tmp2, each = nJ) #all units in l2 have the same value&lt;/p&gt;
+&lt;p&gt;l1 &amp;lt;- rnorm(nG * nJ) #total sample size is nG * nJ
+err1 &amp;lt;- rnorm(nG * nJ) #level 1&lt;/p&gt;
+&lt;p&gt;#putting it all together
+y &amp;lt;- W1 * l2 + X1 * l1 + err2 + err1
+dat &amp;lt;- data.frame(y, group, l2, err2,l1, err1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;To vary the intraclass correlation (ICC or &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;), users must specify what the variance of the error terms should be (while taking into account the variance of the variables). There is a difference between the &lt;em&gt;unconditional&lt;/em&gt; vs &lt;em&gt;conditional&lt;/em&gt; ICC (often, in education, we want to know the unconditional first). Use covariance algebra to figure this out.&lt;/p&gt;
+&lt;p&gt;For example, for two variables (X and Y):&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Var(X + Y) = Var(X) + Var(Y) + 2cov(X, Y)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In our case, the variables are not related with each other so the last part is 0.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The level 2 variance (due to l2) should be 4 (in our case, it is 3.912).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The level 1 variance (due to l1) should be 9 (in our case, it is 9.285).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The errors both have 1 as the variance. So, in our models, the overall variance of y should be: (4 + 1) + (9 + 1) = 15. For the one simulated run above, the variance of y is 14.341. This is close. The theoretical unconditional ICC should be: 5/15 or .33. In our example, the standard errors turned out to be larger.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analyze-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Analyze the data&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lme4) #to run multilevel models
+library(jtools) #to get nicer output
+mlm0 &amp;lt;- lmer(y ~ (1|group), data = dat) #unconditional
+summ(mlm0) #shows the ICC, close&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## MODEL INFO:
+## Observations: 600
+## Dependent Variable: y
+## Type: Mixed effects linear regression 
+## 
+## MODEL FIT:
+## AIC = 3166.12, BIC = 3179.31
+## Pseudo-R² (fixed effects) = 0.00
+## Pseudo-R² (total) = 0.28 
+## 
+## FIXED EFFECTS:
+##              Est. S.E. t val.    p  
+## (Intercept) -1.08 0.47  -2.28 0.03 *
+## 
+## p values calculated using Kenward-Roger d.f. = 19 
+## 
+## RANDOM EFFECTS:
+##     Group   Parameter Std. Dev.
+##     group (Intercept)      2.02
+##  Residual                  3.23
+## 
+## Grouping variables:
+##  Group # groups  ICC
+##  group       20 0.28&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mlm1 &amp;lt;- lmer(y ~ l2 + l1  + (1|group), data = dat)
+ols1 &amp;lt;- lm(y ~ l2 + l1, data = dat)
+&lt;p&gt;#export_summs(mlm1, ols1, model.names = c(&#39;MLM&#39;, &#39;OLS&#39;))&lt;/p&gt;
+&lt;p&gt;stargazer::stargazer(mlm1, ols1, type = &#39;text&#39;, no.space = T, star.cutoffs = c(.05,.01,.001))&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ============================================================
+##                               Dependent variable:           
+##                     ----------------------------------------
+##                                        y                    
+##                        linear                OLS            
+##                     mixed-effects                           
+##                          (1)                 (2)            
+## ------------------------------------------------------------
+## l2                    1.778***             1.777***         
+##                        (0.173)             (0.049)          
+## l1                    3.024***             3.047***         
+##                        (0.039)             (0.048)          
+## Constant              -0.663***           -0.663***         
+##                        (0.176)             (0.050)          
+## ------------------------------------------------------------
+## Observations             600                 600            
+## R2                                          0.901           
+## Adjusted R2                                 0.900           
+## Log Likelihood        -861.194                              
+## Akaike Inf. Crit.     1,732.389                             
+## Bayesian Inf. Crit.   1,754.373                             
+## Residual Std. Error                    1.195 (df = 597)     
+## F Statistic                       2,708.287*** (df = 2; 597)
+## ============================================================
+## Note:                          *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can compare the results using MLM vs. OLS. The standard error for the level 2 variable is much smaller using the OLS model. Here we see why we can get Type I errors so easily (in this case, both are statistically significant though). The coefficients are similar to each other because the variables were generated to both be uncorrelated with each other.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-items-of-interest&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Other items of interest&lt;/h2&gt;
+&lt;p&gt;To see how these results may differ, readers can check out:&lt;/p&gt;
+&lt;p&gt;Huang, F. (2018). Multilevel modeling and ordinary least squares: How comparable are they? &lt;em&gt;Journal of Experimental Education, 86&lt;/em&gt;, 265-281. &lt;a href=&#34;https://doi.org/10.1080/00220973.2016.1277339&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1080/00220973.2016.1277339&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.tandfonline.com/eprint/WHmbzEjIhPidHtbt7IRk/full&#34; class=&#34;uri&#34;&gt;http://www.tandfonline.com/eprint/WHmbzEjIhPidHtbt7IRk/full&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For more info comparing the two approaches:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://faculty.missouri.edu/huangf/data/pubdata/jxe/online%20appendix%20A%20formatted.pdf&#34;&gt;http://faculty.missouri.edu/huangf/data/pubdata/jxe/online%20appendix%20A%20formatted.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://faculty.missouri.edu/huangf/data/pubdata/jxe/&#34; class=&#34;uri&#34;&gt;http://faculty.missouri.edu/huangf/data/pubdata/jxe/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;NOTE: a simpler way to get corrected level 2 standard errors is to use cluster robust standard errors. However, take note, that adjusted standard errors may often still be underestimated when the number of clusters is low (e.g., &amp;lt; 50).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;jtools::summ&lt;/code&gt; function makes getting cluster robust standard errors easier! Without having to run other functions before hand.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summ(ols1, cluster = &amp;#39;group&amp;#39;, robust = T)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## MODEL INFO:
+## Observations: 600
+## Dependent Variable: y
+## Type: OLS linear regression 
+## 
+## MODEL FIT:
+## F(2,597) = 2708.29, p = 0.00
+## R² = 0.90
+## Adj. R² = 0.90 
+## 
+## Standard errors: Cluster-robust, type = HC3
+##              Est. S.E. t val.    p    
+## (Intercept) -0.66 0.20  -3.25 0.00  **
+## l2           1.78 0.25   7.23 0.00 ***
+## l1           3.05 0.05  65.98 0.00 ***&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;See:&lt;/p&gt;
+&lt;p&gt;Huang, F. (2016). Alternatives to multilevel modeling for the analysis of clustered data. &lt;em&gt;Journal of Experimental Education, 84&lt;/em&gt;, 175-196. doi: 10.1080/00220973.2014.952397&lt;/p&gt;
+&lt;p&gt;– END&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
