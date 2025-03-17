@@ -1,0 +1,3592 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: March 16, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="light">
+  
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.1" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Francis L. Huang" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="A few years ago, I published an article on using Poisson, negative binomial, and zero inflated models in analyzing count data (see Pick Your Poisson). The abstract of the article indicates:
+" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/blue.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.css" rel="stylesheet" />
+  
+
+  
+  
+  
+
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu_8d92228bfbb2ace7.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_2b4ad1f159ffa531.png" />
+
+  <link rel="canonical" href="http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@flhuang" />
+    <meta property="twitter:creator" content="@flhuang" />
+  
+  <meta property="og:site_name" content="FLH Website" />
+  <meta property="og:url" content="http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/" />
+  <meta property="og:title" content="Poisson and Negative Binomial Regression using R | FLH Website" />
+  <meta property="og:description" content="A few years ago, I  published an article on using Poisson, negative binomial, and zero inflated models in analyzing count data (see Pick Your Poisson). The abstract of the article indicates:" /><meta property="og:image" content="http://localhost:1313/media/icon_hu_258291280f5c9c98.png" />
+    <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_258291280f5c9c98.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2019-05-21T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2019-05-21T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  <title>Poisson and Negative Binomial Regression using R | FLH Website</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let element = document.getElementById('search');
+    let trigger = document.getElementById('search_toggle');
+
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        element.classList.toggle('hidden');
+        element.querySelector("input").value = ""
+        element.querySelector("input").focus()
+
+        if (!element.classList.contains('hidden')) {
+          let clear_trigger = document.querySelector('.pagefind-ui__search-clear');
+
+          if (clear_trigger && !clear_trigger.hasAttribute('listenerOnClick')) {
+            clear_trigger.setAttribute('listenerOnClick', 'true');
+
+            clear_trigger.addEventListener('click', () => {
+              element.classList.toggle('hidden');
+            });
+          }
+        }
+
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.js"
+    integrity=""
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="FLH Website">
+        Francis L. Huang
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#talks"
+        >Talks</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#news"
+        >Posts</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/MLMusingR/"
+        >MLMusingR</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/projects/"
+        >Projects</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/teaching/"
+        >Teaching</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/service/"
+        >Service</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item nav-dropdown group relative">
+            <span
+              class="nav-link 
+                
+                
+                
+              
+                
+                
+                
+               inline-flex items-center">
+              Research
+              <svg class="h-4 w-4 fill-current inline-block" viewBox="0 0 20 20">
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </span>
+        <ul
+          class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/#papers">
+              Papers
+            </a>
+          </li>
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/r">
+              R Packages
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        id="search_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<div id="search" class="hidden p-3"></div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+
+
+
+
+<div class="mx-auto flex max-w-screen-xl">
+  
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:hidden xl:block">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/mlmusingr/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/r/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/service/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/"
+    
+  >Projects
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/uva/"
+    
+  >Youth Violence Project @ UVA
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/av/"
+    
+  >MO Prison Transformation Project
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/mpsi/"
+    
+  >Missouri Prevention Science Institute
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2025/"
+    
+  >🎉 Job postings 2024-2025
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2024_lsa/"
+    
+  >Selecting the proper weights in LSAs with multilevel models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pv3/"
+    
+  >Using Plausible Values with Multilevel Models Using R (update)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pv/"
+    
+  >Using Plausible Values with Multilevel Models Using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2024/"
+    
+  >🎉 Job postings 2023-2024
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gd_example/"
+    
+  >Gradient descent example 1
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/test3/"
+    
+  >🖩 Logistic regression with matrices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/residuals_mlm/"
+    
+  >Residuals with Multilevel Models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2023/"
+    
+  >🎉 Job postings 2022-2023
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/residuals/"
+    
+  >Fun with residuals
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/robust-standard-errors/"
+    
+  >Robust standard errors in mixed models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/logistic-regression-fisher-scoring/"
+    
+  >Logistic regression from scratch (Newton Raphson and Fisher Scoring)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/extracting-v-matrix/"
+    
+  >Extracting the V matrix for MLMs
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gee/"
+    
+  >🎉 Analyzing clustered data using GEEs
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ml/"
+    
+  >🎉 Using maximum likelihood
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/compare/"
+    
+  >🎉 Comparing coefficients across logistic regression models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/prior-problem-behavior-and-suspensions-a-replication/"
+    
+  >Prior problem behavior and suspensions: A replication
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mdata/"
+    
+  >🎉 Using FIML and MI in R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/applied/"
+    
+  >🎉 Applied example for alternatives to logistic regression
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pca_2020/"
+    
+  >🎉 Principal Components Analysis using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/centering/"
+    
+  >🎉 Why does centering reduce multicollinearity?
+    </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/poisson-and-negative-binomial-regression-using-r/"
+    
+  >Poisson and Negative Binomial Regression using R
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#example-1-long-1990"
+                class="hb-docs-link"
+              >Example 1: Long (1990)</a>
+            </li>
+          <li>
+              <a
+                href="#example-2-bullying-in-school-huang--cornell-2012"
+                class="hb-docs-link"
+              >Example 2: Bullying in school (Huang &amp;amp; Cornell, 2012)</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/sim2data/"
+    
+  >🎉 Simulating two level data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/"
+    
+  >🧠 Difference between correlation and covariance matrices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/se/"
+    
+  >🎉 Class Example- Standard Errors Too Small
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/iv/"
+    
+  >🎉 Understanding instrumental variables
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ovb/"
+    
+  >Omitted Variable Bias (OVB) Example
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/"
+    
+  >Publications
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/cornell-behavioral-2025/"
+    
+  >Behavioral threat assessment and equity in exclusionary school discipline
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/huang-cluster-robust-2025/"
+    
+  >Cluster-robust standard errors with three-level data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/cornell-referral-2025/"
+    
+  >Referral rates for school threat assessment
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/gregory-restorative-2025/"
+    
+  >Restorative justice conferences in elementary and secondary schools
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/jimerson-advancing-2024/"
+    
+  >Advancing diversity, equity, and inclusion in school psychology science and scholarship: Changing training and practice in the field of school psychology
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/chuang-potential-2022/"
+    
+  >Potential moderation across racial groups in perceptions of authoritative school climate and peer victimization and student engagement
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-seasonality-2023/"
+    
+  >The seasonality of school climate
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/smith-school-2024/"
+    
+  >School bullying and gender minority youth: Victimization experiences and perceived prevalence
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/reinke-having-2024/"
+    
+  >Having a trusted adult in school: Concurrent and predictive relations with internalizing problems across development
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/eddy-positive-2024/"
+    
+  >Positive student-teacher relationships and exclusionary discipline practices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/gregory-steadfast-2023/"
+    
+  >Steadfast implementation of restorative practices during the Covid-19 pandemic: A case study of consultancy and leadership in an elementary school
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-replication-2024/"
+    
+  >Replication studies using secondary or nonexperimental datasets
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-using-2024/"
+    
+  >Using plausible values when fitting multilevel models with large-scale assessment data using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/gregory-adolescent-2024/"
+    
+  >Adolescent exposure to restorative practices and their perceptions of support, structure, and bullying in the school climate
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/stemmler-investigating-2024/"
+    
+  >Investigating the use of robust standard errors to account for two-way clustering in cross-classified data structures
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-impact-2023/"
+    
+  >The impact of restorative practices on the use of out-of-school suspensions: Results from a cluster randomized controlled trial
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/woods-relationship-2023/"
+    
+  >The relationship between teacher stress and job satisfaction as moderated by coping
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/herman-usability-2023/"
+    
+  >Usability and social consequences of the early identification system as a universal screener for social, emotional, and behavioral risks.
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-accounting-2023/"
+    
+  >Accounting for heteroskedasticity resulting from between-group differences in multilevel models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/wiedermann-advanced-2023/"
+    
+  >Advanced categorical data analysis in prevention science
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/cohen-school-2023/"
+    
+  >In-school and out-of-school suspension: Behavioral and psychological outcomes in a predominately black sample of middle school students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-practical-2023/"
+    
+  >Practical multilevel modeling using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/maeng-teacher-2023/"
+    
+  >Teacher Perceptions of School Resource Officers and Associations with School Safety
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-using-2023/"
+    
+  >Using robust standard errors for the analysis of binary outcomes with a small number of clusters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/gregory-evaluation-2022/"
+    
+  >Evaluation of the whole school restorative practices project: One-year impact on discipline incidents
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/olsen-interaction-2022/"
+    
+  >Interaction of socioeconomic status and class relations on reading
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/crichlow-ball-student-2022/"
+    
+  >Student perceptions of school resource officers and threat reporting
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/reinke-examining-2022/"
+    
+  >Examining the validity of the Early Identification System – Student Version for screening in an elementary school sample
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-alternatives-2022/"
+    
+  >Alternatives to logistic regression models in experimental studies
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-analyzing-2022/"
+    
+  >Analyzing cross-sectionally clustered data using generalized estimating equations
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/eddy-evaluation-2022/"
+    
+  >Evaluation of a bibliotherapy-based stress intervention for teachers
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-using-2022/"
+    
+  >Using cluster-robust standard errors when analyzing group-randomized trials with few clusters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/herman-individual-2021/"
+    
+  >Individual and school predictors of teacher stress, coping, and wellness during the COVID-19 pandemic
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/olsen-association-2021/"
+    
+  >The association between student socioeconomic status and student–teacher relationships on math achievement
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-does-2021/"
+    
+  >Does worrying matter? Priming and attitudes towards mask wearing in a midwestern state
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/stohlman-high-2021/"
+    
+  >High school graduation outcomes of student threat assessment
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/jimerson-advancing-2021/"
+    
+  >Advancing diversity, equity, and inclusion in school psychology: Be the change
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/herman-investigation-2021/"
+    
+  >An investigation of the psychometric properties of the Early Identification System–student report in a middle school sample
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-authoritative-2021/"
+    
+  >Authoritative school climate and out-of-school suspensions: Results from a nationally-representative survey of 10th grade students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/psf/huang-authoritative-2021/"
+    
+  >Authoritative school climate and out-of-school suspensions: Results from a nationally-representative survey of 10th grade students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/thompson-confirmatory-2021/"
+    
+  >Confirmatory factor structure and predictive validity of the Early Identification System—Student Report in a community sample of high school students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-teacher-2021/"
+    
+  >Teacher support for zero tolerance is associated with higher suspension rates and lower feelings of safety
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/maeng-student-2020/"
+    
+  >Student threat assessment as an alternative to exclusionary discipline
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/jiv/huang-role-2017/"
+    
+  >The role of the perceptions of school climate and teacher victimization by students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/eddy-does-2020/"
+    
+  >Does teacher emotional exhaustion and efficacy predict student discipline sanctions?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/huang-prior-2020/"
+    
+  >Prior problem behaviors do not account for the racial suspension gap
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-manova-2020/"
+    
+  >MANOVA: A procedure whose time has passed?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-relationship-2020/"
+    
+  >The relationship between school disciplinary resolutions with school climate and attitudes toward school
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/prewett-student-2019/"
+    
+  >Student and teacher perceptions on student-teacher relationship quality: A middle school perspective
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-school-2019/"
+    
+  >School teasing and bullying after the presidential election
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/burnette-school-2019/"
+    
+  >School threat assessment versus suicide assessment: Statewide prevalence and case characteristics
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/olsen-teacher-2019/"
+    
+  >Teacher job satisfaction by principal support and teacher cooperation: Results from the Schools and Staffing Survey
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/cornell-student-2017/"
+    
+  >Student Threat Assessment as a Standard School Safety Practice: Results From a Statewide Implementation Study.
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-student-2017/"
+    
+  >Student attitudes and behaviors as explanations for the Black-White suspension gap
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/konold-racialethnic-2017/"
+    
+  >Racial/ethnic differences in perceptions of school climate and its association with student engagement and peer aggression
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/huang-question-2016/"
+    
+  >Question order affects the measurement of bullying victimization among middle school students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/cornell-school-2015/"
+    
+  >School counselor use of peer nominations to identify victims of bullying
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/rubie-davies-successive-2014/"
+    
+  >Successive teacher expectation effects across the early school years
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-differential-2012/"
+    
+  >The differential effects of preschool: Evidence from Virginia
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Projects
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/"
+    
+  >Recent &amp; Upcoming Talks
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/example/"
+    
+  >Replication studies using secondary and nonexperimental datasets
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/mlm_ph/"
+    
+  >Multilevel Modeling with Large-Scale International Databases Using HLM (Philadelphia)
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/"
+    
+  >Teaching
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/dm/"
+    
+  >Data Management (using R)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/mcsim/"
+    
+  >Monte Carlo Simulation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/mlm/"
+    
+  >Multilevel Modeling
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/eval/"
+    
+  >Program Evaluation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/quantfound/"
+    
+  >Quantitative Foundations
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+    </ul>
+
+    <div class="max-xl:hidden h-0 w-64 shrink-0"></div></div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">On this page</p><ul>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#example-1-long-1990">Example 1: Long (1990)</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#plotting-results">Plotting results</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#example-2-bullying-in-school-huang--cornell-2012">Example 2: Bullying in school (Huang &amp; Cornell, 2012)</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#other-notes-to-self-ignore-these">Other notes to self: Ignore these</a>
+      </li></ul>
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="w-full break-words flex min-h-[calc(100vh-var(--navbar-height))] min-w-0 justify-center pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+
+      
+      <div class="mb-4">
+        <div class="mt-1.5 flex items-center gap-1 overflow-hidden text-sm text-gray-500 dark:text-gray-400">
+      <div class="whitespace-nowrap transition-colors min-w-[24px] overflow-hidden text-ellipsis hover:text-gray-900 dark:hover:text-gray-100">
+        <a href="http://localhost:1313/post/">Blog</a>
+      </div><svg class="w-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg><div class="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100">Poisson and Negative Binomial Regression using R</div>
+</div>
+
+      </div>
+      
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Poisson and Negative Binomial Regression using R</h1>
+
+      <div class="mt-4 mb-16">
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">May 21, 2019</span>
+        
+
+        
+        <span class="mx-1">·</span>
+        <span class="mx-1">
+          15 min read
+        </span>
+        
+        </div>
+
+        <div class="mt-3">
+          
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+      
+      
+      
+
+      
+      
+
+      <div class="prose prose-slate lg:prose-xl dark:prose-invert">
+        <p>A few years ago, I  published an article on using Poisson, negative binomial, and zero inflated models in analyzing count data (see <a href="https://www.tandfonline.com/doi/abs/10.1080/15388220.2012.682010" target="_blank" rel="noopener">Pick Your Poisson</a>). The abstract of the article indicates:</p>
+<blockquote>
+<p>School violence research is often concerned with infrequently occurring events such as counts of the number of bullying incidents or fights a student may experience. Analyzing count data using ordinary least squares regression may produce improbable predicted values, and as a result of regression assumption violations, result in higher Type I errors. Count data are optimally analyzed using Poisson-based regression techniques such as Poisson or negative binomial regression. We apply these techniques to an example study of bullying in a statewide sample of 290 high schools and explain how Poisson-based analyses, although less familiar to many researchers, can produce findings that are more accurate and reliable, and are easier to interpret in real-world contexts.</p></blockquote>
+<p>At the time, I had included syntax using both SAS and SPSS. This post extends the original article by now including R syntax. For the specifics on the whys and hows, consult the article (see Example 2). I show two examples: the first using data from Long (1990) and the second using Huang and Cornell (2012).</p>
+<h2 id="example-1-long-1990">Example 1: Long (1990)</h2>
+<p>This replicates the <a href="http://support.sas.com/kb/26/161.html" target="_blank" rel="noopener">SAS</a> results where Long (1990) examined the relationship of gender (<code>fem</code>), marital status (<code>mar</code>), number of children (<code>kid5</code>), prestige of graduate program (<code>phd</code>), and the number of articles (<code>ment</code>) published by the individual&rsquo;s mentor on the number of articles published by the scientist (<code>art</code>: the outcome).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span> <span class="c1">#basic data management &amp; %&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span> <span class="c1">#for negative bin regression</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">stargazer</span><span class="p">)</span> <span class="c1">#for combining output</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span> <span class="c1">#for graphing</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">pscl</span><span class="p">)</span> <span class="c1">#for zero inflated models &amp; predprob</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">reshape2</span><span class="p">)</span> <span class="c1">#convert wide to tall</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">summarytools</span><span class="p">)</span> <span class="c1">#freq</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">articles</span> <span class="o">&lt;-</span> <span class="n">rio</span><span class="o">::</span><span class="nf">import</span><span class="p">(</span><span class="s">&#34;https://raw.githubusercontent.com/flh3/pubdata/1a8cc7757e6cd975894ee76a4d79832e714e1aba/miscdata/articles.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##   fem ment  phd mar kid5 art
+</span></span><span class="line"><span class="cl">## 1   0    8 1.38   1    2   3
+</span></span><span class="line"><span class="cl">## 2   0    7 4.29   0    0   0
+</span></span><span class="line"><span class="cl">## 3   0   47 3.85   0    0   4
+</span></span><span class="line"><span class="cl">## 4   0   19 3.59   1    1   1
+</span></span><span class="line"><span class="cl">## 5   0    0 1.81   1    0   1
+</span></span><span class="line"><span class="cl">## 6   0    6 3.59   1    1   1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">dim</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## [1] 915   6
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">freq</span><span class="p">(</span><span class="n">articles</span><span class="o">$</span><span class="n">art</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## Frequencies  
+</span></span><span class="line"><span class="cl">## articles$art  
+</span></span><span class="line"><span class="cl">## Type: Integer  
+</span></span><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">##               Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+</span></span><span class="line"><span class="cl">## ----------- ------ --------- -------------- --------- --------------
+</span></span><span class="line"><span class="cl">##           0    275     30.05          30.05     30.05          30.05
+</span></span><span class="line"><span class="cl">##           1    246     26.89          56.94     26.89          56.94
+</span></span><span class="line"><span class="cl">##           2    178     19.45          76.39     19.45          76.39
+</span></span><span class="line"><span class="cl">##           3     84      9.18          85.57      9.18          85.57
+</span></span><span class="line"><span class="cl">##           4     67      7.32          92.90      7.32          92.90
+</span></span><span class="line"><span class="cl">##           5     27      2.95          95.85      2.95          95.85
+</span></span><span class="line"><span class="cl">##           6     17      1.86          97.70      1.86          97.70
+</span></span><span class="line"><span class="cl">##           7     12      1.31          99.02      1.31          99.02
+</span></span><span class="line"><span class="cl">##           8      1      0.11          99.13      0.11          99.13
+</span></span><span class="line"><span class="cl">##           9      2      0.22          99.34      0.22          99.34
+</span></span><span class="line"><span class="cl">##          10      1      0.11          99.45      0.11          99.45
+</span></span><span class="line"><span class="cl">##          11      1      0.11          99.56      0.11          99.56
+</span></span><span class="line"><span class="cl">##          12      2      0.22          99.78      0.22          99.78
+</span></span><span class="line"><span class="cl">##          16      1      0.11          99.89      0.11          99.89
+</span></span><span class="line"><span class="cl">##          19      1      0.11         100.00      0.11         100.00
+</span></span><span class="line"><span class="cl">##        &lt;NA&gt;      0                               0.00         100.00
+</span></span><span class="line"><span class="cl">##       Total    915    100.00         100.00    100.00         100.00
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">mean</span><span class="p">(</span><span class="n">articles</span><span class="o">$</span><span class="n">art</span><span class="p">)</span> <span class="c1">#average number of articles</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## [1] 1.69
+</span></span></code></pre></div><p>Based on the frequency count, 275 scientists had no publications (0) or 30.05%. If we compare this to predicted probability based on the mean: $P(art = x) = \frac{\lambda^x e^{-\lambda}}{x!}$ where $x = 0$.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">1.69</span><span class="n">^0</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-1.69</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="c1">#probability of zero articles is 18.5%</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## [1] 0.185
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#which is quite different from the 30.05%</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">fr</span> <span class="o">&lt;-</span> <span class="nf">table</span><span class="p">(</span><span class="n">articles</span><span class="o">$</span><span class="n">art</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">data.frame</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">fr</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;articles&#39;</span><span class="p">,</span> <span class="s">&#39;freq&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fr</span><span class="o">$</span><span class="n">articles</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">fr</span><span class="o">$</span><span class="n">articles</span><span class="p">))</span> <span class="c1">#convert factor to numeric</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">fr</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">articles</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">freq</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">lims</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">300</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Number of articles&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Frequency&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_text</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">articles</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">freq</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">freq</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">-1</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">0</span><span class="p">))</span> 
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="plot of chunk unnamed-chunk-3" srcset="
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp 400w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_7a364430517e3992.webp 760w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_a299d4a8a001a464.webp 1200w"
+               src="/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp"
+               width="504"
+               height="504"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+With a Poisson distribution, the mean and the variances are both equal ($\mu = \sigma^2$): a condition (i.e., equidispersion) I am not sure how often occurs in reality. So a negative binomial should be more flexible as it does not have the assumption of equidispersion. With many zeroes, a zero inflated model should fit even better</p>
+<p>The following code shows how to estimate different types of models:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">### Run the models</span>
+</span></span><span class="line"><span class="cl"><span class="n">linear</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">art</span> <span class="o">~</span> <span class="n">fem</span> <span class="o">+</span> <span class="n">ment</span> <span class="o">+</span> <span class="n">phd</span> <span class="o">+</span> <span class="n">mar</span> <span class="o">+</span> <span class="n">kid5</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">articles</span><span class="p">)</span> <span class="c1">#identity link, OLS</span>
+</span></span><span class="line"><span class="cl"><span class="n">pois</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">art</span> <span class="o">~</span> <span class="n">fem</span> <span class="o">+</span> <span class="n">ment</span> <span class="o">+</span> <span class="n">phd</span> <span class="o">+</span> <span class="n">mar</span> <span class="o">+</span> <span class="n">kid5</span><span class="p">,</span> <span class="s">&#34;poisson&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">articles</span><span class="p">)</span> <span class="c1">#Poisson</span>
+</span></span><span class="line"><span class="cl"><span class="n">negb</span> <span class="o">&lt;-</span> <span class="nf">glm.nb</span><span class="p">(</span><span class="n">art</span> <span class="o">~</span> <span class="n">fem</span> <span class="o">+</span> <span class="n">ment</span> <span class="o">+</span> <span class="n">phd</span> <span class="o">+</span> <span class="n">mar</span> <span class="o">+</span> <span class="n">kid5</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">articles</span><span class="p">)</span> <span class="c1">#negative binomial</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#in the MASS package</span>
+</span></span><span class="line"><span class="cl"><span class="n">zinb</span> <span class="o">&lt;-</span> <span class="nf">zeroinfl</span><span class="p">(</span><span class="n">art</span> <span class="o">~</span> <span class="n">fem</span> <span class="o">+</span> <span class="n">ment</span> <span class="o">+</span> <span class="n">phd</span> <span class="o">+</span> <span class="n">mar</span> <span class="o">+</span> <span class="n">kid5</span> <span class="o">|</span> <span class="n">fem</span> <span class="o">+</span> <span class="n">ment</span> <span class="o">+</span> <span class="n">phd</span> <span class="o">+</span> <span class="n">mar</span> <span class="o">+</span> <span class="n">kid5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">               <span class="n">dist</span> <span class="o">=</span> <span class="s">&#34;negbin&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">articles</span><span class="p">)</span> <span class="c1">#zero inflated nb, in the pscl package</span>
+</span></span></code></pre></div><p>Of course, to interpet the results with the log or logit links, we need to exponentiate the coefficients to get the incidence rate ratios. The <code>jtools</code> package provides an easy way to do this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">jtools</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summ</span><span class="p">(</span><span class="n">pois</span><span class="p">,</span> <span class="n">exp</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="c1">#could exp the coefficients but this is</span>
+</span></span></code></pre></div><table class="table table-striped table-hover table-condensed table-responsive" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Observations </td>
+   <td style="text-align:right;"> 915 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Dependent variable </td>
+   <td style="text-align:right;"> art </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Type </td>
+   <td style="text-align:right;"> Generalized linear model </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Family </td>
+   <td style="text-align:right;"> poisson </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Link </td>
+   <td style="text-align:right;"> log </td>
+  </tr>
+</tbody>
+</table> <table class="table table-striped table-hover table-condensed table-responsive" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> χ²(5) </td>
+   <td style="text-align:right;"> 183.03 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Pseudo-R² (Cragg-Uhler) </td>
+   <td style="text-align:right;"> 0.19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Pseudo-R² (McFadden) </td>
+   <td style="text-align:right;"> 0.05 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> AIC </td>
+   <td style="text-align:right;"> 3314.11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> BIC </td>
+   <td style="text-align:right;"> 3343.03 </td>
+  </tr>
+</tbody>
+</table> <table class="table table-striped table-hover table-condensed table-responsive" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> exp(Est.) </th>
+   <th style="text-align:right;"> 2.5% </th>
+   <th style="text-align:right;"> 97.5% </th>
+   <th style="text-align:right;"> z val. </th>
+   <th style="text-align:right;"> p </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> (Intercept) </td>
+   <td style="text-align:right;"> 1.36 </td>
+   <td style="text-align:right;"> 1.11 </td>
+   <td style="text-align:right;"> 1.66 </td>
+   <td style="text-align:right;"> 2.96 </td>
+   <td style="text-align:right;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> fem </td>
+   <td style="text-align:right;"> 0.80 </td>
+   <td style="text-align:right;"> 0.72 </td>
+   <td style="text-align:right;"> 0.89 </td>
+   <td style="text-align:right;"> -4.11 </td>
+   <td style="text-align:right;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> ment </td>
+   <td style="text-align:right;"> 1.03 </td>
+   <td style="text-align:right;"> 1.02 </td>
+   <td style="text-align:right;"> 1.03 </td>
+   <td style="text-align:right;"> 12.73 </td>
+   <td style="text-align:right;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> phd </td>
+   <td style="text-align:right;"> 1.01 </td>
+   <td style="text-align:right;"> 0.96 </td>
+   <td style="text-align:right;"> 1.07 </td>
+   <td style="text-align:right;"> 0.49 </td>
+   <td style="text-align:right;"> 0.63 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> mar </td>
+   <td style="text-align:right;"> 1.17 </td>
+   <td style="text-align:right;"> 1.04 </td>
+   <td style="text-align:right;"> 1.32 </td>
+   <td style="text-align:right;"> 2.53 </td>
+   <td style="text-align:right;"> 0.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> kid5 </td>
+   <td style="text-align:right;"> 0.83 </td>
+   <td style="text-align:right;"> 0.77 </td>
+   <td style="text-align:right;"> 0.90 </td>
+   <td style="text-align:right;"> -4.61 </td>
+   <td style="text-align:right;"> 0.00 </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> Standard errors: MLE</td></tr></tfoot>
+</table>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#useful because we get the 95% CI as well</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summ</span><span class="p">(</span><span class="n">negb</span><span class="p">,</span> <span class="n">exp</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="c1">#difference in marital status</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## Warning: Something went wrong when calculating the pseudo
+</span></span><span class="line"><span class="cl">## R-squared. Returning NA instead.
+</span></span></code></pre></div><table class="table table-striped table-hover table-condensed table-responsive" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Observations </td>
+   <td style="text-align:right;"> 915 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Dependent variable </td>
+   <td style="text-align:right;"> art </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Type </td>
+   <td style="text-align:right;"> Generalized linear model </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Family </td>
+   <td style="text-align:right;"> Negative Binomial(2.26) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Link </td>
+   <td style="text-align:right;"> log </td>
+  </tr>
+</tbody>
+</table> <table class="table table-striped table-hover table-condensed table-responsive" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> χ²(NA) </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Pseudo-R² (Cragg-Uhler) </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Pseudo-R² (McFadden) </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> AIC </td>
+   <td style="text-align:right;"> 3135.92 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> BIC </td>
+   <td style="text-align:right;"> 3169.65 </td>
+  </tr>
+</tbody>
+</table> <table class="table table-striped table-hover table-condensed table-responsive" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> exp(Est.) </th>
+   <th style="text-align:right;"> 2.5% </th>
+   <th style="text-align:right;"> 97.5% </th>
+   <th style="text-align:right;"> z val. </th>
+   <th style="text-align:right;"> p </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> (Intercept) </td>
+   <td style="text-align:right;"> 1.29 </td>
+   <td style="text-align:right;"> 0.99 </td>
+   <td style="text-align:right;"> 1.69 </td>
+   <td style="text-align:right;"> 1.86 </td>
+   <td style="text-align:right;"> 0.06 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> fem </td>
+   <td style="text-align:right;"> 0.81 </td>
+   <td style="text-align:right;"> 0.70 </td>
+   <td style="text-align:right;"> 0.93 </td>
+   <td style="text-align:right;"> -2.98 </td>
+   <td style="text-align:right;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> ment </td>
+   <td style="text-align:right;"> 1.03 </td>
+   <td style="text-align:right;"> 1.02 </td>
+   <td style="text-align:right;"> 1.04 </td>
+   <td style="text-align:right;"> 9.05 </td>
+   <td style="text-align:right;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> phd </td>
+   <td style="text-align:right;"> 1.02 </td>
+   <td style="text-align:right;"> 0.95 </td>
+   <td style="text-align:right;"> 1.09 </td>
+   <td style="text-align:right;"> 0.43 </td>
+   <td style="text-align:right;"> 0.67 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> mar </td>
+   <td style="text-align:right;"> 1.16 </td>
+   <td style="text-align:right;"> 0.99 </td>
+   <td style="text-align:right;"> 1.37 </td>
+   <td style="text-align:right;"> 1.83 </td>
+   <td style="text-align:right;"> 0.07 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> kid5 </td>
+   <td style="text-align:right;"> 0.84 </td>
+   <td style="text-align:right;"> 0.76 </td>
+   <td style="text-align:right;"> 0.93 </td>
+   <td style="text-align:right;"> -3.34 </td>
+   <td style="text-align:right;"> 0.00 </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> Standard errors: MLE</td></tr></tfoot>
+</table>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">zinb</span><span class="p">)</span> <span class="c1">#more complex, has two parts to it. </span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">## Call:
+</span></span><span class="line"><span class="cl">## zeroinfl(formula = art ~ fem + ment + phd + mar + kid5 | 
+</span></span><span class="line"><span class="cl">##     fem + ment + phd + mar + kid5, data = articles, dist = &#34;negbin&#34;)
+</span></span><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">## Pearson residuals:
+</span></span><span class="line"><span class="cl">##    Min     1Q Median     3Q    Max 
+</span></span><span class="line"><span class="cl">## -1.294 -0.760 -0.291  0.445  6.415 
+</span></span><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">## Count model coefficients (negbin with log link):
+</span></span><span class="line"><span class="cl">##             Estimate Std. Error z value Pr(&gt;|z|)    
+</span></span><span class="line"><span class="cl">## (Intercept)  0.41675    0.14360    2.90   0.0037 ** 
+</span></span><span class="line"><span class="cl">## fem         -0.19551    0.07559   -2.59   0.0097 ** 
+</span></span><span class="line"><span class="cl">## ment         0.02479    0.00349    7.10  1.3e-12 ***
+</span></span><span class="line"><span class="cl">## phd         -0.00070    0.03627   -0.02   0.9846    
+</span></span><span class="line"><span class="cl">## mar          0.09758    0.08445    1.16   0.2479    
+</span></span><span class="line"><span class="cl">## kid5        -0.15173    0.05421   -2.80   0.0051 ** 
+</span></span><span class="line"><span class="cl">## Log(theta)   0.97636    0.13547    7.21  5.7e-13 ***
+</span></span><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">## Zero-inflation model coefficients (binomial with logit link):
+</span></span><span class="line"><span class="cl">##             Estimate Std. Error z value Pr(&gt;|z|)   
+</span></span><span class="line"><span class="cl">## (Intercept)  -0.1917     1.3228   -0.14   0.8848   
+</span></span><span class="line"><span class="cl">## fem           0.6359     0.8489    0.75   0.4538   
+</span></span><span class="line"><span class="cl">## ment         -0.8823     0.3162   -2.79   0.0053 **
+</span></span><span class="line"><span class="cl">## phd          -0.0377     0.3080   -0.12   0.9025   
+</span></span><span class="line"><span class="cl">## mar          -1.4995     0.9387   -1.60   0.1102   
+</span></span><span class="line"><span class="cl">## kid5          0.6284     0.4428    1.42   0.1558   
+</span></span><span class="line"><span class="cl">## ---
+</span></span><span class="line"><span class="cl">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 
+</span></span><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">## Theta = 2.655 
+</span></span><span class="line"><span class="cl">## Number of iterations in BFGS optimization: 43 
+</span></span><span class="line"><span class="cl">## Log-likelihood: -1.55e+03 on 13 Df
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">tmp</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">zinb</span><span class="p">)</span> <span class="c1">#doing this manually</span>
+</span></span><span class="line"><span class="cl"><span class="n">tmp</span><span class="o">$</span><span class="n">coefficients</span><span class="o">$</span><span class="n">count[</span><span class="m">-7</span><span class="p">,</span> <span class="m">1</span><span class="n">]</span> <span class="o">%&gt;%</span> <span class="nf">exp</span><span class="p">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## (Intercept)         fem        ment         phd         mar 
+</span></span><span class="line"><span class="cl">##       1.517       0.822       1.025       0.999       1.103 
+</span></span><span class="line"><span class="cl">##        kid5 
+</span></span><span class="line"><span class="cl">##       0.859
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">tmp</span><span class="o">$</span><span class="n">coefficients</span><span class="o">$</span><span class="n">zero[</span><span class="m">-7</span><span class="p">,</span> <span class="m">1</span><span class="n">]</span> <span class="o">%&gt;%</span> <span class="nf">exp</span><span class="p">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## (Intercept)         fem        ment         phd         mar 
+</span></span><span class="line"><span class="cl">##       0.826       1.889       0.414       0.963       0.223 
+</span></span><span class="line"><span class="cl">##        kid5 
+</span></span><span class="line"><span class="cl">##       1.875
+</span></span></code></pre></div><p>Note: the logit portion predicts zeroes (so coefficients may seem like they are in the opposite direction). Interpret as ORs. Again, consult the article for interpretation of results. Can also consult the AIC values to help with model selection:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">tmp</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">OLS</span> <span class="o">=</span> <span class="nf">AIC</span><span class="p">(</span><span class="n">linear</span><span class="p">),</span> <span class="n">pois</span> <span class="o">=</span> <span class="nf">AIC</span><span class="p">(</span><span class="n">pois</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                  <span class="n">negb</span> <span class="o">=</span> <span class="nf">AIC</span><span class="p">(</span><span class="n">negb</span><span class="p">),</span> <span class="n">zinb</span> <span class="o">=</span> <span class="nf">AIC</span><span class="p">(</span><span class="n">zinb</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s">&#34;l&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">OLS</th>
+          <th style="text-align: left">pois</th>
+          <th style="text-align: left">negb</th>
+          <th style="text-align: left">zinb</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">3702</td>
+          <td style="text-align: left">3314</td>
+          <td style="text-align: left">3136</td>
+          <td style="text-align: left">3126</td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#zinb has the lowest, close to negb</span>
+</span></span></code></pre></div><h3 id="plotting-results">Plotting results</h3>
+<p>I replicate the graph found in the SAS post for plotted results. The predicted probabilities are based on the probability density function. Can use the <code>predprob</code> function in the <code>pscl</code> package</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">po.p</span> <span class="o">&lt;-</span> <span class="nf">predprob</span><span class="p">(</span><span class="n">pois</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colMeans</span>
+</span></span><span class="line"><span class="cl"><span class="n">po.nb</span> <span class="o">&lt;-</span> <span class="nf">predprob</span><span class="p">(</span><span class="n">negb</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colMeans</span>
+</span></span><span class="line"><span class="cl"><span class="n">po.zinb</span> <span class="o">&lt;-</span> <span class="nf">predprob</span><span class="p">(</span><span class="n">zinb</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colMeans</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="nf">max</span><span class="p">(</span><span class="n">articles</span><span class="o">$</span><span class="n">art</span><span class="p">),</span> <span class="n">Poisson</span> <span class="o">=</span> <span class="n">po.p</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                 <span class="n">NegBin</span> <span class="o">=</span> <span class="n">po.nb</span><span class="p">,</span> <span class="n">Zinb</span> <span class="o">=</span> <span class="n">po.zinb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">obs</span> <span class="o">&lt;-</span> <span class="nf">table</span><span class="p">(</span><span class="n">articles</span><span class="o">$</span><span class="n">art</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">prop.table</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="n">data.frame</span> <span class="c1">#Observed</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span> <span class="s">&#39;Observed&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p1</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">linear</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">round</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="n">table</span> <span class="o">%&gt;%</span> <span class="n">prop.table</span> <span class="o">%&gt;%</span> <span class="n">data.frame</span> <span class="c1">#for OLS</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;OLS&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">tmp</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">all</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tmp</span><span class="o">$</span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">tmp</span><span class="o">$</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">comb</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">all</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">comb</span><span class="nf">[is.na</span><span class="p">(</span><span class="n">comb</span><span class="p">)</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">comb2</span> <span class="o">&lt;-</span> <span class="n">comb[1</span><span class="o">:</span><span class="m">11</span><span class="p">,</span> <span class="n">]</span> <span class="c1">#just for the first 11 results, including zero</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mm</span> <span class="o">&lt;-</span> <span class="nf">melt</span><span class="p">(</span><span class="n">comb2</span><span class="p">,</span> <span class="n">id.vars</span> <span class="o">=</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">value.name</span> <span class="o">=</span> <span class="s">&#39;prob&#39;</span><span class="p">,</span> <span class="n">variable.name</span> <span class="o">=</span> <span class="s">&#39;Model&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mm</span> <span class="o">&lt;-</span> <span class="nf">filter</span><span class="p">(</span><span class="n">mm</span><span class="p">,</span> <span class="n">Model</span> <span class="o">!=</span> <span class="s">&#34;OLS&#34;</span><span class="p">)</span> <span class="c1">#can include the linear model too if you want</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#the SAS note does not, so I am not including it</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">mm</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prob</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="n">Model</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">Model</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">lty</span> <span class="o">=</span> <span class="n">Model</span><span class="p">),</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Number of articles&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#39;Probability&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Models for number of published articles&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_linetype_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;solid&#39;</span><span class="p">,</span> <span class="s">&#39;dotted&#39;</span><span class="p">,</span> <span class="s">&#39;dotted&#39;</span><span class="p">,</span> <span class="s">&#39;dotted&#39;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">.75</span><span class="p">,</span> <span class="m">.65</span><span class="p">),</span> <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">0</span><span class="p">))</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="plot of chunk unnamed-chunk-7" srcset="
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp 400w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_3be059cd57a9f9d2.webp 760w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_902e2127e8cd0b1d.webp 1200w"
+               src="/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp"
+               width="504"
+               height="504"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Plot shows that the negative binomial and the zero inflated nb almost overlap with the observed observations (a good approximation).</p>
+<h2 id="example-2-bullying-in-school-huang--cornell-2012">Example 2: Bullying in school (Huang &amp; Cornell, 2012)</h2>
+<p>This data is not available for download though (w/c is why I started of with the Long example).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="n">rio</span><span class="o">::</span><span class="nf">import</span><span class="p">(</span><span class="s">&#34;restricted&#34;</span><span class="p">)</span> <span class="c1">#NOT AVAILABLE</span>
+</span></span><span class="line"><span class="cl"><span class="n">x2</span> <span class="o">&lt;-</span> <span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">NEWBULLY</span><span class="p">,</span> <span class="n">TOTAL_F_R</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                    <span class="n">DIVERSITYINDEX</span><span class="p">,</span> <span class="n">PROPNONWHITE</span><span class="p">,</span> <span class="n">PD1000</span><span class="p">,</span> <span class="n">siz1000</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tableone</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">t1</span> <span class="o">&lt;-</span> <span class="nf">CreateTableOne</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">x2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##                             
+</span></span><span class="line"><span class="cl">##                              Overall    
+</span></span><span class="line"><span class="cl">##   n                           290       
+</span></span><span class="line"><span class="cl">##   NEWBULLY (mean (SD))       5.42 (5.49)
+</span></span><span class="line"><span class="cl">##   TOTAL_F_R (mean (SD))      0.30 (0.16)
+</span></span><span class="line"><span class="cl">##   DIVERSITYINDEX (mean (SD)) 0.37 (0.21)
+</span></span><span class="line"><span class="cl">##   PROPNONWHITE (mean (SD))   0.34 (0.26)
+</span></span><span class="line"><span class="cl">##   PD1000 (mean (SD))         0.94 (1.26)
+</span></span><span class="line"><span class="cl">##   siz1000 (mean (SD))        1.21 (0.69)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">cov</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">round</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##                NEWBULLY TOTAL_F_R DIVERSITYINDEX PROPNONWHITE
+</span></span><span class="line"><span class="cl">## NEWBULLY         30.148    -0.212          0.491        0.329
+</span></span><span class="line"><span class="cl">## TOTAL_F_R        -0.212     0.025         -0.006        0.012
+</span></span><span class="line"><span class="cl">## DIVERSITYINDEX    0.491    -0.006          0.044        0.035
+</span></span><span class="line"><span class="cl">## PROPNONWHITE      0.329     0.012          0.035        0.067
+</span></span><span class="line"><span class="cl">## PD1000            1.650     0.014          0.104        0.181
+</span></span><span class="line"><span class="cl">## siz1000           2.131    -0.046          0.084        0.066
+</span></span><span class="line"><span class="cl">##                PD1000 siz1000
+</span></span><span class="line"><span class="cl">## NEWBULLY        1.650   2.131
+</span></span><span class="line"><span class="cl">## TOTAL_F_R       0.014  -0.046
+</span></span><span class="line"><span class="cl">## DIVERSITYINDEX  0.104   0.084
+</span></span><span class="line"><span class="cl">## PROPNONWHITE    0.181   0.066
+</span></span><span class="line"><span class="cl">## PD1000          1.597   0.364
+</span></span><span class="line"><span class="cl">## siz1000         0.364   0.473
+</span></span></code></pre></div><p>Visualize the outcome variable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">freq</span><span class="p">(</span><span class="n">x2</span><span class="o">$</span><span class="n">NEWBULLY</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## Frequencies  
+</span></span><span class="line"><span class="cl">## x2$NEWBULLY  
+</span></span><span class="line"><span class="cl">## Label: New raw &#34;bullying&#34; without threatening, USE  
+</span></span><span class="line"><span class="cl">## Type: Numeric  
+</span></span><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">##               Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+</span></span><span class="line"><span class="cl">## ----------- ------ --------- -------------- --------- --------------
+</span></span><span class="line"><span class="cl">##           0     42     14.48          14.48     14.48          14.48
+</span></span><span class="line"><span class="cl">##           1     31     10.69          25.17     10.69          25.17
+</span></span><span class="line"><span class="cl">##           2     39     13.45          38.62     13.45          38.62
+</span></span><span class="line"><span class="cl">##           3     19      6.55          45.17      6.55          45.17
+</span></span><span class="line"><span class="cl">##           4     33     11.38          56.55     11.38          56.55
+</span></span><span class="line"><span class="cl">##           5     19      6.55          63.10      6.55          63.10
+</span></span><span class="line"><span class="cl">##           6     18      6.21          69.31      6.21          69.31
+</span></span><span class="line"><span class="cl">##           7     14      4.83          74.14      4.83          74.14
+</span></span><span class="line"><span class="cl">##           8     16      5.52          79.66      5.52          79.66
+</span></span><span class="line"><span class="cl">##           9     11      3.79          83.45      3.79          83.45
+</span></span><span class="line"><span class="cl">##          10     10      3.45          86.90      3.45          86.90
+</span></span><span class="line"><span class="cl">##          11      4      1.38          88.28      1.38          88.28
+</span></span><span class="line"><span class="cl">##          12      1      0.34          88.62      0.34          88.62
+</span></span><span class="line"><span class="cl">##          13      3      1.03          89.66      1.03          89.66
+</span></span><span class="line"><span class="cl">##          14      4      1.38          91.03      1.38          91.03
+</span></span><span class="line"><span class="cl">##          15      4      1.38          92.41      1.38          92.41
+</span></span><span class="line"><span class="cl">##          16      1      0.34          92.76      0.34          92.76
+</span></span><span class="line"><span class="cl">##          17      3      1.03          93.79      1.03          93.79
+</span></span><span class="line"><span class="cl">##          18      4      1.38          95.17      1.38          95.17
+</span></span><span class="line"><span class="cl">##          19      5      1.72          96.90      1.72          96.90
+</span></span><span class="line"><span class="cl">##          20      3      1.03          97.93      1.03          97.93
+</span></span><span class="line"><span class="cl">##          21      1      0.34          98.28      0.34          98.28
+</span></span><span class="line"><span class="cl">##          22      1      0.34          98.62      0.34          98.62
+</span></span><span class="line"><span class="cl">##          23      2      0.69          99.31      0.69          99.31
+</span></span><span class="line"><span class="cl">##          25      1      0.34          99.66      0.34          99.66
+</span></span><span class="line"><span class="cl">##          28      1      0.34         100.00      0.34         100.00
+</span></span><span class="line"><span class="cl">##        &lt;NA&gt;      0                               0.00         100.00
+</span></span><span class="line"><span class="cl">##       Total    290    100.00         100.00    100.00         100.00
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">moments</span><span class="o">::</span><span class="nf">skewness</span><span class="p">((</span><span class="n">x2</span><span class="o">$</span><span class="n">NEWBULLY</span><span class="p">))</span> <span class="c1">#positively skewed</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## [1] 1.52
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">fr</span> <span class="o">&lt;-</span> <span class="nf">table</span><span class="p">(</span><span class="n">x2</span><span class="o">$</span><span class="n">NEWBULLY</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">data.frame</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">fr</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;bullyinc&#39;</span><span class="p">,</span> <span class="s">&#39;freq&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fr</span><span class="o">$</span><span class="n">bullyinc</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">fr</span><span class="o">$</span><span class="n">bullyinc</span><span class="p">))</span> <span class="c1">#convert factor to numeric</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">fr</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">bullyinc</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">freq</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">lims</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">45</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Bullying incidents&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Frequency&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_text</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">bullyinc</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">freq</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">freq</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">-1</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">0</span><span class="p">))</span> 
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="plot of chunk unnamed-chunk-9" srcset="
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp 400w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_f0ce2e207d87b939.webp 760w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_223a3143fc375970.webp 1200w"
+               src="/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp"
+               width="504"
+               height="504"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+Run the models:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">NEWBULLY</span> <span class="o">~</span> <span class="n">. </span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">x2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">m2</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">NEWBULLY</span> <span class="o">~</span> <span class="n">. </span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">x2</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="n">m3</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">NEWBULLY</span> <span class="o">~</span> <span class="n">. </span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="n">quasipoisson</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">x2</span><span class="p">)</span> <span class="c1">#for overdispersion</span>
+</span></span><span class="line"><span class="cl"><span class="n">m4</span> <span class="o">&lt;-</span> <span class="nf">glm.nb</span><span class="p">(</span><span class="n">NEWBULLY</span> <span class="o">~</span> <span class="n">.,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">x2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">m5</span> <span class="o">&lt;-</span> <span class="nf">zeroinfl</span><span class="p">(</span><span class="n">NEWBULLY</span> <span class="o">~</span> <span class="n">. </span><span class="o">|</span> <span class="n">siz1000</span><span class="p">,</span> <span class="n">dist</span> <span class="o">=</span> <span class="s">&#34;negbin&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">x2</span><span class="p">)</span>
+</span></span></code></pre></div><p>We can use <code>jtools</code> again but just showing raw output all together. Note the Poisson model has standard errors that are too low (compare to the quasi Poisson and the negative binomial).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">stargazer</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">m3</span><span class="p">,</span> <span class="n">m4</span><span class="p">,</span> <span class="n">m5</span><span class="p">,</span>  <span class="n">type</span> <span class="o">=</span> <span class="s">&#39;text&#39;</span><span class="p">,</span> <span class="n">star.cutoffs</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">.05</span><span class="p">,</span> <span class="m">.01</span><span class="p">,</span> <span class="m">.001</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">          <span class="n">no.space</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">digits</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## ==================================================================================</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                                         Dependent variable:                       </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                   ----------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                                               NEWBULLY                            </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                    normal  Poisson  glm: quasipoisson    negative    zero-inflated</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                                        link = log        binomial     count data  </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                     (1)      (2)           (3)             (4)            (5)     </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## ----------------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## TOTAL_F_R           1.19    -0.26         -0.26           -0.42          -0.21    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                    (2.39)   (0.25)       (0.47)           (0.46)        (0.46)    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## DIVERSITYINDEX     5.48**  1.09***       1.09**           0.90*          0.89*    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                    (2.06)   (0.22)       (0.41)           (0.39)        (0.37)    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## PROPNONWHITE       -2.07    -0.09         -0.09            0.01          -0.09    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                    (1.85)   (0.20)       (0.38)           (0.35)        (0.36)    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## PD1000             0.003    -0.01         -0.01           -0.02          -0.01    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                    (0.26)   (0.02)       (0.04)           (0.05)        (0.05)    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## siz1000           3.93***  0.64***       0.64***         0.72***        0.65***   </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                    (0.56)   (0.05)       (0.10)           (0.10)        (0.11)    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Constant           -1.00   0.46***        0.46*           0.45*         0.56**    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                    (1.11)   (0.11)       (0.21)           (0.21)        (0.21)    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## ----------------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Observations        290      290           290             290            290     </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Log Likelihood    -846.00  -893.00                       -742.00        -737.00   </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## theta                                                 2.18*** (0.29)              </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Akaike Inf. Crit. 1,705.00 1,797.00                      1,496.00                 </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## ==================================================================================</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Note:                                                *p&lt;0.05; **p&lt;0.01; ***p&lt;0.001</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#have to exponentiate results to get the IRR</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#does not show the logit results for the ZI model</span>
+</span></span></code></pre></div><p>Graph the results:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">po.p</span> <span class="o">&lt;-</span> <span class="nf">predprob</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colMeans</span>
+</span></span><span class="line"><span class="cl"><span class="n">po.nb</span> <span class="o">&lt;-</span> <span class="nf">predprob</span><span class="p">(</span><span class="n">m4</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colMeans</span>
+</span></span><span class="line"><span class="cl"><span class="n">po.zinb</span> <span class="o">&lt;-</span> <span class="nf">predprob</span><span class="p">(</span><span class="n">m5</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colMeans</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="nf">max</span><span class="p">(</span><span class="n">x2</span><span class="o">$</span><span class="n">NEWBULLY</span><span class="p">),</span> <span class="n">Poisson</span> <span class="o">=</span> <span class="n">po.p</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                 <span class="n">NegBin</span> <span class="o">=</span> <span class="n">po.nb</span><span class="p">,</span> <span class="n">Zinb</span> <span class="o">=</span> <span class="n">po.zinb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">obs</span> <span class="o">&lt;-</span> <span class="nf">table</span><span class="p">(</span><span class="n">x2</span><span class="o">$</span><span class="n">NEWBULLY</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">prop.table</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="n">data.frame</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span> <span class="s">&#39;Observed&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p1</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">round</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="n">table</span> <span class="o">%&gt;%</span> <span class="n">prop.table</span> <span class="o">%&gt;%</span> <span class="n">data.frame</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;OLS&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">p1[</span><span class="m">-1</span><span class="p">,</span> <span class="n">]</span> <span class="c1">#there is a negative value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">tmp</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">all</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tmp</span><span class="o">$</span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">tmp</span><span class="o">$</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">comb</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">all</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">comb</span><span class="nf">[is.na</span><span class="p">(</span><span class="n">comb</span><span class="p">)</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">mm</span> <span class="o">&lt;-</span> <span class="nf">melt</span><span class="p">(</span><span class="n">comb</span><span class="p">,</span> <span class="n">id.vars</span> <span class="o">=</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">value.name</span> <span class="o">=</span> <span class="s">&#39;prob&#39;</span><span class="p">,</span> <span class="n">variable.name</span> <span class="o">=</span> <span class="s">&#39;Model&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">mm</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prob</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="n">Model</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">Model</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">lty</span> <span class="o">=</span> <span class="n">Model</span><span class="p">),</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Number of bullying incidents&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#39;Probability&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Comparison of models&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;brown&#39;</span><span class="p">,</span> <span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="s">&#39;red&#39;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_linetype_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;dotted&#39;</span><span class="p">,</span> <span class="s">&#39;solid&#39;</span><span class="p">,</span> <span class="s">&#39;dotted&#39;</span><span class="p">,</span> <span class="s">&#39;dotted&#39;</span><span class="p">,</span> <span class="s">&#39;dashed&#39;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">.65</span><span class="p">,</span> <span class="m">.65</span><span class="p">),</span> <span class="n">legend.background</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(),</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">0</span><span class="p">))</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="plot of chunk unnamed-chunk-12" srcset="
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp 400w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_e95e543cda7cee89.webp 760w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_ec63239498e0e1a1.webp 1200w"
+               src="/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp"
+               width="504"
+               height="504"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="other-notes-to-self-ignore-these">Other notes to self: Ignore these</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pdf.pois</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tmp</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">for</span> <span class="p">(</span><span class="n">i</span> <span class="kr">in</span> <span class="m">0</span><span class="o">:</span><span class="m">10</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pp</span> <span class="o">&lt;-</span> <span class="n">x^i</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">pp</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">return</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="m">3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">dpois</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1.69</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## [1] 0.185
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">dpois</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1.69</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## [1] 0.312
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">pdf.pois</span><span class="p">(</span><span class="m">1.69</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##     i    pp
+</span></span><span class="line"><span class="cl">## 1   0 0.185
+</span></span><span class="line"><span class="cl">## 2   1 0.312
+</span></span><span class="line"><span class="cl">## 3   2 0.264
+</span></span><span class="line"><span class="cl">## 4   3 0.148
+</span></span><span class="line"><span class="cl">## 5   4 0.063
+</span></span><span class="line"><span class="cl">## 6   5 0.021
+</span></span><span class="line"><span class="cl">## 7   6 0.006
+</span></span><span class="line"><span class="cl">## 8   7 0.001
+</span></span><span class="line"><span class="cl">## 9   8 0.000
+</span></span><span class="line"><span class="cl">## 10  9 0.000
+</span></span><span class="line"><span class="cl">## 11 10 0.000
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">nn</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="nf">nobs</span><span class="p">(</span><span class="n">pois</span><span class="p">),</span> <span class="n">ncol</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">articles</span><span class="o">$</span><span class="n">art</span><span class="p">)</span> <span class="o">+</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pp</span> <span class="o">&lt;-</span> <span class="nf">fitted</span><span class="p">(</span><span class="n">pois</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">for</span> <span class="p">(</span><span class="n">i</span> <span class="kr">in</span> <span class="m">0</span><span class="o">:</span><span class="nf">max</span><span class="p">(</span><span class="n">articles</span><span class="o">$</span><span class="n">art</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nn[</span><span class="p">,</span> <span class="n">i</span><span class="m">+1</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="nf">dpois</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">pp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##        [,1]   [,2]   [,3]  [,4]   [,5]   [,6]    [,7]    [,8]
+</span></span><span class="line"><span class="cl">## [1,] 0.2550 0.3485 0.2381 0.108 0.0370 0.0101 0.00230 0.00045
+</span></span><span class="line"><span class="cl">## [2,] 0.1803 0.3089 0.2646 0.151 0.0647 0.0222 0.00633 0.00155
+</span></span><span class="line"><span class="cl">## [3,] 0.0088 0.0417 0.0986 0.156 0.1840 0.1742 0.13738 0.09288
+</span></span><span class="line"><span class="cl">## [4,] 0.1065 0.2385 0.2671 0.199 0.1116 0.0500 0.01867 0.00597
+</span></span><span class="line"><span class="cl">## [5,] 0.1977 0.3205 0.2597 0.140 0.0569 0.0184 0.00498 0.00115
+</span></span><span class="line"><span class="cl">## [6,] 0.2005 0.3222 0.2589 0.139 0.0557 0.0179 0.00479 0.00110
+</span></span><span class="line"><span class="cl">##          [,9]    [,10]    [,11]    [,12]    [,13]    [,14]
+</span></span><span class="line"><span class="cl">## [1,] 7.68e-05 1.17e-05 1.59e-06 1.98e-07 2.25e-08 2.37e-09
+</span></span><span class="line"><span class="cl">## [2,] 3.32e-04 6.32e-05 1.08e-05 1.69e-06 2.41e-07 3.17e-08
+</span></span><span class="line"><span class="cl">## [3,] 5.49e-02 2.89e-02 1.37e-02 5.88e-03 2.32e-03 8.45e-04
+</span></span><span class="line"><span class="cl">## [4,] 1.67e-03 4.16e-04 9.32e-05 1.90e-05 3.54e-06 6.10e-07
+</span></span><span class="line"><span class="cl">## [5,] 2.34e-04 4.21e-05 6.83e-06 1.01e-06 1.36e-07 1.69e-08
+</span></span><span class="line"><span class="cl">## [6,] 2.21e-04 3.95e-05 6.34e-06 9.26e-07 1.24e-07 1.53e-08
+</span></span><span class="line"><span class="cl">##         [,15]    [,16]    [,17]    [,18]    [,19]    [,20]
+</span></span><span class="line"><span class="cl">## [1,] 2.31e-10 2.11e-11 1.80e-12 1.45e-13 1.10e-14 7.89e-16
+</span></span><span class="line"><span class="cl">## [2,] 3.88e-09 4.44e-10 4.75e-11 4.79e-12 4.56e-13 4.11e-14
+</span></span><span class="line"><span class="cl">## [3,] 2.86e-04 9.01e-05 2.67e-05 7.42e-06 1.95e-06 4.86e-07
+</span></span><span class="line"><span class="cl">## [4,] 9.76e-08 1.46e-08 2.04e-09 2.69e-10 3.34e-11 3.94e-12
+</span></span><span class="line"><span class="cl">## [5,] 1.96e-09 2.12e-10 2.15e-11 2.05e-12 1.84e-13 1.57e-14
+</span></span><span class="line"><span class="cl">## [6,] 1.76e-09 1.88e-10 1.89e-11 1.79e-12 1.60e-13 1.35e-14
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colMeans</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">round</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##  [1] 0.21 0.31 0.24 0.13 0.06 0.02 0.01 0.00 0.00 0.00 0.00
+</span></span><span class="line"><span class="cl">## [12] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">predprob</span><span class="p">(</span><span class="n">pois</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colMeans</span> <span class="o">%&gt;%</span> <span class="nf">round</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##    0    1    2    3    4    5    6    7    8    9   10   11 
+</span></span><span class="line"><span class="cl">## 0.21 0.31 0.24 0.13 0.06 0.02 0.01 0.00 0.00 0.00 0.00 0.00 
+</span></span><span class="line"><span class="cl">##   12   13   14   15   16   17   18   19 
+</span></span><span class="line"><span class="cl">## 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#identical</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">colMeans</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">plot</span><span class="p">(</span><span class="n">.,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&#39;Number of articles&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colMeans</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">lines</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="plot of chunk unnamed-chunk-13" srcset="
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp 400w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_adb155b5da58cfb1.webp 760w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_2dd82166471c1cba.webp 1200w"
+               src="/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp"
+               width="504"
+               height="504"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Simulating:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sim.p</span> <span class="o">&lt;-</span> <span class="nf">rpois</span><span class="p">(</span><span class="m">915</span><span class="p">,</span> <span class="m">1.693</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sim.p</span> <span class="o">%&gt;%</span> <span class="n">table</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## .
+</span></span><span class="line"><span class="cl">##   0   1   2   3   4   5   6   7 
+</span></span><span class="line"><span class="cl">## 173 288 239 139  48  21   6   1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">sim.p</span> <span class="o">%&gt;%</span> <span class="n">table</span> <span class="o">%&gt;%</span> <span class="n">prop.table</span> <span class="o">%&gt;%</span> <span class="nf">round</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## .
+</span></span><span class="line"><span class="cl">##    0    1    2    3    4    5    6    7 
+</span></span><span class="line"><span class="cl">## 0.19 0.31 0.26 0.15 0.05 0.02 0.01 0.00
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">sim.p</span> <span class="o">%&gt;%</span> <span class="n">table</span> <span class="o">%&gt;%</span> <span class="nf">barplot</span><span class="p">()</span> <span class="c1">#quick and dirty</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="plot of chunk unnamed-chunk-14" srcset="
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp 400w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_148e93479cb1d9f.webp 760w,
+               /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_53a0d3dcfb62baac.webp 1200w"
+               src="/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp"
+               width="504"
+               height="504"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Dispersion tests:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">AER</span><span class="o">::</span><span class="nf">dispersiontest</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span> <span class="c1">#tests for equidispersion</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">## 	Overdispersion test
+</span></span><span class="line"><span class="cl">## 
+</span></span><span class="line"><span class="cl">## data:  m2
+</span></span><span class="line"><span class="cl">## z = 6, p-value = 9e-09
+</span></span><span class="line"><span class="cl">## alternative hypothesis: true dispersion is greater than 1
+</span></span><span class="line"><span class="cl">## sample estimates:
+</span></span><span class="line"><span class="cl">## dispersion 
+</span></span><span class="line"><span class="cl">##       3.46
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sqrt</span><span class="p">(</span><span class="m">3.4558</span><span class="p">)</span> 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## [1] 1.86
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#indicates how much larger the poisson standard should be</span>
+</span></span></code></pre></div><p>Compare standard errors in models 2 and 3 in example 2.</p>
+<center> **References:** </center>
+<p>Huang, F., &amp; Cornell, D. (2012). Pick your Poisson: Regression models for count data in school violence research. <em>Journal of School Violence, 11,</em> 187-206. doi: 10.1080/15388220.2012.682010</p>
+<p>Long, J. S. (1990). The origins of sex differences in science. <em>Social Forces, 68,</em> 1297-1315.</p>
+<p>##END</p>
+
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2019-05-21T00:00:00.000Z">
+    <span>Last updated on</span>
+    May 21, 2019</time>
+
+      <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
+        
+        <div class="max-w-prose print:hidden">
+  
+  
+
+  
+
+<div class="flex justify-center">
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/poisson/">Poisson</a>
+  
+</div>
+
+
+  
+<section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fpoisson-and-negative-binomial-regression-using-r%2F&amp;text=Poisson&#43;and&#43;Negative&#43;Binomial&#43;Regression&#43;using&#43;R"
+    title="X"
+    aria-label="X"
+    id="share-link-x"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fpoisson-and-negative-binomial-regression-using-r%2F&amp;t=Poisson&#43;and&#43;Negative&#43;Binomial&#43;Regression&#43;using&#43;R"
+    title="Facebook"
+    aria-label="Facebook"
+    id="share-link-facebook"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+    
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="mailto:?subject=Poisson%20and%20Negative%20Binomial%20Regression%20using%20R&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fpoisson-and-negative-binomial-regression-using-r%2F"
+    title="Email"
+    aria-label="Email"
+    id="share-link-email"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fpoisson-and-negative-binomial-regression-using-r%2F&amp;title=Poisson&#43;and&#43;Negative&#43;Binomial&#43;Regression&#43;using&#43;R"
+    title="LinkedIn"
+    aria-label="LinkedIn"
+    id="share-link-linkedin"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="whatsapp://send?text=Poisson&#43;and&#43;Negative&#43;Binomial&#43;Regression&#43;using&#43;R%20http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fpoisson-and-negative-binomial-regression-using-r%2F"
+    title="WhatsApp"
+    aria-label="WhatsApp"
+    id="share-link-whatsapp"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="m187.58 144.84-32-16a8 8 0 0 0-8 .5l-14.69 9.8a40.55 40.55 0 0 1-16-16l9.8-14.69a8 8 0 0 0 .5-8l-16-32A8 8 0 0 0 104 64a40 40 0 0 0-40 40 88.1 88.1 0 0 0 88 88 40 40 0 0 0 40-40 8 8 0 0 0-4.42-7.16ZM152 176a72.08 72.08 0 0 1-72-72 24 24 0 0 1 19.29-23.54l11.48 23L101 118a8 8 0 0 0-.73 7.51 56.47 56.47 0 0 0 30.15 30.15A8 8 0 0 0 138 155l14.61-9.74 23 11.48A24 24 0 0 1 152 176ZM128 24a104 104 0 0 0-91.82 152.88l-11.35 34.05a16 16 0 0 0 20.24 20.24l34.05-11.35A104 104 0 1 0 128 24Zm0 192a87.87 87.87 0 0 1-44.06-11.81 8 8 0 0 0-6.54-.67L40 216l12.47-37.4a8 8 0 0 0-.66-6.54A88 88 0 1 1 128 216Z"/></svg>
+  </a>
+  
+</section>
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+
+<div class="flex pt-12 pb-4">
+  
+  
+  <img
+    class="mr-4 h-24 w-24 rounded-full"
+    width="96"
+    height="96"
+    alt="Francis L. Huang"
+  src="/author/francis-l.-huang/avatar_hu_1a0a2b036d9148a1.jpg"
+  loading="lazy"
+  />
+  
+  <div class="place-self-center">
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Authors
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      <a href="http://localhost:1313/" class="no-underline">
+      Francis L. Huang
+      </a>
+    </div>
+
+    
+    <div class="text-sm font-bold text-neutral-700 dark:text-neutral-300">
+    Professor / Methodology Co-Director
+    </div>
+    
+
+
+    
+
+    <div class="text-2xl sm:text-lg pt-1">
+
+      
+<div class="flex flex-wrap text-neutral-500 dark:text-neutral-300">
+  
+    
+    
+    
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="mailto:huangf@missouri.edu"
+      
+      aria-label="At-Symbol"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://x.com/flhuang"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/X"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://bsky.app/profile/flhuang2000.bsky.social"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Custom/Bluesky"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bluesky">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path
+        d="M6.335 5.144c-1.654 -1.199 -4.335 -2.127 -4.335 .826c0 .59 .35 4.953 .556 5.661c.713 2.463 3.13 2.75 5.444 2.369c-4.045 .665 -4.889 3.208 -2.667 5.41c1.03 1.018 1.913 1.59 2.667 1.59c2 0 3.134 -2.769 3.5 -3.5c.333 -.667 .5 -1.167 .5 -1.5c0 .333 .167 .833 .5 1.5c.366 .731 1.5 3.5 3.5 3.5c.754 0 1.637 -.571 2.667 -1.59c2.222 -2.203 1.378 -4.746 -2.667 -5.41c2.314 .38 4.73 .094 5.444 -2.369c.206 -.708 .556 -5.072 .556 -5.661c0 -2.953 -2.68 -2.025 -4.335 -.826c-2.293 1.662 -4.76 5.048 -5.665 6.856c-.905 -1.808 -3.372 -5.194 -5.665 -6.856z" />
+</svg>
+</a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://www.instagram.com/flh3/"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Instagram"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M12.91 12.909c.326-.327.582-.72.749-1.151c.16-.414.27-.886.302-1.578c.032-.693.04-.915.04-2.68c0-1.765-.008-1.987-.04-2.68c-.032-.692-.142-1.164-.302-1.578a3.185 3.185 0 0 0-.75-1.151a3.187 3.187 0 0 0-1.151-.75c-.414-.16-.886-.27-1.578-.302C9.487 1.007 9.265 1 7.5 1c-1.765 0-1.987.007-2.68.04c-.692.03-1.164.14-1.578.301a3.2 3.2 0 0 0-1.151.75a3.2 3.2 0 0 0-.75 1.151c-.16.414-.27.886-.302 1.578C1.007 5.513 1 5.735 1 7.5c0 1.765.007 1.987.04 2.68c.03.692.14 1.164.301 1.578c.164.434.42.826.75 1.151c.325.33.718.586 1.151.75c.414.16.886.27 1.578.302c.693.031.915.039 2.68.039c1.765 0 1.987-.008 2.68-.04c.692-.03 1.164-.14 1.578-.301a3.323 3.323 0 0 0 1.151-.75ZM2 6.735v1.53c-.002.821-.002 1.034.02 1.5c.026.586.058 1.016.156 1.34c.094.312.199.63.543 1.012c.344.383.675.556 1.097.684c.423.127.954.154 1.415.175c.522.024.73.024 1.826.024H8.24c.842.001 1.054.002 1.526-.02c.585-.027 1.015-.059 1.34-.156c.311-.094.629-.2 1.011-.543c.383-.344.556-.676.684-1.098c.127-.422.155-.953.176-1.414C13 9.247 13 9.04 13 7.947v-.89c0-1.096 0-1.303-.023-1.826c-.021-.461-.049-.992-.176-1.414c-.127-.423-.3-.754-.684-1.098c-.383-.344-.7-.449-1.011-.543c-.325-.097-.755-.13-1.34-.156A27.29 27.29 0 0 0 8.24 2H7.057c-1.096 0-1.304 0-1.826.023c-.461.021-.992.049-1.415.176c-.422.128-.753.301-1.097.684c-.344.383-.45.7-.543 1.012c-.098.324-.13.754-.156 1.34c-.022.466-.022.679-.02 1.5ZM7.5 5.25a2.25 2.25 0 1 0 0 4.5a2.25 2.25 0 0 0 0-4.5ZM4.25 7.5a3.25 3.25 0 1 1 6.5 0a3.25 3.25 0 0 1-6.5 0Zm6.72-2.72a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5Z" clip-rule="evenodd"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://github.com/flh3"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Github"
+    ><svg style="height: 1em;" fill="currentColor" viewBox="3 3 18 18"><path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://www.linkedin.com/in/francishuang"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Linkedin"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://scholar.google.com/citations?user=mLNk1a8AAAAJ&amp;hl=en"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Academicons/Google-Scholar"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M343.759 106.662V79.43L363.524 64h-213.89L20.476 176.274h85.656a82.339 82.339 0 0 0-.219 6.225c0 20.845 7.22 38.087 21.672 51.861c14.453 13.797 32.252 20.648 53.327 20.648c4.923 0 9.75-.368 14.438-1.024c-2.907 6.5-4.374 12.523-4.374 18.142c0 9.875 4.499 20.43 13.467 31.642c-39.234 2.67-68.061 9.732-86.437 21.163c-10.531 6.5-19 14.704-25.39 24.531c-6.391 9.9-9.578 20.515-9.578 31.962c0 9.648 2.062 18.336 6.219 26.062c4.156 7.726 9.578 14.07 16.312 18.984c6.718 4.968 14.469 9.101 23.219 12.469c8.734 3.344 17.406 5.718 26.061 7.062A167.052 167.052 0 0 0 180.555 448c13.469 0 26.953-1.734 40.547-5.187c13.562-3.485 26.28-8.642 38.171-15.493c11.86-6.805 21.515-16.086 28.922-27.718c7.39-11.68 11.094-24.805 11.094-39.336c0-11.016-2.25-21.039-6.75-30.14c-4.468-9.073-9.938-16.542-16.452-22.345c-6.501-5.813-13-11.155-19.516-15.968c-6.5-4.845-12-9.75-16.468-14.813c-4.485-5.046-6.735-10.054-6.735-14.984c0-4.921 1.734-9.672 5.216-14.265c3.455-4.61 7.674-9.048 12.61-13.306c4.937-4.25 9.875-8.968 14.796-14.133c4.922-5.147 9.141-11.827 12.61-20.008c3.485-8.18 5.203-17.445 5.203-27.757c0-13.453-2.547-24.46-7.547-33.314c-.594-1.022-1.218-1.803-1.875-3.022l56.907-46.672v17.119c-7.393.93-6.624 5.345-6.624 10.635V245.96c0 5.958 4.875 10.834 10.834 10.834h3.989c5.958 0 10.833-4.875 10.833-10.834V117.293c0-5.277.778-9.688-6.561-10.63zm-107.36 222.48c1.14.75 3.704 2.78 7.718 6.038c4.05 3.243 6.797 5.695 8.266 7.414a443.553 443.553 0 0 1 6.376 7.547c2.813 3.375 4.718 6.304 5.718 8.734c1 2.477 2.016 5.461 3.047 8.946a38.27 38.27 0 0 1 1.485 10.562c0 17.048-6.564 29.68-19.656 37.859c-13.125 8.18-28.767 12.274-46.938 12.274c-9.187 0-18.203-1.093-27.063-3.196c-8.843-2.116-17.311-5.336-25.39-9.601c-8.078-4.258-14.577-10.204-19.5-17.797c-4.938-7.64-7.407-16.415-7.407-26.25c0-10.32 2.797-19.29 8.422-26.906c5.594-7.625 12.938-13.391 22.032-17.315c9.063-3.946 18.25-6.742 27.562-8.398a157.865 157.865 0 0 1 28.438-2.555c4.47 0 7.936.25 10.405.696c.455.219 3.032 2.07 7.735 5.563c4.704 3.462 7.625 5.595 8.75 6.384zm-3.359-100.579c-7.406 8.86-17.734 13.288-30.953 13.288c-11.86 0-22.298-4.764-31.266-14.312c-9-9.523-15.422-20.328-19.344-32.43c-3.937-12.109-5.906-23.984-5.906-35.648c0-13.694 3.596-25.352 10.781-34.976c7.187-9.65 17.5-14.485 30.938-14.485c11.875 0 22.374 5.038 31.437 15.157c9.094 10.085 15.61 21.413 19.517 33.968c3.922 12.54 5.873 24.53 5.873 35.984c0 13.446-3.702 24.61-11.076 33.454z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://orcid.org/0000-0002-5900-7763"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Academicons/Orcid"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M336.62 194.538c-7.13-3.328-13.866-5.56-20.253-6.614c-6.365-1.095-16.574-1.612-30.71-1.612h-36.704v152.747h37.634c14.673 0 26.081-1.013 34.224-3.017c8.142-2.004 14.921-4.526 20.356-7.626a69.448 69.448 0 0 0 14.942-11.388c14.488-14.714 21.742-33.273 21.742-55.717c0-22.052-7.44-40.052-22.341-53.982c-5.498-5.166-11.822-9.444-18.89-12.793zM256 8C119.022 8 8 119.042 8 256s111.022 248 248 248s248-111.042 248-248S392.978 8 256 8Zm-82.336 357.513h-29.389V160.148h29.389zM158.95 138.696c-11.14 0-20.213-9.01-20.213-20.212c0-11.118 9.052-20.191 20.213-20.191c11.18 0 20.232 9.052 20.232 20.191a20.194 20.194 0 0 1-20.232 20.212zm241.386 163.597c-5.29 12.545-12.834 23.581-22.65 33.088c-9.982 9.837-21.597 17.194-34.844 22.196c-7.75 3.017-14.839 5.063-21.307 6.117c-6.49 1.013-18.828 1.509-37.076 1.509h-64.956V160.148h69.233c27.962 0 50.034 4.154 66.32 12.545c16.265 8.37 29.181 20.728 38.792 36.972c9.61 16.265 14.425 34.018 14.425 53.196c.023 13.765-2.666 26.908-7.936 39.432z"/></svg></a>
+  
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  
+  
+    
+    
+    
+      
+      
+    
+<div class="pt-1 no-prose w-full">
+  <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+  <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
+    <div class="">
+      
+        <a class="group flex no-underline" href="/post/centering/">
+          <span
+            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >🎉 Why does centering reduce multicollinearity?</span>
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Oct 27, 2019
+              
+            </span>
+          </span>
+        </a>
+      
+    </div>
+    <div class="">
+      
+        <a class="group flex text-right no-underline" href="/post/sim2data/">
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >🎉 Simulating two level data</span
+            >
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Oct 27, 2018
+              
+            </span>
+          </span>
+          <span
+            class="mt-[-0.3rem] ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline">&rarr;</span></span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+  
+  
+
+
+  
+
+
+
+</div>
+
+      </div>
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Grumblesquasher. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-sa fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

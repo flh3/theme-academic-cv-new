@@ -626,6 +626,10 @@
     <lastmod>2020-06-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>http://localhost:1313/post/prior-problem-behavior-and-suspensions-a-replication/</loc>
+    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>http://localhost:1313/publication/journal-article/2020/eddy-does-2020/</loc>
     <lastmod>2020-06-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -702,6 +706,14 @@
     <lastmod>2019-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>http://localhost:1313/tags/poisson/</loc>
+    <lastmod>2019-05-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/</loc>
+    <lastmod>2019-05-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>http://localhost:1313/publication/journal-article/test2/prewett-student-2019/</loc>
     <lastmod>2019-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -756,6 +768,18 @@
   </url><url>
     <loc>http://localhost:1313/tags/instrumental-variable/</loc>
     <lastmod>2018-06-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/post/ovb/</loc>
+    <lastmod>2018-06-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/ovb/</loc>
+    <lastmod>2018-06-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/sims/</loc>
+    <lastmod>2018-06-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>http://localhost:1313/publication/journal-article/test2/cornell-student-2017/</loc>
