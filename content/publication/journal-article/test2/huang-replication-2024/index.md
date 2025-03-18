@@ -46,7 +46,7 @@ url_code: ''
 url_dataset: ''
 url_poster: ''
 url_project: ''
-url_slides: ''
+url_slides: 'https://flh3.github.io/repro.html#1'
 url_source: ''
 url_video: ''
 
