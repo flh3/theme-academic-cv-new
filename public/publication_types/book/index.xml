@@ -14,10 +14,13 @@
     
     <item>
       <title>Practical multilevel modeling using R</title>
-      <link>http://localhost:1313/publication/journal-article/test2/huang-practical-2023/</link>
+      <link>http://localhost:1313/publication/book/huang-practical-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/test2/huang-practical-2023/</guid>
-      <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
+      <guid>http://localhost:1313/publication/book/huang-practical-2023/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;A major strength of this book is its accessibility. Huang effortlessly bridges the divide between the sometimes-abstruse literature on advanced statistics and the needs of applied researchers who lack extensive quantitative training. The result is an approachable text that covers all the basics, but also does not shy away from important advanced topics such as diagnostics, detecting and handling heteroscedasticity, and missing data handling methods. This book would make not only a useful guide to the application of multilevel modeling, but could also serve as an excellent companion text for a course on multilevel modeling. - Kristopher J. Preacher, Vanderbilt University&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This book is an excellent book for a graduate level multilevel modeling course that utilizes R; it perfectly combines the depth and breadth on this topic. - Wei Wang, The Graduate Center, City University of New York&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     

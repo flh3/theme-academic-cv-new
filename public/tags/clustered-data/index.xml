@@ -89,5 +89,21 @@
 </description>
     </item>
     
+    <item>
+      <title>Multilevel modeling and ordinary least squares regression:  How comparable are they?</title>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using cluster bootstrapping to analyze nested data with a few clusters</title>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-using-2018-1/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-using-2018-1/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
