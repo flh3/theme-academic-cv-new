@@ -6,7 +6,7 @@ type: landing
 
 design:
   # Default section spacing
-  spacing: "6rem"
+  spacing: "1rem"
 
 sections:
   - block: resume-biography-3
@@ -120,4 +120,14 @@ sections:
         # Card background color (CSS class)
         css_class: "bg-primary-700"
         css_style: ""
+  - block: markdown
+    content:
+      title: '📇 Contact Info'
+      subtitle: ''
+      text: |-   
+        📞 +1 (573) 882-8689<BR>
+        📍 16 Hill Hall, Columbia, MO 65211<BR>
+        📧 huangf@missouri.edu
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2567.8346708637905!2d-92.33087050436905!3d38.945023020792796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87dcb7c7a72ab66f%3A0x15059061ed0b1d1f!2sUniversity%20of%20Missouri%20Department%20of%20Educational%2C%20School%20%26%20Counseling%20Psychology!5e0!3m2!1sen!2sus!4v1742661270692!5m2!1sen!2sus" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 ---
