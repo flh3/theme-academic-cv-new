@@ -1,0 +1,1736 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: March 24, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="light">
+  
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.1" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Francis L. Huang" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Francis Huang / projects / research." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://localhost:1313/post/logreg_matrix/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/blue.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.css" rel="stylesheet" />
+  
+
+  
+  
+  
+
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="alternate" href="/post/logreg_matrix/index.xml" type="application/rss+xml" title="FLH Website" />
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu_3a05525e284cb133.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_f701646b16bb8941.png" />
+
+  <link rel="canonical" href="http://localhost:1313/post/logreg_matrix/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@flhuang" />
+    <meta property="twitter:creator" content="@flhuang" />
+  
+  <meta property="og:site_name" content="FLH Website" />
+  <meta property="og:url" content="http://localhost:1313/post/logreg_matrix/" />
+  <meta property="og:title" content="🖩 Logistic regression with matrices | FLH Website" />
+  <meta property="og:description" content="Francis Huang / projects / research." /><meta property="og:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" />
+    <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="og:updated_time" content="2023-10-27T00:00:00&#43;00:00" />
+    
+  
+
+  
+
+
+
+
+  <title>🖩 Logistic regression with matrices | FLH Website</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let element = document.getElementById('search');
+    let trigger = document.getElementById('search_toggle');
+
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        element.classList.toggle('hidden');
+        element.querySelector("input").value = ""
+        element.querySelector("input").focus()
+
+        if (!element.classList.contains('hidden')) {
+          let clear_trigger = document.querySelector('.pagefind-ui__search-clear');
+
+          if (clear_trigger && !clear_trigger.hasAttribute('listenerOnClick')) {
+            clear_trigger.setAttribute('listenerOnClick', 'true');
+
+            clear_trigger.addEventListener('click', () => {
+              element.classList.toggle('hidden');
+            });
+          }
+        }
+
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.js"
+    integrity=""
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="FLH Website">
+        Francis L. Huang
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#talks"
+        >Talks</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#news"
+        >Posts</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/MLMusingR/"
+        >MLMusingR</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/projects/"
+        >Projects</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/teaching/"
+        >Teaching</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/service/"
+        >Service</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item nav-dropdown group relative">
+            <span
+              class="nav-link 
+                
+                
+                
+              
+                
+                
+                
+               inline-flex items-center">
+              Research
+              <svg class="h-4 w-4 fill-current inline-block" viewBox="0 0 20 20">
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </span>
+        <ul
+          class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/#papers">
+              Papers
+            </a>
+          </li>
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/r">
+              R Packages
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        id="search_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<div id="search" class="hidden p-3"></div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+<div class="max-w-prose mx-auto flex justify-center">
+  <article class="prose prose-slate lg:prose-xl dark:prose-invert">
+    <h1 class="lg:text-6xl">🖩 Logistic regression with matrices</h1>
+    
+
+
+<details class="print:hidden xl:hidden" open>
+  <summary>Table of Contents</summary>
+  <div class="text-sm">
+  <nav id="TableOfContents"></nav>
+  </div>
+</details>
+
+<p>Logistic regression is a modeling technique that has attracted a lot of attention, especially from folks interested in classification, machine learning, and prediction using binary outcomes. One of the neat things about using R is that users can revisit commonly used procedures and figure out how they work.</p>
+<p>What follows are some logistic regression notes (this is not on interpreting results). Even though I’ve written about how other <a href="../applied-example-for-alternatives-to-logistic-regression/">alternatives</a> might be simpler than logistic regression or that there are challenges when comparing coefficients across <a href="../comparing-coefficients-across-logistic-regression-models/">models</a>, it is interesting to see how the procedure works.</p>
+<p>I show a few things:</p>
+<ol style="list-style-type: decimal">
+<li>How to use some matrices for getting logistic regression results (in terms of point estimates and standard errors);</li>
+<li>How to compute cluster robust standard errors too;</li>
+<li>How to manually run iteratively weighted least squares to get the same results from scratch.</li>
+<li>I added a section later on to do this using <a href="../logistic-regression-fisher-scoring/">Fisher Scoring</a> as well.</li>
+</ol>
+<div id="first-create-a-clustered-dataset" class="section level2">
+<h2>First, create a (clustered) dataset</h2>
+<pre class="r"><code>set.seed(1234) #clustered example:: just for sim
+pp &lt;- function(x) exp(x) / (1 + exp(x))
+NG &lt;- 20 #number of groups
+GS &lt;- 15 #group size
+total &lt;- NG * GS
+tr &lt;- rep(sample(c(0,1), NG, 1), each = GS)
+w1 &lt;- rep(rnorm(NG), each = GS)
+e2 &lt;- rep(rnorm(NG, 0, .5), each = GS)
+school &lt;- rep(1:NG, each = GS)
+x1 &lt;- rnorm(total)
+x2 &lt;- rbinom(total, 1, .5)
+ystar &lt;- 1 + tr * .5 + w1 * .3 + x1 * .6 + x2 * -.4 + e2
+y &lt;- rbinom(total, 1, pp(ystar))
+dat &lt;- data.frame(y, school, tr, w1, x1, x2)
+sel &lt;- sample(total, 100) #randomly select data to remove
+dat &lt;- dat[-sel, ] #remove to create unbalanced data</code></pre>
+<p>Run a logistic regression model predicting <code>y</code> (<code>tr</code> and <code>w1</code> are actually level-2 variables but we’ll ignore the clustering first).</p>
+<pre class="r"><code>summary(dat)</code></pre>
+<pre><code>##        y            school            tr              w1          
+##  Min.   :0.00   Min.   : 1.00   Min.   :0.000   Min.   :-1.44820  
+##  1st Qu.:0.00   1st Qu.: 6.00   1st Qu.:0.000   1st Qu.:-0.91120  
+##  Median :1.00   Median :11.00   Median :1.000   Median :-0.49069  
+##  Mean   :0.65   Mean   :10.71   Mean   :0.725   Mean   :-0.26632  
+##  3rd Qu.:1.00   3rd Qu.:16.00   3rd Qu.:1.000   3rd Qu.: 0.08187  
+##  Max.   :1.00   Max.   :20.00   Max.   :1.000   Max.   : 2.41584  
+##        x1                 x2     
+##  Min.   :-2.85576   Min.   :0.0  
+##  1st Qu.:-0.63885   1st Qu.:0.0  
+##  Median :-0.09820   Median :0.5  
+##  Mean   :-0.02651   Mean   :0.5  
+##  3rd Qu.: 0.51302   3rd Qu.:1.0  
+##  Max.   : 2.91914   Max.   :1.0</code></pre>
+<pre class="r"><code>nrow(dat)</code></pre>
+<pre><code>## [1] 200</code></pre>
+<pre class="r"><code>m1 &lt;- glm(y ~ tr + w1 + x1 + x2,
+          data = dat, 
+          family = binomial)
+summary(m1)$coef #results are in logits</code></pre>
+<pre><code>##                Estimate Std. Error     z value    Pr(&gt;|z|)
+## (Intercept)  0.23069482  0.3482386  0.66246188 0.507675259
+## tr           0.93184838  0.3465455  2.68896434 0.007167408
+## w1           0.60952221  0.2296481  2.65415706 0.007950681
+## x1           0.57411101  0.1852548  3.09903484 0.001941522
+## x2          -0.01320503  0.3218338 -0.04103058 0.967271514</code></pre>
+</div>
+<div id="extract-matrices" class="section level2">
+<h2>Extract matrices</h2>
+<p>The standard formula for the coefficients in linear regression is <span class="math inline">\((X&#39;X)^{-1}(X&#39;y)\)</span>. However, in a generalized linear model, a difference is that <span class="math inline">\(y\)</span> is now <span class="math inline">\(z\)</span> (see computation) and weights are estimated as well. The GzLM formula for the betas is now: <span class="math inline">\((X&#39;WX)^{-1}(X&#39;Wz)\)</span>.</p>
+<p>The explanation of the matrices is shown at the latter part of this post (when computing this manually) which describes what goes into the computation. We’ll use the <code>m1</code> object just created and extract elements from it that can be used to cobble together the same results.</p>
+<pre class="r"><code>X &lt;- model.matrix(m1) #the X matrix
+y &lt;- m1$y #the outcome
+eta &lt;- X %*% coef(m1) #predicted values
+mu &lt;- as.vector(1 / (1 + exp(-eta))) #transformed predicted values
+z &lt;- eta + (y - mu) * (1 / (mu * (1 - mu)))
+Ws &lt;- diag(weights(m1, &#39;working&#39;))</code></pre>
+<p>After the matrices are created, can use the formulas to get the same results (compare below):</p>
+<pre class="r"><code>### point estimates (similar)
+solve(t(X) %*% Ws %*% X) %*% 
+  t(X) %*% Ws %*% z</code></pre>
+<pre><code>##                    [,1]
+## (Intercept)  0.23069529
+## tr           0.93184794
+## w1           0.60952156
+## x1           0.57411052
+## x2          -0.01320591</code></pre>
+<pre class="r"><code>coef(m1) </code></pre>
+<pre><code>## (Intercept)          tr          w1          x1          x2 
+##  0.23069482  0.93184838  0.60952221  0.57411101 -0.01320503</code></pre>
+<p>For standard errors, this is just the square root of the diagonal of <span class="math inline">\((X&#39;WX)^{-1}\)</span>.</p>
+<pre class="r"><code>sqrt(diag(solve(t(X) %*% Ws %*% X)))</code></pre>
+<pre><code>## (Intercept)          tr          w1          x1          x2 
+##   0.3482386   0.3465455   0.2296481   0.1852548   0.3218338</code></pre>
+<pre class="r"><code>sqrt(diag(vcov(m1))) #same</code></pre>
+<pre><code>## (Intercept)          tr          w1          x1          x2 
+##   0.3482386   0.3465455   0.2296481   0.1852548   0.3218338</code></pre>
+</div>
+<div id="we-can-also-compute-cluster-robust-standard-errors" class="section level2">
+<h2>We can also compute cluster robust standard errors</h2>
+<p>I’ve written about <a href="https://francish.netlify.app/post/note-on-robust-standard-errors/">robust SEs</a> in another post but in this case, the residuals are different as seen in the syntax. I saw in this <a href="https://stats.stackexchange.com/questions/283801/how-are-robust-standard-errors-calculated-in-the-case-of-logistic-regression">post</a> that you can extract the weighted residuals shown below.</p>
+<pre class="r"><code>X &lt;- model.matrix(m1) * sqrt(weights(m1, &quot;working&quot;))
+u &lt;- residuals(m1, &quot;working&quot;)  * sqrt(weights(m1, &quot;working&quot;)) #residuals
+<p>cdata &lt;- data.frame(cluster = dat$school, r = u)
+(m &lt;- length(table(cdata$cluster))) #number of clusters</code></pre></p>
+<pre><code>## [1] 20</code></pre>
+<pre class="r"><code>n &lt;- nobs(m1) #number of observations
+k &lt;- m1$rank
+dfa &lt;- (m/(m-1)) * ((n-1)/(n-k)) #degrees of freedom adjustment
+gs &lt;- names(table(cdata$cluster)) #cluster names
+u &lt;- matrix(NA, nrow = m, ncol = k) #clusters x rank:: creating a new u matrix
+
+for(i in 1:m){
+  u[i,] &lt;- t(cdata$r[cdata$cluster == gs[i]]) %*% X[dat$school == gs[i], 1:k]
+} 
+
+br &lt;- solve(t(X) %*% X) #the bread
+mt &lt;- t(u) %*% u #the meat
+(clvc &lt;- (br %*% mt %*% br * dfa)) #cluster robust VCOV manually computed</code></pre>
+<pre><code>##              (Intercept)           tr           w1           x1           x2
+## (Intercept)  0.161369126 -0.137857215  0.017878858 -0.001318135 -0.054932212
+## tr          -0.137857215  0.184883609 -0.004615105  0.001738463 -0.004407959
+## w1           0.017878858 -0.004615105  0.053945127  0.021829090 -0.012319716
+## x1          -0.001318135  0.001738463  0.021829090  0.051276709  0.005750240
+## x2          -0.054932212 -0.004407959 -0.012319716  0.005750240  0.129468425</code></pre>
+<pre class="r"><code>library(sandwich) #to &#39;automatically&#39; compute
+vcovCL(m1, cluster = dat$school, type = &#39;HC1&#39;)</code></pre>
+<pre><code>##              (Intercept)           tr           w1           x1           x2
+## (Intercept)  0.161369126 -0.137857215  0.017878858 -0.001318135 -0.054932212
+## tr          -0.137857215  0.184883609 -0.004615105  0.001738463 -0.004407959
+## w1           0.017878858 -0.004615105  0.053945127  0.021829090 -0.012319716
+## x1          -0.001318135  0.001738463  0.021829090  0.051276709  0.005750240
+## x2          -0.054932212 -0.004407959 -0.012319716  0.005750240  0.129468425</code></pre>
+<pre class="r"><code>all.equal(clvc, vcovCL(m1, cluster = dat$school, type = &#39;HC1&#39;))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="manually-performing-a-logistic-regression" class="section level2">
+<h2>Manually performing a logistic regression</h2>
+<p>A GLM requires several quantities (in this case, shown are the ones for a binomial family using a logit link– this will differ based on both the link and the family)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<ul>
+<li>the link function: <span class="math inline">\(g(\mu)=log(\frac{\mu}{1 - \mu})\)</span> known as the log odds</li>
+<li>the inverse link: <span class="math inline">\(g^{-1}(\mu) =\frac{1}{1 + exp(-\eta)}\)</span></li>
+<li>the variance function: <span class="math inline">\(V(\mu) = \mu(1 - \mu)\)</span></li>
+<li>the first derivative: <span class="math inline">\(g&#39;(\mu) = \frac{1}{\mu(1 - \mu)}\)</span></li>
+</ul>
+<p>The generic GLM algorithm uses the following computations (substitute the values from above):</p>
+<ul>
+<li><span class="math inline">\(diag[\frac{1}{V(\mu)g&#39;(\mu)^2}]\)</span> : weights</li>
+<li><span class="math inline">\(z = \eta + (y - \mu)g&#39;(\mu)\)</span> : working response</li>
+<li><span class="math inline">\(\eta = X\beta\)</span> : linear prediction</li>
+<li><span class="math inline">\(\mu = g^{-1}(\eta)\)</span> : the fitted values</li>
+</ul>
+<pre class="r"><code>X &lt;- model.matrix(~tr + w1 + x1 + x2, data = dat) #just to quickly get this
+#this is not the same as the weighted one
+tol &lt;- 1e-6 #tolerance: if change is low, then stop
+y &lt;- dat$y
+mu &lt;- (y + mean(y))/2 #for convergence
+#eta &lt;- log(mu) ## Poisson link
+eta &lt;- log(mu / (1 - mu)) #logit
+<p>dev &lt;- 0 #deviance
+delta.dev &lt;- 1
+i &lt;- 1 #iteration number</p>
+<p>while(i &lt; 50 &amp; abs(delta.dev) &gt; tol) { #repeat until deviance change is minimal
+tmp &lt;- mu * (1 - mu) #since I use this over and over again
+W &lt;- diag(1 / (tmp * (1/tmp)^2))
+z &lt;- eta + (y - mu) * (1 / tmp)
+b &lt;- solve(t(X) %<em>% W %</em>% X) %<em>% t(X) %</em>% W %<em>% z #these are the cofficients
+eta &lt;- X %</em>% b #update eta
+mu &lt;- as.vector( 1 / (1 + exp(-eta)))
+dev0 &lt;- dev
+#dev &lt;- -2 * sum(y * log(y/mu) + (1 - y) * (1 -log(y/mu)), na.rm = T)
+dev &lt;- -2 * sum((y * log(mu)) + ((1 - y) * log(1 - mu))) #deviance
+delta.dev &lt;- dev - dev0 #assess change in deviance for logistic reg
+cat(i, dev, &quot;::&quot;)
+i &lt;- i + 1 #increment by 1
+}</code></pre></p>
+<pre><code>## 1 234.3943 ::2 233.4394 ::3 233.4389 ::4 233.4389 ::</code></pre>
+<p>The solution was reached after five iterations. Note: the deviance (which is -2 log likelihood) is the same using our manual method and the built-in function.</p>
+<pre class="r"><code>deviance(m1) #using the results from glm</code></pre>
+<pre><code>## [1] 233.4389</code></pre>
+<pre class="r"><code>dev #manually computed</code></pre>
+<pre><code>## [1] 233.4389</code></pre>
+<pre class="r"><code>logLik(m1) * -2 #showing this is -2 x log likelihood</code></pre>
+<pre><code>## &#39;log Lik.&#39; 233.4389 (df=5)</code></pre>
+<p>To compute the standard errors:</p>
+<pre class="r"><code>serror &lt;- sqrt(diag(solve(t(X) %*% W %*% X)))
+# compare results
+data.frame(B.manual = as.numeric(b), se.manual = serror)</code></pre>
+<pre><code>##                B.manual se.manual
+## (Intercept)  0.23069482 0.3482383
+## tr           0.93184838 0.3465451
+## w1           0.60952221 0.2296474
+## x1           0.57411101 0.1852545
+## x2          -0.01320503 0.3218335</code></pre>
+<pre class="r"><code>summary(m1)$coef[,1:2] #using the glm function</code></pre>
+<pre><code>##                Estimate Std. Error
+## (Intercept)  0.23069482  0.3482386
+## tr           0.93184838  0.3465455
+## w1           0.60952221  0.2296481
+## x1           0.57411101  0.1852548
+## x2          -0.01320503  0.3218338</code></pre>
+<p>Standard errors are the same (to the sixth decimal place) as those estimated using the <code>glm</code> function.</p>
+</div>
+<div id="heres-a-final-short-example" class="section level2">
+<h2>Here’s a final short example</h2>
+<p>Just using the small, built-in <code>mtcars</code> dataset:</p>
+<pre class="r"><code>data(mtcars)
+table(mtcars$am) #the car transmission; just a toy outcome</code></pre>
+<pre><code>## 
+##  0  1 
+## 19 13</code></pre>
+<pre class="r"><code>m2 &lt;- glm(am ~ mpg + wt, family = binomial, data = mtcars)</code></pre>
+<p>Computing this ‘manually’ using extracted matrices (object is now <code>m2</code> for model 2):</p>
+<pre class="r"><code>X &lt;- model.matrix(m2)
+eta &lt;- X %*% coef(m2)
+mu &lt;- as.vector(1 / (1 + exp(-eta)))
+zz &lt;- eta + (mtcars$am - mu) * (1 / (mu * (1 - mu)))
+Ws &lt;- diag(weights(m2, &#39;working&#39;))
+estimate &lt;- solve(t(X) %*% Ws %*% X) %*% t(X) %*% Ws %*% zz #est
+se &lt;- sqrt(diag(solve(t(X) %*% Ws %*% X))) #SE
+z &lt;- estimate / se
+pv &lt;- 2 * pt(-abs(z), df = Inf) #get the p values</code></pre>
+<p>Put it all together and compare results:</p>
+<pre class="r"><code>data.frame(estimate, se, z, pv)</code></pre>
+<pre><code>##               estimate        se         z         pv
+## (Intercept) 25.8865522 12.193529  2.122975 0.03375598
+## mpg         -0.3241639  0.239499 -1.353508 0.17589325
+## wt          -6.4161717  2.546606 -2.519500 0.01175218</code></pre>
+<pre class="r"><code>summary(m2)$coef #based on GLM function</code></pre>
+<pre><code>##               Estimate Std. Error   z value   Pr(&gt;|z|)
+## (Intercept) 25.8865540  12.193529  2.122975 0.03375597
+## mpg         -0.3241639   0.239499 -1.353509 0.17589322
+## wt          -6.4161721   2.546606 -2.519500 0.01175217</code></pre>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>Based on the notes from Dr. Wolfgang Wiedermann’s GLM course<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+  </article>
+</div>
+
+
+
+
+<div class="flex flex-col items-center">
+
+  <div class="container max-w-[65ch] mx-auto bg-white dark:bg-zinc-900 rounded-xl border-gray-100 dark:border-gray-700 border shadow-md overflow-hidden my-5">
+
+
+  
+  
+
+  </div>
+
+
+  
+
+
+</div>
+
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Grumblesquasher. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-sa fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

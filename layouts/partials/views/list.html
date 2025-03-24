@@ -1,0 +1,30 @@
+{{/* layouts/partials/views/list.html */}}
+
+{{ printf "%#v" . }} {{/* Add this for debugging */}}
+
+{{ $page := .page }}
+{{ $paginator := .paginator }}
+{{ $view := .view }}
+{{ $taxonomy := .taxonomy }}
+
+<div class="space-y-4">
+  {{ range $paginator.Pages }}
+    {{ range .Pages }}
+      <div class="flex items-start space-x-4">
+        <div>
+          <h3 class="text-lg font-semibold">
+            <a href="{{ .Permalink }}" class="text-blue-600 hover:underline">{{ .Title }}</a>
+          </h3>
+          <p class="text-gray-600">
+            {{ .Summary }}
+          </p>
+          <div class="mt-2 text-sm text-gray-500">
+            {{ .Date.Format "January 2, 2006" }}
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  {{ end }}
+</div>
+
+{{/* comment out pagination for testing. */}}

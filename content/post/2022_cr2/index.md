@@ -2,7 +2,6 @@
 title: Robust standard errors in mixed models
 author: Francis Huang
 date: '2022-05-24'
-slug: robust-standard-errors
 categories:
   - multilevel modeling
   - R
@@ -223,7 +222,7 @@ sqrt(diag(clvc.cr0))
 
 You can also compare this to the empirical standard errors computed by SAS (using the `empirical` option in `proc mixed`):
 
-![](/img/empirical_mixed.jpg)
+![empirical](empirical_mixed.jpg)
 Another quick way to do this is to use the `robust_mixed` function in the `CR2` package. This shows a comparison with the model-based and the robust standard errors.
 
 

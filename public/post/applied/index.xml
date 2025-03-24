@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>🎉 Applied example for alternatives to logistic regression | FLH Website</title>
+    <link>http://localhost:1313/post/applied/</link>
+      <atom:link href="http://localhost:1313/post/applied/index.xml" rel="self" type="application/rss+xml" />
+    <description>🎉 Applied example for alternatives to logistic regression</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <title>🎉 Applied example for alternatives to logistic regression</title>
+      <link>http://localhost:1313/post/applied/</link>
+    </image>
+    
+  </channel>
+</rss>
