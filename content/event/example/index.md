@@ -28,6 +28,7 @@ authors:
   - admin
 
 tags: 
+- Replication studies
 
 
 # Is this a featured talk? (true/false)

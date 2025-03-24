@@ -71,6 +71,16 @@ sections:
       view: article-grid
       columns: 2
   - block: collection
+    id: Teaching
+    content:
+      title: Teaching
+      filters:
+        folders:
+          - teaching
+    design:
+      view: article-grid
+      columns: 3
+  - block: collection
     id: news
     content:
       title: Posts
