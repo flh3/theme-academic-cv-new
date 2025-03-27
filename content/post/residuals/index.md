@@ -2,7 +2,6 @@
 title: Fun with residuals
 author: Francis Huang
 date: '2022-11-21'
-slug: random-residuals
 categories:
   - residuals
 tags:
