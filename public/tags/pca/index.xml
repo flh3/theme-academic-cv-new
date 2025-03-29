@@ -5,12 +5,612 @@
     <link>http://localhost:1313/tags/pca/</link>
       <atom:link href="http://localhost:1313/tags/pca/index.xml" rel="self" type="application/rss+xml" />
     <description>PCA</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>PCA</title>
       <link>http://localhost:1313/tags/pca/</link>
     </image>
+    
+    <item>
+      <title>Fun with PCA using Images</title>
+      <link>http://localhost:1313/post/pca-image/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/pca-image/</guid>
+      <description>&lt;h2 id=&#34;creating-grayscale-images-using-pca&#34;&gt;Creating grayscale images using PCA&lt;/h2&gt;
+&lt;p&gt;The following links were helpful: 1.
+&lt;a href=&#34;https://cran.r-project.org/web/packages/imager/vignettes/gettingstarted.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cran.r-project.org/web/packages/imager/vignettes/gettingstarted.html&lt;/a&gt;
+2.
+&lt;a href=&#34;https://stats.stackexchange.com/questions/229092/how-to-reverse-pca-and-reconstruct-original-variables-from-several-principal-com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://stats.stackexchange.com/questions/229092/how-to-reverse-pca-and-reconstruct-original-variables-from-several-principal-com&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(tidyverse) #for ggplot, %&amp;gt;%
+library(imager) #to read in the jpg
+
+image1 &amp;lt;- load.image(&amp;quot;c:/data/snorlax_g2.jpg&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Can download the image from:
+&lt;a href=&#34;https://github.com/flh3/pubdata/blob/main/miscdata/snorlax_g2.jpg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/pubdata/blob/main/miscdata/snorlax_g2.jpg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Somehow is not reading directly from the website… To view the image&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;plot(image1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp 400w,
+               /post/pca-image/unnamed-chunk-7-1_hu_b87dd1919abc4f0c.webp 760w,
+               /post/pca-image/unnamed-chunk-7-1_hu_53f84cfd42005336.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## NOTE 0,0 is in the upper left corner
+
+image1
+
+## Image. Width: 500 pix Height: 550 pix Depth: 1 Colour channels: 1
+
+dim(image1)
+
+## [1] 500 550   1   1
+
+#500 x 550 pixels
+xwidth = dim(image1)[1] #just saving these
+yheight = dim(image1)[2]
+
+dat &amp;lt;- as.data.frame(image1) #create a tall dataset
+#that can work with ggplot
+head(dat)
+
+##   x y     value
+## 1 1 1 0.5137255
+## 2 2 1 0.5058824
+## 3 3 1 0.5098039
+## 4 4 1 0.5137255
+## 5 5 1 0.5098039
+## 6 6 1 0.5098039
+
+### plotting the image
+ggplot(dat, aes(x = x, y = y, fill = value)) +
+  geom_raster() + theme_bw() +
+  scale_fill_gradient(low = &amp;quot;black&amp;quot;, high = &amp;quot;white&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx0&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp 400w,
+               /post/pca-image/unnamed-chunk-7-2_hu_fd9464fb6812b921.webp 760w,
+               /post/pca-image/unnamed-chunk-7-2_hu_b110a1ce8a0fbeb9.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;### NOTE: 0, 0 is in the lower left corner so we 
+### should just flip it
+
+ggplot(dat, aes(x = x, y = y, fill = value)) +
+  geom_raster() + theme_bw() +
+  scale_y_reverse() +  #add to flip scale
+  scale_fill_gradient(low = &amp;quot;black&amp;quot;, high = &amp;quot;white&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx9&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp 400w,
+               /post/pca-image/unnamed-chunk-7-3_hu_fc216afeca2d0a96.webp 760w,
+               /post/pca-image/unnamed-chunk-7-3_hu_977bd2cac5f907da.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;OK, so we know the image renders correctly, let’s experiment using PCA.&lt;/p&gt;
+&lt;p&gt;First, create a wide data frame to use in a PCA.&lt;/p&gt;
+&lt;h2 id=&#34;preparing-to-run-the-pca&#34;&gt;Preparing to run the PCA&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;wide &amp;lt;- pivot_wider(dat, id_cols = x,
+ names_from = &#39;y&#39;, names_prefix = &#39;y&#39;,
+ values_from = &#39;value&#39;)
+dim(wide) #just checking
+
+## [1] 500 551
+
+wide[1:5, 1:5] #just checking
+
+## # A tibble: 5 × 5
+##       x    y1    y2    y3    y4
+##   &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1 0.514 0.510 0.510 0.510
+## 2     2 0.506 0.506 0.510 0.514
+## 3     3 0.510 0.506 0.514 0.510
+## 4     4 0.514 0.510 0.510 0.502
+## 5     5 0.510 0.514 0.510 0.506
+
+wide2 &amp;lt;- select(wide, -x) #just remove x variable
+wide2[1:5, 1:5]
+
+## # A tibble: 5 × 5
+##      y1    y2    y3    y4    y5
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 0.514 0.510 0.510 0.510 0.510
+## 2 0.506 0.506 0.510 0.514 0.506
+## 3 0.510 0.506 0.514 0.510 0.510
+## 4 0.514 0.510 0.510 0.502 0.510
+## 5 0.510 0.514 0.510 0.506 0.506
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;running-a-pca-manually&#34;&gt;Running a PCA (manually)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;cvm &amp;lt;- cov(wide2) #using covariance matrix :: you can use the 
+## correlation matrix but the scaling will be different (since it&#39;s standardized)
+ev &amp;lt;- eigen(cvm)
+str(ev) #has both eigen values and eigen vectors
+
+## List of 2
+##  $ values : num [1:550] 4.583 2.479 0.832 0.609 0.568 ...
+##  $ vectors: num [1:550, 1:550] 0.00565 0.00565 0.00571 0.00578 0.00528 ...
+##  - attr(*, &amp;quot;class&amp;quot;)= chr &amp;quot;eigen&amp;quot;
+
+evalues &amp;lt;- ev$values
+loadings &amp;lt;- ev$vectors
+mus &amp;lt;- colMeans(wide2) #need this later when we return to original
+zwide &amp;lt;- scale(wide2, center = T, scale = F) #need this for 
+#principal component scores, just centered, not scaled
+
+## principal component scores
+
+pcs &amp;lt;- as.matrix(zwide) %*% loadings
+cor(pcs)[1:5, 1:5] %&amp;gt;% round #not correlated (as it should be)
+
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    0    0    0    0
+## [2,]    0    1    0    0    0
+## [3,]    0    0    1    0    0
+## [4,]    0    0    0    1    0
+## [5,]    0    0    0    0    1
+
+head(pcs)[1:5, 1:5]
+
+##          [,1]      [,2]       [,3]
+## [1,] 2.922521 0.2774740 -0.8150739
+## [2,] 2.929396 0.2661346 -0.8064723
+## [3,] 2.956576 0.2717294 -0.7936503
+## [4,] 2.980215 0.2632674 -0.7617172
+## [5,] 2.999131 0.2674471 -0.7381271
+##            [,4]      [,5]
+## [1,] -0.2730839 0.9014217
+## [2,] -0.2990911 0.8866691
+## [3,] -0.3144499 0.8792177
+## [4,] -0.3190132 0.8769835
+## [5,] -0.3130517 0.8847785
+
+# plot(evalues) #scree plot, if interested, but we have 500+
+# so just limit to first 20
+plot(evalues[1:20], type = &#39;b&#39;, 
+     ylab = &#39;eigenvalues&#39;,
+     xlab = &#39;Prin Component #&#39;) #scree plot, if
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx8&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp 400w,
+               /post/pca-image/unnamed-chunk-9-1_hu_a1344702945ad1c4.webp 760w,
+               /post/pca-image/unnamed-chunk-9-1_hu_859ee6eb678441b6.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#what percent do first 10 eigenvalues each account for in variance?
+(evalues / sum(evalues))[1:10] 
+
+##  [1] 0.38328068 0.20726950 0.06958218
+##  [4] 0.05089264 0.04747089 0.03365118
+##  [7] 0.02876539 0.01757143 0.01710983
+## [10] 0.01435288
+
+(evalues / sum(evalues))[1:10] %&amp;gt;% sum #90% of variance
+
+## [1] 0.8699466
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;creating-original-data-using-all-component-scores--loadings&#34;&gt;Creating original data using all component scores &amp;amp; loadings&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;tmp &amp;lt;- pcs %*% t(loadings) #component scores x loadings
+tmp2 &amp;lt;- scale(tmp, center = -mus, scale = F) #reintroduce mean
+head(tmp2)[1:5, 1:5] #reconstituted
+
+##           [,1]      [,2]      [,3]
+## [1,] 0.5137255 0.5098039 0.5098039
+## [2,] 0.5058824 0.5058824 0.5098039
+## [3,] 0.5098039 0.5058824 0.5137255
+## [4,] 0.5137255 0.5098039 0.5098039
+## [5,] 0.5098039 0.5137255 0.5098039
+##           [,4]      [,5]
+## [1,] 0.5098039 0.5098039
+## [2,] 0.5137255 0.5058824
+## [3,] 0.5098039 0.5098039
+## [4,] 0.5019608 0.5098039
+## [5,] 0.5058824 0.5058824
+
+head(wide)[1:5, 1:5] #original data frame
+
+## # A tibble: 5 × 5
+##       x    y1    y2    y3    y4
+##   &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1 0.514 0.510 0.510 0.510
+## 2     2 0.506 0.506 0.510 0.514
+## 3     3 0.510 0.506 0.514 0.510
+## 4     4 0.514 0.510 0.510 0.502
+## 5     5 0.510 0.514 0.510 0.506
+
+### place the matrix into a data frame
+new2 &amp;lt;- data.frame(tmp2)
+names(new2) &amp;lt;- 1:yheight #add names, just numbers (coordinates)
+new2$x &amp;lt;- row.names(new2) %&amp;gt;% as.numeric #add x coordinate
+tall2 &amp;lt;- pivot_longer(new2, 1:yheight, names_to = &#39;y&#39;) #create tall
+
+## Warning: Using an external vector in selections was
+## deprecated in tidyselect 1.1.0.
+## ℹ Please use `all_of()` or `any_of()`
+##   instead.
+##   # Was:
+##   data %&amp;gt;% select(yheight)
+## 
+##   # Now:
+##   data %&amp;gt;% select(all_of(yheight))
+## 
+## See
+## &amp;lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&amp;gt;.
+## This warning is displayed once every 8
+## hours.
+## Call
+## `lifecycle::last_lifecycle_warnings()` to
+## see where this warning was generated.
+
+tall2$y &amp;lt;- as.numeric(tall2$y) #when pivoting, y because a character
+ggplot(tall2, aes(x = x, y = y, fill = value)) +
+  geom_raster() + theme_bw() + scale_y_reverse() +
+  scale_fill_gradient(low = &amp;quot;black&amp;quot;, high = &amp;quot;white&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx7&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp 400w,
+               /post/pca-image/unnamed-chunk-10-1_hu_fc216afeca2d0a96.webp 760w,
+               /post/pca-image/unnamed-chunk-10-1_hu_977bd2cac5f907da.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;So what if we just use the first 10 components? (out of 500+)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ncomp &amp;lt;- 10 #number of components to use
+### Creating data using 10 components
+tmp &amp;lt;- pcs[,1:ncomp] %*% t(loadings[,1:ncomp]) #component scores x loadings
+tmp2 &amp;lt;- scale(tmp, center = -mus, scale = F) #add back mean
+head(tmp2)[1:5, 1:5] #reconstituted
+
+##           [,1]      [,2]      [,3]
+## [1,] 0.5494325 0.5454111 0.5435424
+## [2,] 0.5488673 0.5449852 0.5431840
+## [3,] 0.5484028 0.5446355 0.5428195
+## [4,] 0.5473589 0.5438008 0.5420109
+## [5,] 0.5473990 0.5438387 0.5419770
+##           [,4]      [,5]
+## [1,] 0.5449286 0.5446933
+## [2,] 0.5445829 0.5443818
+## [3,] 0.5441641 0.5439251
+## [4,] 0.5433143 0.5430735
+## [5,] 0.5432045 0.5429343
+
+head(wide)[1:5, 1:5] #original data frame
+
+## # A tibble: 5 × 5
+##       x    y1    y2    y3    y4
+##   &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1 0.514 0.510 0.510 0.510
+## 2     2 0.506 0.506 0.510 0.514
+## 3     3 0.510 0.506 0.514 0.510
+## 4     4 0.514 0.510 0.510 0.502
+## 5     5 0.510 0.514 0.510 0.506
+
+new2 &amp;lt;- data.frame(tmp2)
+names(new2) &amp;lt;- 1:yheight #add names
+new2$x &amp;lt;- row.names(new2) %&amp;gt;% as.numeric #add x coordinate
+tall2 &amp;lt;- pivot_longer(new2, 1:yheight, names_to = &#39;y&#39;) #create tall
+tall2$y &amp;lt;- as.numeric(tall2$y) #when pivoting, y because a character
+ggplot(tall2, aes(x = x, y = y, fill = value)) +
+  geom_raster() + theme_bw() + labs(y = &#39;&#39;) + scale_y_reverse() +
+  scale_fill_gradient(low = &amp;quot;black&amp;quot;, high = &amp;quot;white&amp;quot;) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx3&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp 400w,
+               /post/pca-image/unnamed-chunk-11-1_hu_85ed057e4a947a55.webp 760w,
+               /post/pca-image/unnamed-chunk-11-1_hu_b80f1af2d77028d.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Image is not very clear!&lt;/p&gt;
+&lt;p&gt;What if we use more components?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ncomp &amp;lt;- 40 #number of components to use
+tmp &amp;lt;- pcs[,1:ncomp] %*% t(loadings[,1:ncomp]) #component scores x loadings
+tmp2 &amp;lt;- scale(tmp, center = -mus, scale = F) #add back mean
+### place the matrix into a data frame
+new2 &amp;lt;- data.frame(tmp2)
+names(new2) &amp;lt;- 1:yheight #add names
+new2$x &amp;lt;- row.names(new2) %&amp;gt;% as.numeric #add x coordinate
+tall2 &amp;lt;- pivot_longer(new2, 1:yheight, names_to = &#39;y&#39;) #create tall
+tall2$y &amp;lt;- as.numeric(tall2$y) #when pivoting, y because a character
+ggplot(tall2, aes(x = x, y = y, fill = value)) +
+  geom_raster() + theme_bw() + labs(y = &#39;&#39;) + scale_y_reverse() +
+  scale_fill_gradient(low = &amp;quot;black&amp;quot;, high = &amp;quot;white&amp;quot;) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx1&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp 400w,
+               /post/pca-image/unnamed-chunk-12-1_hu_6081a7adede4bb62.webp 760w,
+               /post/pca-image/unnamed-chunk-12-1_hu_f70ab6bd2032b4f7.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Much clearer image with 40 components (out of 500+)&lt;/p&gt;
+&lt;h2 id=&#34;using-base-r-and-prcomp&#34;&gt;Using Base R and prcomp&lt;/h2&gt;
+&lt;p&gt;Got this from:
+&lt;a href=&#34;https://kieranhealy.org/blog/archives/2019/10/27/reconstructing-images-using-pca/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://kieranhealy.org/blog/archives/2019/10/27/reconstructing-images-using-pca/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;img_pca &amp;lt;- prcomp(wide2)
+im &amp;lt;- summary(img_pca)
+im$importance[,1:10] #compare with manual computation
+
+##                             PC1      PC2
+## Standard deviation     2.140883 1.574353
+## Proportion of Variance 0.383280 0.207270
+## Cumulative Proportion  0.383280 0.590550
+##                              PC3       PC4
+## Standard deviation     0.9121861 0.7801209
+## Proportion of Variance 0.0695800 0.0508900
+## Cumulative Proportion  0.6601300 0.7110200
+##                             PC5       PC6
+## Standard deviation     0.753439 0.6343583
+## Proportion of Variance 0.047470 0.0336500
+## Cumulative Proportion  0.758500 0.7921500
+##                              PC7      PC8
+## Standard deviation     0.5865021 0.458393
+## Proportion of Variance 0.0287700 0.017570
+## Cumulative Proportion  0.8209100 0.838480
+##                             PC9      PC10
+## Standard deviation     0.452332 0.4142896
+## Proportion of Variance 0.017110 0.0143500
+## Cumulative Proportion  0.855590 0.8699500
+
+names(img_pca)
+
+## [1] &amp;quot;sdev&amp;quot;     &amp;quot;rotation&amp;quot; &amp;quot;center&amp;quot;  
+## [4] &amp;quot;scale&amp;quot;    &amp;quot;x&amp;quot;
+
+dim(img_pca$x) #component scores
+
+## [1] 500 500
+
+dim(img_pca$rotation) #loadings (just the eigenvectors)
+
+## [1] 550 500
+
+img_pca$rotation[1:5, 1:5]
+
+##            PC1         PC2         PC3
+## y1 0.005650860 -0.01864489 0.010587733
+## y2 0.005645269 -0.02003725 0.008689557
+## y3 0.005712267 -0.02144366 0.007472650
+## y4 0.005784892 -0.02284957 0.006774656
+## y5 0.005280473 -0.02349464 0.006134465
+##            PC4        PC5
+## y1 -0.02943221 0.05041304
+## y2 -0.02681190 0.04938164
+## y3 -0.02769441 0.04921155
+## y4 -0.02926209 0.05068930
+## y5 -0.03049060 0.05210808
+
+ev$vectors[1:5, 1:5] #our original
+
+##             [,1]        [,2]         [,3]
+## [1,] 0.005650860 -0.01864489 -0.010587733
+## [2,] 0.005645269 -0.02003725 -0.008689557
+## [3,] 0.005712267 -0.02144366 -0.007472650
+## [4,] 0.005784892 -0.02284957 -0.006774656
+## [5,] 0.005280473 -0.02349464 -0.006134465
+##             [,4]       [,5]
+## [1,] -0.02943221 0.05041304
+## [2,] -0.02681190 0.04938164
+## [3,] -0.02769441 0.04921155
+## [4,] -0.02926209 0.05068930
+## [5,] -0.03049060 0.05210808
+
+####
+
+new &amp;lt;- img_pca$x[, 1:xwidth] %*% t(img_pca$rotation)
+new &amp;lt;- scale(new, center = -mus, scale = F)
+new2 &amp;lt;- data.frame(new)
+new2[1:5, 1:5]
+
+##          y1        y2        y3        y4
+## 1 0.5137255 0.5098039 0.5098039 0.5098039
+## 2 0.5058824 0.5058824 0.5098039 0.5137255
+## 3 0.5098039 0.5058824 0.5137255 0.5098039
+## 4 0.5137255 0.5098039 0.5098039 0.5019608
+## 5 0.5098039 0.5137255 0.5098039 0.5058824
+##          y5
+## 1 0.5098039
+## 2 0.5058824
+## 3 0.5098039
+## 4 0.5098039
+## 5 0.5058824
+
+names(new2) &amp;lt;- 1:yheight
+dim(new2)
+
+## [1] 500 550
+
+new2$x &amp;lt;- row.names(new2) %&amp;gt;% as.numeric
+tall2 &amp;lt;- pivot_longer(new2, 1:yheight)
+tall2$y &amp;lt;- as.numeric(tall2$name)
+ggplot(tall2, aes(x = x, y = y, fill = value)) +
+  geom_raster() + scale_y_reverse() + theme_bw() +
+  labs(y = &#39;&#39;) + 
+  scale_fill_gradient(low = &amp;quot;black&amp;quot;, high = &amp;quot;white&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx2&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp 400w,
+               /post/pca-image/unnamed-chunk-13-1_hu_884e6a88ac9dd861.webp 760w,
+               /post/pca-image/unnamed-chunk-13-1_hu_945d5a9c79f15b1.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;end-for-now&#34;&gt;END (for now)&lt;/h3&gt;
+</description>
+    </item>
     
     <item>
       <title>🎉 Principal Components Analysis using R</title>

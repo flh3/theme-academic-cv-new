@@ -13,6 +13,14 @@
     </image>
     
     <item>
+      <title>Reassessing weights in large-scale assessments and multilevel models</title>
+      <link>http://localhost:1313/publication/journal-article/2025/lsa-weights/</link>
+      <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2025/lsa-weights/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Weights with Multilevel Models</title>
       <link>http://localhost:1313/post/weights_2025/</link>
       <pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
@@ -1255,7 +1263,14 @@ image1 &amp;lt;- load.image(&amp;quot;c:/data/snorlax_g2.jpg&amp;quot;)
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;unnamed-chunk-7-1.png&#34; alt=&#34;xx&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp 400w,
+               /post/pca-image/unnamed-chunk-7-1_hu_b87dd1919abc4f0c.webp 760w,
+               /post/pca-image/unnamed-chunk-7-1_hu_53f84cfd42005336.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## NOTE 0,0 is in the upper left corner
@@ -1307,7 +1322,14 @@ ggplot(dat, aes(x = x, y = y, fill = value)) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;unnamed-chunk-7-2.png&#34; alt=&#34;xx0&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx0&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp 400w,
+               /post/pca-image/unnamed-chunk-7-2_hu_fd9464fb6812b921.webp 760w,
+               /post/pca-image/unnamed-chunk-7-2_hu_b110a1ce8a0fbeb9.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;### NOTE: 0, 0 is in the lower left corner so we 
@@ -1336,7 +1358,14 @@ ggplot(dat, aes(x = x, y = y, fill = value)) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;unnamed-chunk-7-3.png&#34; alt=&#34;xx9&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx9&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp 400w,
+               /post/pca-image/unnamed-chunk-7-3_hu_fc216afeca2d0a96.webp 760w,
+               /post/pca-image/unnamed-chunk-7-3_hu_977bd2cac5f907da.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;OK, so we know the image renders correctly, let’s experiment using PCA.&lt;/p&gt;
@@ -1440,7 +1469,14 @@ plot(evalues[1:20], type = &#39;b&#39;,
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;unnamed-chunk-9-1.png&#34; alt=&#34;xx8&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx8&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp 400w,
+               /post/pca-image/unnamed-chunk-9-1_hu_a1344702945ad1c4.webp 760w,
+               /post/pca-image/unnamed-chunk-9-1_hu_859ee6eb678441b6.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#what percent do first 10 eigenvalues each account for in variance?
@@ -1531,7 +1567,14 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;unnamed-chunk-10-1.png&#34; alt=&#34;xx7&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx7&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp 400w,
+               /post/pca-image/unnamed-chunk-10-1_hu_fc216afeca2d0a96.webp 760w,
+               /post/pca-image/unnamed-chunk-10-1_hu_977bd2cac5f907da.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;So what if we just use the first 10 components? (out of 500+)&lt;/p&gt;
@@ -1592,7 +1635,14 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;unnamed-chunk-11-1.png&#34; alt=&#34;xx3&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx3&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp 400w,
+               /post/pca-image/unnamed-chunk-11-1_hu_85ed057e4a947a55.webp 760w,
+               /post/pca-image/unnamed-chunk-11-1_hu_b80f1af2d77028d.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Image is not very clear!&lt;/p&gt;
@@ -1628,7 +1678,14 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;unnamed-chunk-12-1.png&#34; alt=&#34;xx1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx1&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp 400w,
+               /post/pca-image/unnamed-chunk-12-1_hu_6081a7adede4bb62.webp 760w,
+               /post/pca-image/unnamed-chunk-12-1_hu_f70ab6bd2032b4f7.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Much clearer image with 40 components (out of 500+)&lt;/p&gt;
@@ -1754,7 +1811,14 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;unnamed-chunk-13-1.png&#34; alt=&#34;xx2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;xx2&#34; srcset=&#34;
+               /post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp 400w,
+               /post/pca-image/unnamed-chunk-13-1_hu_884e6a88ac9dd861.webp 760w,
+               /post/pca-image/unnamed-chunk-13-1_hu_945d5a9c79f15b1.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;end-for-now&#34;&gt;END (for now)&lt;/h3&gt;
@@ -4271,10 +4335,10 @@ X_{c}$$&lt;p&gt;For both CR0 and CR2, we need the residuals&amp;hellip;&lt;/p&gt
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;empirical&#34; srcset=&#34;
-               /post/robust-standard-errors/empirical_mixed_hu_9021bc12661ca61.webp 400w,
-               /post/robust-standard-errors/empirical_mixed_hu_672b658016c02053.webp 760w,
-               /post/robust-standard-errors/empirical_mixed_hu_8131f0f97ef5e72a.webp 1200w&#34;
-               src=&#34;http://localhost:1313/post/robust-standard-errors/empirical_mixed_hu_9021bc12661ca61.webp&#34;
+               /post/2022_cr2/empirical_mixed_hu_9021bc12661ca61.webp 400w,
+               /post/2022_cr2/empirical_mixed_hu_672b658016c02053.webp 760w,
+               /post/2022_cr2/empirical_mixed_hu_8131f0f97ef5e72a.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/2022_cr2/empirical_mixed_hu_9021bc12661ca61.webp&#34;
                width=&#34;457&#34;
                height=&#34;206&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

@@ -7,7 +7,7 @@
     <description>Cluster Robust Standard Errors</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Feb 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_258291280f5c9c98.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Cluster Robust Standard Errors</title>
       <link>http://localhost:1313/tags/cluster-robust-standard-errors/</link>
     </image>
@@ -25,6 +25,14 @@
       <link>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using cluster robust standard errors to analyze nested data with a few clusters (Korea)</title>
+      <link>http://localhost:1313/event/korea_23/</link>
+      <pubDate>Thu, 12 Oct 2023 14:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/event/korea_23/</guid>
       <description></description>
     </item>
     
