@@ -7348,166 +7348,211 @@ round(summary(pool(mi1)), 3)&lt;/code&gt;&lt;/pre&gt;
       <link>http://localhost:1313/post/applied/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/post/applied/</guid>
-      <description>&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Logistic regression is often used to analyze experiments with binary outcomes (e.g., pass vs fail) and binary predictors (e.g., treatment vs control). Although appropriate, there are other possible models that can be run that may provide easier to interpret results.&lt;/p&gt;
-&lt;p&gt;In addition, some of these models may be quicker to run. Some may say that this point is moot given the availability of computing power today but if you’ve ever tried to run a hierarchical generalized linear model with a logit link function and a binary outcome, you know that when using R (using &lt;code&gt;glmer&lt;/code&gt; or &lt;code&gt;nlme&lt;/code&gt;) this may take quite a long time (and cross your fingers that you don’t have convergence issues).&lt;/p&gt;
-&lt;p&gt;The following code replicates the example (see the manuscript for details) in the &lt;a href=&#34;https://www.tandfonline.com/eprint/YS723ZYEIB2CPWKBEMPZ/full?target=10.1080/00220973.2019.1699769&#34;&gt;article&lt;/a&gt;:&lt;/p&gt;
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Logistic regression is often used to analyze experiments with binary
+outcomes (e.g., pass vs fail) and binary predictors (e.g., treatment vs
+control). Although appropriate, there are other possible models that can
+be run that may provide easier to interpret results.&lt;/p&gt;
+&lt;p&gt;In addition, some of these models may be quicker to run. Some may say
+that this point is moot given the availability of computing power today
+but if you’ve ever tried to run a hierarchical generalized linear model
+with a logit link function and a binary outcome, you know that when
+using R (using &lt;code&gt;glmer&lt;/code&gt; or &lt;code&gt;nlme&lt;/code&gt;) this may take quite a long time (and
+cross your fingers that you don’t have convergence issues).&lt;/p&gt;
+&lt;p&gt;The following code replicates the example (see the manuscript for
+details) in the
+&lt;a href=&#34;https://www.tandfonline.com/eprint/YS723ZYEIB2CPWKBEMPZ/full?target=10.1080/00220973.2019.1699769&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;article&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Huang, F. (2019). Alternatives to logistic regression models with binary outcomes. Journal of Experimental Education. doi: 10.1080/00220973.2019.1699769&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Data are based on the article of Huang and Cornell (2015). Using an online survey, investigators tested for the presence of the question-order effect. Based on a random number generated when the students took the survey, they were placed in either the treatment (n = 1037) or control (n = 963) condition. Students in the treatment condition were asked four specific types bullying questions (i.e., verbal, physical, social, cyber) and then were asked a general bullying question (“I have been bullied in the past year”). Students in the control condition were asked the general bullying question first and then the specific bullying questions. We hypothesized that students who were asked the specific bullying questions first would report overall higher bullying vs the control group.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;examining-cross-tabs&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. Examining cross tabs&lt;/h2&gt;
+&lt;p&gt;Huang, F. (2019). Alternatives to logistic regression models with
+binary outcomes. Journal of Experimental Education. doi:
+10.1080/00220973.2019.1699769&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Data are based on the article of Huang and Cornell (2015). Using an
+online survey, investigators tested for the presence of the
+question-order effect. Based on a random number generated when the
+students took the survey, they were placed in either the treatment (n =
+1037) or control (n = 963) condition. Students in the treatment
+condition were asked four specific types bullying questions (i.e.,
+verbal, physical, social, cyber) and then were asked a general bullying
+question (“I have been bullied in the past year”). Students in the
+control condition were asked the general bullying question first and
+then the specific bullying questions. We hypothesized that students who
+were asked the specific bullying questions first would report overall
+higher bullying vs the control group.&lt;/p&gt;
+&lt;h2 id=&#34;1-examining-cross-tabs&#34;&gt;1. Examining cross tabs&lt;/h2&gt;
 &lt;p&gt;Load in the required packages:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr) #just for the pipe, %&amp;gt;%
+&lt;pre&gt;&lt;code&gt;library(dplyr) #just for the pipe, %&amp;gt;%
 library(logbin) #to run a log binomial model with a function
 library(summarytools) #for nicer crosstabs
-library(jtools) #for easier exp, confints, and adjusted standard errors&lt;/code&gt;&lt;/pre&gt;
+library(jtools) #for easier exp, confints, and adjusted standard errors
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Load and examine the data frame:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#specify the location on website
-dat &amp;lt;- url(&amp;quot;http://faculty.missouri.edu/huangf/data/jxe2019/jxe.rdata&amp;quot;) 
+&lt;pre&gt;&lt;code&gt;#specify the location on website
+dat &amp;lt;- url(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/JXE_Alt_Logistic/jxe.rdata&amp;quot;) 
 load(dat) #load in data from the website
-summary(jxe) #name of the data.frame&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      abully           tord            female          gl      race    
-##  Min.   :0.000   Min.   :0.0000   Min.   :0.0000   9th :446   w:1278  
-##  1st Qu.:0.000   1st Qu.:0.0000   1st Qu.:0.0000   10th:530   b: 287  
-##  Median :0.000   Median :1.0000   Median :1.0000   11th:517   h: 170  
-##  Mean   :0.126   Mean   :0.5185   Mean   :0.5005   12th:507   a:  79  
-##  3rd Qu.:0.000   3rd Qu.:1.0000   3rd Qu.:1.0000              o: 186  
-##  Max.   :1.000   Max.   :1.0000   Max.   :1.0000&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(jxe)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      abully tord female   gl race
-## 6910      0    0      1 10th    w
-## 8394      0    0      0  9th    w
-## 7293      0    1      1  9th    w
-## 8491      0    1      0 10th    w
-## 4374      1    1      0 10th    w
-## 1594      0    1      1 10th    b&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dim(jxe)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 2000    5&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Review some crosstabs. All computations are based on the table below. &lt;code&gt;tord&lt;/code&gt; is the treatment variable. &lt;code&gt;abully&lt;/code&gt; indicates if the respondent had been bullied.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt &amp;lt;- ctable(jxe$abully, jxe$tord, prop = &amp;#39;c&amp;#39;)
-tt&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Cross-Tabulation, Column Proportions  
-## abully * tord  
-## Data Frame: jxe  
-## 
-## -------- ------ -------------- --------------- ---------------
-##            tord              0               1           Total
-##   abully                                                      
-##        0          863 ( 89.6%)    885 ( 85.3%)   1748 ( 87.4%)
-##        1          100 ( 10.4%)    152 ( 14.7%)    252 ( 12.6%)
-##    Total          963 (100.0%)   1037 (100.0%)   2000 (100.0%)
-## -------- ------ -------------- --------------- ---------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt$cross_table #crosstabs&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##        tord
-## abully     0    1 Total
-##   0      863  885  1748
-##   1      100  152   252
-##   Total  963 1037  2000&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tt$proportions #proportions&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##               0         1 Total
-## 0     0.8961578 0.8534233 0.874
-## 1     0.1038422 0.1465767 0.126
-## Total 1.0000000 1.0000000 1.000&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(14.66 / 85.34) / (10.38 / 89.62) #OR = 1.48 &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 1.483163&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;14.66 - 10.38 #risk difference: 4.28&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 4.28&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;14.66 / 10.38 #risk ratio: 1.41&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 1.412331&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;models-without-covariates&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. Models without covariates&lt;/h2&gt;
-&lt;p&gt;For comparability, see how the results above map on to the first set of regressions without covariates:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.log1 &amp;lt;- glm(abully ~ tord, data = jxe, family = binomial)
-summ(tab6.log1, exp = T)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
+summary(jxe) #name of the data.frame
+
+     abully           tord            female          gl     
+ Min.   :0.000   Min.   :0.0000   Min.   :0.0000   9th :446  
+ 1st Qu.:0.000   1st Qu.:0.0000   1st Qu.:0.0000   10th:530  
+ Median :0.000   Median :1.0000   Median :1.0000   11th:517  
+ Mean   :0.126   Mean   :0.5185   Mean   :0.5005   12th:507  
+ 3rd Qu.:0.000   3rd Qu.:1.0000   3rd Qu.:1.0000             
+ Max.   :1.000   Max.   :1.0000   Max.   :1.0000             
+ race    
+ w:1278  
+ b: 287  
+ h: 170  
+ a:  79  
+ o: 186  
+         
+
+head(jxe)
+
+     abully tord female   gl race
+6910      0    0      1 10th    w
+8394      0    0      0  9th    w
+7293      0    1      1  9th    w
+8491      0    1      0 10th    w
+4374      1    1      0 10th    w
+1594      0    1      1 10th    b
+
+dim(jxe)
+
+[1] 2000    5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Review some crosstabs. All computations are based on the table below.
+&lt;code&gt;tord&lt;/code&gt; is the treatment variable. &lt;code&gt;abully&lt;/code&gt; indicates if the respondent
+had been bullied.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(janitor)
+jxe |&amp;gt; tabyl(abully, tord) |&amp;gt;
+  adorn_percentages(denominator = &#39;col&#39;) |&amp;gt;
+  adorn_pct_formatting(digits = 2) |&amp;gt; 
+  adorn_ns(position = &#39;front&#39;) 
+
+ abully            0            1
+      0 863 (89.62%) 885 (85.34%)
+      1 100 (10.38%) 152 (14.66%)
+
+(14.66 / 85.34) / (10.38 / 89.62) #OR = 1.48 
+
+[1] 1.483163
+
+14.66 - 10.38 #risk difference: 4.28
+
+[1] 4.28
+
+14.66 / 10.38 #risk ratio: 1.41
+
+[1] 1.412331
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-models-without-covariates&#34;&gt;2. Models without covariates&lt;/h2&gt;
+&lt;p&gt;For comparability, see how the results above map on to the first set of
+regressions without covariates:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tab6.log1 &amp;lt;- glm(abully ~ tord, data = jxe, family = binomial)
+summ(tab6.log1, exp = T)$coef %&amp;gt;% round(3)
+
+##             exp(Est.)  2.5% 97.5%  z val.     p
 ## (Intercept)     0.116 0.094 0.143 -20.404 0.000
-## tord            1.482 1.132 1.940   2.865 0.004&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.lpm1 &amp;lt;- glm(abully ~ tord, data = jxe) #risk difference
-summ(tab6.lpm1, confint = T, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##              Est.  2.5% 97.5% t val.     p
+## tord            1.482 1.132 1.940   2.865 0.004
+
+tab6.lpm1 &amp;lt;- glm(abully ~ tord, data = jxe) #risk difference
+summ(tab6.lpm1, confint = T, robust = &#39;HC3&#39;)$coef %&amp;gt;% round(3)
+
+##              Est.  2.5% 97.5% t val.     p
 ## (Intercept) 0.104 0.085 0.123 10.553 0.000
-## tord        0.043 0.014 0.072  2.896 0.004&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.poi1 &amp;lt;- glm(abully ~ tord, data = jxe, family = poisson) #risk ratio
-summ(tab6.poi1, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##               Est.  S.E.  z val.     p
+## tord        0.043 0.014 0.072  2.896 0.004
+
+tab6.poi1 &amp;lt;- glm(abully ~ tord, data = jxe, family = poisson) #risk ratio
+summ(tab6.poi1, robust = &#39;HC3&#39;)$coef %&amp;gt;% round(3)
+
+##               Est.  S.E.  z val.     p
 ## (Intercept) -2.265 0.095 -23.900 0.000
-## tord         0.345 0.121   2.852 0.004&lt;/code&gt;&lt;/pre&gt;
+## tord         0.345 0.121   2.852 0.004
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you want to run a log-binomial model&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;logb &amp;lt;- update(tab6.lpm1, family = binomial(link = &amp;#39;log&amp;#39;))
+&lt;pre&gt;&lt;code&gt;logb &amp;lt;- update(tab6.lpm1, family = binomial(link = &#39;log&#39;))
 #logb &amp;lt;- logbin(abully ~ tord, data = jxe)
-summ(logb, exp = T, digits = 3, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
-## (Intercept)     0.104 0.086 0.125 -23.900 0.000
-## tord            1.412 1.114 1.789   2.852 0.004&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;models-with-covariates&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. Models with covariates&lt;/h2&gt;
-&lt;p&gt;Compare these to the results in Table 6 in the article with the covariates:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.log2 &amp;lt;- glm(abully ~ tord + female + gl + race, data = jxe, family = binomial)
-summ(tab6.log2, exp = T)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
-## (Intercept)     0.149 0.105 0.211 -10.706 0.000
-## tord            1.487 1.134 1.951   2.866 0.004
-## female          1.184 0.906 1.547   1.239 0.215
-## gl10th          0.749 0.525 1.068  -1.597 0.110
-## gl11th          0.633 0.438 0.914  -2.439 0.015
-## gl12th          0.515 0.348 0.761  -3.333 0.001
-## raceb           0.646 0.411 1.015  -1.895 0.058
-## raceh           1.227 0.780 1.929   0.885 0.376
-## racea           1.512 0.826 2.769   1.340 0.180
-## raceo           1.165 0.747 1.815   0.674 0.501&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.lpm2 &amp;lt;- update(tab6.log2, family = gaussian)
-summ(tab6.lpm2, confint = T, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##               Est.   2.5%  97.5% t val.     p
-## (Intercept)  0.138  0.098  0.178  6.707 0.000
-## tord         0.042  0.013  0.071  2.873 0.004
-## female       0.018 -0.011  0.047  1.231 0.218
-## gl10th      -0.038 -0.083  0.008 -1.631 0.103
-## gl11th      -0.055 -0.100 -0.011 -2.440 0.015
-## gl12th      -0.074 -0.117 -0.030 -3.331 0.001
-## raceb       -0.040 -0.077 -0.003 -2.109 0.035
-## raceh        0.024 -0.033  0.081  0.825 0.409
-## racea        0.051 -0.035  0.138  1.161 0.246
-## raceo        0.017 -0.037  0.071  0.625 0.532&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.poi2 &amp;lt;- update(tab6.log2, family = poisson)
-summ(tab6.poi2, exp = T, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
-## (Intercept)     0.128 0.096 0.172 -13.815 0.000
-## tord            1.411 1.114 1.787   2.852 0.004
-## female          1.157 0.917 1.458   1.232 0.218
-## gl10th          0.785 0.581 1.060  -1.581 0.114
-## gl11th          0.678 0.494 0.929  -2.421 0.015
-## gl12th          0.563 0.401 0.793  -3.295 0.001
-## raceb           0.678 0.449 1.024  -1.845 0.065
-## raceh           1.190 0.811 1.746   0.888 0.374
-## racea           1.417 0.858 2.339   1.363 0.173
-## raceo           1.140 0.781 1.664   0.678 0.498&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tab6.logbin &amp;lt;- update(tab6.log2, family = binomial(link = &amp;#39;log&amp;#39;))
+summ(logb, exp = T, digits = 3, robust = &#39;HC3&#39;)$coef %&amp;gt;% round(3)
+
+            exp(Est.)  2.5% 97.5%  z val.     p
+(Intercept)     0.104 0.086 0.125 -23.900 0.000
+tord            1.412 1.114 1.789   2.852 0.004
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-models-with-covariates&#34;&gt;3. Models with covariates&lt;/h2&gt;
+&lt;p&gt;Compare these to the results in Table 6 in the article with the
+covariates:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tab6.log2 &amp;lt;- glm(abully ~ tord + female + gl + race, data = jxe, family = binomial)
+summ(tab6.log2, exp = T)$coef %&amp;gt;% round(3)
+
+            exp(Est.)  2.5% 97.5%  z val.     p
+(Intercept)     0.149 0.105 0.211 -10.706 0.000
+tord            1.487 1.134 1.951   2.866 0.004
+female          1.184 0.906 1.547   1.239 0.215
+gl10th          0.749 0.525 1.068  -1.597 0.110
+gl11th          0.633 0.438 0.914  -2.439 0.015
+gl12th          0.515 0.348 0.761  -3.333 0.001
+raceb           0.646 0.411 1.015  -1.895 0.058
+raceh           1.227 0.780 1.929   0.885 0.376
+racea           1.512 0.826 2.769   1.340 0.180
+raceo           1.165 0.747 1.815   0.674 0.501
+
+tab6.lpm2 &amp;lt;- update(tab6.log2, family = gaussian)
+summ(tab6.lpm2, confint = T, robust = &#39;HC3&#39;)$coef %&amp;gt;% round(3)
+
+              Est.   2.5%  97.5% t val.     p
+(Intercept)  0.138  0.098  0.178  6.707 0.000
+tord         0.042  0.013  0.071  2.873 0.004
+female       0.018 -0.011  0.047  1.231 0.218
+gl10th      -0.038 -0.083  0.008 -1.631 0.103
+gl11th      -0.055 -0.100 -0.011 -2.440 0.015
+gl12th      -0.074 -0.117 -0.030 -3.331 0.001
+raceb       -0.040 -0.077 -0.003 -2.109 0.035
+raceh        0.024 -0.033  0.081  0.825 0.409
+racea        0.051 -0.035  0.138  1.161 0.246
+raceo        0.017 -0.037  0.071  0.625 0.532
+
+tab6.poi2 &amp;lt;- update(tab6.log2, family = poisson)
+summ(tab6.poi2, exp = T, robust = &#39;HC3&#39;)$coef %&amp;gt;% round(3)
+
+            exp(Est.)  2.5% 97.5%  z val.     p
+(Intercept)     0.128 0.096 0.172 -13.815 0.000
+tord            1.411 1.114 1.787   2.852 0.004
+female          1.157 0.917 1.458   1.232 0.218
+gl10th          0.785 0.581 1.060  -1.581 0.114
+gl11th          0.678 0.494 0.929  -2.421 0.015
+gl12th          0.563 0.401 0.793  -3.295 0.001
+raceb           0.678 0.449 1.024  -1.845 0.065
+raceh           1.190 0.811 1.746   0.888 0.374
+racea           1.417 0.858 2.339   1.363 0.173
+raceo           1.140 0.781 1.664   0.678 0.498
+
+tab6.logbin &amp;lt;- update(tab6.log2, family = binomial(link = &#39;log&#39;))
 ## using logbinomial, adding `em` to speed up the estimation
 ## tab6.logbin &amp;lt;- logbin(abully ~ tord + female + gl + race, 
-##              data = jxe, method = &amp;#39;em&amp;#39;)
-summ(tab6.logbin, exp = T, confint = T, robust = &amp;#39;HC3&amp;#39;)$coef %&amp;gt;% round(3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##             exp(Est.)  2.5% 97.5%  z val.     p
-## (Intercept)     0.128 0.096 0.171 -13.869 0.000
-## tord            1.412 1.115 1.788   2.866 0.004
-## female          1.165 0.924 1.468   1.291 0.197
-## gl10th          0.780 0.578 1.052  -1.628 0.104
-## gl11th          0.672 0.491 0.921  -2.470 0.013
-## gl12th          0.565 0.402 0.794  -3.288 0.001
-## raceb           0.674 0.446 1.019  -1.872 0.061
-## raceh           1.187 0.809 1.741   0.876 0.381
-## racea           1.422 0.863 2.342   1.382 0.167
-## raceo           1.142 0.782 1.666   0.687 0.492&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The pattern of results are similar. The Poisson, log-binomial, and linear probability models however may provide results that are easier to understand (especially if communicating results to a lay audience who do not understand odds ratios).&lt;/p&gt;
+##              data = jxe, method = &#39;em&#39;)
+summ(tab6.logbin, exp = T, confint = T, robust = &#39;HC3&#39;)$coef %&amp;gt;% round(3)
+
+            exp(Est.)  2.5% 97.5%  z val.     p
+(Intercept)     0.128 0.096 0.171 -13.869 0.000
+tord            1.412 1.115 1.788   2.866 0.004
+female          1.165 0.924 1.468   1.291 0.197
+gl10th          0.780 0.578 1.052  -1.628 0.104
+gl11th          0.672 0.491 0.921  -2.470 0.013
+gl12th          0.565 0.402 0.794  -3.288 0.001
+raceb           0.674 0.446 1.019  -1.872 0.061
+raceh           1.187 0.809 1.741   0.876 0.381
+racea           1.422 0.863 2.342   1.382 0.167
+raceo           1.142 0.782 1.666   0.687 0.492
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The pattern of results are similar. The Poisson, log-binomial, and
+linear probability models however may provide results that are easier to
+understand (especially if communicating results to a lay audience who do
+not understand odds ratios).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Huang, F., &amp;amp; Cornell, D. (2015). Order and definitional effects in bullying surveys: Results from an experimental study. &lt;em&gt;Psychological Assessment, 27,&lt;/em&gt; 1484-1493. doi: &lt;a href=&#34;http://dx.doi.org/10.1037/pas0000149&#34; class=&#34;uri&#34;&gt;http://dx.doi.org/10.1037/pas0000149&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Huang, F., &amp;amp; Cornell, D. (2015). Order and definitional effects in
+bullying surveys: Results from an experimental study. &lt;em&gt;Psychological
+Assessment, 27,&lt;/em&gt; 1484-1493. doi: &lt;a href=&#34;http://dx.doi.org/10.1037/pas0000149&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://dx.doi.org/10.1037/pas0000149&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;– END&lt;/p&gt;
-&lt;/div&gt;
 </description>
     </item>
     
