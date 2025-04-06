@@ -931,9 +931,9 @@ level-1 weight only, they are (probably incorrect).&lt;/p&gt;
     
     <item>
       <title>Selecting the proper weights in LSAs with multilevel models</title>
-      <link>http://localhost:1313/post/2024_lsa/</link>
+      <link>http://localhost:1313/post/lsawt/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2024_lsa/</guid>
+      <guid>http://localhost:1313/post/lsawt/</guid>
       <description>&lt;h1 id=&#34;which-weights-to-use-with-multilevel-models&#34;&gt;Which weights to use with multilevel models?&lt;/h1&gt;
 &lt;p&gt;A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.&lt;/p&gt;
 &lt;p&gt;Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).&lt;/p&gt;

@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: March 7, 2025 --><html lang="en-us" dir="ltr"
-      data-wc-theme-default="system">
+<!-- Last Published: April 5, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="light">
   
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
@@ -34,14 +34,14 @@
   
   
 
-  <meta name="author" content="Francis Huang" />
+  <meta name="author" content="Francis L. Huang" />
 
   
   
   
     
   
-  <meta name="description" content=" Which weights to use with multilevel models? A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.
+  <meta name="description" content="Which weights to use with multilevel models? A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.
 " />
 
   
@@ -52,7 +52,7 @@
   
   
     
-    <link rel="stylesheet" href="/css/themes/emerald.min.css" />
+    <link rel="stylesheet" href="/css/themes/blue.min.css" />
   
 
   
@@ -159,8 +159,8 @@
   
 
   
-  <link rel="icon" type="image/png" href="/media/icon_hu_5cac115d14ed3d49.png" />
-  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_e7f327b39c12e7ca.png" />
+  <link rel="icon" type="image/png" href="/media/icon_hu_3a05525e284cb133.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_f701646b16bb8941.png" />
 
   <link rel="canonical" href="http://localhost:1313/post/lsawt/" />
 
@@ -184,16 +184,15 @@
   
   <meta property="twitter:card" content="summary" />
   
-    <meta property="twitter:site" content="@GetResearchDev" />
-    <meta property="twitter:creator" content="@GetResearchDev" />
+    <meta property="twitter:site" content="@flhuang" />
+    <meta property="twitter:creator" content="@flhuang" />
   
   <meta property="og:site_name" content="FLH Website" />
   <meta property="og:url" content="http://localhost:1313/post/lsawt/" />
   <meta property="og:title" content="Selecting the proper weights in LSAs with multilevel models | FLH Website" />
-  <meta property="og:description" content="
-Which weights to use with multilevel models?
-A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly." /><meta property="og:image" content="http://localhost:1313/media/icon_hu_645fa481986063ef.png" />
-    <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_645fa481986063ef.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:description" content="Which weights to use with multilevel models?
+A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly." /><meta property="og:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" />
+    <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
@@ -262,25 +261,6 @@ A common question with the use of large-scale assessments (LSAs) is related to t
   
   
   
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
   
   
   
@@ -299,79 +279,73 @@ A common question with the use of large-scale assessments (LSAs) is related to t
   
   
   
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -410,6 +384,16 @@ A common question with the use of large-scale assessments (LSAs) is related to t
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
     
       
       
@@ -429,23 +413,22 @@ A common question with the use of large-scale assessments (LSAs) is related to t
         
       
     
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
     
       
       
@@ -519,9 +502,330 @@ A common question with the use of large-scale assessments (LSAs) is related to t
         
       
     
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
       
       
     
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -843,7 +1147,7 @@ A common question with the use of large-scale assessments (LSAs) is related to t
     <div class="order-0 h-100">
       
       <a class="navbar-brand" href="/" title="FLH Website">
-        Francis Huang
+        Francis L. Huang
       </a>
     </div>
     
@@ -880,34 +1184,6 @@ A common question with the use of large-scale assessments (LSAs) is related to t
         <a
           class="nav-link "
           
-          href="/"
-        >Bio</a
-        >
-      </li>
-      
-      
-      
-      
-      
-      
-      <li class="nav-item">
-        <a
-          class="nav-link "
-          
-          href="/#papers"
-        >Papers</a
-        >
-      </li>
-      
-      
-      
-      
-      
-      
-      <li class="nav-item">
-        <a
-          class="nav-link "
-          
           href="/#talks"
         >Talks</a
         >
@@ -923,7 +1199,7 @@ A common question with the use of large-scale assessments (LSAs) is related to t
           class="nav-link "
           
           href="/#news"
-        >News</a
+        >Posts</a
         >
       </li>
       
@@ -936,8 +1212,8 @@ A common question with the use of large-scale assessments (LSAs) is related to t
         <a
           class="nav-link "
           
-          href="/experience/"
-        >Experience</a
+          href="/MLMusingR/"
+        >MLMusingR</a
         >
       </li>
       
@@ -967,6 +1243,70 @@ A common question with the use of large-scale assessments (LSAs) is related to t
           href="/teaching/"
         >Teaching</a
         >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/service/"
+        >Service</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item nav-dropdown group relative">
+            <span
+              class="nav-link 
+                
+                
+                
+              
+                
+                
+                
+               inline-flex items-center">
+              Research
+              <svg class="h-4 w-4 fill-current inline-block" viewBox="0 0 20 20">
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </span>
+        <ul
+          class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/#papers">
+              Papers
+            </a>
+          </li>
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/r">
+              R Packages
+            </a>
+          </li>
+          
+        </ul>
       </li>
       
       
@@ -1054,26 +1394,6 @@ A common question with the use of large-scale assessments (LSAs) is related to t
         <li class=""><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/event/"
-    
-  >Recent &amp; Upcoming Talks
-        <span data-hb-sidebar-toggle>
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
-        </span>
-    </a><div class="ltr:pr-0 overflow-hidden">
-        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/event/example/"
-    
-  >Example Talk
-    </a>
-              
-            </li></ul>
-      </div></li>
-        <li class=""><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
     href="/publication/"
     
   >Publications
@@ -1084,6 +1404,38 @@ A common question with the use of large-scale assessments (LSAs) is related to t
         <ul class="hb-sidebar-list"><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/lsa-weights/"
+    
+  >Reassessing weights in large-scale assessments and multilevel models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/cornell-behavioral-2025/"
+    
+  >Behavioral threat assessment and equity in exclusionary school discipline
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/huang-cluster-robust-2025/"
+    
+  >Cluster-robust standard errors with three-level data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/cornell-referral-2025/"
+    
+  >Referral rates for school threat assessment
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
     href="/publication/journal-article/test2/gregory-restorative-2025/"
     
   >Restorative justice conferences in elementary and secondary schools
@@ -1092,9 +1444,49 @@ A common question with the use of large-scale assessments (LSAs) is related to t
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/publication/journal-article/test2/huang-replication-2024/"
+    href="/publication/journal-article/test3/jimerson-advancing-2024/"
     
-  >Replication studies using secondary or nonexperimental datasets
+  >Advancing diversity, equity, and inclusion in school psychology science and scholarship: Changing training and practice in the field of school psychology
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/chuang-potential-2022/"
+    
+  >Potential moderation across racial groups in perceptions of authoritative school climate and peer victimization and student engagement
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-seasonality-2023/"
+    
+  >The seasonality of school climate
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/smith-school-2024/"
+    
+  >School bullying and gender minority youth: Victimization experiences and perceived prevalence
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/reinke-having-2024/"
+    
+  >Having a trusted adult in school: Concurrent and predictive relations with internalizing problems across development
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/eddy-positive-2024/"
+    
+  >Positive student-teacher relationships and exclusionary discipline practices
     </a>
               
             </li><li class="flex flex-col "><a
@@ -1108,7 +1500,87 @@ A common question with the use of large-scale assessments (LSAs) is related to t
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/publication/journal-article/test2/huang-practical-2023/"
+    href="/publication/journal-article/test2/huang-replication-2024/"
+    
+  >Replication studies using secondary or nonexperimental datasets
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-using-2024/"
+    
+  >Using plausible values when fitting multilevel models with large-scale assessment data using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/gregory-adolescent-2024/"
+    
+  >Adolescent exposure to restorative practices and their perceptions of support, structure, and bullying in the school climate
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/stemmler-investigating-2024/"
+    
+  >Investigating the use of robust standard errors to account for two-way clustering in cross-classified data structures
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-impact-2023/"
+    
+  >The impact of restorative practices on the use of out-of-school suspensions: Results from a cluster randomized controlled trial
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/woods-relationship-2023/"
+    
+  >The relationship between teacher stress and job satisfaction as moderated by coping
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/herman-usability-2023/"
+    
+  >Usability and social consequences of the early identification system as a universal screener for social, emotional, and behavioral risks.
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-accounting-2023/"
+    
+  >Accounting for heteroskedasticity resulting from between-group differences in multilevel models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/wiedermann-advanced-2023/"
+    
+  >Advanced categorical data analysis in prevention science
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/cohen-school-2023/"
+    
+  >In-school and out-of-school suspension: Behavioral and psychological outcomes in a predominately black sample of middle school students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/book/huang-practical-2023/"
     
   >Practical multilevel modeling using R
     </a>
@@ -1116,9 +1588,33 @@ A common question with the use of large-scale assessments (LSAs) is related to t
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/publication/journal-article/test2/maeng-teacher-2023/"
+    href="/publication/journal-article/test3/maeng-teacher-2023/"
     
   >Teacher Perceptions of School Resource Officers and Associations with School Safety
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-using-2023/"
+    
+  >Using robust standard errors for the analysis of binary outcomes with a small number of clusters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/gregory-evaluation-2022/"
+    
+  >Evaluation of the whole school restorative practices project: One-year impact on discipline incidents
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/olsen-interaction-2022/"
+    
+  >Interaction of socioeconomic status and class relations on reading
     </a>
               
             </li><li class="flex flex-col "><a
@@ -1132,9 +1628,105 @@ A common question with the use of large-scale assessments (LSAs) is related to t
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/publication/journal-article/test2/olsen-association-2021/"
+    href="/publication/journal-article/2022/reinke-examining-2022/"
     
-  >The association between student socioeconomic status and student–teacher relationships on math achievement.
+  >Examining the validity of the Early Identification System – Student Version for screening in an elementary school sample
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-alternatives-2022/"
+    
+  >Alternatives to logistic regression models in experimental studies
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-analyzing-2022/"
+    
+  >Analyzing cross-sectionally clustered data using generalized estimating equations
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/eddy-evaluation-2022/"
+    
+  >Evaluation of a bibliotherapy-based stress intervention for teachers
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-using-2022/"
+    
+  >Using cluster-robust standard errors when analyzing group-randomized trials with few clusters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/herman-individual-2021/"
+    
+  >Individual and school predictors of teacher stress, coping, and wellness during the COVID-19 pandemic
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/olsen-association-2021/"
+    
+  >The association between student socioeconomic status and student–teacher relationships on math achievement
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-does-2021/"
+    
+  >Does worrying matter? Priming and attitudes towards mask wearing in a midwestern state
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/stohlman-high-2021/"
+    
+  >High school graduation outcomes of student threat assessment
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/jimerson-advancing-2021/"
+    
+  >Advancing diversity, equity, and inclusion in school psychology: Be the change
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/herman-investigation-2021/"
+    
+  >An investigation of the psychometric properties of the Early Identification System–student report in a middle school sample
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-authoritative-2021/"
+    
+  >Authoritative school climate and out-of-school suspensions: Results from a nationally-representative survey of 10th grade students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/thompson-confirmatory-2021/"
+    
+  >Confirmatory factor structure and predictive validity of the Early Identification System—Student Report in a community sample of high school students
     </a>
               
             </li><li class="flex flex-col "><a
@@ -1156,6 +1748,22 @@ A common question with the use of large-scale assessments (LSAs) is related to t
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/jiv/huang-role-2017/"
+    
+  >The role of the perceptions of school climate and teacher victimization by students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/eddy-does-2020/"
+    
+  >Does teacher emotional exhaustion and efficacy predict student discipline sanctions?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
     href="/publication/journal-article/huang-prior-2020/"
     
   >Prior problem behaviors do not account for the racial suspension gap
@@ -1164,9 +1772,33 @@ A common question with the use of large-scale assessments (LSAs) is related to t
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-manova-2020/"
+    
+  >MANOVA: A procedure whose time has passed?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-relationship-2020/"
+    
+  >The relationship between school disciplinary resolutions with school climate and attitudes toward school
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
     href="/publication/journal-article/test2/prewett-student-2019/"
     
   >Student and teacher perceptions on student-teacher relationship quality: A middle school perspective
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2019/huang-investigation-2019/"
+    
+  >An investigation of the psychometric properties of the Early Identification System–Student Report
     </a>
               
             </li><li class="flex flex-col "><a
@@ -1191,6 +1823,110 @@ A common question with the use of large-scale assessments (LSAs) is related to t
     href="/publication/journal-article/test2/olsen-teacher-2019/"
     
   >Teacher job satisfaction by principal support and teacher cooperation: Results from the Schools and Staffing Survey
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2019/smith-understanding-2019/"
+    
+  >Understanding family–school engagement across and within elementary- and middle-school contexts
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-multilevel-2018-1/"
+    
+  >Multilevel modeling myths
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-relationship-2018/"
+    
+  >The relationship of school climate with out-of-school suspensions
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/ford-effect-2018/"
+    
+  >The effect of orthographic complexity on Spanish spelling in Grades 1–3
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/gregory-examination-2018/"
+    
+  >An examination of restorative interventions and racial equity in out-of-school suspensions
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-bullying-2018/"
+    
+  >Bullying involvement, teacher-student relationships, and psychosocial outcomes
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-black-2018/"
+    
+  >Do Black students misbehave more? Investigating the differential involvement hypothesis and out-of-school suspensions
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-multilevel-2018/"
+    
+  >Multilevel modeling and ordinary least squares regression:  How comparable are they?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/cornell-racialethnic-2018/"
+    
+  >Racial/ethnic parity in disciplinary consequences using student threat assessment
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/jia-impact-2018/"
+    
+  >The impact of validity screening on associations between self-reports of bullying victimization and student outcomes
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-using-2018-1/"
+    
+  >Using cluster bootstrapping to analyze nested data with a few clusters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-using-2018/"
+    
+  >Using instrumental variable estimation to evaluate randomized experiments with imperfect compliance
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/cornell-student-2017/"
+    
+  >Student Threat Assessment as a Standard School Safety Practice: Results From a Statewide Implementation Study.
     </a>
               
             </li><li class="flex flex-col "><a
@@ -1244,9 +1980,33 @@ A common question with the use of large-scale assessments (LSAs) is related to t
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/gregory-it-2013/"
+    
+  >It takes a village: The effects of 10th grade college-going expectations of students, parents, and teachers four years later
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
     href="/publication/journal-article/test2/huang-differential-2012/"
     
   >The differential effects of preschool: Evidence from Virginia
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-is-2009/"
+    
+  >Is experience the best teacher? A multilevel analysis of teacher characteristics and student achievement in low performing schools
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-corruption-2008/"
+    
+  >Corruption and educational outcomes: Two steps forward, one step back
     </a>
               
             </li></ul>
@@ -1261,7 +2021,31 @@ A common question with the use of large-scale assessments (LSAs) is related to t
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
         </span>
     </a><div class="ltr:pr-0 overflow-hidden">
-        <ul class="hb-sidebar-list"><li class="flex flex-col open"><a
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/weights_2025/"
+    
+  >Weights with Multilevel Models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2025/"
+    
+  >🎉 Job postings 2024-2025
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pca-image/"
+    
+  >Fun with PCA using Images
+    </a>
+              
+            </li><li class="flex flex-col open"><a
     class="hb-sidebar-custom-link
       sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
     href="/post/lsawt/"
@@ -1271,54 +2055,21 @@ A common question with the use of large-scale assessments (LSAs) is related to t
   
     <ul class="hb-sidebar-mobile-toc"><li>
               <a
-                href="#residual--------------572658----23329-----2455---906-2e-16-"
+                href="#1-load-in-the-needed-functions-and-data"
                 class="hb-docs-link"
-              >Estimates for random effects:
-estimate std.error statistic     df Pr(&amp;gt;t) &lt;br&gt;
-schoolid.(Intercept)  1825.03    436.26      4.18 2719.0 &amp;lt;2e-16 ***
-Residual              5726.58    233.29     24.55   90.6 &amp;lt;2e-16 ***</a>
+              >1. Load in the needed functions and data</a>
             </li>
           <li>
               <a
-                href="#intercept---47339------703-----6733-1777-2e-16-"
+                href="#2-what-about-scaling-level-1-weights"
                 class="hb-docs-link"
-              >Estimates for fixed effects:
-estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
-(Intercept)   473.39      7.03     67.33 1777 &amp;lt;2e-16 ***</a>
+              >2. What about scaling level-1 weights?</a>
             </li>
           <li>
               <a
-                href="#residual--------------572756----23336-----2454---902-2e-16-"
+                href="#3-what-about-just-using-level-2-weights"
                 class="hb-docs-link"
-              >Estimates for random effects:
-estimate std.error statistic     df Pr(&amp;gt;t) &lt;br&gt;
-schoolid.(Intercept)  1821.40    434.62      4.19 2714.0 &amp;lt;2e-16 ***
-Residual              5727.56    233.36     24.54   90.2 &amp;lt;2e-16 ***</a>
-            </li>
-          <li>
-              <a
-                href="#intercept---47340------702-----6739-1776-2e-16-"
-                class="hb-docs-link"
-              >Estimates for fixed effects:
-estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
-(Intercept)   473.40      7.02     67.39 1776 &amp;lt;2e-16 ***</a>
-            </li>
-          <li>
-              <a
-                href="#residual--------------589585----17505-----3368--876-2e-16-"
-                class="hb-docs-link"
-              >Estimates for random effects:
-estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
-schoolid.(Intercept)  2126.22    503.39      4.22 3099 &amp;lt;2e-16 ***
-Residual              5895.85    175.05     33.68  876 &amp;lt;2e-16 ***</a>
-            </li>
-          <li>
-              <a
-                href="#intercept---47235------733-----6444-1470-2e-16-"
-                class="hb-docs-link"
-              >Estimates for fixed effects:
-estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
-(Intercept)   472.35      7.33     64.44 1470 &amp;lt;2e-16 ***</a>
+              >3. What about just using level-2 weights?</a>
             </li>
           </ul>
   
@@ -1326,41 +2077,185 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/get-started/"
+    href="/post/pv3/"
     
-  >🎉 Easily create your own simple yet highly customizable blog
+  >Using Plausible Values with Multilevel Models Using R (update)
     </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/second-brain/"
+    href="/post/pv/"
     
-  >🧠 Sharpen your thinking with a second brain
+  >Using Plausible Values with Multilevel Models Using R
     </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/data-visualization/"
+    href="/post/jobs-2024/"
     
-  >📈 Communicate your results effectively with the best data visualizations
+  >🎉 Job postings 2023-2024
     </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/teach-courses/"
+    href="/post/gd_example/"
     
-  >👩🏼‍🏫 Teach academic courses
+  >Gradient descent example 1
     </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/project-management/"
+    href="/post/logreg_matrix/"
     
-  >✅ Manage your projects
+  >🖩 Logistic regression with matrices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/residuals_mlm/"
+    
+  >Residuals with Multilevel Models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2023/"
+    
+  >🎉 Job postings 2022-2023
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/residuals/"
+    
+  >Fun with residuals
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mi_pt3/"
+    
+  >Using FIML in R for Multilevel Data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2022_cr2/"
+    
+  >Robust standard errors in mixed models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/logistic-regression-fisher-scoring/"
+    
+  >Logistic regression from scratch (Newton Raphson and Fisher Scoring)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/likelihood_2022/"
+    
+  >Using REML and ML for estimation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/extracting-v-matrix/"
+    
+  >Extracting the V matrix for MLMs
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gee/"
+    
+  >🎉 Analyzing clustered data using GEEs
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ml/"
+    
+  >🎉 Using maximum likelihood
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/compare/"
+    
+  >🎉 Comparing coefficients across logistic regression models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/prior-problem-behavior-and-suspensions-a-replication/"
+    
+  >Prior problem behavior and suspensions: A replication
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mdata/"
+    
+  >🎉 Using FIML and MI in R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/applied/"
+    
+  >🎉 Applied example for alternatives to logistic regression
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pca_2020/"
+    
+  >🎉 Principal Components Analysis using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/centering/"
+    
+  >🎉 Why does centering reduce multicollinearity?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/poisson-and-negative-binomial-regression-using-r/"
+    
+  >Poisson and Negative Binomial Regression using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/sim2data/"
+    
+  >🎉 Simulating two level data
     </a>
               
             </li><li class="flex flex-col "><a
@@ -1368,15 +2263,39 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
     href="/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/"
     
-  >2018-06-16-difference-between-variance-covariance-and-correlation-matrix
+  >🧠 Difference between correlation and covariance matrices
     </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/jobs-2025/"
+    href="/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/"
     
-  >Job postings (AY 2024-25)
+  >Instrumental variables within an SEM framework
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/se/"
+    
+  >🎉 Class Example- Standard Errors Too Small
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/iv/"
+    
+  >🎉 Understanding instrumental variables
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ovb/"
+    
+  >Omitted Variable Bias (OVB) Example
     </a>
               
             </li></ul>
@@ -1384,9 +2303,23 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
         <li class=""><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/projects/"
+    href="/mlmusingr/"
     
-  >Projects
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/r/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/service/"
+    
+  >
     </a></li>
         <li class=""><a
     class="hb-sidebar-custom-link
@@ -1401,25 +2334,25 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
         <ul class="hb-sidebar-list"><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/project/pandas/"
+    href="/project/uva/"
     
-  >Pandas
+  >Youth Violence Project @ UVA
     </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/project/pytorch/"
+    href="/project/av/"
     
-  >PyTorch
+  >MO Prison Transformation Project
     </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/project/scikit/"
+    href="/project/mpsi/"
     
-  >scikit-learn
+  >Missouri Prevention Science Institute
     </a>
               
             </li></ul>
@@ -1427,10 +2360,46 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
         <li class=""><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/experience/"
+    href="/projects/"
     
-  >Experience
+  >Projects
     </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/"
+    
+  >Recent &amp; Upcoming Talks
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/example/"
+    
+  >Replication studies using secondary and nonexperimental datasets
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/mlm_ph/"
+    
+  >Multilevel Modeling with Large-Scale International Databases Using HLM (Philadelphia)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/korea_23/"
+    
+  >Using cluster robust standard errors to analyze nested data with a few clusters (Korea)
+    </a>
+              
+            </li></ul>
+      </div></li>
         <li class=""><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
@@ -1444,21 +2413,52 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
         <ul class="hb-sidebar-list"><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/teaching/js/"
+    href="/teaching/dm/"
     
-  >Learn JavaScript
+  >Data Management (using R)
     </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/teaching/python/"
+    href="/teaching/mcsim/"
     
-  >Learn Python
+  >Monte Carlo Simulation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/mlm/"
+    
+  >Multilevel Modeling
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/eval/"
+    
+  >Program Evaluation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/quantfound/"
+    
+  >Quantitative Foundations
     </a>
               
             </li></ul>
       </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
     </ul>
 
     <div class="max-xl:hidden h-0 w-64 shrink-0"></div></div>
@@ -1481,22 +2481,16 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
 
   <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">On this page</p><ul>
       <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#residual--------------572658----23329-----2455---906-2e-16-">Estimates for random effects: estimate std.error statistic df Pr(&gt;t) schoolid.(Intercept) 1825.03 436.26 4.18 2719.0 &lt;2e-16 *** Residual 5726.58 233.29 24.55 90.6 &lt;2e-16 ***</a>
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#1-load-in-the-needed-functions-and-data">1. Load in the needed functions and data</a>
       </li>
       <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#intercept---47339------703-----6733-1777-2e-16-">Estimates for fixed effects: estimate std.error statistic df Pr(&gt;t) (Intercept) 473.39 7.03 67.33 1777 &lt;2e-16 ***</a>
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#2-what-about-scaling-level-1-weights">2. What about scaling level-1 weights?</a>
       </li>
       <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#residual--------------572756----23336-----2454---902-2e-16-">Estimates for random effects: estimate std.error statistic df Pr(&gt;t) schoolid.(Intercept) 1821.40 434.62 4.19 2714.0 &lt;2e-16 *** Residual 5727.56 233.36 24.54 90.2 &lt;2e-16 ***</a>
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#3-what-about-just-using-level-2-weights">3. What about just using level-2 weights?</a>
       </li>
       <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#intercept---47340------702-----6739-1776-2e-16-">Estimates for fixed effects: estimate std.error statistic df Pr(&gt;t) (Intercept) 473.40 7.02 67.39 1776 &lt;2e-16 ***</a>
-      </li>
-      <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#residual--------------589585----17505-----3368--876-2e-16-">Estimates for random effects: estimate std.error statistic df Pr(&gt;t) schoolid.(Intercept) 2126.22 503.39 4.22 3099 &lt;2e-16 *** Residual 5895.85 175.05 33.68 876 &lt;2e-16 ***</a>
-      </li>
-      <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#intercept---47235------733-----6444-1470-2e-16-">Estimates for fixed effects: estimate std.error statistic df Pr(&gt;t) (Intercept) 472.35 7.33 64.44 1470 &lt;2e-16 ***</a>
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#references">References</a>
       </li></ul>
 
   
@@ -1528,6 +2522,15 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
     <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
 
       
+      <div class="mb-4">
+        <div class="mt-1.5 flex items-center gap-1 overflow-hidden text-sm text-gray-500 dark:text-gray-400">
+      <div class="whitespace-nowrap transition-colors min-w-[24px] overflow-hidden text-ellipsis hover:text-gray-900 dark:hover:text-gray-100">
+        <a href="http://localhost:1313/post/">Blog</a>
+      </div><svg class="w-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg><div class="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100">Selecting the proper weights in LSAs with multilevel models</div>
+</div>
+
+      </div>
+      
 
       <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Selecting the proper weights in LSAs with multilevel models</h1>
 
@@ -1538,7 +2541,7 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
         
         <span class="mx-1">·</span>
         <span class="mx-1">
-          18 min read
+          9 min read
         </span>
         
         </div>
@@ -1563,681 +2566,1278 @@ estimate std.error statistic   df Pr(&amp;gt;t) &lt;br&gt;
       
 
       <div class="prose prose-slate lg:prose-xl dark:prose-invert">
-        <div id="which-weights-to-use-with-multilevel-models" class="section level1">
-<h1>Which weights to use with multilevel models?</h1>
+        <h1 id="which-weights-to-use-with-multilevel-models">Which weights to use with multilevel models?</h1>
 <p>A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.</p>
 <p>Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).</p>
 <p>To illustrate this using R (with the <code>mixPV</code> function):</p>
-<div id="load-in-the-needed-functions-and-data" class="section level2">
-<h2>1. Load in the needed functions and data</h2>
+<h2 id="1-load-in-the-needed-functions-and-data">1. Load in the needed functions and data</h2>
 <p>First, load in the <code>mixPV</code> function. Load in the <code>pisa2012</code> dataset as well.</p>
-<pre class="r"><code>library(modelsummary)
-source(&quot;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&quot;)
-data(pisa2012, package = &#39;MLMusingR&#39;) </code></pre>
-<p>By default, the <code>WeMix</code> package uses conditional weights = FALSE or <code>cWeights = FALSE</code> (no need to specify). This makes it easier so users don’t have to compute the conditional weights (conditional on the school being selected) and can just use the total weight supplied in many datasets. You have to make sure which type of weight you are using. NOTE: the <code>mc = TRUE</code> option is used to shorten computing time (turning on the use of multiple cores). The following just uses the raw weights at both levels:</p>
-<pre class="r"><code>m1a &lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&#39;w_fstuwt&#39;, &#39;w_fschwt&#39;), mc = TRUE,
-             data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<p>However, if you use software such as Mplus or SAS, you need to specify the conditional weights. To compute the conditional weights (if you are specifying weights at both levels), it is the total weight divided by the school weight.</p>
-<pre class="r"><code>pisa2012$cweight &lt;- pisa2012$w_fstuwt / pisa2012$w_fschwt</code></pre>
-<p>We can then use this when we fit the model and we include <code>cWeights = TRUE</code>. We can compare the output in a while.</p>
-<pre class="r"><code>m1b &lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&#39;cweight&#39;, &#39;w_fschwt&#39;), mc = TRUE,
-             cWeight = TRUE,
-             data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<p>I will include the example if we just use the conditional weight (as you would with other software packages) but DO NOT turn on the <code>cWeights</code> option.</p>
-<pre class="r"><code>m1c &lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&#39;cweight&#39;, &#39;w_fschwt&#39;), mc = TRUE,
-             #cWeight = TRUE,  ## for illustrative purposes only
-             data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<p>We can compare results side-by-side.</p>
-<pre class="r"><code>modelsummary(list(&quot;default&quot; = m1a, &quot;cweights&quot; = m1b, &quot;wrong&quot; = m1c),
-  stars = TRUE, gof_map = NA)</code></pre>
-<!-- preamble start -->
-<pre><code>&lt;script&gt;
-  function styleCell_tpg3fmfzg2xr99z92e2s(i, j, css_id) {
-    var table = document.getElementById(&quot;tinytable_tpg3fmfzg2xr99z92e2s&quot;);
-    table.rows[i].cells[j].classList.add(css_id);
-  }
-  function insertSpanRow(i, colspan, content) {
-    var table = document.getElementById('tinytable_tpg3fmfzg2xr99z92e2s');
-    var newRow = table.insertRow(i);
-    var newCell = newRow.insertCell(0);
-    newCell.setAttribute(&quot;colspan&quot;, colspan);
-    // newCell.innerText = content;
-    // this may be unsafe, but innerText does not interpret &lt;br&gt;
-    newCell.innerHTML = content;
-  }
-  function spanCell_tpg3fmfzg2xr99z92e2s(i, j, rowspan, colspan) {
-    var table = document.getElementById(&quot;tinytable_tpg3fmfzg2xr99z92e2s&quot;);
-    const targetRow = table.rows[i];
-    const targetCell = targetRow.cells[j];
-    for (let r = 0; r &lt; rowspan; r++) {
-      // Only start deleting cells to the right for the first row (r == 0)
-      if (r === 0) {
-        // Delete cells to the right of the target cell in the first row
-        for (let c = colspan - 1; c &gt; 0; c--) {
-          if (table.rows[i + r].cells[j + c]) {
-            table.rows[i + r].deleteCell(j + c);
-          }
-        }
-      }
-      // For rows below the first, delete starting from the target column
-      if (r &gt; 0) {
-        for (let c = colspan - 1; c &gt;= 0; c--) {
-          if (table.rows[i + r] &amp;&amp; table.rows[i + r].cells[j]) {
-            table.rows[i + r].deleteCell(j);
-          }
-        }
-      }
-    }
-    // Set rowspan and colspan of the target cell
-    targetCell.rowSpan = rowspan;
-    targetCell.colSpan = colspan;
-  }
-</code></pre>
-<p>window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 0, &rsquo;tinytable_css_id33r6av160gggqyj4uftq&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 1, &rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 2, &rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(0, 3, &rsquo;tinytable_css_idu07fh71s8b54pdrm00pi&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(1, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(2, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(3, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(4, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(5, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(6, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(7, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(8, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(9, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(10, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(11, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(12, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(13, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(14, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(15, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 1, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 2, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(16, 3, &rsquo;tinytable_css_ide4slf7iwqvreor6a5l79&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 0, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 1, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 2, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_tpg3fmfzg2xr99z92e2s(17, 3, &rsquo;tinytable_css_idxuo2fqnerpnyvos1l2je&rsquo;) })
-</script></p>
-<pre><code>&lt;style&gt;
-.table td.tinytable_css_id33r6av160gggqyj4uftq, .table th.tinytable_css_id33r6av160gggqyj4uftq {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_idu07fh71s8b54pdrm00pi, .table th.tinytable_css_idu07fh71s8b54pdrm00pi {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_idxuo2fqnerpnyvos1l2je, .table th.tinytable_css_idxuo2fqnerpnyvos1l2je {  text-align: left; }
-.table td.tinytable_css_ide4slf7iwqvreor6a5l79, .table th.tinytable_css_ide4slf7iwqvreor6a5l79 {  text-align: center; }
-&lt;/style&gt;
-&lt;div class=&quot;container&quot;&gt;
-  &lt;table class=&quot;table table-borderless&quot; id=&quot;tinytable_tpg3fmfzg2xr99z92e2s&quot; style=&quot;width: auto; margin-left: auto; margin-right: auto;&quot; data-quarto-disable-processing='true'&gt;
-    &lt;thead&gt;
-    
-          &lt;tr&gt;
-            &lt;th scope=&quot;col&quot;&gt; &lt;/th&gt;
-            &lt;th scope=&quot;col&quot;&gt;default&lt;/th&gt;
-            &lt;th scope=&quot;col&quot;&gt;cweights&lt;/th&gt;
-            &lt;th scope=&quot;col&quot;&gt;wrong&lt;/th&gt;
-          &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tfoot&gt;&lt;tr&gt;&lt;td colspan='4'&gt;+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
-    &lt;tbody&gt;
-            &lt;tr&gt;
-              &lt;td&gt;(Intercept)          &lt;/td&gt;
-              &lt;td&gt;470.498*** &lt;/td&gt;
-              &lt;td&gt;470.498*** &lt;/td&gt;
-              &lt;td&gt;479.535*** &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(7.103)    &lt;/td&gt;
-              &lt;td&gt;(7.103)    &lt;/td&gt;
-              &lt;td&gt;(4.876)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;sc14q02Very little   &lt;/td&gt;
-              &lt;td&gt;-20.910    &lt;/td&gt;
-              &lt;td&gt;-20.910    &lt;/td&gt;
-              &lt;td&gt;-8.561     &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(15.710)   &lt;/td&gt;
-              &lt;td&gt;(15.710)   &lt;/td&gt;
-              &lt;td&gt;(6.421)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;sc14q02To some extent&lt;/td&gt;
-              &lt;td&gt;-16.131    &lt;/td&gt;
-              &lt;td&gt;-16.131    &lt;/td&gt;
-              &lt;td&gt;-27.209**  &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(11.823)   &lt;/td&gt;
-              &lt;td&gt;(11.823)   &lt;/td&gt;
-              &lt;td&gt;(8.611)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;sc14q02A lot         &lt;/td&gt;
-              &lt;td&gt;-25.224**  &lt;/td&gt;
-              &lt;td&gt;-25.224**  &lt;/td&gt;
-              &lt;td&gt;-23.765*** &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(7.614)    &lt;/td&gt;
-              &lt;td&gt;(7.614)    &lt;/td&gt;
-              &lt;td&gt;(6.635)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;st04q01Male          &lt;/td&gt;
-              &lt;td&gt;9.529**    &lt;/td&gt;
-              &lt;td&gt;9.529**    &lt;/td&gt;
-              &lt;td&gt;10.784**   &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(3.097)    &lt;/td&gt;
-              &lt;td&gt;(3.097)    &lt;/td&gt;
-              &lt;td&gt;(4.163)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;escs                 &lt;/td&gt;
-              &lt;td&gt;26.300***  &lt;/td&gt;
-              &lt;td&gt;26.300***  &lt;/td&gt;
-              &lt;td&gt;35.847***  &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(2.210)    &lt;/td&gt;
-              &lt;td&gt;(2.210)    &lt;/td&gt;
-              &lt;td&gt;(2.158)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;schoolid.(Intercept) &lt;/td&gt;
-              &lt;td&gt;1344.166***&lt;/td&gt;
-              &lt;td&gt;1344.166***&lt;/td&gt;
-              &lt;td&gt;0.000      &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(300.241)  &lt;/td&gt;
-              &lt;td&gt;(300.241)  &lt;/td&gt;
-              &lt;td&gt;(0.000)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;Residual             &lt;/td&gt;
-              &lt;td&gt;5418.299***&lt;/td&gt;
-              &lt;td&gt;5418.299***&lt;/td&gt;
-              &lt;td&gt;6701.321***&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(160.102)  &lt;/td&gt;
-              &lt;td&gt;(160.102)  &lt;/td&gt;
-              &lt;td&gt;(210.501)  &lt;/td&gt;
-            &lt;/tr&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-&lt;/div&gt;
-</code></pre>
-<!-- hack to avoid NA insertion in last line -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">modelsummary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">source</span><span class="p">(</span><span class="s">&#34;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">pisa2012</span><span class="p">,</span> <span class="n">package</span> <span class="o">=</span> <span class="s">&#39;MLMusingR&#39;</span><span class="p">)</span> 
+</span></span></code></pre></div><p>By default, the <code>WeMix</code> package uses conditional weights = FALSE or <code>cWeights = FALSE</code> (no need to specify). This makes it easier so users don&rsquo;t have to compute the conditional weights (conditional on the school being selected) and can just use the total weight supplied in many datasets. You have to make sure which type of weight you are using. NOTE: the <code>mc = TRUE</code> option is used to shorten computing time (turning on the use of multiple cores). The following just uses the raw weights at both levels:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1a</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;w_fstuwt&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><p>However, if you use software such as Mplus or SAS, you need to specify the conditional weights. To compute the conditional weights (if you are specifying weights at both levels), it is the total weight divided by the school weight.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pisa2012</span><span class="o">$</span><span class="n">cweight</span> <span class="o">&lt;-</span> <span class="n">pisa2012</span><span class="o">$</span><span class="n">w_fstuwt</span> <span class="o">/</span> <span class="n">pisa2012</span><span class="o">$</span><span class="n">w_fschwt</span>
+</span></span></code></pre></div><p>We can then use this when we fit the model and we include <code>cWeights = TRUE</code>. We can compare the output in a while.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1b</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><p>I will include the example if we just use the conditional weight (as you would with other software packages) but DO NOT turn on the <code>cWeights</code> option.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1c</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="c1">#cWeight = TRUE,  ## for illustrative purposes only</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><p>We can compare results side-by-side.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">modelsummary</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="s">&#34;default&#34;</span> <span class="o">=</span> <span class="n">m1a</span><span class="p">,</span> <span class="s">&#34;cweights&#34;</span> <span class="o">=</span> <span class="n">m1b</span><span class="p">,</span> <span class="s">&#34;wrong&#34;</span> <span class="o">=</span> <span class="n">m1c</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">stars</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">gof_map</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="s">&#39;gt&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><!--html_preserve--><div id="fjhjfswqvu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fjhjfswqvu table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fjhjfswqvu thead, #fjhjfswqvu tbody, #fjhjfswqvu tfoot, #fjhjfswqvu tr, #fjhjfswqvu td, #fjhjfswqvu th {
+  border-style: none;
+}
+
+#fjhjfswqvu p {
+  margin: 0;
+  padding: 0;
+}
+
+#fjhjfswqvu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fjhjfswqvu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fjhjfswqvu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fjhjfswqvu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fjhjfswqvu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fjhjfswqvu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fjhjfswqvu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fjhjfswqvu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fjhjfswqvu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fjhjfswqvu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fjhjfswqvu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fjhjfswqvu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fjhjfswqvu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fjhjfswqvu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fjhjfswqvu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fjhjfswqvu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fjhjfswqvu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fjhjfswqvu .gt_left {
+  text-align: left;
+}
+
+#fjhjfswqvu .gt_center {
+  text-align: center;
+}
+
+#fjhjfswqvu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fjhjfswqvu .gt_font_normal {
+  font-weight: normal;
+}
+
+#fjhjfswqvu .gt_font_bold {
+  font-weight: bold;
+}
+
+#fjhjfswqvu .gt_font_italic {
+  font-style: italic;
+}
+
+#fjhjfswqvu .gt_super {
+  font-size: 65%;
+}
+
+#fjhjfswqvu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fjhjfswqvu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fjhjfswqvu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fjhjfswqvu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fjhjfswqvu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fjhjfswqvu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fjhjfswqvu .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fjhjfswqvu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fjhjfswqvu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="default">default</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="cweights">cweights</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="wrong">wrong</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers=" " class="gt_row gt_left">(Intercept)</td>
+<td headers="default" class="gt_row gt_center">470.498***</td>
+<td headers="cweights" class="gt_row gt_center">470.498***</td>
+<td headers="wrong" class="gt_row gt_center">479.535***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(7.103)</td>
+<td headers="cweights" class="gt_row gt_center">(7.103)</td>
+<td headers="wrong" class="gt_row gt_center">(4.876)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02Very little</td>
+<td headers="default" class="gt_row gt_center">-20.910</td>
+<td headers="cweights" class="gt_row gt_center">-20.910</td>
+<td headers="wrong" class="gt_row gt_center">-8.561</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(15.710)</td>
+<td headers="cweights" class="gt_row gt_center">(15.710)</td>
+<td headers="wrong" class="gt_row gt_center">(6.421)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02To some extent</td>
+<td headers="default" class="gt_row gt_center">-16.131</td>
+<td headers="cweights" class="gt_row gt_center">-16.131</td>
+<td headers="wrong" class="gt_row gt_center">-27.209**</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(11.823)</td>
+<td headers="cweights" class="gt_row gt_center">(11.823)</td>
+<td headers="wrong" class="gt_row gt_center">(8.611)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02A lot</td>
+<td headers="default" class="gt_row gt_center">-25.224**</td>
+<td headers="cweights" class="gt_row gt_center">-25.224**</td>
+<td headers="wrong" class="gt_row gt_center">-23.765***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(7.614)</td>
+<td headers="cweights" class="gt_row gt_center">(7.614)</td>
+<td headers="wrong" class="gt_row gt_center">(6.635)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">st04q01Male</td>
+<td headers="default" class="gt_row gt_center">9.529**</td>
+<td headers="cweights" class="gt_row gt_center">9.529**</td>
+<td headers="wrong" class="gt_row gt_center">10.784**</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(3.097)</td>
+<td headers="cweights" class="gt_row gt_center">(3.097)</td>
+<td headers="wrong" class="gt_row gt_center">(4.163)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">escs</td>
+<td headers="default" class="gt_row gt_center">26.300***</td>
+<td headers="cweights" class="gt_row gt_center">26.300***</td>
+<td headers="wrong" class="gt_row gt_center">35.847***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(2.210)</td>
+<td headers="cweights" class="gt_row gt_center">(2.210)</td>
+<td headers="wrong" class="gt_row gt_center">(2.158)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">schoolid.(Intercept)</td>
+<td headers="default" class="gt_row gt_center">1344.166***</td>
+<td headers="cweights" class="gt_row gt_center">1344.166***</td>
+<td headers="wrong" class="gt_row gt_center">0.000</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(300.241)</td>
+<td headers="cweights" class="gt_row gt_center">(300.241)</td>
+<td headers="wrong" class="gt_row gt_center">(0.000)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Residual</td>
+<td headers="default" class="gt_row gt_center">5418.299***</td>
+<td headers="cweights" class="gt_row gt_center">5418.299***</td>
+<td headers="wrong" class="gt_row gt_center">6701.321***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="default" class="gt_row gt_center">(160.102)</td>
+<td headers="cweights" class="gt_row gt_center">(160.102)</td>
+<td headers="wrong" class="gt_row gt_center">(210.501)</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+    </tr>
+  </tfoot>
+</table>
+</div><!--/html_preserve-->
 <p>The first two models have identical results. The third model (which is incorrectly specified) results differ and the level-2 variance here is zero.</p>
-</div>
-<div id="what-about-scaling-level-1-weights" class="section level2">
-<h2>2. What about scaling level-1 weights?</h2>
-<p>Asparouhov (2005) suggested scaling the weights at level 1. The following formulas (and explanations) can be seen at the Mplus website at <a href="https://statmodel.com/download/Scaling3.pdf" class="uri">https://statmodel.com/download/Scaling3.pdf</a>.</p>
-<p>The unscaled weight is <span class="math inline">\(w^*_{ij}=w_{ij}\)</span>.</p>
+<h2 id="2-what-about-scaling-level-1-weights">2. What about scaling level-1 weights?</h2>
+<p>Asparouhov (2005) suggested scaling the weights at level 1. The following formulas (and explanations) can be seen at the Mplus website at <a href="https://statmodel.com/download/Scaling3.pdf" target="_blank" rel="noopener">https://statmodel.com/download/Scaling3.pdf</a>.</p>
+<p>The unscaled weight is $w^*_{ij}=w_{ij}$.</p>
 <p>What Mplus calls the cluster weight has scaled weights that add up to the cluster sample size. Carle (2009) refers to this as Method A. It is computed using:</p>
-<p><span class="math inline">\(w^*_{ij}=w_{ij}\frac{n_j}{\Sigma_i w_{ij}}\)</span></p>
-<p>Here, <span class="math inline">\(n_j\)</span> is the number of sample units in cluster <span class="math inline">\(j\)</span>. This is the default scaling method in Mplus and has generally been shown to perform well (see Asparouhov, 2006).</p>
+<p>$w^*_{ij}=w_{ij}\frac{n_j}{\Sigma_i w_{ij}}$</p>
+<p>Here, $n_j$ is the number of sample units in cluster $j$. This is the default scaling method in Mplus and has generally been shown to perform well (see Asparouhov, 2006).</p>
 <p>Another scaling approach is referred to as the ecluster method which is the effective cluster sample size method. This is referred to as Method B by Carle (2009) (though the formula in his appendix seems to differ slightly):</p>
-<p>This is similar to the cluster method except that the numerator is <span class="math inline">\(n^*_j\)</span> instead and is:</p>
-<p><span class="math inline">\(w^*_{ij}=w_{ij}\frac{n^*_j}{\Sigma_i w_{ij}}\)</span>.</p>
+<p>This is similar to the cluster method except that the numerator is $n^*_j$ instead and is:</p>
+<p>$w^*_{ij}=w_{ij}\frac{n^*_j}{\Sigma_i w_{ij}}$.</p>
 <p>The numerator is computed using:</p>
-<p><span class="math inline">\(n^*_{j}=\frac{(\Sigma_i w_{ij})^2}{\Sigma_i w^2_{ij}}\)</span>.</p>
+<p>$n^*_{j}=\frac{(\Sigma_i w_{ij})^2}{\Sigma_i w^2_{ij}}$.</p>
 <p>To compute the scaled weights, we can use the <code>wscale</code> function (note the options). The cluster variable, dataset, conditional cluster weight,
 and type of scaling need to be specified:</p>
-<pre class="r"><code>pisa2012$cl_weight &lt;- wscale(cluster = &#39;schoolid&#39;, data = pisa2012, 
-                             wt = &#39;cweight&#39;, type = &#39;cluster&#39;)
-pisa2012$es_weight &lt;- wscale(cluster = &#39;schoolid&#39;, data = pisa2012, 
-                             wt = &#39;cweight&#39;, type = &#39;ecluster&#39;)</code></pre>
-<p>After I wrote the function above, I found a function that does the scaling. The results are the same:</p>
-<pre><code>xx &lt;- datawizard::rescale_weights(pisa2012, &quot;schoolid&quot;, &quot;w_fstuwt&quot;)</code></pre>
-<p>We can compare results to those of Mplus. This is using cluster weights:</p>
-<pre class="r"><code>ex &lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-              1 + (1|schoolid), 
-            weights = c(&#39;cl_weight&#39;, &#39;w_fschwt&#39;), mc = TRUE,
-            cWeight = TRUE,
-            data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<pre class="r"><code>summary(ex)</code></pre>
-<pre><code>Results of multilevel analyses with 5 plausible values.
-Number of observations: 3136 
-<h2 id="residual--------------572658----23329-----2455---906-2e-16-">Estimates for random effects:
-estimate std.error statistic     df Pr(&gt;t) <br>
-schoolid.(Intercept)  1825.03    436.26      4.18 2719.0 &lt;2e-16 ***
-Residual              5726.58    233.29     24.55   90.6 &lt;2e-16 ***</h2>
-<p>Signif. codes:  0 '<em><strong>' 0.001 '</strong>' 0.01 '</em>' 0.05 '.' 0.1 ' ' 1</p>
-<h2 id="intercept---47339------703-----6733-1777-2e-16-">Estimates for fixed effects:
-estimate std.error statistic   df Pr(&gt;t) <br>
-(Intercept)   473.39      7.03     67.33 1777 &lt;2e-16 ***</h2>
-<p>Signif. codes:  0 '<em><strong>' 0.001 '</strong>' 0.01 '</em>' 0.05 '.' 0.1 ' ' 1</code></pre></p>
-<p>Comparing to Mplus output shows similar results (SEs might differ slightly):</p>
-<pre><code>                Estimate       S.E.  Est./S.E.    P-Value
-<p>Within Level</p>
-<p>Variances
-MATH            5726.580    234.000     24.473      0.000</p>
-<p>Between Level</p>
-<p>Means
-MATH             473.390      7.387     64.088      0.000</p>
-<p>Variances
-MATH            1825.021    464.365      3.930      0.000</code></pre></p>
-<p>This is using the ecluster option:</p>
-<pre class="r"><code>ex2 &lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               1 + (1|schoolid), 
-             weights = c(&#39;es_weight&#39;, &#39;w_fschwt&#39;), mc = TRUE,
-             cWeight = TRUE,
-             data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<pre class="r"><code>summary(ex2)</code></pre>
-<pre><code>Results of multilevel analyses with 5 plausible values.
-Number of observations: 3136 
-<h2 id="residual--------------572756----23336-----2454---902-2e-16-">Estimates for random effects:
-estimate std.error statistic     df Pr(&gt;t) <br>
-schoolid.(Intercept)  1821.40    434.62      4.19 2714.0 &lt;2e-16 ***
-Residual              5727.56    233.36     24.54   90.2 &lt;2e-16 ***</h2>
-<p>Signif. codes:  0 '<em><strong>' 0.001 '</strong>' 0.01 '</em>' 0.05 '.' 0.1 ' ' 1</p>
-<h2 id="intercept---47340------702-----6739-1776-2e-16-">Estimates for fixed effects:
-estimate std.error statistic   df Pr(&gt;t) <br>
-(Intercept)   473.40      7.02     67.39 1776 &lt;2e-16 ***</h2>
-<p>Signif. codes:  0 '<em><strong>' 0.001 '</strong>' 0.01 '</em>' 0.05 '.' 0.1 ' ' 1</code></pre></p>
-<pre><code>                Estimate       S.E.  Est./S.E.    P-Value
-
-Within Level
-
-Variances
-MATH            5727.560    234.056     24.471      0.000
-
-Between Level
-
-Means
-MATH             473.403      7.379     64.156      0.000
-
-Variances
-MATH            1821.389    462.665      3.937      0.000</code></pre>
-<p>This is unscaled:</p>
-<pre class="r"><code>ex3 &lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               1 + (1|schoolid), 
-             weights = c(&#39;cweight&#39;, &#39;w_fschwt&#39;), mc = TRUE,
-             cWeight = TRUE,
-             data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<pre class="r"><code>summary(ex3)</code></pre>
-<pre><code>Results of multilevel analyses with 5 plausible values.
-Number of observations: 3136 
-<h2 id="residual--------------589585----17505-----3368--876-2e-16-">Estimates for random effects:
-estimate std.error statistic   df Pr(&gt;t) <br>
-schoolid.(Intercept)  2126.22    503.39      4.22 3099 &lt;2e-16 ***
-Residual              5895.85    175.05     33.68  876 &lt;2e-16 ***</h2>
-<p>Signif. codes:  0 '<em><strong>' 0.001 '</strong>' 0.01 '</em>' 0.05 '.' 0.1 ' ' 1</p>
-<h2 id="intercept---47235------733-----6444-1470-2e-16-">Estimates for fixed effects:
-estimate std.error statistic   df Pr(&gt;t) <br>
-(Intercept)   472.35      7.33     64.44 1470 &lt;2e-16 ***</h2>
-<p>Signif. codes:  0 '<em><strong>' 0.001 '</strong>' 0.01 '</em>' 0.05 '.' 0.1 ' ' 1</code></pre></p>
-<pre><code>                 Estimate       S.E.  Est./S.E.    P-Value
-Within Level
-
-Variances
-MATH            5895.849    174.758     33.737      0.000
-
-Between Level
-
-Means
-MATH             472.349      7.750     60.950      0.000
-
-Variances
-MATH            2126.477    535.991      3.967      0.000</code></pre>
-<p>Results differ based on the scaling option and results are all similar to those generated by Mplus.</p>
-</div>
-<div id="what-about-just-using-level-2-weights" class="section level2">
-<h2>3. What about just using level-2 weights?</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pisa2012</span><span class="o">$</span><span class="n">cl_weight</span> <span class="o">&lt;-</span> <span class="nf">wscale</span><span class="p">(</span><span class="n">cluster</span> <span class="o">=</span> <span class="s">&#39;schoolid&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                             <span class="n">wt</span> <span class="o">=</span> <span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#39;cluster&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pisa2012</span><span class="o">$</span><span class="n">es_weight</span> <span class="o">&lt;-</span> <span class="nf">wscale</span><span class="p">(</span><span class="n">cluster</span> <span class="o">=</span> <span class="s">&#39;schoolid&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                             <span class="n">wt</span> <span class="o">=</span> <span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#39;ecluster&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>After I wrote the function above, I found a function that does the scaling. The results are the same:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">xx &lt;- datawizard::rescale_weights(pisa2012, &#34;schoolid&#34;, &#34;w_fstuwt&#34;)
+</span></span></code></pre></div><p>We can compare results to those of Mplus. This is using cluster weights:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ex</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">              <span class="m">1</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cl_weight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Results of multilevel analyses with 5 plausible values.
+</span></span><span class="line"><span class="cl">Number of observations: 3136 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for random effects: 
+</span></span><span class="line"><span class="cl">                     estimate std.error statistic     df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">schoolid.(Intercept)  1825.03    436.26      4.18 2719.0 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">Residual              5726.58    233.29     24.55   90.6 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for fixed effects: 
+</span></span><span class="line"><span class="cl">            estimate std.error statistic   df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">(Intercept)   473.39      7.03     67.33 1777 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span></code></pre></div><p>Comparing to Mplus output shows similar results (SEs might differ slightly):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                Estimate       S.E.  Est./S.E.    P-Value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Within Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            5726.580    234.000     24.473      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Between Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Means
+</span></span><span class="line"><span class="cl">MATH             473.390      7.387     64.088      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            1825.021    464.365      3.930      0.000
+</span></span></code></pre></div><p>This is using the ecluster option:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ex2</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="m">1</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;es_weight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">ex2</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Results of multilevel analyses with 5 plausible values.
+</span></span><span class="line"><span class="cl">Number of observations: 3136 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for random effects: 
+</span></span><span class="line"><span class="cl">                     estimate std.error statistic     df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">schoolid.(Intercept)  1821.40    434.62      4.19 2714.0 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">Residual              5727.56    233.36     24.54   90.2 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for fixed effects: 
+</span></span><span class="line"><span class="cl">            estimate std.error statistic   df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">(Intercept)   473.40      7.02     67.39 1776 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                Estimate       S.E.  Est./S.E.    P-Value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Within Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            5727.560    234.056     24.471      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Between Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Means
+</span></span><span class="line"><span class="cl">MATH             473.403      7.379     64.156      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            1821.389    462.665      3.937      0.000
+</span></span></code></pre></div><p>This is unscaled:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ex3</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="m">1</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cweight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">ex3</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Results of multilevel analyses with 5 plausible values.
+</span></span><span class="line"><span class="cl">Number of observations: 3136 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for random effects: 
+</span></span><span class="line"><span class="cl">                     estimate std.error statistic   df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">schoolid.(Intercept)  2126.22    503.39      4.22 3099 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">Residual              5895.85    175.05     33.68  876 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Estimates for fixed effects: 
+</span></span><span class="line"><span class="cl">            estimate std.error statistic   df Pr(&gt;t)    
+</span></span><span class="line"><span class="cl">(Intercept)   472.35      7.33     64.44 1470 &lt;2e-16 ***
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                 Estimate       S.E.  Est./S.E.    P-Value
+</span></span><span class="line"><span class="cl">Within Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            5895.849    174.758     33.737      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Between Level
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Means
+</span></span><span class="line"><span class="cl">MATH             472.349      7.750     60.950      0.000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Variances
+</span></span><span class="line"><span class="cl">MATH            2126.477    535.991      3.967      0.000
+</span></span></code></pre></div><p>Results differ based on the scaling option and results are all similar to those generated by Mplus.</p>
+<h2 id="3-what-about-just-using-level-2-weights">3. What about just using level-2 weights?</h2>
 <p>A simpler option may just be to use level-2 weights (as suggested by Mang et al., 2021 as well as our own simulation results [under review]). To do so, when using R, we need to need to set the weight at level 1 to 1 <em>and</em> use conditional weights.</p>
-<pre class="r"><code>pisa2012$one &lt;- 1 #level-1 weight
-m1d &lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&#39;one&#39;, &#39;w_fschwt&#39;), mc = T,
-             cWeight = TRUE,
-             data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<p>For comparison, I will show results also using the scaled weights:</p>
-<pre class="r"><code>m1e &lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-               sc14q02 + st04q01 + escs + (1|schoolid), 
-             weights = c(&#39;cl_weight&#39;, &#39;w_fschwt&#39;), mc = TRUE,
-             cWeight = TRUE,
-             data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<pre class="r"><code>m1f&lt;- mixPV(pv1math + pv2math + pv3math + pv4math + pv5math ~ 
-              sc14q02 + st04q01 + escs + (1|schoolid), 
-            weights = c(&#39;es_weight&#39;, &#39;w_fschwt&#39;), mc = TRUE,
-            cWeight = TRUE,
-            data = pisa2012)</code></pre>
-<pre><code>Attempting to use 15 cores. Progress will not be displayed. Please wait.</code></pre>
-<pre class="r"><code>modelsummary(list(&quot;l2only&quot; = m1d, &#39;cluster&#39; = m1e, &quot;ecluster&quot; = m1f), 
-             stars = TRUE, gof_map = NA)</code></pre>
-<!-- preamble start -->
-<pre><code>&lt;script&gt;
-  function styleCell_fceikz071u4rc9r35hd0(i, j, css_id) {
-    var table = document.getElementById(&quot;tinytable_fceikz071u4rc9r35hd0&quot;);
-    table.rows[i].cells[j].classList.add(css_id);
-  }
-  function insertSpanRow(i, colspan, content) {
-    var table = document.getElementById('tinytable_fceikz071u4rc9r35hd0');
-    var newRow = table.insertRow(i);
-    var newCell = newRow.insertCell(0);
-    newCell.setAttribute(&quot;colspan&quot;, colspan);
-    // newCell.innerText = content;
-    // this may be unsafe, but innerText does not interpret &lt;br&gt;
-    newCell.innerHTML = content;
-  }
-  function spanCell_fceikz071u4rc9r35hd0(i, j, rowspan, colspan) {
-    var table = document.getElementById(&quot;tinytable_fceikz071u4rc9r35hd0&quot;);
-    const targetRow = table.rows[i];
-    const targetCell = targetRow.cells[j];
-    for (let r = 0; r &lt; rowspan; r++) {
-      // Only start deleting cells to the right for the first row (r == 0)
-      if (r === 0) {
-        // Delete cells to the right of the target cell in the first row
-        for (let c = colspan - 1; c &gt; 0; c--) {
-          if (table.rows[i + r].cells[j + c]) {
-            table.rows[i + r].deleteCell(j + c);
-          }
-        }
-      }
-      // For rows below the first, delete starting from the target column
-      if (r &gt; 0) {
-        for (let c = colspan - 1; c &gt;= 0; c--) {
-          if (table.rows[i + r] &amp;&amp; table.rows[i + r].cells[j]) {
-            table.rows[i + r].deleteCell(j);
-          }
-        }
-      }
-    }
-    // Set rowspan and colspan of the target cell
-    targetCell.rowSpan = rowspan;
-    targetCell.colSpan = colspan;
-  }
-</code></pre>
-<p>window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 0, &rsquo;tinytable_css_idursl1izjvzpe6k200g1u&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 1, &rsquo;tinytable_css_idplfkcmtth40ibm8od257&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 2, &rsquo;tinytable_css_idplfkcmtth40ibm8od257&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(0, 3, &rsquo;tinytable_css_idplfkcmtth40ibm8od257&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(1, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(2, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(3, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(4, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(5, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(6, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(7, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(8, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(9, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(10, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(11, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(12, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(13, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(14, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(15, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 1, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 2, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(16, 3, &rsquo;tinytable_css_id510qm05c38l0etux1mb8&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 0, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 1, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 2, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4rc9r35hd0(17, 3, &rsquo;tinytable_css_iddyb4tn1th5w1sdrgzko1&rsquo;) })
-</script></p>
-<pre><code>&lt;style&gt;
-.table td.tinytable_css_idursl1izjvzpe6k200g1u, .table th.tinytable_css_idursl1izjvzpe6k200g1u {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_idplfkcmtth40ibm8od257, .table th.tinytable_css_idplfkcmtth40ibm8od257 {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_iddyb4tn1th5w1sdrgzko1, .table th.tinytable_css_iddyb4tn1th5w1sdrgzko1 {  text-align: left; }
-.table td.tinytable_css_id510qm05c38l0etux1mb8, .table th.tinytable_css_id510qm05c38l0etux1mb8 {  text-align: center; }
-&lt;/style&gt;
-&lt;div class=&quot;container&quot;&gt;
-  &lt;table class=&quot;table table-borderless&quot; id=&quot;tinytable_fceikz071u4rc9r35hd0&quot; style=&quot;width: auto; margin-left: auto; margin-right: auto;&quot; data-quarto-disable-processing='true'&gt;
-    &lt;thead&gt;
-    
-          &lt;tr&gt;
-            &lt;th scope=&quot;col&quot;&gt; &lt;/th&gt;
-            &lt;th scope=&quot;col&quot;&gt;l2only&lt;/th&gt;
-            &lt;th scope=&quot;col&quot;&gt;cluster&lt;/th&gt;
-            &lt;th scope=&quot;col&quot;&gt;ecluster&lt;/th&gt;
-          &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tfoot&gt;&lt;tr&gt;&lt;td colspan='4'&gt;+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
-    &lt;tbody&gt;
-            &lt;tr&gt;
-              &lt;td&gt;(Intercept)          &lt;/td&gt;
-              &lt;td&gt;469.276*** &lt;/td&gt;
-              &lt;td&gt;469.241*** &lt;/td&gt;
-              &lt;td&gt;469.233*** &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(7.049)    &lt;/td&gt;
-              &lt;td&gt;(7.088)    &lt;/td&gt;
-              &lt;td&gt;(7.082)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;sc14q02Very little   &lt;/td&gt;
-              &lt;td&gt;-18.928    &lt;/td&gt;
-              &lt;td&gt;-18.795    &lt;/td&gt;
-              &lt;td&gt;-18.800    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(13.537)   &lt;/td&gt;
-              &lt;td&gt;(13.624)   &lt;/td&gt;
-              &lt;td&gt;(13.614)   &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;sc14q02To some extent&lt;/td&gt;
-              &lt;td&gt;-14.990    &lt;/td&gt;
-              &lt;td&gt;-15.337    &lt;/td&gt;
-              &lt;td&gt;-15.339    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(11.902)   &lt;/td&gt;
-              &lt;td&gt;(12.117)   &lt;/td&gt;
-              &lt;td&gt;(12.111)   &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;sc14q02A lot         &lt;/td&gt;
-              &lt;td&gt;-23.536**  &lt;/td&gt;
-              &lt;td&gt;-23.265**  &lt;/td&gt;
-              &lt;td&gt;-23.273**  &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(7.952)    &lt;/td&gt;
-              &lt;td&gt;(8.088)    &lt;/td&gt;
-              &lt;td&gt;(8.083)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;st04q01Male          &lt;/td&gt;
-              &lt;td&gt;12.296**   &lt;/td&gt;
-              &lt;td&gt;12.051**   &lt;/td&gt;
-              &lt;td&gt;12.084**   &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(4.320)    &lt;/td&gt;
-              &lt;td&gt;(4.345)    &lt;/td&gt;
-              &lt;td&gt;(4.349)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;escs                 &lt;/td&gt;
-              &lt;td&gt;29.086***  &lt;/td&gt;
-              &lt;td&gt;29.045***  &lt;/td&gt;
-              &lt;td&gt;29.049***  &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(2.698)    &lt;/td&gt;
-              &lt;td&gt;(2.685)    &lt;/td&gt;
-              &lt;td&gt;(2.688)    &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;schoolid.(Intercept) &lt;/td&gt;
-              &lt;td&gt;1054.672***&lt;/td&gt;
-              &lt;td&gt;1069.977***&lt;/td&gt;
-              &lt;td&gt;1067.115***&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(258.981)  &lt;/td&gt;
-              &lt;td&gt;(260.180)  &lt;/td&gt;
-              &lt;td&gt;(259.201)  &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;Residual             &lt;/td&gt;
-              &lt;td&gt;5223.750***&lt;/td&gt;
-              &lt;td&gt;5219.380***&lt;/td&gt;
-              &lt;td&gt;5220.383***&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;                     &lt;/td&gt;
-              &lt;td&gt;(206.297)  &lt;/td&gt;
-              &lt;td&gt;(204.390)  &lt;/td&gt;
-              &lt;td&gt;(204.518)  &lt;/td&gt;
-            &lt;/tr&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-&lt;/div&gt;
-</code></pre>
-<!-- hack to avoid NA insertion in last line -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pisa2012</span><span class="o">$</span><span class="n">one</span> <span class="o">&lt;-</span> <span class="m">1</span> <span class="c1">#level-1 weight</span>
+</span></span><span class="line"><span class="cl"><span class="n">m1d</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;one&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><p>For comparison, I will show results also using the scaled weights:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1e</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;cl_weight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1f</span><span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
+</span></span><span class="line"><span class="cl">              <span class="n">sc14q02</span> <span class="o">+</span> <span class="n">st04q01</span> <span class="o">+</span> <span class="n">escs</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">schoolid</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">weights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;es_weight&#39;</span><span class="p">,</span> <span class="s">&#39;w_fschwt&#39;</span><span class="p">),</span> <span class="n">mc</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cWeight</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span> <span class="o">=</span> <span class="n">pisa2012</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">modelsummary</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="s">&#34;l2only&#34;</span> <span class="o">=</span> <span class="n">m1d</span><span class="p">,</span> <span class="s">&#39;cluster&#39;</span> <span class="o">=</span> <span class="n">m1e</span><span class="p">,</span> <span class="s">&#34;ecluster&#34;</span> <span class="o">=</span> <span class="n">m1f</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">stars</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">gof_map</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="s">&#39;gt&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><!--html_preserve--><div id="pjojxhhbnr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pjojxhhbnr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pjojxhhbnr thead, #pjojxhhbnr tbody, #pjojxhhbnr tfoot, #pjojxhhbnr tr, #pjojxhhbnr td, #pjojxhhbnr th {
+  border-style: none;
+}
+
+#pjojxhhbnr p {
+  margin: 0;
+  padding: 0;
+}
+
+#pjojxhhbnr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pjojxhhbnr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pjojxhhbnr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pjojxhhbnr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pjojxhhbnr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pjojxhhbnr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pjojxhhbnr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pjojxhhbnr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pjojxhhbnr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pjojxhhbnr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pjojxhhbnr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pjojxhhbnr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pjojxhhbnr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pjojxhhbnr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pjojxhhbnr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pjojxhhbnr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pjojxhhbnr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pjojxhhbnr .gt_left {
+  text-align: left;
+}
+
+#pjojxhhbnr .gt_center {
+  text-align: center;
+}
+
+#pjojxhhbnr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pjojxhhbnr .gt_font_normal {
+  font-weight: normal;
+}
+
+#pjojxhhbnr .gt_font_bold {
+  font-weight: bold;
+}
+
+#pjojxhhbnr .gt_font_italic {
+  font-style: italic;
+}
+
+#pjojxhhbnr .gt_super {
+  font-size: 65%;
+}
+
+#pjojxhhbnr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pjojxhhbnr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pjojxhhbnr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pjojxhhbnr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pjojxhhbnr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pjojxhhbnr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pjojxhhbnr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pjojxhhbnr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pjojxhhbnr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="l2only">l2only</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="cluster">cluster</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="ecluster">ecluster</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers=" " class="gt_row gt_left">(Intercept)</td>
+<td headers="l2only" class="gt_row gt_center">469.276***</td>
+<td headers="cluster" class="gt_row gt_center">469.241***</td>
+<td headers="ecluster" class="gt_row gt_center">469.233***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(7.049)</td>
+<td headers="cluster" class="gt_row gt_center">(7.088)</td>
+<td headers="ecluster" class="gt_row gt_center">(7.082)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02Very little</td>
+<td headers="l2only" class="gt_row gt_center">-18.928</td>
+<td headers="cluster" class="gt_row gt_center">-18.795</td>
+<td headers="ecluster" class="gt_row gt_center">-18.800</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(13.537)</td>
+<td headers="cluster" class="gt_row gt_center">(13.624)</td>
+<td headers="ecluster" class="gt_row gt_center">(13.614)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02To some extent</td>
+<td headers="l2only" class="gt_row gt_center">-14.990</td>
+<td headers="cluster" class="gt_row gt_center">-15.337</td>
+<td headers="ecluster" class="gt_row gt_center">-15.339</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(11.902)</td>
+<td headers="cluster" class="gt_row gt_center">(12.117)</td>
+<td headers="ecluster" class="gt_row gt_center">(12.111)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">sc14q02A lot</td>
+<td headers="l2only" class="gt_row gt_center">-23.536**</td>
+<td headers="cluster" class="gt_row gt_center">-23.265**</td>
+<td headers="ecluster" class="gt_row gt_center">-23.273**</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(7.952)</td>
+<td headers="cluster" class="gt_row gt_center">(8.088)</td>
+<td headers="ecluster" class="gt_row gt_center">(8.083)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">st04q01Male</td>
+<td headers="l2only" class="gt_row gt_center">12.296**</td>
+<td headers="cluster" class="gt_row gt_center">12.051**</td>
+<td headers="ecluster" class="gt_row gt_center">12.084**</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(4.320)</td>
+<td headers="cluster" class="gt_row gt_center">(4.345)</td>
+<td headers="ecluster" class="gt_row gt_center">(4.349)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">escs</td>
+<td headers="l2only" class="gt_row gt_center">29.086***</td>
+<td headers="cluster" class="gt_row gt_center">29.045***</td>
+<td headers="ecluster" class="gt_row gt_center">29.049***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(2.698)</td>
+<td headers="cluster" class="gt_row gt_center">(2.685)</td>
+<td headers="ecluster" class="gt_row gt_center">(2.688)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">schoolid.(Intercept)</td>
+<td headers="l2only" class="gt_row gt_center">1054.672***</td>
+<td headers="cluster" class="gt_row gt_center">1069.977***</td>
+<td headers="ecluster" class="gt_row gt_center">1067.115***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(258.981)</td>
+<td headers="cluster" class="gt_row gt_center">(260.180)</td>
+<td headers="ecluster" class="gt_row gt_center">(259.201)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Residual</td>
+<td headers="l2only" class="gt_row gt_center">5223.750***</td>
+<td headers="cluster" class="gt_row gt_center">5219.380***</td>
+<td headers="ecluster" class="gt_row gt_center">5220.383***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="l2only" class="gt_row gt_center">(206.297)</td>
+<td headers="cluster" class="gt_row gt_center">(204.390)</td>
+<td headers="ecluster" class="gt_row gt_center">(204.518)</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+    </tr>
+  </tfoot>
+</table>
+</div><!--/html_preserve-->
 <p>Results are very similar.</p>
 <p>A reason for this is that the level-1 scaled weights are all very close to 1 (or even equal to 1). If there is no variation within cluster, the weights will be 1.</p>
 <p>If we examine the original conditional weights, there is quite some variability:</p>
-<pre class="r"><code>range(pisa2012$cweight) #the original conditional weight</code></pre>
-<pre><code>[1]  1.228571 37.018006</code></pre>
-<p>However, compared to the scaled weights, they are all very close to 1. Which is why the results shown above are all very similar.</p>
-<pre class="r"><code>range(pisa2012$es_weight)</code></pre>
-<pre><code>[1] 0.7635826 1.3325292</code></pre>
-<pre class="r"><code>range(pisa2012$cl_weight)</code></pre>
-<pre><code>[1] 0.7820465 1.3559951</code></pre>
-<pre class="r"><code>mean(pisa2012$es_weight)</code></pre>
-<pre><code>[1] 0.9962017</code></pre>
-<pre class="r"><code>mean(pisa2012$cl_weight)</code></pre>
-<pre><code>[1] 1</code></pre>
-<p><em>Takeaway</em>: when running multilevel models with weights at different levels, make sure you are specifying the correct weights. If the residual variance at the second level is close to zero, you should probably revisit your syntax.</p>
-<div id="references" class="section level3">
-<h3>References</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">range</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">cweight</span><span class="p">)</span> <span class="c1">#the original conditional weight</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1]  1.23 37.02
+</span></span></code></pre></div><p>However, compared to the scaled weights, they are all very close to 1. Which is why the results shown above are all very similar.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">range</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">es_weight</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 0.764 1.333
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">range</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">cl_weight</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 0.782 1.356
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">mean</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">es_weight</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 0.996
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">mean</span><span class="p">(</span><span class="n">pisa2012</span><span class="o">$</span><span class="n">cl_weight</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 1
+</span></span></code></pre></div><p><em>Takeaway</em>: when running multilevel models with weights at different levels, make sure you are specifying the correct weights. If the residual variance at the second level is close to zero, you should probably revisit your syntax.</p>
+<h3 id="references">References</h3>
 <p>Asparouhov, T. (2006). General Multi-Level Modeling with Sampling Weights Communications in Statistics - Theory and Methods, 35: 439-460.</p>
 <p>Carle, A. (2009). Fitting multilevel models in complex survey data with design weights: Recommendations BMC Medical Research Methodology, 9(49): 1-13.</p>
-<p>Mang, J., Küchenhoff, H., Meinck, S., &amp; Prenzel, M. (2021). Sampling weights in multilevel modelling: An investigation using PISA sampling structures. Large-Scale Assessments in Education, 9(1), 6. <a href="https://doi.org/10.1186/s40536-021-00099-0" class="uri">https://doi.org/10.1186/s40536-021-00099-0</a></p>
+<p>Mang, J., Kuchenhoff, H., Meinck, S., &amp; Prenzel, M. (2021). Sampling weights in multilevel modelling: An investigation using PISA sampling structures. Large-Scale Assessments in Education, 9(1), 6. <a href="https://doi.org/10.1186/s40536-021-00099-0" target="_blank" rel="noopener">https://doi.org/10.1186/s40536-021-00099-0</a></p>
 <p>END</p>
-</div>
-</div>
-</div>
 
       </div>
 
@@ -2255,8 +3855,6 @@ window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4r
   
 
 <div class="flex justify-center">
-  
-  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/regression/">Regression</a>
   
   <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/large-scale-assessments/">Large Scale Assessments</a>
   
@@ -2392,8 +3990,8 @@ window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4r
     class="mr-4 h-24 w-24 rounded-full"
     width="96"
     height="96"
-    alt="Francis Huang"
-  src="/author/francis-huang/avatar_hu_1a0a2b036d9148a1.jpg"
+    alt="Francis L. Huang"
+  src="/author/francis-l.-huang/avatar_hu_1a0a2b036d9148a1.jpg"
   loading="lazy"
   />
   
@@ -2403,7 +4001,7 @@ window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4r
     </div>
     <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
       <a href="http://localhost:1313/" class="no-underline">
-      Francis Huang
+      Francis L. Huang
       </a>
     </div>
 
@@ -2456,7 +4054,28 @@ window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4r
     <a
       class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
       style="will-change:transform;"
-      href="https://www.instagram.com/"
+      href="https://bsky.app/profile/flhuang2000.bsky.social"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Custom/Bluesky"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bluesky">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path
+        d="M6.335 5.144c-1.654 -1.199 -4.335 -2.127 -4.335 .826c0 .59 .35 4.953 .556 5.661c.713 2.463 3.13 2.75 5.444 2.369c-4.045 .665 -4.889 3.208 -2.667 5.41c1.03 1.018 1.913 1.59 2.667 1.59c2 0 3.134 -2.769 3.5 -3.5c.333 -.667 .5 -1.167 .5 -1.5c0 .333 .167 .833 .5 1.5c.366 .731 1.5 3.5 3.5 3.5c.754 0 1.637 -.571 2.667 -1.59c2.222 -2.203 1.378 -4.746 -2.667 -5.41c2.314 .38 4.73 .094 5.444 -2.369c.206 -.708 .556 -5.072 .556 -5.661c0 -2.953 -2.68 -2.025 -4.335 -.826c-2.293 1.662 -4.76 5.048 -5.665 6.856c-.905 -1.808 -3.372 -5.194 -5.665 -6.856z" />
+</svg>
+</a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://www.instagram.com/flh3/"
       target="_blank" rel="noopener" rel="me noopener noreferrer"
       aria-label="Brands/Instagram"
     ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M12.91 12.909c.326-.327.582-.72.749-1.151c.16-.414.27-.886.302-1.578c.032-.693.04-.915.04-2.68c0-1.765-.008-1.987-.04-2.68c-.032-.692-.142-1.164-.302-1.578a3.185 3.185 0 0 0-.75-1.151a3.187 3.187 0 0 0-1.151-.75c-.414-.16-.886-.27-1.578-.302C9.487 1.007 9.265 1 7.5 1c-1.765 0-1.987.007-2.68.04c-.692.03-1.164.14-1.578.301a3.2 3.2 0 0 0-1.151.75a3.2 3.2 0 0 0-.75 1.151c-.16.414-.27.886-.302 1.578C1.007 5.513 1 5.735 1 7.5c0 1.765.007 1.987.04 2.68c.03.692.14 1.164.301 1.578c.164.434.42.826.75 1.151c.325.33.718.586 1.151.75c.414.16.886.27 1.578.302c.693.031.915.039 2.68.039c1.765 0 1.987-.008 2.68-.04c.692-.03 1.164-.14 1.578-.301a3.323 3.323 0 0 0 1.151-.75ZM2 6.735v1.53c-.002.821-.002 1.034.02 1.5c.026.586.058 1.016.156 1.34c.094.312.199.63.543 1.012c.344.383.675.556 1.097.684c.423.127.954.154 1.415.175c.522.024.73.024 1.826.024H8.24c.842.001 1.054.002 1.526-.02c.585-.027 1.015-.059 1.34-.156c.311-.094.629-.2 1.011-.543c.383-.344.556-.676.684-1.098c.127-.422.155-.953.176-1.414C13 9.247 13 9.04 13 7.947v-.89c0-1.096 0-1.303-.023-1.826c-.021-.461-.049-.992-.176-1.414c-.127-.423-.3-.754-.684-1.098c-.383-.344-.7-.449-1.011-.543c-.325-.097-.755-.13-1.34-.156A27.29 27.29 0 0 0 8.24 2H7.057c-1.096 0-1.304 0-1.826.023c-.461.021-.992.049-1.415.176c-.422.128-.753.301-1.097.684c-.344.383-.45.7-.543 1.012c-.098.324-.13.754-.156 1.34c-.022.466-.022.679-.02 1.5ZM7.5 5.25a2.25 2.25 0 1 0 0 4.5a2.25 2.25 0 0 0 0-4.5ZM4.25 7.5a3.25 3.25 0 1 1 6.5 0a3.25 3.25 0 0 1-6.5 0Zm6.72-2.72a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5Z" clip-rule="evenodd"/></svg></a>
@@ -2512,7 +4131,7 @@ window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4r
     <a
       class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
       style="will-change:transform;"
-      href="https://orcid.org/my-orcid?orcid=0000-0002-5900-7763"
+      href="https://orcid.org/0000-0002-5900-7763"
       target="_blank" rel="noopener" rel="me noopener noreferrer"
       aria-label="Academicons/Orcid"
     ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M336.62 194.538c-7.13-3.328-13.866-5.56-20.253-6.614c-6.365-1.095-16.574-1.612-30.71-1.612h-36.704v152.747h37.634c14.673 0 26.081-1.013 34.224-3.017c8.142-2.004 14.921-4.526 20.356-7.626a69.448 69.448 0 0 0 14.942-11.388c14.488-14.714 21.742-33.273 21.742-55.717c0-22.052-7.44-40.052-22.341-53.982c-5.498-5.166-11.822-9.444-18.89-12.793zM256 8C119.022 8 8 119.042 8 256s111.022 248 248 248s248-111.042 248-248S392.978 8 256 8Zm-82.336 357.513h-29.389V160.148h29.389zM158.95 138.696c-11.14 0-20.213-9.01-20.213-20.212c0-11.118 9.052-20.191 20.213-20.191c11.18 0 20.232 9.052 20.232 20.191a20.194 20.194 0 0 1-20.232 20.212zm241.386 163.597c-5.29 12.545-12.834 23.581-22.65 33.088c-9.982 9.837-21.597 17.194-34.844 22.196c-7.75 3.017-14.839 5.063-21.307 6.117c-6.49 1.013-18.828 1.509-37.076 1.509h-64.956V160.148h69.233c27.962 0 50.034 4.154 66.32 12.545c16.265 8.37 29.181 20.728 38.792 36.972c9.61 16.265 14.425 34.018 14.425 53.196c.023 13.765-2.666 26.908-7.936 39.432z"/></svg></a>
@@ -2544,18 +4163,34 @@ window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4r
   <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
     <div class="">
       
-    </div>
-    <div class="">
-      
-        <a class="group flex text-right no-underline" href="/post/get-started/">
+        <a class="group flex no-underline" href="/post/pca-image/">
+          <span
+            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >🎉 Easily create your own simple yet highly customizable blog</span
+            >Fun with PCA using Images</span>
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Sep 1, 2024
+              
+            </span>
+          </span>
+        </a>
+      
+    </div>
+    <div class="">
+      
+        <a class="group flex text-right no-underline" href="/post/pv3/">
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >Using Plausible Values with Multilevel Models Using R (update)</span
             >
             <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
               
-                Oct 27, 2023
+                Jun 8, 2024
               
             </span>
           </span>
@@ -2570,6 +4205,23 @@ window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4r
 
 
 
+  
+
+  
+  
+<hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+  <div class="text-sm">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/pv3/">Using Plausible Values with Multilevel Models Using R (update)</a></li>
+      
+      <li><a href="/event/mlm_ph/">Multilevel Modeling with Large-Scale International Databases Using HLM (Philadelphia)</a></li>
+      
+      <li><a href="/post/pv/">Using Plausible Values with Multilevel Models Using R</a></li>
+      
+    </ul>
+  </div>
   
 
 
@@ -2637,19 +4289,19 @@ window.addEventListener(&rsquo;load&rsquo;, function () { styleCell_fceikz071u4r
 
   
   <p class="powered-by text-center">
-    © 2025 Grumblesquasher. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2025 Grumblesquasher. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
   </p>
   
 
   <p class="powered-by footer-license-icons">
-    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
       <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
       <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
       
         <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
       
       
-        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+        <i class="fab fa-creative-commons-sa fa-2x" aria-hidden="true"></i>
       
     </a>
   </p>
