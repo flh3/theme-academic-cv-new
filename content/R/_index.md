@@ -54,10 +54,10 @@ Conduct a [parallel analysis](https://grumble.shinyapps.io/Parallel_analysis/) o
 
 ## Conducting multilevel CFA in R
 
-I wrote a short note a while back (which I've kept updating) on conducting a multilevel confirmatory factor analysis using R (with *lavaan*). The note and the directions on using the function can be found using this [link](../docs/MCFAinRHUANG.pdf). NOTE: the updated version of *lavaan* now has a feature that automates the cumbersome multilevel setup. Additional notes can be found [here](https://francish.netlify.com/post/multilevel-cfa-mlf/).
+I wrote a short note a while back (which I've kept updating) on conducting a multilevel confirmatory factor analysis using R (with *lavaan*). The note and the directions on using the function can be found using this [link](https://github.com/flh3/mcfa/blob/main/MCFAinRHUANG.pdf). NOTE: the updated version of *lavaan* now has a feature that automates the cumbersome multilevel setup. Additional notes can be found [here](https://francish.netlify.com/post/multilevel-cfa-mlf/).
 
 Please cite as:
 
-Huang, F. (2017). *Conducting multilevel confirmatory factor analysis using R*. doi: 10.13140/RG.2.2.12391.34724. Retrieved from https://francish.netlify.app/docs/MCFAinRHUANG.pdf
+Huang, F. (2017). *Conducting multilevel confirmatory factor analysis using R*. doi: 10.13140/RG.2.2.12391.34724. Retrieved from https://github.com/flh3/mcfa/blob/main/MCFAinRHUANG.pdf
 
 You can access the function at this link on https://github.com/flh3/mcfa.
