@@ -40,14 +40,14 @@ tags: []
 featured: false
 
 # Links
-url_pdf: ''
+url_pdf: 'https://journals.sagepub.com/doi/full/10.3102/0013189X18820291'
 url_code: ''
 url_dataset: ''
 url_poster: ''
 url_project: ''
-url_slides: ''
+url_slides: 'PTB and elections v2.pdf'
 url_source: ''
-url_video: ''
+url_video: 'http://www.aera.net/Newsroom/News-Releases-and-Statements/Study-Finds-Link-between-Voter-Preference-for-Trump-and-Bullying-in-Middle-Schools'
 
 # Custom links (uncomment lines below)
 # links:
@@ -72,4 +72,20 @@ links:
   url: http://journals.sagepub.com/doi/10.3102/0013189X18820291
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+- After 6 days of its release, the article was the third most read article in Educational Researcher (out of 707). 
+- Study was in the top 5% of all research outputs scored by [Altmetric](https://sage.altmetric.com/details/53740219).
+
+Based on our MU communications department:
+
+- As of 2019.01.15, more than 219 stories in national and international outlets have written about our study (and growing)
+- Stories have been shared ~300,000 times
+
+Some news coverage:
+
+- [New York Times](https://www.nytimes.com/2019/01/11/opinion/trump-bullying-virginia.html)
+- [The Washington Post](https://www.washingtonpost.com/education/2019/01/10/study-bullying-rates-virginia-middle-schools-were-higher-trump-country-after-his-election/?noredirect=on&utm_term=.f8f666022768)
+- [National Public Radio](https://www.npr.org/2019/01/09/683177489/virginia-study-finds-increased-school-bullying-in-areas-that-voted-for-trump)
+- [Newsweek](https://www.newsweek.com/areas-voted-trump-see-increased-bullying-schools-after-2016-election-study-1286176)
+- [Education Week](https://www.edweek.org/ew/articles/2019/01/16/racial-bullying-rose-in-communities-that-favored.html)
+- [Politico](https://www.politico.com/newsletters/morning-education/2019/01/09/los-angeles-teachers-brace-for-walkout-473516)
+- [Hechinger Report](https://hechingerreport.org/early-evidence-of-a-trump-effect-on-bullying-in-schools/)

@@ -46,7 +46,7 @@ url_code: ''
 url_dataset: ''
 url_poster: ''
 url_project: ''
-url_slides: ''
+url_slides: 'DR and school climate.pdf'
 url_source: ''
 url_video: ''
 
