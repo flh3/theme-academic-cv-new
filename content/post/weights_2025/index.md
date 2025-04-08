@@ -937,3 +937,4 @@ Both the models with L2 only or weights at both levels are most similar.
 Compare this as well to the simulation results in the paper. `empsucc`
 is not statistically significant while in the models with no weight or
 level-1 weight only, they are (probably incorrect).
+
