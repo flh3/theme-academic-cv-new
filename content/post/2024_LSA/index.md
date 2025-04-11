@@ -15,12 +15,8 @@ header:
   caption: ''
   image: ''
   preview: yes
-slug: lsawt
 ---
 
-
-
-# Which weights to use with multilevel models?
 
 A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly. 
 
