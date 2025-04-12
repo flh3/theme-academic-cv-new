@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: April 11, 2025 --><html lang="en-us" dir="ltr"
-      data-wc-theme-default="light">
+<!-- Last Published: April 12, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="auto">
   
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
@@ -689,6 +689,7 @@
         
       
     
+  
   
   
   
@@ -1603,6 +1604,50 @@ be run that may provide easier to interpret results.</p></p>
     <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
       <div
         class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
+      <a href="/post/mlcfa/"><span
+        class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">Multilevel CFA (MLCFA) in R, part 2</span></a>
+    </h2>
+    <time
+      class="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-1"
+      datetime="2018-11-01">
+      Nov 1, 2018
+    </time>
+    <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">A while back, I wrote a note about how to conduct a <a href="https://github.com/flh3/mcfa/blob/main/MCFAinRHUANG.pdf" target="_blank" rel="noopener">multilevel
+confirmatory factor analysis (MLCFA) in
+R</a>. Part of the
+note shows how to setup <code>lavaan</code> to be able to run the MLCFA model.
+<em>NOTE:</em> one of the important aspects of an MLCFA is that the factor
+structure at the two levels <em>may not be the same</em>– that is the factor
+structures are <em>invariant</em> across levels. The setup process is/was
+cumbersome– but putting the note together was informative. Testing a 2-1
+factor model (i.e., 2 factors at the first level and 1 factor at the
+second level) required the following code (see the original note for the
+detailed explanation of the setup and what the variables represent).
+This is a measure of school engagement; <em>n</em> = 3,894 students in 254
+schools.</p>
+    <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-primary-500">
+    Read more
+      <svg aria-hidden="true" class="ml-1 h-4 w-4 stroke-current" fill="none" viewBox="0 0 16 16">
+        <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+      </svg>
+    </div>
+  </div>
+  <time
+    class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
+    datetime="2018-11-01">Nov 1, 2018
+  </time>
+</article>
+
+  
+  
+
+
+
+<article class="md:grid md:grid-cols-4 md:items-baseline">
+  <div class="md:col-span-3 group relative flex flex-col items-start">
+    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+      <div
+        class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
       <a href="/post/sim2data/"><span
         class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">🎉 Simulating two level data</span></a>
     </h2>
@@ -1694,38 +1739,6 @@ refer to as the variance (<em>s</em><sup>2</sup>). We have to divide this by
   <time
     class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
     datetime="2018-08-17">Aug 17, 2018
-  </time>
-</article>
-
-  
-  
-
-
-
-<article class="md:grid md:grid-cols-4 md:items-baseline">
-  <div class="md:col-span-3 group relative flex flex-col items-start">
-    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-      <div
-        class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
-      <a href="/post/se/"><span
-        class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">🎉 Class Example- Standard Errors Too Small</span></a>
-    </h2>
-    <time
-      class="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-1"
-      datetime="2018-06-28">
-      Jun 28, 2018
-    </time>
-    <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">In our module on regression diagnostics, I mentioned 1) that at times (with clustered data) standard errors may be misestimated and may be too low, resulting in a greater chance of making a Type I error (i.e., claiming statistically significant results when they should not be). In our ANCOVA session, I also indicated that 2) covariates are helpful because they help to lower the (standard) error in the model and increase power. So, it sounds like we would like to have models with lower standard errors. However, there are cases when the standard error is estimated <em>lower</em> than it should be (i.e., the standard error is <em>biased</em>).</p>
-    <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-primary-500">
-    Read more
-      <svg aria-hidden="true" class="ml-1 h-4 w-4 stroke-current" fill="none" viewBox="0 0 16 16">
-        <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-      </svg>
-    </div>
-  </div>
-  <time
-    class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
-    datetime="2018-06-28">Jun 28, 2018
   </time>
 </article>
 

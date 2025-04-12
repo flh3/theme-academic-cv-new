@@ -1,4 +1,3062 @@
-<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><div id="cusdis_thread"
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: April 12, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="auto">
+  
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.1" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Francis L. Huang" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Generalized estimating equations" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://localhost:1313/post/gee/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/blue.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.css" rel="stylesheet" />
+  
+
+  
+  
+  
+
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu_3a05525e284cb133.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_f701646b16bb8941.png" />
+
+  <link rel="canonical" href="http://localhost:1313/post/gee/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@flhuang" />
+    <meta property="twitter:creator" content="@flhuang" />
+  
+  <meta property="og:site_name" content="FLH Website" />
+  <meta property="og:url" content="http://localhost:1313/post/gee/" />
+  <meta property="og:title" content="🎉 Analyzing clustered data using GEEs | FLH Website" />
+  <meta property="og:description" content="Generalized estimating equations" /><meta property="og:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" />
+    <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-02-27T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-02-27T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  <title>🎉 Analyzing clustered data using GEEs | FLH Website</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let element = document.getElementById('search');
+    let trigger = document.getElementById('search_toggle');
+
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        element.classList.toggle('hidden');
+        element.querySelector("input").value = ""
+        element.querySelector("input").focus()
+
+        if (!element.classList.contains('hidden')) {
+          let clear_trigger = document.querySelector('.pagefind-ui__search-clear');
+
+          if (clear_trigger && !clear_trigger.hasAttribute('listenerOnClick')) {
+            clear_trigger.setAttribute('listenerOnClick', 'true');
+
+            clear_trigger.addEventListener('click', () => {
+              element.classList.toggle('hidden');
+            });
+          }
+        }
+
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.js"
+    integrity=""
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="FLH Website">
+        Francis L. Huang
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#talks"
+        >Talks</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#news"
+        >Posts</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/MLMusingR/"
+        >MLMusingR</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/projects/"
+        >Projects</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/teaching/"
+        >Teaching</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/service/"
+        >Service</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item nav-dropdown group relative">
+            <span
+              class="nav-link 
+                
+                
+                
+              
+                
+                
+                
+               inline-flex items-center">
+              Research
+              <svg class="h-4 w-4 fill-current inline-block" viewBox="0 0 20 20">
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </span>
+        <ul
+          class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/#papers">
+              Papers
+            </a>
+          </li>
+          
+          
+          
+          <li class="nav-dropdown-item">
+            <a
+              class="nav-dropdown-link "
+              
+              href="/r">
+              R Packages
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        id="search_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<div id="search" class="hidden p-3"></div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+
+
+
+
+<div class="mx-auto flex max-w-screen-xl">
+  
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:hidden xl:block">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/"
+    
+  >Publications
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/lsa-weights/"
+    
+  >Reassessing weights in large-scale assessments and multilevel models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/cornell-behavioral-2025/"
+    
+  >Behavioral threat assessment and equity in exclusionary school discipline
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/huang-cluster-robust-2025/"
+    
+  >Cluster-robust standard errors with three-level data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/cornell-referral-2025/"
+    
+  >Referral rates for school threat assessment
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/gregory-restorative-2025/"
+    
+  >Restorative justice conferences in elementary and secondary schools
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/jimerson-advancing-2024/"
+    
+  >Advancing diversity, equity, and inclusion in school psychology science and scholarship: Changing training and practice in the field of school psychology
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/chuang-potential-2022/"
+    
+  >Potential moderation across racial groups in perceptions of authoritative school climate and peer victimization and student engagement
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-seasonality-2023/"
+    
+  >The seasonality of school climate
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/smith-school-2024/"
+    
+  >School bullying and gender minority youth: Victimization experiences and perceived prevalence
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/reinke-having-2024/"
+    
+  >Having a trusted adult in school: Concurrent and predictive relations with internalizing problems across development
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/eddy-positive-2024/"
+    
+  >Positive student-teacher relationships and exclusionary discipline practices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/gregory-steadfast-2023/"
+    
+  >Steadfast implementation of restorative practices during the Covid-19 pandemic: A case study of consultancy and leadership in an elementary school
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-replication-2024/"
+    
+  >Replication studies using secondary or nonexperimental datasets
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-using-2024/"
+    
+  >Using plausible values when fitting multilevel models with large-scale assessment data using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/gregory-adolescent-2024/"
+    
+  >Adolescent exposure to restorative practices and their perceptions of support, structure, and bullying in the school climate
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2025/stemmler-investigating-2024/"
+    
+  >Investigating the use of robust standard errors to account for two-way clustering in cross-classified data structures
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-impact-2023/"
+    
+  >The impact of restorative practices on the use of out-of-school suspensions: Results from a cluster randomized controlled trial
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/woods-relationship-2023/"
+    
+  >The relationship between teacher stress and job satisfaction as moderated by coping
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/herman-usability-2023/"
+    
+  >Usability and social consequences of the early identification system as a universal screener for social, emotional, and behavioral risks.
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-accounting-2023/"
+    
+  >Accounting for heteroskedasticity resulting from between-group differences in multilevel models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/wiedermann-advanced-2023/"
+    
+  >Advanced categorical data analysis in prevention science
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/cohen-school-2023/"
+    
+  >In-school and out-of-school suspension: Behavioral and psychological outcomes in a predominately black sample of middle school students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/book/huang-practical-2023/"
+    
+  >Practical multilevel modeling using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/maeng-teacher-2023/"
+    
+  >Teacher Perceptions of School Resource Officers and Associations with School Safety
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/huang-using-2023/"
+    
+  >Using robust standard errors for the analysis of binary outcomes with a small number of clusters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/gregory-evaluation-2022/"
+    
+  >Evaluation of the whole school restorative practices project: One-year impact on discipline incidents
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/olsen-interaction-2022/"
+    
+  >Interaction of socioeconomic status and class relations on reading
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/crichlow-ball-student-2022/"
+    
+  >Student perceptions of school resource officers and threat reporting
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/reinke-examining-2022/"
+    
+  >Examining the validity of the Early Identification System – Student Version for screening in an elementary school sample
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-alternatives-2022/"
+    
+  >Alternatives to logistic regression models in experimental studies
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-analyzing-2022/"
+    
+  >Analyzing cross-sectionally clustered data using generalized estimating equations
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/eddy-evaluation-2022/"
+    
+  >Evaluation of a bibliotherapy-based stress intervention for teachers
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-using-2022/"
+    
+  >Using cluster-robust standard errors when analyzing group-randomized trials with few clusters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/herman-individual-2021/"
+    
+  >Individual and school predictors of teacher stress, coping, and wellness during the COVID-19 pandemic
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/olsen-association-2021/"
+    
+  >The association between student socioeconomic status and student–teacher relationships on math achievement
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/huang-does-2021/"
+    
+  >Does worrying matter? Priming and attitudes towards mask wearing in a midwestern state
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/stohlman-high-2021/"
+    
+  >High school graduation outcomes of student threat assessment
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test3/jimerson-advancing-2021/"
+    
+  >Advancing diversity, equity, and inclusion in school psychology: Be the change
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2022/herman-investigation-2021/"
+    
+  >An investigation of the psychometric properties of the Early Identification System–student report in a middle school sample
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-authoritative-2021/"
+    
+  >Authoritative school climate and out-of-school suspensions: Results from a nationally-representative survey of 10th grade students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/thompson-confirmatory-2021/"
+    
+  >Confirmatory factor structure and predictive validity of the Early Identification System—Student Report in a community sample of high school students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-teacher-2021/"
+    
+  >Teacher support for zero tolerance is associated with higher suspension rates and lower feelings of safety
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/maeng-student-2020/"
+    
+  >Student threat assessment as an alternative to exclusionary discipline
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/jiv/huang-role-2017/"
+    
+  >The role of the perceptions of school climate and teacher victimization by students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/eddy-does-2020/"
+    
+  >Does teacher emotional exhaustion and efficacy predict student discipline sanctions?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/huang-prior-2020/"
+    
+  >Prior problem behaviors do not account for the racial suspension gap
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-manova-2020/"
+    
+  >MANOVA: A procedure whose time has passed?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2020/huang-relationship-2020/"
+    
+  >The relationship between school disciplinary resolutions with school climate and attitudes toward school
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/prewett-student-2019/"
+    
+  >Student and teacher perceptions on student-teacher relationship quality: A middle school perspective
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2019/huang-investigation-2019/"
+    
+  >An investigation of the psychometric properties of the Early Identification System–Student Report
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-school-2019/"
+    
+  >School teasing and bullying after the presidential election
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/burnette-school-2019/"
+    
+  >School threat assessment versus suicide assessment: Statewide prevalence and case characteristics
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/olsen-teacher-2019/"
+    
+  >Teacher job satisfaction by principal support and teacher cooperation: Results from the Schools and Staffing Survey
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2019/smith-understanding-2019/"
+    
+  >Understanding family–school engagement across and within elementary- and middle-school contexts
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-multilevel-2018-1/"
+    
+  >Multilevel modeling myths
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-relationship-2018/"
+    
+  >The relationship of school climate with out-of-school suspensions
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/ford-effect-2018/"
+    
+  >The effect of orthographic complexity on Spanish spelling in Grades 1–3
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/gregory-examination-2018/"
+    
+  >An examination of restorative interventions and racial equity in out-of-school suspensions
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-bullying-2018/"
+    
+  >Bullying involvement, teacher-student relationships, and psychosocial outcomes
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-black-2018/"
+    
+  >Do Black students misbehave more? Investigating the differential involvement hypothesis and out-of-school suspensions
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-multilevel-2018/"
+    
+  >Multilevel modeling and ordinary least squares regression:  How comparable are they?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/cornell-racialethnic-2018/"
+    
+  >Racial/ethnic parity in disciplinary consequences using student threat assessment
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/jia-impact-2018/"
+    
+  >The impact of validity screening on associations between self-reports of bullying victimization and student outcomes
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-using-2018-1/"
+    
+  >Using cluster bootstrapping to analyze nested data with a few clusters
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-using-2018/"
+    
+  >Using instrumental variable estimation to evaluate randomized experiments with imperfect compliance
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/bullying/datta-toxicity-2017/"
+    
+  >The toxicity of bullying by teachers and other school staff
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/cornell-student-2017/"
+    
+  >Student Threat Assessment as a Standard School Safety Practice: Results From a Statewide Implementation Study.
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/cornell-student-2017/"
+    
+  >Student Threat Assessment as a Standard School Safety Practice: Results From a Statewide Implementation Study.
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-student-2017/"
+    
+  >Student attitudes and behaviors as explanations for the Black-White suspension gap
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/konold-racialethnic-2017/"
+    
+  >Racial/ethnic differences in perceptions of school climate and its association with student engagement and peer aggression
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/huang-question-2016/"
+    
+  >Question order affects the measurement of bullying victimization among middle school students
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/bullying/datta-aggressive-2016/"
+    
+  >Aggressive attitudes and prevalence of bullying bystander behavior in middle school
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/bullying/millspaugh-prevalence-2015/"
+    
+  >Prevalence of aggressive attitudes and willingness to report threats in middle school
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/cornell-school-2015/"
+    
+  >School counselor use of peer nominations to identify victims of bullying
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/rubie-davies-successive-2014/"
+    
+  >Successive teacher expectation effects across the early school years
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/gregory-it-2013/"
+    
+  >It takes a village: The effects of 10th grade college-going expectations of students, parents, and teachers four years later
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/test2/huang-differential-2012/"
+    
+  >The differential effects of preschool: Evidence from Virginia
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-is-2009/"
+    
+  >Is experience the best teacher? A multilevel analysis of teacher characteristics and student achievement in low performing schools
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/2018/huang-corruption-2008/"
+    
+  >Corruption and educational outcomes: Two steps forward, one step back
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Posts
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/weights_2025/"
+    
+  >Weights with Multilevel Models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2025/"
+    
+  >🎉 Job postings 2024-2025
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pca-image/"
+    
+  >Fun with PCA using Images
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2024_lsa/"
+    
+  >Selecting the proper weights in LSAs with multilevel models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pv3/"
+    
+  >Using Plausible Values with Multilevel Models Using R (update)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pv/"
+    
+  >Using Plausible Values with Multilevel Models Using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2024/"
+    
+  >🎉 Job postings 2023-2024
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gd_example/"
+    
+  >Gradient descent example 1
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/logreg_matrix/"
+    
+  >🖩 Logistic regression with matrices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/residuals_mlm/"
+    
+  >Residuals with Multilevel Models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2023/"
+    
+  >🎉 Job postings 2022-2023
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/residuals/"
+    
+  >Fun with residuals
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mi_pt3/"
+    
+  >Using FIML in R for Multilevel Data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2022_cr2/"
+    
+  >Robust standard errors in mixed models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/logistic-regression-fisher-scoring/"
+    
+  >Logistic regression from scratch (Newton Raphson and Fisher Scoring)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/likelihood_2022/"
+    
+  >Using REML and ML for estimation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/extracting-v-matrix/"
+    
+  >Extracting the V matrix for MLMs
+    </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/gee/"
+    
+  >🎉 Analyzing clustered data using GEEs
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#solving-gees-using-irls"
+                class="hb-docs-link"
+              >Solving GEEs using IRLS</a>
+            </li>
+          <li>
+              <a
+                href="#icc-estimation-based-on-residuals"
+                class="hb-docs-link"
+              >ICC estimation based on residuals</a>
+            </li>
+          <li>
+              <a
+                href="#example-with-a-homemade-gee-function"
+                class="hb-docs-link"
+              >Example with a homemade GEE function</a>
+            </li>
+          <li>
+              <a
+                href="#references"
+                class="hb-docs-link"
+              >References</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ml/"
+    
+  >🎉 Using maximum likelihood
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/compare/"
+    
+  >🎉 Comparing coefficients across logistic regression models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/prior-problem-behavior-and-suspensions-a-replication/"
+    
+  >Prior problem behavior and suspensions: A replication
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mdata/"
+    
+  >🎉 Using FIML and MI in R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/applied/"
+    
+  >🎉 Applied example for alternatives to logistic regression
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pca_2020/"
+    
+  >🎉 Principal Components Analysis using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/centering/"
+    
+  >🎉 Why does centering reduce multicollinearity?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/poisson-and-negative-binomial-regression-using-r/"
+    
+  >Poisson and Negative Binomial Regression using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mlcfa/"
+    
+  >Multilevel CFA (MLCFA) in R, part 2
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/sim2data/"
+    
+  >🎉 Simulating two level data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/"
+    
+  >🧠 Difference between correlation and covariance matrices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/"
+    
+  >Instrumental variables within an SEM framework
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/se/"
+    
+  >🎉 Class Example- Standard Errors Too Small
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/iv/"
+    
+  >🎉 Understanding instrumental variables
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ovb/"
+    
+  >Omitted Variable Bias (OVB) Example
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/mlmusingr/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/r/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/service/"
+    
+  >
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/"
+    
+  >Projects
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/uva/"
+    
+  >Youth Violence Project @ UVA
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/av/"
+    
+  >MO Prison Transformation Project
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/mpsi/"
+    
+  >Missouri Prevention Science Institute
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Projects
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/"
+    
+  >Recent &amp; Upcoming Talks
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/example/"
+    
+  >Replication studies using secondary and nonexperimental datasets
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/mlm_ph/"
+    
+  >Multilevel Modeling with Large-Scale International Databases Using HLM (Philadelphia)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/korea_23/"
+    
+  >Using cluster robust standard errors to analyze nested data with a few clusters (Korea)
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/"
+    
+  >Teaching
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/dm/"
+    
+  >Data Management (using R)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/mcsim/"
+    
+  >Monte Carlo Simulation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/mlm/"
+    
+  >Multilevel Modeling
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/eval/"
+    
+  >Program Evaluation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/quantfound/"
+    
+  >Quantitative Foundations
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+    </ul>
+
+    <div class="max-xl:hidden h-0 w-64 shrink-0"></div></div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">On this page</p><ul>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#solving-gees-using-irls">Solving GEEs using IRLS</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#icc-estimation-based-on-residuals">ICC estimation based on residuals</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#example-with-a-homemade-gee-function">Example with a homemade GEE function</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#references">References</a>
+      </li></ul>
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="w-full break-words flex min-h-[calc(100vh-var(--navbar-height))] min-w-0 justify-center pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+
+      
+      <div class="mb-4">
+        <div class="mt-1.5 flex items-center gap-1 overflow-hidden text-sm text-gray-500 dark:text-gray-400">
+      <div class="whitespace-nowrap transition-colors min-w-[24px] overflow-hidden text-ellipsis hover:text-gray-900 dark:hover:text-gray-100">
+        <a href="http://localhost:1313/post/">Posts</a>
+      </div><svg class="w-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg><div class="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100">🎉 Analyzing clustered data using GEEs</div>
+</div>
+
+      </div>
+      
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">🎉 Analyzing clustered data using GEEs</h1>
+
+      <div class="mt-4 mb-16">
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Feb 27, 2021</span><span class="mx-1">·</span>
+        
+          
+          
+          <div class="group inline-flex items-center text-current gap-x-1.5 mx-1">
+            
+            
+            <img src="/author/francis-l.-huang/avatar_hu_332976a1b81beb6b.webp" alt="Francis L. Huang" class="inline-block h-4 w-4 rounded-full border border-current" loading="lazy" />
+            
+            <div >Francis L. Huang</div>
+          </div>
+          
+        
+
+        
+        <span class="mx-1">·</span>
+        <span class="mx-1">
+          13 min read
+        </span>
+        
+        </div>
+
+        <div class="mt-3">
+          
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+      
+      
+      
+
+      
+      
+
+      <div class="prose prose-slate lg:prose-xl dark:prose-invert">
+        <p>I show this in a recent JEBS article on using Generalized Estimating Equations (GEEs). Shown below is some annotated syntax and examples.</p>
+<blockquote>
+<p>Huang, F. (2021). Analyzing cross-sectionally clustered data using generalized estimating equations. <em>Journal of Educational and Behavioral Statistics.</em> doi: 10.3102/10769986211017480</p></blockquote>
+<p>In the original paper draft, I had a section which showed how much more widely used mixed models (i.e., MLMs, HLMs) were compared to GEEs but was asked to remove that (to save space). I thought the usage was interesting so I am including it here:</p>
+<p>In psychology, mixed model studies are much more popular than studies using GEEs by a ratio of 15:1 (Bauer &amp; Sterba, 2011)</p>
+<p>Citations in JEBS:</p>
+<ul>
+<li>
+<p>In the Journal of Educational and Behavioral Statistics (JEBS): one article on how to use multilevel models by Singer (1998) has over 3,300 citations (as of 2020.06.11, Google Scholar)</p>
+</li>
+<li>
+<p>In the same journal, Ghisletta &amp; Sini (2004) provided an introduction to GEEs. This article has 329 citations. GS wrote (p. 431):</p>
+</li>
+</ul>
+<blockquote>
+<p>Although GEEs are widely applied in biological, pharmacological, and closely related disciplines, their application in educational and social sciences remains relatively scarce.</p></blockquote>
+<p>There is a difference of 6 years but the Singer article has been cited over <strong>10</strong> times more! If using average citations per year, <strong>7.5</strong> times more.</p>
+<h2 id="solving-gees-using-irls">Solving GEEs using IRLS</h2>
+<p>This example is only for an identity link using either an independence or exchangeable working correlation matrix.</p>
+<ol>
+<li>
+<p>Initial estimates for $\beta$ are estimated using a standard GLM (with an independence
+correlation structure). Residuals are obtained. If an independence working correlation
+structure is specified, these are also the final estimates, go to Step 7.</p>
+</li>
+<li>
+<p>Using the residuals, $\alpha$ is estimated. An example of how this is computed with an
+exchangeable correlation matrix is shown in Hardin and Hilbe (2013, pp. 65–67),
+and we show this in our syntax as well.</p>
+</li>
+<li>
+<p>The working exchangeable correlation matrix is updated to include a in the off
+diagonals. The correlation matrix is converted to a covariance matrix, $V_j$, based on
+the variance of the outcome. An overall $V$ block diagonal matrix is formed which
+has the same $V_j$ for every cluster.</p>
+</li>
+<li>
+<p>When using an identity link, new coefficients are reestimated using
+$\hat{\beta} = (X'V^{-1}X)^{-1}X'V^{-1}y$</p>
+</li>
+<li>
+<p>New residuals are obtained using the updated $\beta$.</p>
+</li>
+<li>
+<p>Steps 2–5 are repeated until some convergence criteria are met (e.g., for continuous
+outcomes, minimal changes in the sum of squared residuals).</p>
+</li>
+<li>
+<p>Compute and apply cluster-robust/empirical standard errors based on formulas
+also developed by Liang and Zeger (1986). CRSEs can be written as: $(X'X)^{-1}\hat{\Omega}(X'X)^{-1}$ where $\hat{\Omega}=\sum^{J}_{j=1}X^{'}_j\hat{u}_j\hat{u}_j'X_j$ and $\hat{u}_j$ are the residuals from the observations in cluster $j$.</p>
+</li>
+</ol>
+<h2 id="icc-estimation-based-on-residuals">ICC estimation based on residuals</h2>
+<p>This example shows how to compute the exchangeable correlation coefficient (ICC) based on residuals. This is a different approach from using the between and within group variance components in a mixed model. This comes from Hardin and Hilbe&rsquo;s (2013) book on <em>Generalized Estimating Equations, 2nd edition</em>. Crespi et al. (2011) and Wu et al. (2012) show how there can be several approaches in computing the ICC/exchangeable correlation coefficient.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">NG</span> <span class="o">=</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">t</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li>Scale parameter ($\phi$) must be estimated.</li>
+<li>NG = number of groups.</li>
+<li>GS = group size. Number of observations in the cluster.</li>
+</ul>
+$$
+\hat{\phi} = \frac{1}{n}\sum^{NG}_{i=1}\sum^{GS}_{t=1}\text{res}^2_{it} 
+$$<p>
+This is just the mean of the squared (Pearson) residuals. A basic OLS regression is used:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m1</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y</span> <span class="o">~</span> <span class="n">x</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">dat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">resid</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span> <span class="c1">#vector</span>
+</span></span><span class="line"><span class="cl"><span class="n">dat</span><span class="o">$</span><span class="n">res</span> <span class="o">&lt;-</span> <span class="n">res</span> <span class="c1">#save it into the original dataset</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">scalep</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">res^2</span><span class="p">))</span> <span class="c1">#scale parameter</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 1.25
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">dat</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  id t y x  res
+</span></span><span class="line"><span class="cl">1  1 1 4 0 -1.5
+</span></span><span class="line"><span class="cl">2  1 2 5 1 -1.5
+</span></span><span class="line"><span class="cl">3  1 3 6 0  0.5
+</span></span><span class="line"><span class="cl">4  1 4 7 1  0.5
+</span></span><span class="line"><span class="cl">5  2 1 5 0 -0.5
+</span></span><span class="line"><span class="cl">6  2 2 6 1 -0.5
+</span></span><span class="line"><span class="cl">7  2 3 7 0  1.5
+</span></span><span class="line"><span class="cl">8  2 4 8 1  1.5
+</span></span></code></pre></div><p>The exchangeable correlation coefficient (e.g., compound symmetry, common correlation, equal correlation) can be estimated using (formula 3.28 in the HH book). This can be thought of as the intraclass correlation coefficient and at times can be seen as $\rho$ or $\alpha$.</p>
+$$
+\begin{aligned}
+\hat{\rho} &= \hat{\phi}^{-1}\frac{1}{12}\sum^{NG}_{i=1}\sum^{GS}_{t=1}\sum_{t'>t}\text{res}_{it}\text{res}_{it'} \\
+&= \frac{1}{1.25}\frac{1}{12}\{[-1.5(-1.5+.5+.5) - 1.5(.5+.5) + .5(.5)] + 
+[-.5(-.5+1.5+1.5)-.5(1.5+1.5)+1.5(1.5)]\} \\
+&= .8\frac{1}{12}([-.5] + [.5]) \\
+&= -.06667
+\end{aligned}
+$$<p>
+So we need to get the residuals per group</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rpg</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">dat</span><span class="o">$</span><span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nm</span> <span class="o">&lt;-</span> <span class="nf">names</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">id</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">r1</span> <span class="o">&lt;-</span> <span class="n">rpg[[1]]</span> <span class="c1">#residuals from first group</span>
+</span></span><span class="line"><span class="cl"><span class="n">egeg</span> <span class="o">&lt;-</span> <span class="n">r1</span> <span class="o">%*%</span> <span class="nf">t</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span> <span class="c1">#quicker way to do this, orig a loop</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">forg1</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">egeg</span><span class="nf">[lower.tri</span><span class="p">(</span><span class="n">egeg</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] -0.5
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">r2</span> <span class="o">&lt;-</span> <span class="n">rpg[[2]]</span> <span class="c1">#residuals from second group</span>
+</span></span><span class="line"><span class="cl"><span class="n">egeg2</span> <span class="o">&lt;-</span> <span class="n">r2</span> <span class="o">%*%</span> <span class="nf">t</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span> <span class="c1">#quicker way to do this, orig a loop</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">forg2</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">egeg2</span><span class="nf">[lower.tri</span><span class="p">(</span><span class="n">egeg2</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] -0.5
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="n">scalep</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">12</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">forg1</span> <span class="o">+</span> <span class="n">forg2</span><span class="p">)</span> <span class="c1">#putting it all together</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] -0.06666667
+</span></span></code></pre></div><p>The 12 is based on the number of residuals we have multiplied and added together. In a 4 x 4 matrix, there are 6 pieces of unique information. Since had two groups, this is 12 in total.</p>
+<p>Putting this together in a function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">geticc</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">r</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">scalep</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">r^2</span><span class="p">)</span> <span class="c1">#dispersion parameter</span>
+</span></span><span class="line"><span class="cl">  <span class="n">rpg</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">data[</span><span class="p">,</span><span class="n">cluster]</span><span class="p">)</span> <span class="c1">#individual residuals</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nm</span> <span class="o">&lt;-</span> <span class="nf">names</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">data[</span><span class="p">,</span><span class="n">cluster]</span><span class="p">))</span> <span class="c1">#names of clusters</span>
+</span></span><span class="line"><span class="cl">  <span class="n">coll</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">()</span> <span class="c1">#empty container</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">### p. 63 Hardin and Hilbe</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">### get ICC based on residuals per cluster</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">### right now, need the data to be sorted by cluster</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">multresid</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r2</span> <span class="o">&lt;-</span> <span class="n">rpg[[x]]</span> <span class="c1">#extract resid per group (rpg)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">egeg</span> <span class="o">&lt;-</span> <span class="n">r2</span> <span class="o">%*%</span> <span class="nf">t</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span> <span class="c1">#e %*% t(e)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">coll[x]</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">egeg</span><span class="nf">[lower.tri</span><span class="p">(</span><span class="n">egeg</span><span class="p">)</span><span class="n">]</span><span class="p">)</span> <span class="c1">#only lower diag</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">tst</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">sapply</span><span class="p">(</span><span class="n">nm</span><span class="p">,</span> <span class="n">multresid</span><span class="p">))</span> <span class="c1">#how many per group </span>
+</span></span><span class="line"><span class="cl">  <span class="n">ns</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">rpg</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span> <span class="c1">#add up how many were added</span>
+</span></span><span class="line"><span class="cl">  <span class="n">den</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">((</span><span class="n">ns</span> <span class="o">*</span> <span class="p">(</span><span class="n">ns</span> <span class="o">-</span> <span class="m">1</span> <span class="p">))</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span> <span class="c1">#how many products were added</span>
+</span></span><span class="line"><span class="cl">  <span class="n">icc.model</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">tst</span> <span class="o">/</span> <span class="n">den</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="n">scalep</span><span class="p">)</span> <span class="c1">#the icc</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">return</span><span class="p">(</span><span class="n">icc.model</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Using the function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">geticc</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] -0.06666667
+</span></span></code></pre></div><p>Comparing the output using the <code>geeglm</code> function in the <code>geepack</code> package. $\alpha$ and $\rho$ are at times used interchangeably.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">geepack</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">&lt;-</span> <span class="nf">geeglm</span><span class="p">(</span><span class="n">y</span> <span class="o">~</span> <span class="n">x</span><span class="p">,</span> <span class="n">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">,</span> <span class="n">corstr</span> <span class="o">=</span> <span class="s">&#39;exchangeable&#39;</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">dat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Call</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">geeglm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gaussian</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">corstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#34;</span><span class="n">exchangeable</span><span class="err">&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">Coefficients</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Estimate</span><span class="w"> </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w"> </span><span class="n">Wald</span><span class="w"> </span><span class="n">Pr</span><span class="p">(</span><span class="o">&gt;|</span><span class="n">W</span><span class="o">|</span><span class="p">)</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">   </span><span class="err">5</span><span class="p">.</span><span class="err">5000</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">3536</span><span class="w">  </span><span class="err">242</span><span class="w">   </span><span class="o">&lt;</span><span class="err">2</span><span class="n">e</span><span class="o">-</span><span class="err">16</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">x</span><span class="w">             </span><span class="err">1</span><span class="p">.</span><span class="err">0000</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">0000</span><span class="w">  </span><span class="n">Inf</span><span class="w">   </span><span class="o">&lt;</span><span class="err">2</span><span class="n">e</span><span class="o">-</span><span class="err">16</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Signif</span><span class="p">.</span><span class="w"> </span><span class="n">codes</span><span class="o">:</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="err">&#39;</span><span class="o">***</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">001</span><span class="w"> </span><span class="err">&#39;</span><span class="o">**</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">01</span><span class="w"> </span><span class="err">&#39;</span><span class="o">*</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">05</span><span class="w"> </span><span class="err">&#39;</span><span class="p">.</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">1</span><span class="w"> </span><span class="err">&#39;</span><span class="w"> </span><span class="err">&#39;</span><span class="w"> </span><span class="err">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Correlation</span><span class="w"> </span><span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchangeable</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Estimated</span><span class="w"> </span><span class="n">Scale</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Estimate</span><span class="w">   </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">     </span><span class="err">1</span><span class="p">.</span><span class="err">25</span><span class="w"> </span><span class="err">2</span><span class="p">.</span><span class="err">453</span><span class="n">e</span><span class="o">-</span><span class="err">17</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">Link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">identity</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Estimated</span><span class="w"> </span><span class="n">Correlation</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">Estimate</span><span class="w">   </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">alpha</span><span class="w"> </span><span class="o">-</span><span class="err">0</span><span class="p">.</span><span class="err">06667</span><span class="w"> </span><span class="err">8</span><span class="p">.</span><span class="err">378</span><span class="n">e</span><span class="o">-</span><span class="err">18</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">clusters</span><span class="o">:</span><span class="w">   </span><span class="err">2</span><span class="w">  </span><span class="n">Maximum</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="err">4</span><span class="w"> 
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">test</span><span class="o">$</span><span class="n">geese</span><span class="o">$</span><span class="n">alpha</span> <span class="c1">#this is the common correlation;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   alpha 
+</span></span><span class="line"><span class="cl">-0.06667 
+</span></span></code></pre></div><h2 id="example-with-a-homemade-gee-function">Example with a homemade GEE function</h2>
+<p>This syntax is not made for speed, but for transparency (i.e., hopefully, the steps can be seen).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># HOMEGROWN GEE FUNCTION using iterative reweighted least squares (IRLS)</span>
+</span></span><span class="line"><span class="cl"><span class="n">jebsgee</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">fml</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">corstr</span> <span class="o">=</span> <span class="s">&#39;independence&#39;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">## extract data</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tmp</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cluster</span> <span class="o">=</span> <span class="n">data[</span><span class="p">,</span><span class="n">cluster]</span><span class="p">)</span> <span class="c1">#dataframe with cluster</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tmp</span> <span class="o">&lt;-</span> <span class="n">tmp</span><span class="nf">[order</span><span class="p">(</span><span class="n">tmp</span><span class="o">$</span><span class="n">cluster</span><span class="p">),</span> <span class="n">]</span> <span class="c1">#sorting by cluster</span>
+</span></span><span class="line"><span class="cl">  <span class="n">fml</span> <span class="o">&lt;-</span> <span class="nf">formula</span><span class="p">(</span><span class="n">fml</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">model.frame</span><span class="p">(</span><span class="n">fml</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">model.matrix</span><span class="p">(</span><span class="n">fml</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">model.response</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">(</span><span class="nf">stop</span><span class="p">(</span><span class="s">&#34;You have missing data.&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">gpsz</span> <span class="o">&lt;-</span> <span class="nf">table</span><span class="p">(</span><span class="n">data[</span><span class="p">,</span> <span class="n">cluster]</span><span class="p">)</span> <span class="c1">#how many per group; group size</span>
+</span></span><span class="line"><span class="cl">  <span class="n">NG</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">gpsz</span><span class="p">)</span> <span class="c1">#how many groups</span>
+</span></span><span class="line"><span class="cl">  <span class="n">maxsize</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span><span class="n">gpsz</span><span class="p">)</span> <span class="c1">#what&#39;s the biggest group size</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">CS</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;independence&#39;</span><span class="p">,</span> <span class="s">&#39;exchangeable&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cs</span> <span class="o">&lt;-</span> <span class="nf">pmatch</span><span class="p">(</span><span class="n">corstr</span><span class="p">,</span> <span class="n">CS</span><span class="p">,</span> <span class="m">-1</span><span class="p">)</span> <span class="c1">#allow to match corstr by keywords</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="n">cs</span> <span class="o">==</span> <span class="m">-1</span><span class="p">)</span> <span class="p">(</span><span class="nf">stop</span><span class="p">(</span><span class="s">&#34;Currently can only use an independence or exchangeable correlation structure&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">corstr</span> <span class="o">&lt;-</span> <span class="n">CS[cs]</span> <span class="c1">#put in the whole word</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># STEP #1</span>
+</span></span><span class="line"><span class="cl">  <span class="n">firstrun</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="nf">formula</span><span class="p">(</span><span class="n">fml</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span> <span class="c1">#just a regular glm</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># STEP #2</span>
+</span></span><span class="line"><span class="cl">  <span class="n">r</span> <span class="o">&lt;-</span> <span class="nf">resid</span><span class="p">(</span><span class="n">firstrun</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">)</span> <span class="c1">#get residuals</span>
+</span></span><span class="line"><span class="cl">  <span class="n">betas</span> <span class="o">&lt;-</span> <span class="nf">coef</span><span class="p">(</span><span class="n">firstrun</span><span class="p">)</span> <span class="c1">#get initial coefficients</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="n">corstr</span> <span class="o">==</span> <span class="s">&#39;exchangeable&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">### setup iterations need for exchangeable structure</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dev</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">delta.dev</span> <span class="o">&lt;-</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tol</span> <span class="o">&lt;-</span> <span class="m">1e-5</span> <span class="c1">#can make this bigger or smaller</span>
+</span></span><span class="line"><span class="cl">    <span class="n">maxiter</span> <span class="o">&lt;-</span> <span class="m">50</span> <span class="c1">#number of iterations, can make this bigger</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i</span> <span class="o">=</span> <span class="m">1</span> <span class="c1">#starting at iteration 1</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">cat</span><span class="p">(</span><span class="s">&#34;Iteration: &#34;</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">    <span class="kr">while</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">delta.dev</span> <span class="o">&gt;</span> <span class="n">tol</span> <span class="o">&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">maxiter</span><span class="p">)){</span> <span class="c1">#when change in deviance is small, stop</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">cat</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s">&#34;::&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="c1"># after iteration, this is STEP #5</span>
+</span></span><span class="line"><span class="cl">      <span class="n">r</span> <span class="o">&lt;-</span> <span class="n">y</span> <span class="o">-</span> <span class="n">X</span> <span class="o">%*%</span> <span class="n">betas</span> <span class="c1">#residuals / use Pearson if non-identity link</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="n">icc</span> <span class="o">&lt;-</span> <span class="nf">geticc</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">,</span> <span class="s">&#39;cluster&#39;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="c1">#compute new iccs #going back to step #2</span>
+</span></span><span class="line"><span class="cl">      <span class="n">results</span> <span class="o">&lt;-</span> <span class="nf">exchR</span><span class="p">(</span><span class="n">icc</span><span class="p">,</span> <span class="n">maxsize</span> <span class="o">=</span> <span class="n">maxsize</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">NG</span><span class="p">,</span> <span class="n">gpsz</span><span class="p">)</span> <span class="c1">#compute new weight matrix STEP3</span>
+</span></span><span class="line"><span class="cl">      <span class="n">vm2</span> <span class="o">&lt;-</span> <span class="n">results</span><span class="o">$</span><span class="n">vm2</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># STEP #4</span>
+</span></span><span class="line"><span class="cl">      <span class="n">betas</span> <span class="o">&lt;-</span> <span class="nf">solve</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">%*%</span> <span class="n">vm2</span> <span class="o">%*%</span> <span class="n">X</span><span class="p">)</span> <span class="o">%*%</span> <span class="nf">t</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">%*%</span> <span class="n">vm2</span> <span class="o">%*%</span> <span class="n">y</span> <span class="c1">#update betas</span>
+</span></span><span class="line"><span class="cl">      <span class="n">dev0</span> <span class="o">&lt;-</span> <span class="n">dev</span> <span class="c1">#get prior dev</span>
+</span></span><span class="line"><span class="cl">      <span class="n">dev</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">X</span> <span class="o">%*%</span> <span class="n">betas</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span> <span class="c1">#new deviance</span>
+</span></span><span class="line"><span class="cl">      <span class="n">delta.dev</span> <span class="o">&lt;-</span> <span class="n">dev</span> <span class="o">-</span> <span class="n">dev0</span> <span class="c1">#change in deviance</span>
+</span></span><span class="line"><span class="cl">      <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="m">1</span> <span class="c1">#add one to the iteration</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">cat</span><span class="p">(</span><span class="s">&#34;\nFinal alpha:&#34;</span><span class="p">,</span> <span class="n">icc</span><span class="p">,</span> <span class="s">&#34;\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">### STEP #7: computing Liang and Zeger SEs</span>
+</span></span><span class="line"><span class="cl">  <span class="n">re</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">X</span> <span class="o">%*%</span> <span class="n">betas</span><span class="p">)</span> <span class="c1">#get residuals</span>
+</span></span><span class="line"><span class="cl">  <span class="n">k</span> <span class="o">&lt;-</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="c1">#how many predictors (including intercept)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cdata</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">cluster</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">$</span><span class="n">cluster</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">re</span><span class="p">)</span> <span class="c1">#data with cluster and residuals</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gs</span> <span class="o">&lt;-</span> <span class="nf">names</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">cdata</span><span class="o">$</span><span class="n">cluster</span><span class="p">))</span> <span class="c1">#names of the clusters</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">u</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="n">NG</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span> <span class="c1">#empty matrix</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gpsv</span> <span class="o">&lt;-</span> <span class="n">tmp</span><span class="o">$</span><span class="n">cluster</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="n">corstr</span> <span class="o">==</span> <span class="s">&#39;independence&#39;</span><span class="p">)</span> <span class="n">wcv</span> <span class="o">&lt;-</span> <span class="n">vm2</span> <span class="o">&lt;-</span> <span class="nf">diag</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="c1">#if independence</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="n">corstr</span> <span class="o">==</span> <span class="s">&#39;exchangeable&#39;</span><span class="p">)</span> <span class="n">wcv</span> <span class="o">&lt;-</span> <span class="n">results</span><span class="o">$</span><span class="n">wcv</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="kr">for</span><span class="p">(</span><span class="n">i</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">NG</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">tmp</span> <span class="o">&lt;-</span> <span class="nf">nrow</span><span class="p">((</span><span class="n">df[gpsv</span> <span class="o">==</span> <span class="n">gs[i]</span><span class="p">,</span> <span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="n">u[i</span><span class="p">,</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">cdata</span><span class="o">$</span><span class="n">r[cdata</span><span class="o">$</span><span class="n">cluster</span> <span class="o">==</span> <span class="n">gs[i]]</span><span class="p">)</span> <span class="o">%*%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">solve</span><span class="p">(</span><span class="n">wcv[1</span><span class="o">:</span><span class="n">tmp</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="n">tmp]</span><span class="p">)</span> <span class="o">%*%</span> <span class="n">X[gpsv</span> <span class="o">==</span> <span class="n">gs[i]</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="n">k]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">mt</span> <span class="o">&lt;-</span> <span class="nf">crossprod</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="c1">#t(u) %*% u :: meat</span>
+</span></span><span class="line"><span class="cl">  <span class="n">br</span> <span class="o">&lt;-</span> <span class="nf">solve</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">%*%</span> <span class="n">vm2</span> <span class="o">%*%</span> <span class="n">X</span><span class="p">)</span> <span class="c1">#bread matrix</span>
+</span></span><span class="line"><span class="cl">  <span class="n">clvc</span> <span class="o">&lt;-</span> <span class="n">br</span> <span class="o">%*%</span> <span class="n">mt</span> <span class="o">%*%</span> <span class="n">br</span> <span class="c1">#LZ robust vcov matrix</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">### putting it all together</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">se</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">diag</span><span class="p">(</span><span class="n">clvc</span><span class="p">)))</span> <span class="c1">#standard error</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">betas</span><span class="p">)</span> <span class="c1">#betas</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wald</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">se</span><span class="p">)</span><span class="n">^2</span> <span class="c1">#wald</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pv</span> <span class="o">&lt;-</span> <span class="nf">pchisq</span><span class="p">(</span><span class="n">wald</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">lower.tail</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="c1">#p value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">stars</span> <span class="o">&lt;-</span> <span class="nf">cut</span><span class="p">(</span><span class="n">pv</span><span class="p">,</span> <span class="n">breaks</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.001</span><span class="p">,</span> <span class="m">0.01</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="m">0.1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;***&#34;</span><span class="p">,</span> <span class="s">&#34;**&#34;</span><span class="p">,</span> <span class="s">&#34;*  &#34;</span><span class="p">,</span> <span class="s">&#34;.  &#34;</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">include.lowest</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">estimates</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">se</span><span class="p">,</span> <span class="n">wald</span><span class="p">,</span> <span class="n">pv</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="n">pv</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span> <span class="n">s</span> <span class="o">=</span> <span class="n">stars</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">row.names</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="c1">#getting the names of the coefficients</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nf">cat</span><span class="p">(</span><span class="s">&#34;Working correlation structure:&#34;</span><span class="p">,</span> <span class="n">corstr</span><span class="p">,</span> <span class="s">&#34;\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="c1">#output results</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## only for creating an exchangeable R matrix</span>
+</span></span><span class="line"><span class="cl"><span class="n">exchR</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">icc</span><span class="p">,</span> <span class="n">maxsize</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">NG</span><span class="p">,</span> <span class="n">gpsz</span><span class="p">,</span> <span class="kc">...</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wr1</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">icc</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="n">maxsize</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="n">maxsize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">diag</span><span class="p">(</span><span class="n">wr1</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">## converting to a covariance matrix</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wcv</span> <span class="o">&lt;-</span> <span class="n">wr1</span> <span class="o">*</span> <span class="nf">var</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1">#save it, used when getting the RSE</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wcl</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span> <span class="c1">#empty list</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">for</span> <span class="p">(</span><span class="n">i</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">NG</span><span class="p">){</span> <span class="c1">#making several covariance matrices</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GS</span> <span class="o">&lt;-</span> <span class="n">gpsz[i]</span>  <span class="c1">#depending on how many units per cluster</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">&lt;-</span> <span class="n">wcv[1</span><span class="o">:</span><span class="n">GS</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="n">GS]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wcl[[i]]</span> <span class="o">&lt;-</span> <span class="n">tmp</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">vm2</span> <span class="o">&lt;-</span> <span class="nf">solve</span><span class="p">(</span><span class="n">Matrix</span><span class="o">::</span><span class="nf">bdiag</span><span class="p">(</span><span class="n">wcl</span><span class="p">))</span> <span class="c1">#create block diagonal (this is V^-1)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">vm2</span> <span class="o">=</span> <span class="n">vm2</span><span class="p">,</span> <span class="n">wcv</span> <span class="o">=</span> <span class="n">wcv</span><span class="p">))</span> <span class="c1">#return the inverse of the variance matrix</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Just using the commonly-used High School and Beyond dataset.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">mlmRev</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">Hsb82</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="nf">geeglm</span><span class="p">(</span><span class="n">mAch</span> <span class="o">~</span> <span class="n">sector</span> <span class="o">+</span> <span class="n">meanses</span> <span class="o">+</span> <span class="n">cses</span> <span class="o">+</span> <span class="n">sector</span> <span class="o">*</span> <span class="n">cses</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">id</span> <span class="o">=</span> <span class="n">school</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">corstr</span> <span class="o">=</span> <span class="s">&#39;ex&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">Hsb82</span><span class="p">))</span> <span class="c1">#using an existing package</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Call</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">geeglm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mAch</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">sector</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">meanses</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cses</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sector</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cses</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hsb82</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">corstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#34;</span><span class="n">ex</span><span class="err">&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">Coefficients</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">Estimate</span><span class="w"> </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">   </span><span class="n">Wald</span><span class="w"> </span><span class="n">Pr</span><span class="p">(</span><span class="o">&gt;|</span><span class="n">W</span><span class="o">|</span><span class="p">)</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">           </span><span class="err">12</span><span class="p">.</span><span class="err">128</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">174</span><span class="w"> </span><span class="err">4878</span><span class="p">.</span><span class="err">1</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="err">2</span><span class="n">e</span><span class="o">-</span><span class="err">16</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sectorCatholic</span><span class="w">         </span><span class="err">1</span><span class="p">.</span><span class="err">225</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">308</span><span class="w">   </span><span class="err">15</span><span class="p">.</span><span class="err">8</span><span class="w">  </span><span class="err">6</span><span class="p">.</span><span class="err">9</span><span class="n">e</span><span class="o">-</span><span class="err">05</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">meanses</span><span class="w">                </span><span class="err">5</span><span class="p">.</span><span class="err">333</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">334</span><span class="w">  </span><span class="err">254</span><span class="p">.</span><span class="err">3</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="err">2</span><span class="n">e</span><span class="o">-</span><span class="err">16</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">cses</span><span class="w">                   </span><span class="err">2</span><span class="p">.</span><span class="err">782</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">159</span><span class="w">  </span><span class="err">307</span><span class="p">.</span><span class="err">1</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="err">2</span><span class="n">e</span><span class="o">-</span><span class="err">16</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sectorCatholic</span><span class="o">:</span><span class="n">cses</span><span class="w">   </span><span class="o">-</span><span class="err">1</span><span class="p">.</span><span class="err">349</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">233</span><span class="w">   </span><span class="err">33</span><span class="p">.</span><span class="err">5</span><span class="w">  </span><span class="err">6</span><span class="p">.</span><span class="err">9</span><span class="n">e</span><span class="o">-</span><span class="err">09</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Signif</span><span class="p">.</span><span class="w"> </span><span class="n">codes</span><span class="o">:</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="err">&#39;</span><span class="o">***</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">001</span><span class="w"> </span><span class="err">&#39;</span><span class="o">**</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">01</span><span class="w"> </span><span class="err">&#39;</span><span class="o">*</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">05</span><span class="w"> </span><span class="err">&#39;</span><span class="p">.</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">1</span><span class="w"> </span><span class="err">&#39;</span><span class="w"> </span><span class="err">&#39;</span><span class="w"> </span><span class="err">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Correlation</span><span class="w"> </span><span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchangeable</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Estimated</span><span class="w"> </span><span class="n">Scale</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Estimate</span><span class="w"> </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">     </span><span class="err">39</span><span class="p">.</span><span class="err">1</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">671</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">Link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">identity</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Estimated</span><span class="w"> </span><span class="n">Correlation</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">Estimate</span><span class="w"> </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">alpha</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">0558</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">0099</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">clusters</span><span class="o">:</span><span class="w">   </span><span class="err">160</span><span class="w">  </span><span class="n">Maximum</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="err">67</span><span class="w"> 
+</span></span></span></code></pre></div><p>Using my function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">jebsgee</span><span class="p">(</span><span class="n">mAch</span> <span class="o">~</span> <span class="n">sector</span> <span class="o">+</span> <span class="n">meanses</span> <span class="o">+</span> <span class="n">cses</span> <span class="o">+</span> <span class="n">sector</span> <span class="o">*</span> <span class="n">cses</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">Hsb82</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">cluster</span> <span class="o">=</span> <span class="s">&#39;school&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">corstr</span> <span class="o">=</span> <span class="s">&#39;ex&#39;</span><span class="p">)</span> <span class="c1">#using my function</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="n">Iteration</span><span class="o">:</span><span class="w"> </span><span class="err">1</span><span class="w"> </span><span class="o">::</span><span class="err">2</span><span class="w"> </span><span class="o">::</span><span class="err">3</span><span class="w"> </span><span class="o">::</span><span class="err">4</span><span class="w"> </span><span class="o">::</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Final</span><span class="w"> </span><span class="n">alpha</span><span class="o">:</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">0558</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Working</span><span class="w"> </span><span class="n">correlation</span><span class="w"> </span><span class="n">structure</span><span class="o">:</span><span class="w"> </span><span class="n">exchangeable</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">estimates</span><span class="w">    </span><span class="n">se</span><span class="w">   </span><span class="n">wald</span><span class="w">    </span><span class="n">pv</span><span class="w">   </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">             </span><span class="err">12</span><span class="p">.</span><span class="err">13</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">174</span><span class="w"> </span><span class="err">4878</span><span class="p">.</span><span class="err">1</span><span class="w"> </span><span class="err">0</span><span class="n">e</span><span class="o">+</span><span class="err">00</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sectorCatholic</span><span class="w">           </span><span class="err">1</span><span class="p">.</span><span class="err">23</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">308</span><span class="w">   </span><span class="err">15</span><span class="p">.</span><span class="err">8</span><span class="w"> </span><span class="err">1</span><span class="n">e</span><span class="o">-</span><span class="err">04</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">meanses</span><span class="w">                  </span><span class="err">5</span><span class="p">.</span><span class="err">33</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">334</span><span class="w">  </span><span class="err">254</span><span class="p">.</span><span class="err">3</span><span class="w"> </span><span class="err">0</span><span class="n">e</span><span class="o">+</span><span class="err">00</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">cses</span><span class="w">                     </span><span class="err">2</span><span class="p">.</span><span class="err">78</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">159</span><span class="w">  </span><span class="err">307</span><span class="p">.</span><span class="err">1</span><span class="w"> </span><span class="err">0</span><span class="n">e</span><span class="o">+</span><span class="err">00</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sectorCatholic</span><span class="o">:</span><span class="n">cses</span><span class="w">     </span><span class="o">-</span><span class="err">1</span><span class="p">.</span><span class="err">35</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">233</span><span class="w">   </span><span class="err">33</span><span class="p">.</span><span class="err">6</span><span class="w"> </span><span class="err">0</span><span class="n">e</span><span class="o">+</span><span class="err">00</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span></code></pre></div><p>Results are the same.</p>
+<p>Here are the results if an independence working correlation matrix is used:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="nf">geeglm</span><span class="p">(</span><span class="n">mAch</span> <span class="o">~</span> <span class="n">sector</span> <span class="o">+</span> <span class="n">meanses</span> <span class="o">+</span> <span class="n">cses</span> <span class="o">+</span> <span class="n">sector</span> <span class="o">*</span> <span class="n">cses</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">id</span> <span class="o">=</span> <span class="n">school</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">corstr</span> <span class="o">=</span> <span class="s">&#39;ind&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">Hsb82</span><span class="p">))</span> <span class="c1">#using an existing package</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Call</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">geeglm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mAch</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">sector</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">meanses</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cses</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sector</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cses</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hsb82</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">corstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#34;</span><span class="n">ind</span><span class="err">&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">Coefficients</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">Estimate</span><span class="w"> </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">   </span><span class="n">Wald</span><span class="w"> </span><span class="n">Pr</span><span class="p">(</span><span class="o">&gt;|</span><span class="n">W</span><span class="o">|</span><span class="p">)</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">           </span><span class="err">12</span><span class="p">.</span><span class="err">116</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">170</span><span class="w"> </span><span class="err">5087</span><span class="p">.</span><span class="err">1</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="err">2</span><span class="n">e</span><span class="o">-</span><span class="err">16</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sectorCatholic</span><span class="w">         </span><span class="err">1</span><span class="p">.</span><span class="err">280</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">299</span><span class="w">   </span><span class="err">18</span><span class="p">.</span><span class="err">3</span><span class="w">  </span><span class="err">1</span><span class="p">.</span><span class="err">9</span><span class="n">e</span><span class="o">-</span><span class="err">05</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">meanses</span><span class="w">                </span><span class="err">5</span><span class="p">.</span><span class="err">164</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">334</span><span class="w">  </span><span class="err">239</span><span class="p">.</span><span class="err">0</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="err">2</span><span class="n">e</span><span class="o">-</span><span class="err">16</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">cses</span><span class="w">                   </span><span class="err">2</span><span class="p">.</span><span class="err">782</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">159</span><span class="w">  </span><span class="err">307</span><span class="p">.</span><span class="err">1</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="err">2</span><span class="n">e</span><span class="o">-</span><span class="err">16</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sectorCatholic</span><span class="o">:</span><span class="n">cses</span><span class="w">   </span><span class="o">-</span><span class="err">1</span><span class="p">.</span><span class="err">349</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">233</span><span class="w">   </span><span class="err">33</span><span class="p">.</span><span class="err">5</span><span class="w">  </span><span class="err">6</span><span class="p">.</span><span class="err">9</span><span class="n">e</span><span class="o">-</span><span class="err">09</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Signif</span><span class="p">.</span><span class="w"> </span><span class="n">codes</span><span class="o">:</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="err">&#39;</span><span class="o">***</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">001</span><span class="w"> </span><span class="err">&#39;</span><span class="o">**</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">01</span><span class="w"> </span><span class="err">&#39;</span><span class="o">*</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">05</span><span class="w"> </span><span class="err">&#39;</span><span class="p">.</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">1</span><span class="w"> </span><span class="err">&#39;</span><span class="w"> </span><span class="err">&#39;</span><span class="w"> </span><span class="err">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Correlation</span><span class="w"> </span><span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">independence</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Estimated</span><span class="w"> </span><span class="n">Scale</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Estimate</span><span class="w"> </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">     </span><span class="err">39</span><span class="p">.</span><span class="err">1</span><span class="w">   </span><span class="err">0</span><span class="p">.</span><span class="err">671</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">clusters</span><span class="o">:</span><span class="w">   </span><span class="err">160</span><span class="w">  </span><span class="n">Maximum</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="err">67</span><span class="w"> 
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">jebsgee</span><span class="p">(</span><span class="n">mAch</span> <span class="o">~</span> <span class="n">sector</span> <span class="o">+</span> <span class="n">meanses</span> <span class="o">+</span> <span class="n">cses</span> <span class="o">+</span> <span class="n">sector</span> <span class="o">*</span> <span class="n">cses</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">Hsb82</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">cluster</span> <span class="o">=</span> <span class="s">&#39;school&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">corstr</span> <span class="o">=</span> <span class="s">&#39;ind&#39;</span><span class="p">)</span> <span class="c1">#using my function</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="n">Working</span><span class="w"> </span><span class="n">correlation</span><span class="w"> </span><span class="n">structure</span><span class="o">:</span><span class="w"> </span><span class="n">independence</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">estimates</span><span class="w">    </span><span class="n">se</span><span class="w">   </span><span class="n">wald</span><span class="w"> </span><span class="n">pv</span><span class="w">   </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">             </span><span class="err">12</span><span class="p">.</span><span class="err">12</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">170</span><span class="w"> </span><span class="err">5087</span><span class="p">.</span><span class="err">1</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sectorCatholic</span><span class="w">           </span><span class="err">1</span><span class="p">.</span><span class="err">28</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">299</span><span class="w">   </span><span class="err">18</span><span class="p">.</span><span class="err">3</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">meanses</span><span class="w">                  </span><span class="err">5</span><span class="p">.</span><span class="err">16</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">334</span><span class="w">  </span><span class="err">239</span><span class="p">.</span><span class="err">0</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">cses</span><span class="w">                     </span><span class="err">2</span><span class="p">.</span><span class="err">78</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">159</span><span class="w">  </span><span class="err">307</span><span class="p">.</span><span class="err">1</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">sectorCatholic</span><span class="o">:</span><span class="n">cses</span><span class="w">     </span><span class="o">-</span><span class="err">1</span><span class="p">.</span><span class="err">35</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">233</span><span class="w">   </span><span class="err">33</span><span class="p">.</span><span class="err">6</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span></code></pre></div><p>Testing using the small <code>mtcars</code> dataset in R:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">mtcars2</span> <span class="o">&lt;-</span> <span class="n">mtcars</span><span class="nf">[order</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="p">),</span> <span class="n">]</span> <span class="c1">#needs to be sorted for geeglm</span>
+</span></span><span class="line"><span class="cl"><span class="nf">jebsgee</span><span class="p">(</span><span class="n">mpg</span> <span class="o">~</span> <span class="n">wt</span> <span class="o">+</span> <span class="n">am</span> <span class="o">+</span> <span class="n">qsec</span> <span class="o">+</span> <span class="n">hp</span> <span class="o">+</span> <span class="n">vs</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">mtcars</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">cluster</span> <span class="o">=</span> <span class="s">&#39;cyl&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">corstr</span> <span class="o">=</span> <span class="s">&#39;ex&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="n">Iteration</span><span class="o">:</span><span class="w"> </span><span class="err">1</span><span class="w"> </span><span class="o">::</span><span class="err">2</span><span class="w"> </span><span class="o">::</span><span class="err">3</span><span class="w"> </span><span class="o">::</span><span class="err">4</span><span class="w"> </span><span class="o">::</span><span class="err">5</span><span class="w"> </span><span class="o">::</span><span class="err">6</span><span class="w"> </span><span class="o">::</span><span class="err">7</span><span class="w"> </span><span class="o">::</span><span class="err">8</span><span class="w"> </span><span class="o">::</span><span class="err">9</span><span class="w"> </span><span class="o">::</span><span class="err">10</span><span class="w"> </span><span class="o">::</span><span class="err">11</span><span class="w"> </span><span class="o">::</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Final</span><span class="w"> </span><span class="n">alpha</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="err">0</span><span class="p">.</span><span class="err">0284</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Working</span><span class="w"> </span><span class="n">correlation</span><span class="w"> </span><span class="n">structure</span><span class="o">:</span><span class="w"> </span><span class="n">exchangeable</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">estimates</span><span class="w">      </span><span class="n">se</span><span class="w">   </span><span class="n">wald</span><span class="w">     </span><span class="n">pv</span><span class="w">   </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">    </span><span class="err">17</span><span class="p">.</span><span class="err">122</span><span class="w"> </span><span class="err">4</span><span class="p">.</span><span class="err">91011</span><span class="w"> </span><span class="err">12</span><span class="p">.</span><span class="err">160</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">0005</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">wt</span><span class="w">             </span><span class="o">-</span><span class="err">3</span><span class="p">.</span><span class="err">260</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">70955</span><span class="w"> </span><span class="err">21</span><span class="p">.</span><span class="err">105</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">0000</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">am</span><span class="w">              </span><span class="err">2</span><span class="p">.</span><span class="err">929</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">40431</span><span class="w"> </span><span class="err">52</span><span class="p">.</span><span class="err">496</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">0000</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">qsec</span><span class="w">            </span><span class="err">0</span><span class="p">.</span><span class="err">817</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">20428</span><span class="w"> </span><span class="err">15</span><span class="p">.</span><span class="err">999</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">0001</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">hp</span><span class="w">             </span><span class="o">-</span><span class="err">0</span><span class="p">.</span><span class="err">016</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">00962</span><span class="w">  </span><span class="err">2</span><span class="p">.</span><span class="err">753</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">0971</span><span class="w"> </span><span class="p">.</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">vs</span><span class="w">              </span><span class="err">0</span><span class="p">.</span><span class="err">174</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">32731</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">282</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">5956</span><span class="w">    
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="nf">geeglm</span><span class="p">(</span><span class="n">mpg</span> <span class="o">~</span> <span class="n">wt</span> <span class="o">+</span> <span class="n">am</span> <span class="o">+</span> <span class="n">qsec</span> <span class="o">+</span> <span class="n">hp</span> <span class="o">+</span> <span class="n">vs</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">id</span> <span class="o">=</span> <span class="n">cyl</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">corstr</span> <span class="o">=</span> <span class="s">&#39;ex&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">mtcars2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Call</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">geeglm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">wt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">qsec</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">vs</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtcars2</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cyl</span><span class="p">,</span><span class="w"> </span><span class="n">corstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#34;</span><span class="n">ex</span><span class="err">&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">Coefficients</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Estimate</span><span class="w">  </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">  </span><span class="n">Wald</span><span class="w"> </span><span class="n">Pr</span><span class="p">(</span><span class="o">&gt;|</span><span class="n">W</span><span class="o">|</span><span class="p">)</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w"> </span><span class="err">17</span><span class="p">.</span><span class="err">12208</span><span class="w">  </span><span class="err">4</span><span class="p">.</span><span class="err">91011</span><span class="w"> </span><span class="err">12</span><span class="p">.</span><span class="err">16</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">00049</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">wt</span><span class="w">          </span><span class="o">-</span><span class="err">3</span><span class="p">.</span><span class="err">25966</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">70954</span><span class="w"> </span><span class="err">21</span><span class="p">.</span><span class="err">10</span><span class="w">  </span><span class="err">4</span><span class="p">.</span><span class="err">3</span><span class="n">e</span><span class="o">-</span><span class="err">06</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">am</span><span class="w">           </span><span class="err">2</span><span class="p">.</span><span class="err">92939</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">40431</span><span class="w"> </span><span class="err">52</span><span class="p">.</span><span class="err">50</span><span class="w">  </span><span class="err">4</span><span class="p">.</span><span class="err">3</span><span class="n">e</span><span class="o">-</span><span class="err">13</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">qsec</span><span class="w">         </span><span class="err">0</span><span class="p">.</span><span class="err">81711</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">20428</span><span class="w"> </span><span class="err">16</span><span class="p">.</span><span class="err">00</span><span class="w">  </span><span class="err">6</span><span class="p">.</span><span class="err">3</span><span class="n">e</span><span class="o">-</span><span class="err">05</span><span class="w"> </span><span class="o">***</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">hp</span><span class="w">          </span><span class="o">-</span><span class="err">0</span><span class="p">.</span><span class="err">01596</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">00962</span><span class="w">  </span><span class="err">2</span><span class="p">.</span><span class="err">75</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">09710</span><span class="w"> </span><span class="p">.</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">vs</span><span class="w">           </span><span class="err">0</span><span class="p">.</span><span class="err">17373</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">32731</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">28</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">59558</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Signif</span><span class="p">.</span><span class="w"> </span><span class="n">codes</span><span class="o">:</span><span class="w">  </span><span class="err">0</span><span class="w"> </span><span class="err">&#39;</span><span class="o">***</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">001</span><span class="w"> </span><span class="err">&#39;</span><span class="o">**</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">01</span><span class="w"> </span><span class="err">&#39;</span><span class="o">*</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">05</span><span class="w"> </span><span class="err">&#39;</span><span class="p">.</span><span class="err">&#39;</span><span class="w"> </span><span class="err">0</span><span class="p">.</span><span class="err">1</span><span class="w"> </span><span class="err">&#39;</span><span class="w"> </span><span class="err">&#39;</span><span class="w"> </span><span class="err">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Correlation</span><span class="w"> </span><span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchangeable</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Estimated</span><span class="w"> </span><span class="n">Scale</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Estimate</span><span class="w"> </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">Intercept</span><span class="p">)</span><span class="w">        </span><span class="err">5</span><span class="w">    </span><span class="err">1</span><span class="p">.</span><span class="err">29</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">Link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">identity</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Estimated</span><span class="w"> </span><span class="n">Correlation</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">Estimate</span><span class="w"> </span><span class="n">Std</span><span class="p">.</span><span class="n">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">alpha</span><span class="w">  </span><span class="o">-</span><span class="err">0</span><span class="p">.</span><span class="err">0284</span><span class="w">  </span><span class="err">0</span><span class="p">.</span><span class="err">0775</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">clusters</span><span class="o">:</span><span class="w">   </span><span class="err">3</span><span class="w">  </span><span class="n">Maximum</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="err">14</span><span class="w"> 
+</span></span></span></code></pre></div><h2 id="references">References</h2>
+<p>Bauer, D. J., &amp; Sterba, S. K. (2011). Fitting multilevel models with ordinal outcomes: Performance of alternative specifications and methods of estimation. <em>Psychological Methods, 16</em>(4), 373–390. <a href="https://doi.org/10.1037/a0025813" target="_blank" rel="noopener">https://doi.org/10.1037/a0025813</a></p>
+<p>Crespi, C. M., Wong, W. K., &amp; Wu, S. (2011). A new dependence parameter approach to improve the design of cluster randomized trials with binary outcomes. <em>Clinical Trials: Journal of the Society for Clinical Trials, 8</em>(6), 687–698. <a href="https://doi.org/10.1177/1740774511423851" target="_blank" rel="noopener">https://doi.org/10.1177/1740774511423851</a></p>
+<p>Ghisletta, P., &amp; Spini, D. (2004). An introduction to generalized estimating equations and an application to assess selectivity effects in a longitudinal study on very old individuals. <em>Journal of Educational and Behavioral Statistics, 29</em>(4), 421-437.</p>
+<p>Hardin, J., &amp; Hilbe, J. (2013). <em>Generalized estimating equations (2nd ed.)</em>. CRC Press.</p>
+<p>Liang, K.-Y., &amp; Zeger, S. L. (1986). Longitudinal data analysis using generalized linear models. <em>Biometrika, 73</em>(1), 13–22.</p>
+<p>Singer, J. D. (1998). Using SAS PROC MIXED to fit multilevel models, hierarchical models, and individual growth models. <em>Journal of Educational and Behavioral Statistics, 23</em>(4), 323-355.</p>
+<p>Wu, S., Crespi, C. M., &amp; Wong, W. K. (2012). Comparison of methods for estimating the intraclass correlation coefficient for binary responses in cancer prevention cluster randomized trials. <em>Contemporary Clinical Trials, 33</em>(5), 869–880.</p>
+<p>&ndash; END</p>
+
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2021-02-27T00:00:00.000Z">
+    <span>Last updated on</span>
+    Feb 27, 2021</time>
+
+      <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
+        
+        
+  <div id="cusdis_thread"
   data-host="https://cusdis.com"
   data-app-id="999ce0c5-9bf3-489b-a340-698616f5b80a"
   data-page-id="http://localhost:1313/post/gee/"
@@ -7,3 +3065,119 @@
   data-theme="auto"
 ></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+
+
+
+      </div>
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Grumblesquasher. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-sa fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
