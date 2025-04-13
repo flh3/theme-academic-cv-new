@@ -34,7 +34,7 @@ abstract: 'Practical Multilevel Modeling Using R provides students with a step-b
 summary: ''
 
 tags:
-- multilevel modeling
+- multilevel models
 
 # Display this page in a list of Featured pages?
 featured: true

@@ -36,6 +36,7 @@ summary: ''
 tags:
 - clustered data
 - generalized estimating equations
+- multilevel models
 
 # Display this page in a list of Featured pages?
 featured: true
