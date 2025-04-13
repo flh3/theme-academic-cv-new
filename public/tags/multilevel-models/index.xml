@@ -29,12 +29,147 @@
     </item>
     
     <item>
+      <title>Using plausible values when fitting multilevel models with large-scale assessment data using R</title>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2024/</link>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2024/</guid>
+      <description>&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/f/f3/Open_Access_PLoS.svg&#34; alt=&#34;logo&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be accessed by installing the &lt;code&gt;MLMusingR&lt;/code&gt; package.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Accounting for heteroskedasticity resulting from between-group differences in multilevel models</title>
       <link>http://localhost:1313/publication/journal-article/test3/huang-accounting-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/test3/huang-accounting-2023/</guid>
       <description>&lt;p&gt;Robust standard errors for multilevel models.&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Practical multilevel modeling using R</title>
+      <link>http://localhost:1313/publication/book/huang-practical-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/book/huang-practical-2023/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;A major strength of this book is its accessibility. Huang effortlessly bridges the divide between the sometimes-abstruse literature on advanced statistics and the needs of applied researchers who lack extensive quantitative training. The result is an approachable text that covers all the basics, but also does not shy away from important advanced topics such as diagnostics, detecting and handling heteroscedasticity, and missing data handling methods. This book would make not only a useful guide to the application of multilevel modeling, but could also serve as an excellent companion text for a course on multilevel modeling. - Kristopher J. Preacher, Vanderbilt University&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This book is an excellent book for a graduate level multilevel modeling course that utilizes R; it perfectly combines the depth and breadth on this topic. - Wei Wang, The Graduate Center, City University of New York&lt;/p&gt;&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using robust standard errors for the analysis of binary outcomes with a small number of clusters</title>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</guid>
+      <description>&lt;p&gt;CR2 plug in for SPSS can be downloaded from: &lt;a href=&#34;https://github.com/flh3/CR2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Analyzing cross-sectionally clustered data using generalized estimating equations</title>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</guid>
+      <description>&lt;p&gt;As of 2024.10.03, the most read article on JEBS (for the last 6 months)!&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;jebs_most_read.png&#34; srcset=&#34;
+               /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp 400w,
+               /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_c2fa98b20b25e821.webp 760w,
+               /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_bc691bc4ace80636.webp 1200w&#34;
+               src=&#34;http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;536&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;In the original paper draft, I had a section which showed how much more widely used mixed models (i.e., MLMs, HLMs) were compared to GEEs but was asked to remove that. I thought the usage was interesting so I am including it here:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In psychology, mixed model studies are much more popular than studies using GEEs by a ratio of 15:1 (Bauer &amp;amp; Sterba, 2011).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Citations in JEBS:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In the Journal of Educational and Behavioral Statistics (JEBS): one article on how to use multilevel models by Singer (1998) has over 3,300 citations (as of 2020.06.11, Google Scholar)&lt;/li&gt;
+&lt;li&gt;In the same journal, Ghisletta &amp;amp; Sini (2004) provided an introduction to GEEs. This article has 329 citations. GS wrote (p. 431):&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Although GEEs are widely applied in biological, pharmacological, and closely related disciplines, their application in educational and social sciences remains relatively scarce.&lt;/p&gt;
+&lt;p&gt;There is a difference of 6 years but the Singer article has been cited over &lt;strong&gt;10&lt;/strong&gt; times more! If using average citations per year, &lt;strong&gt;7.5&lt;/strong&gt; times more.&lt;/p&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;p&gt;Ghisletta, P., &amp;amp; Spini, D. (2004). An introduction to generalized estimating equations and an application to assess selectivity effects in a longitudinal study on very old individuals. Journal of Educational and Behavioral Statistics, 29(4), 421-437.&lt;/p&gt;
+&lt;p&gt;Singer, J. D. (1998). Using SAS PROC MIXED to fit multilevel models, hierarchical models, and individual growth models. Journal of Educational and Behavioral Statistics, 23(4), 323-355.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using cluster-robust standard errors when analyzing group-randomized trials with few clusters</title>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</guid>
+      <description>&lt;p&gt;The SPSS version can be accessed here: &lt;a href=&#34;https://github.com/flh3/CR2/tree/master/SPSS&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2/tree/master/SPSS&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Alternatives to logistic regression models when analyzing cluster randomized trials with binary outcomes</title>
+      <link>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multilevel modeling and ordinary least squares regression:  How comparable are they?</title>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Alternatives to multilevel modeling for the analysis of clustered data</title>
+      <link>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2016/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2016/</guid>
+      <description></description>
     </item>
     
   </channel>

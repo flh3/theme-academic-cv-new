@@ -53,7 +53,7 @@ sections:
   - block: collection
     content:
       title: Recent Publications
-      text: "See *<a href = 'uploads/resume.pdf'>CV</a>* for a list of all publications."
+      text: "See *<a href = 'uploads/resume.pdf'>CV</a>* for a list of all publications. Use the search feature on the navigation bar to find a paper on a particular topic."
       filters:
         folders:
           - publication
