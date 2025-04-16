@@ -17,196 +17,360 @@
       <link>http://localhost:1313/post/2025_lsa_mi/</link>
       <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/post/2025_lsa_mi/</guid>
-      <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies the article:&lt;/p&gt;
+      <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
+large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies
+the article:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Huang, F., &amp;amp; Keller, B. (2025). Working with missing data in large-scale assessments. &lt;em&gt;Large-scale Assessments in Education&lt;/em&gt;. doi: 10.1186/s40536-025-00248-9&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;There is a slight adjustment (for the original aticle) when it comes to parallel processing (an additional package needs to be loaded). This is using the Belgian PISA dataset.&lt;/p&gt;
-&lt;h1 id=&#34;1-read-in-the-data-and-load-the-required-libraries&#34;&gt;1. Read in the data and load the required libraries&lt;/h1&gt;
+&lt;p&gt;Huang, F., &amp;amp; Keller, B. (2025). Working with missing data in
+large-scale assessments. &lt;em&gt;Large-scale Assessments in Education&lt;/em&gt;. doi:
+10.1186/s40536-025-00248-9&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The article is open access but you can get the updated, corrected version &lt;a href=&#34;MIwithLSA.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is a slight adjustment (for the original aticle) when it comes to
+parallel processing (an additional package needs to be loaded). This is
+using the Belgian PISA dataset.&lt;/p&gt;
+&lt;h2 id=&#34;1-read-in-the-data-and-load-the-required-libraries&#34;&gt;1. Read in the data and load the required libraries&lt;/h2&gt;
 &lt;p&gt;Download the data from the TIMSS website.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;comb&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rio&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;import&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgium.rds&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#combined original dataset&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;wmiss&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rio&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;import&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgiumwmiss.rds&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#dataset with additional missing data&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MLMusingR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# for mixPV and summary for pooling&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;WeMix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# for mix&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tidyr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# to convert from wide to long&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dplyr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# data management&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rblimp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#for creating the imputations&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;2-fit-the-models&#34;&gt;2. Fit the models&lt;/h1&gt;
-&lt;p&gt;Done using the complete (90%) and missing info (82%) datasets. Done for comparison purposes (how do the results differ when we impute the data?)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;l1a &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  pv5math + pv6math + pv7math + pv8math + #note correction, pv8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  pv9math + pv10math ~ gender + escs + immig2 +
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  stubeha + lackstaff + (1|cntschid),
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  weights = c(&amp;#39;w_fstuwt&amp;#39;, &amp;#39;w_schgrnrabwt&amp;#39;),
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  data = comb, mc = TRUE) # can add the option mc = TRUE to make this faster (multi core)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;l1b &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  pv5math + pv6math + pv7math + pv8math + #note correction, pv8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  pv9math + pv10math ~ gender + escs + immig2 +
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  stubeha + lackstaff + (1|cntschid),
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  weights = c(&amp;#39;w_fstuwt&amp;#39;, &amp;#39;w_schgrnrabwt&amp;#39;),
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  data = wmiss, mc = TRUE) 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;3-investigate-missingness&#34;&gt;3. Investigate missingness&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MLMusingR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;nmiss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wmiss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Percent&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;missing&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;pv6math&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;pv7math&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;pv8math&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;pv9math&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;pv10math&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;stubeha&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;teachbeha&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;gender&lt;/span&gt;          &lt;span class=&#34;n&#34;&gt;escs&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;immig2&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;mf&#34;&gt;0.03445428&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.03445428&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.12235988&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.02595870&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;lackstaff&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;w_fstuwt&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;w_schgrnrabwt&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;cntschid&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;mf&#34;&gt;0.05699115&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.00000000&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Percent&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;complete&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cases&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.8154572&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Minimum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;impute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;18&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Perform some necessary data management:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;tall&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pivot_longer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wmiss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv10math&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;values_to&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;math&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#number of datasets to impute&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ns&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;nrow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wmiss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#count how many observations there are&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;tall&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;.pv&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;as.numeric&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;gsub&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;[^0-9]&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tall&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#extract the numeric value &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nopv&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;as.character&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tall&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;.pv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#the number of plausible values&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;tall_numeric&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mutate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tall&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;across&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;everything&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as.numeric&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#blimp will only work with numeric data&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;4-impute-the-data&#34;&gt;4. Impute the data&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# set_blimp(&amp;#34;/mnt/c/Blimp/blimp&amp;#34;) ### NOTE:: I need this for linux
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mymodel &amp;lt;- rblimp(
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  data = tall_numeric,
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  nominal = &amp;#39;gender immig2 lackstaff&amp;#39;,
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  # ordinal = &amp;#39;&amp;#39;,
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  clusterid = &amp;#39;cntschid&amp;#39;,
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  fixed = &amp;#39;gender w_fstuwt&amp;#39;, 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  model = &amp;#39;math ~ gender escs immig2 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           stubeha lackstaff w_fstuwt&amp;#39;, 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  options = &amp;#39;labels&amp;#39;,
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  seed = 1234,
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  nimps = m
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;) |&amp;gt; by_group(&amp;#39;.pv&amp;#39;) 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will take a while. Suggest using 2 in the &lt;code&gt;nimps&lt;/code&gt; option to start and see if everything works properly first. The &lt;code&gt;by_group&lt;/code&gt; option is important when there are plausible values.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;comb &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgium.rds&amp;quot;) #combined original dataset
+wmiss &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgiumwmiss.rds&amp;quot;) #dataset with additional missing data
+
+library(MLMusingR) # for mixPV and summary for pooling
+library(WeMix) # for mix
+library(tidyr) # to convert from wide to long
+library(dplyr) # data management
+library(rblimp) #for creating the imputations
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-fit-the-models&#34;&gt;2. Fit the models&lt;/h2&gt;
+&lt;p&gt;Done using the complete (90%) and missing info (82%) datasets. Done for
+comparison purposes (how do the results differ when we impute the data?)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;l1a &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
+  pv5math + pv6math + pv7math + pv8math + #note correction, pv8
+  pv9math + pv10math ~ gender + escs + immig2 +
+  stubeha + lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = comb, mc = TRUE) # can add the option mc = TRUE to make this faster (multi core)
+l1b &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
+  pv5math + pv6math + pv7math + pv8math + #note correction, pv8
+  pv9math + pv10math ~ gender + escs + immig2 +
+  stubeha + lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = wmiss, mc = TRUE) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-investigate-missingness&#34;&gt;3. Investigate missingness&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;MLMusingR::nmiss(wmiss) 
+
+Percent missing per variable:
+      pv1math       pv2math       pv3math       pv4math       pv5math       pv6math       pv7math 
+   0.00000000    0.00000000    0.00000000    0.00000000    0.00000000    0.00000000    0.00000000 
+      pv8math       pv9math      pv10math       stubeha     teachbeha        gender          escs 
+   0.00000000    0.00000000    0.00000000    0.03445428    0.03445428    0.00000000    0.12235988 
+       immig2     lackstaff      w_fstuwt w_schgrnrabwt      cntschid 
+   0.02595870    0.05699115    0.00000000    0.00000000    0.00000000 
+
+Percent complete cases: 0.8154572 
+(Minimum) number to impute: 18 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Perform some necessary data management:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tall &amp;lt;- pivot_longer(wmiss, pv1math:pv10math, values_to = &#39;math&#39;)
+m &amp;lt;- 20 #number of datasets to impute
+ns &amp;lt;- nrow(wmiss) #count how many observations there are
+tall$.pv &amp;lt;- as.numeric(gsub(&amp;quot;[^0-9]&amp;quot;, &amp;quot;&amp;quot;, tall$name)) #extract the numeric value 
+nopv &amp;lt;- length(table(as.character(tall$.pv))) #the number of plausible values
+tall_numeric &amp;lt;- mutate(tall,
+  across(everything(), as.numeric) #blimp will only work with numeric data
+) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-impute-the-data&#34;&gt;4. Impute the data&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# set_blimp(&amp;quot;/mnt/c/Blimp/blimp&amp;quot;) ### NOTE:: I need this for linux
+mymodel &amp;lt;- rblimp(
+  data = tall_numeric,
+  nominal = &#39;gender immig2 lackstaff&#39;,
+  # ordinal = &#39;&#39;,
+  clusterid = &#39;cntschid&#39;,
+  fixed = &#39;gender w_fstuwt&#39;, 
+  model = &#39;math ~ gender escs immig2 
+           stubeha lackstaff w_fstuwt&#39;, 
+  options = &#39;labels&#39;,
+  seed = 1234,
+  nimps = m
+) |&amp;gt; by_group(&#39;.pv&#39;) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will take a while. Suggest using 2 in the &lt;code&gt;nimps&lt;/code&gt; option to start
+and see if everything works properly first. The &lt;code&gt;by_group&lt;/code&gt; option is
+important when there are plausible values.&lt;/p&gt;
 &lt;p&gt;After imputing, inspect the rhat values (see article)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mymodel&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;sapply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;tail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;psr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;na.rm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     1      2      3      4      5      6      7      8      9     10 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1.0480 1.0394 1.0401 1.0959 1.0312 1.0609 1.0489 1.0337 1.0401 1.0610 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# lapply(mymodel, psr)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;5-extract-the-data&#34;&gt;5. Extract the data&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;mymodel |&amp;gt; sapply(\(x) tail(x@psr, 1) |&amp;gt; max(na.rm = TRUE))
+
+     1      2      3      4      5      6      7      8      9     10 
+1.0480 1.0394 1.0401 1.0959 1.0312 1.0609 1.0489 1.0337 1.0401 1.0610 
+
+# lapply(mymodel, psr)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-extract-the-data&#34;&gt;5. Extract the data&lt;/h2&gt;
 &lt;p&gt;And perform some data management.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;lapply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mymodel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as.mitml&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;unlist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recursive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;do.call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rbind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;.implist&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nopv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Return factor attributes to the data&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lackstaff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#no attributes&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     1      2      3      4 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;250958 720793 576658 146591 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;attributes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lackstaff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;attributes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lackstaff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lackstaff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#now with attributes&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Not at all    Very little To some extent          A lot 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        250958         720793         576658         146591 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## do this for the other variables that should be categorical&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;attributes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gender&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;attributes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gender&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;attributes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;immig2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;attributes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;immig2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Create a list for analysis&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;alldat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;split&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;impdat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;.implist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;6-analyze-the-data&#34;&gt;6. Analyze the data&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;impdat &amp;lt;- lapply(mymodel, as.mitml) |&amp;gt;
+  unlist(recursive = FALSE) |&amp;gt;
+  do.call(rbind, args = _)
+
+impdat$.implist &amp;lt;- rep(1:(m * nopv), each = ns)
+## Return factor attributes to the data
+table(impdat$lackstaff) #no attributes
+
+
+     1      2      3      4 
+250958 720793 576658 146591 
+
+attributes(impdat$lackstaff) &amp;lt;- attributes(comb$lackstaff)
+table(impdat$lackstaff) #now with attributes
+
+
+    Not at all    Very little To some extent          A lot 
+        250958         720793         576658         146591 
+
+## do this for the other variables that should be categorical
+attributes(impdat$gender) &amp;lt;- attributes(comb$gender)
+attributes(impdat$immig2) &amp;lt;- attributes(comb$immig2)
+
+
+## Create a list for analysis
+alldat &amp;lt;- split(impdat, impdat$.implist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-analyze-the-data&#34;&gt;6. Analyze the data&lt;/h2&gt;
 &lt;p&gt;Specify the model:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;modfit &amp;lt;- function(x) {
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  mix(math ~ gender + escs + immig2 + stubeha +
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  lackstaff + (1|cntschid),
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  weights = c(&amp;#39;w_fstuwt&amp;#39;, &amp;#39;w_schgrnrabwt&amp;#39;),
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  data = x)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Fit the model, two ways:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;modfit &amp;lt;- function(x) {
+  mix(math ~ gender + escs + immig2 + stubeha +
+  lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = x)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fit the model, two ways:&lt;/p&gt;
 &lt;p&gt;Method 1: Serial operation (slow)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# allres &amp;lt;- lapply(alldat, FUN = modfit)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Method 2: Parallel computation (much faster but still requires around 5 minutes)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;library(parallel)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;library(doParallel) ### NEED THIS!
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cl &amp;lt;- makeCluster(detectCores() - 1)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;registerDoParallel(cl)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;clusterExport(cl, list(&amp;#39;modfit&amp;#39;, &amp;#39;mix&amp;#39;))
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;allres &amp;lt;- parLapply(cl, alldat, fun = modfit)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;stopCluster(cl)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;7-pool-results&#34;&gt;7 Pool results&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;# allres &amp;lt;- lapply(alldat, FUN = modfit)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Method 2: Parallel computation (much faster but still requires around 5
+minutes)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(parallel)
+library(doParallel) ### NEED THIS!
+cl &amp;lt;- makeCluster(detectCores() - 1)
+registerDoParallel(cl)
+clusterExport(cl, list(&#39;modfit&#39;, &#39;mix&#39;))
+allres &amp;lt;- parLapply(cl, alldat, fun = modfit)
+stopCluster(cl)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;7-pool-results&#34;&gt;7 Pool results&lt;/h2&gt;
 &lt;p&gt;Need to change the class for the &lt;code&gt;summary&lt;/code&gt; function to work:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;allres&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;mixPV&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;allres&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Results of multilevel analyses with 200 plausible values.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Number of observations: 8475 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Estimates for random effects: 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                     estimate std.error statistic   df Pr(&amp;gt;t)    
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cntschid.(Intercept)  2878.60    377.84      7.62 1782 &amp;lt;2e-16 ***
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Residual              4353.26    163.94     26.55  454 &amp;lt;2e-16 ***
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Estimates for fixed effects: 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                        estimate std.error statistic   df Pr(&amp;gt;t)    
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(Intercept)               496.88     10.74     46.28 4252 &amp;lt;2e-16 ***
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;genderFemale              -19.50      2.31     -8.42  950 &amp;lt;2e-16 ***
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;escs                       18.88      1.72     10.95  485 &amp;lt;2e-16 ***
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;immig2Second-Generation   -22.31      3.62     -6.16 1747 &amp;lt;2e-16 ***
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;immig2First-Generation    -26.35      4.60     -5.73 1330 &amp;lt;2e-16 ***
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;stubeha                   -37.68      5.54     -6.81 5192 &amp;lt;2e-16 ***
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lackstaffVery little       28.12     13.97      2.01 4055  0.044 *  
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lackstaffTo some extent     9.23     14.20      0.65 4573  0.516    
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lackstaffA lot             21.61     17.98      1.20 2498  0.229    
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Comparing results side by side:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/refs/heads/main/mixPV/wemix_modelsummary.R&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;modelsummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;modelsummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;90% comp&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l1a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;82% comp&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l1b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;MI&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;allres&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stars&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;\begin{table}
-\centering
-\begin{talltblr}[         %% tabularray outer open
-entry=none,label=none,
-note{}={+ p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001},
-]                     %% tabularray outer close
-{                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]},
-column{1}={halign=l,},
-column{2}={halign=c,},
-column{3}={halign=c,},
-column{4}={halign=c,},
-hline{24}={1,2,3,4}{solid, 0.05em, black},
-}                     %% tabularray inner close
-\toprule
-&amp;amp; 90% comp &amp;amp; 82% comp &amp;amp; MI \ \midrule %% TinyTableHeader
-(Intercept)             &amp;amp; \num{499.886}***  &amp;amp; \num{520.934}***  &amp;amp; \num{496.875}***  \
-&amp;amp; (\num{10.312})    &amp;amp; (\num{9.069})     &amp;amp; (\num{10.737})    \
-genderFemale            &amp;amp; \num{-20.890}***  &amp;amp; \num{-18.840}***  &amp;amp; \num{-19.495}***  \
-&amp;amp; (\num{2.428})     &amp;amp; (\num{2.458})     &amp;amp; (\num{2.315})     \
-escs                    &amp;amp; \num{17.674}***   &amp;amp; \num{16.991}***   &amp;amp; \num{18.878}***   \
-&amp;amp; (\num{1.510})     &amp;amp; (\num{1.625})     &amp;amp; (\num{1.724})     \
-immig2Second-Generation &amp;amp; \num{-22.650}***  &amp;amp; \num{-21.346}***  &amp;amp; \num{-22.306}***  \
-&amp;amp; (\num{3.872})     &amp;amp; (\num{4.086})     &amp;amp; (\num{3.622})     \
-immig2First-Generation  &amp;amp; \num{-27.046}***  &amp;amp; \num{-24.955}***  &amp;amp; \num{-26.349}***  \
-&amp;amp; (\num{4.877})     &amp;amp; (\num{4.972})     &amp;amp; (\num{4.598})     \
-stubeha                 &amp;amp; \num{-36.355}***  &amp;amp; \num{-32.648}***  &amp;amp; \num{-37.677}***  \
-&amp;amp; (\num{5.522})     &amp;amp; (\num{4.961})     &amp;amp; (\num{5.536})     \
-lackstaffVery little    &amp;amp; \num{27.385}*     &amp;amp; \num{12.016}      &amp;amp; \num{28.116}*     \
-&amp;amp; (\num{13.242})    &amp;amp; (\num{12.071})    &amp;amp; (\num{13.967})    \
-lackstaffTo some extent &amp;amp; \num{9.347}       &amp;amp; \num{-2.166}      &amp;amp; \num{9.227}       \
-&amp;amp; (\num{13.758})    &amp;amp; (\num{11.475})    &amp;amp; (\num{14.198})    \
-lackstaffA lot          &amp;amp; \num{22.942}      &amp;amp; \num{8.459}       &amp;amp; \num{21.613}      \
-&amp;amp; (\num{15.653})    &amp;amp; (\num{14.019})    &amp;amp; (\num{17.975})    \
-cntschid.(Intercept)    &amp;amp; \num{2714.714}*** &amp;amp; \num{2137.460}*** &amp;amp; \num{2878.599}*** \
-&amp;amp; (\num{362.636})   &amp;amp; (\num{370.142})   &amp;amp; (\num{377.836})   \
-Residual                &amp;amp; \num{4385.549}*** &amp;amp; \num{3885.879}*** &amp;amp; \num{4353.262}*** \
-&amp;amp; (\num{179.614})   &amp;amp; (\num{165.660})   &amp;amp; (\num{163.942})   \
-Nobs                    &amp;amp; 7676               &amp;amp; 6911               &amp;amp; 8475               \
-N.pv                    &amp;amp; 10                 &amp;amp; 10                 &amp;amp; 200                \
-AICbar                  &amp;amp; 1195567.29545046   &amp;amp; 1061170.157846     &amp;amp; 1329601.33171994   \
-BICbar                  &amp;amp; 1195643.69984289   &amp;amp; 1061245.40741186   &amp;amp; 1329678.8253552    \
-\bottomrule
-\end{talltblr}
-\end{table}&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class(allres) &amp;lt;- &#39;mixPV&#39;
+summary(allres)
+
+Results of multilevel analyses with 200 plausible values.
+Number of observations: 8475 
+
+Estimates for random effects: 
+                     estimate std.error statistic   df Pr(&amp;gt;t)    
+cntschid.(Intercept)  2878.60    377.84      7.62 1782 &amp;lt;2e-16 ***
+Residual              4353.26    163.94     26.55  454 &amp;lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Estimates for fixed effects: 
+                        estimate std.error statistic   df Pr(&amp;gt;t)    
+(Intercept)               496.88     10.74     46.28 4252 &amp;lt;2e-16 ***
+genderFemale              -19.50      2.31     -8.42  950 &amp;lt;2e-16 ***
+escs                       18.88      1.72     10.95  485 &amp;lt;2e-16 ***
+immig2Second-Generation   -22.31      3.62     -6.16 1747 &amp;lt;2e-16 ***
+immig2First-Generation    -26.35      4.60     -5.73 1330 &amp;lt;2e-16 ***
+stubeha                   -37.68      5.54     -6.81 5192 &amp;lt;2e-16 ***
+lackstaffVery little       28.12     13.97      2.01 4055  0.044 *  
+lackstaffTo some extent     9.23     14.20      0.65 4573  0.516    
+lackstaffA lot             21.61     17.98      1.20 2498  0.229    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Comparing results side by side:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source(&amp;quot;https://raw.githubusercontent.com/flh3/pubdata/refs/heads/main/mixPV/wemix_modelsummary.R&amp;quot;)
+library(modelsummary)
+modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#39; = allres), stars = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table style=&#34;width:98%;&#34;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#34;width: 30%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;90% comp&lt;/th&gt;
+&lt;th&gt;82% comp&lt;/th&gt;
+&lt;th&gt;MI&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;(Intercept)&lt;/td&gt;
+&lt;td&gt;499.886***&lt;/td&gt;
+&lt;td&gt;520.934***&lt;/td&gt;
+&lt;td&gt;496.875***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(10.312)&lt;/td&gt;
+&lt;td&gt;(9.069)&lt;/td&gt;
+&lt;td&gt;(10.737)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;genderFemale&lt;/td&gt;
+&lt;td&gt;-20.890***&lt;/td&gt;
+&lt;td&gt;-18.840***&lt;/td&gt;
+&lt;td&gt;-19.495***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(2.428)&lt;/td&gt;
+&lt;td&gt;(2.458)&lt;/td&gt;
+&lt;td&gt;(2.315)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;escs&lt;/td&gt;
+&lt;td&gt;17.674***&lt;/td&gt;
+&lt;td&gt;16.991***&lt;/td&gt;
+&lt;td&gt;18.878***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(1.510)&lt;/td&gt;
+&lt;td&gt;(1.625)&lt;/td&gt;
+&lt;td&gt;(1.724)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;immig2Second-Generation&lt;/td&gt;
+&lt;td&gt;-22.650***&lt;/td&gt;
+&lt;td&gt;-21.346***&lt;/td&gt;
+&lt;td&gt;-22.306***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(3.872)&lt;/td&gt;
+&lt;td&gt;(4.086)&lt;/td&gt;
+&lt;td&gt;(3.622)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;immig2First-Generation&lt;/td&gt;
+&lt;td&gt;-27.046***&lt;/td&gt;
+&lt;td&gt;-24.955***&lt;/td&gt;
+&lt;td&gt;-26.349***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(4.877)&lt;/td&gt;
+&lt;td&gt;(4.972)&lt;/td&gt;
+&lt;td&gt;(4.598)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;stubeha&lt;/td&gt;
+&lt;td&gt;-36.355***&lt;/td&gt;
+&lt;td&gt;-32.648***&lt;/td&gt;
+&lt;td&gt;-37.677***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(5.522)&lt;/td&gt;
+&lt;td&gt;(4.961)&lt;/td&gt;
+&lt;td&gt;(5.536)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffVery little&lt;/td&gt;
+&lt;td&gt;27.385*&lt;/td&gt;
+&lt;td&gt;12.016&lt;/td&gt;
+&lt;td&gt;28.116*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(13.242)&lt;/td&gt;
+&lt;td&gt;(12.071)&lt;/td&gt;
+&lt;td&gt;(13.967)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffTo some extent&lt;/td&gt;
+&lt;td&gt;9.347&lt;/td&gt;
+&lt;td&gt;-2.166&lt;/td&gt;
+&lt;td&gt;9.227&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(13.758)&lt;/td&gt;
+&lt;td&gt;(11.475)&lt;/td&gt;
+&lt;td&gt;(14.198)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffA lot&lt;/td&gt;
+&lt;td&gt;22.942&lt;/td&gt;
+&lt;td&gt;8.459&lt;/td&gt;
+&lt;td&gt;21.613&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(15.653)&lt;/td&gt;
+&lt;td&gt;(14.019)&lt;/td&gt;
+&lt;td&gt;(17.975)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;cntschid.(Intercept)&lt;/td&gt;
+&lt;td&gt;2714.714***&lt;/td&gt;
+&lt;td&gt;2137.460***&lt;/td&gt;
+&lt;td&gt;2878.599***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(362.636)&lt;/td&gt;
+&lt;td&gt;(370.142)&lt;/td&gt;
+&lt;td&gt;(377.836)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Residual&lt;/td&gt;
+&lt;td&gt;4385.549***&lt;/td&gt;
+&lt;td&gt;3885.879***&lt;/td&gt;
+&lt;td&gt;4353.262***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(179.614)&lt;/td&gt;
+&lt;td&gt;(165.660)&lt;/td&gt;
+&lt;td&gt;(163.942)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Nobs&lt;/td&gt;
+&lt;td&gt;7676&lt;/td&gt;
+&lt;td&gt;6911&lt;/td&gt;
+&lt;td&gt;8475&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;N.pv&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;200&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;AICbar&lt;/td&gt;
+&lt;td&gt;1195567.29545046&lt;/td&gt;
+&lt;td&gt;1061170.157846&lt;/td&gt;
+&lt;td&gt;1329601.33171994&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;BICbar&lt;/td&gt;
+&lt;td&gt;1195643.69984289&lt;/td&gt;
+&lt;td&gt;1061245.40741186&lt;/td&gt;
+&lt;td&gt;1329678.8253552&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;tfoot&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td colspan=&#34;4&#34;&gt;&lt;ul&gt;
+&lt;li&gt;p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/li&gt;
+&lt;/ul&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&amp;#10;&lt;/table&gt;
 &lt;p&gt;END&lt;/p&gt;
 </description>
     </item>

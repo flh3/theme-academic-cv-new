@@ -359,47 +359,6 @@ large-scale assessments. Large-scale Assessments in Education. doi:
   
   
   
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
     
       
@@ -436,6 +395,13 @@ large-scale assessments. Large-scale Assessments in Education. doi:
   
   
   
+  
+  
+  
+  
+  
+  
+  
     
       
       
@@ -455,89 +421,6 @@ large-scale assessments. Large-scale Assessments in Education. doi:
         
       
     
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-      
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-        
-      
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -590,6 +473,88 @@ large-scale assessments. Large-scale Assessments in Education. doi:
         
         
       
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
     
       
       
@@ -683,6 +648,42 @@ large-scale assessments. Large-scale Assessments in Education. doi:
     
       
       
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
     
       
       
@@ -702,7 +703,6 @@ large-scale assessments. Large-scale Assessments in Education. doi:
         
       
     
-  
   
   
   
@@ -2679,10 +2679,10 @@ the article:</p>
 <p>Huang, F., &amp; Keller, B. (2025). Working with missing data in
 large-scale assessments. <em>Large-scale Assessments in Education</em>. doi:
 10.1186/s40536-025-00248-9</p></blockquote>
-<p>The article is open access but you can get the updated, corrected version <a href="MIwithLSA.pdf">here</a>.</p>
-<p>There is a slight adjustment (for the original aticle) when it comes to
+<p>The article is open access but you can get the updated, corrected version <a href="MIwithLSA.pdf">here</a> (as of 2025.04.16).</p>
+<p>There is a slight adjustment (for the original article) when it comes to
 parallel processing (an additional package needs to be loaded). This is
-using the Belgian PISA dataset.</p>
+using the Belgian PISA dataset. Read the article as it explains the steps.</p>
 <h2 id="1-read-in-the-data-and-load-the-required-libraries">1. Read in the data and load the required libraries</h2>
 <p>Download the data from the TIMSS website.</p>
 <pre><code>comb &lt;- rio::import(&quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgium.rds&quot;) #combined original dataset
@@ -2702,7 +2702,8 @@ comparison purposes (how do the results differ when we impute the data?)</p>
   pv9math + pv10math ~ gender + escs + immig2 +
   stubeha + lackstaff + (1|cntschid),
   weights = c('w_fstuwt', 'w_schgrnrabwt'),
-  data = comb, mc = TRUE) # can add the option mc = TRUE to make this faster (multi core)
+  data = comb, mc = TRUE) 
+# can add the option mc = TRUE to make this faster (multi core)
 l1b &lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
   pv5math + pv6math + pv7math + pv8math + #note correction, pv8
   pv9math + pv10math ~ gender + escs + immig2 +
@@ -2728,10 +2729,13 @@ Percent complete cases: 0.8154572
 <pre><code>tall &lt;- pivot_longer(wmiss, pv1math:pv10math, values_to = 'math')
 m &lt;- 20 #number of datasets to impute
 ns &lt;- nrow(wmiss) #count how many observations there are
-tall$.pv &lt;- as.numeric(gsub(&quot;[^0-9]&quot;, &quot;&quot;, tall$name)) #extract the numeric value 
-nopv &lt;- length(table(as.character(tall$.pv))) #the number of plausible values
+tall$.pv &lt;- as.numeric(gsub(&quot;[^0-9]&quot;, &quot;&quot;, tall$name)) #extract the 
+  # numeric value 
+nopv &lt;- length(table(as.character(tall$.pv))) #the number of 
+  # plausible values
 tall_numeric &lt;- mutate(tall,
-  across(everything(), as.numeric) #blimp will only work with numeric data
+  across(everything(), as.numeric) #blimp will only work with 
+  # numeric data
 ) 
 </code></pre>
 <h2 id="4-impute-the-data">4. Impute the data</h2>
@@ -2746,8 +2750,8 @@ mymodel &lt;- rblimp(
            stubeha lackstaff w_fstuwt', 
   options = 'labels',
   seed = 1234,
-  nimps = m
-) |&gt; by_group('.pv') 
+  nimps = ) |&gt; 
+  by_group('.pv') 
 </code></pre>
 <p>This will take a while. Suggest using 2 in the <code>nimps</code> option to start
 and see if everything works properly first. The <code>by_group</code> option is
@@ -2777,14 +2781,12 @@ table(impdat$lackstaff) #no attributes
 attributes(impdat$lackstaff) &lt;- attributes(comb$lackstaff)
 table(impdat$lackstaff) #now with attributes
 
-
     Not at all    Very little To some extent          A lot 
         250958         720793         576658         146591 
 
 ## do this for the other variables that should be categorical
 attributes(impdat$gender) &lt;- attributes(comb$gender)
 attributes(impdat$immig2) &lt;- attributes(comb$immig2)
-
 
 ## Create a list for analysis
 alldat &lt;- split(impdat, impdat$.implist)
@@ -3046,6 +3048,10 @@ modelsummary(list('90% comp' = l1a, '82% comp' = l1b, 'MI' = allres), stars = TR
 <div class="flex justify-center">
   
   <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/large-scale-assessments/">Large Scale Assessments</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/multilevel-models/">Multilevel Models</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/missing-data/">Missing Data</a>
   
 </div>
 
@@ -3385,15 +3391,15 @@ modelsummary(list('90% comp' = l1a, '82% comp' = l1b, 'MI' = allres), stars = TR
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/post/weights_2025/">Weights with Multilevel Models</a></li>
-      
       <li><a href="/publication/journal-article/test3/huang-using-2024/">Using plausible values when fitting multilevel models with large-scale assessment data using R</a></li>
       
-      <li><a href="/post/2024_lsa/">Selecting the proper weights in LSAs with multilevel models</a></li>
+      <li><a href="/publication/journal-article/2025/lsa-weights/">Reassessing weights in large-scale assessments and multilevel models</a></li>
       
-      <li><a href="/post/pv3/">Using Plausible Values with Multilevel Models Using R (update)</a></li>
+      <li><a href="/post/weights_2025/">Weights with Multilevel Models</a></li>
       
-      <li><a href="/event/mlm_ph/">Multilevel Modeling with Large-Scale International Databases Using HLM (Philadelphia)</a></li>
+      <li><a href="/publication/journal-article/2025/huang-cluster-robust-2025/">Cluster-robust standard errors with three-level data</a></li>
+      
+      <li><a href="/publication/journal-article/alternatives/huang-alternatives-2016/">Alternatives to multilevel modeling for the analysis of clustered data</a></li>
       
     </ul>
   </div>

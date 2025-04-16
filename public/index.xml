@@ -24,10 +24,10 @@ the article:&lt;/p&gt;
 &lt;p&gt;Huang, F., &amp;amp; Keller, B. (2025). Working with missing data in
 large-scale assessments. &lt;em&gt;Large-scale Assessments in Education&lt;/em&gt;. doi:
 10.1186/s40536-025-00248-9&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;The article is open access but you can get the updated, corrected version &lt;a href=&#34;MIwithLSA.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There is a slight adjustment (for the original aticle) when it comes to
+&lt;p&gt;The article is open access but you can get the updated, corrected version &lt;a href=&#34;MIwithLSA.pdf&#34;&gt;here&lt;/a&gt; (as of 2025.04.16).&lt;/p&gt;
+&lt;p&gt;There is a slight adjustment (for the original article) when it comes to
 parallel processing (an additional package needs to be loaded). This is
-using the Belgian PISA dataset.&lt;/p&gt;
+using the Belgian PISA dataset. Read the article as it explains the steps.&lt;/p&gt;
 &lt;h2 id=&#34;1-read-in-the-data-and-load-the-required-libraries&#34;&gt;1. Read in the data and load the required libraries&lt;/h2&gt;
 &lt;p&gt;Download the data from the TIMSS website.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;comb &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgium.rds&amp;quot;) #combined original dataset
@@ -47,7 +47,8 @@ comparison purposes (how do the results differ when we impute the data?)&lt;/p&g
   pv9math + pv10math ~ gender + escs + immig2 +
   stubeha + lackstaff + (1|cntschid),
   weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
-  data = comb, mc = TRUE) # can add the option mc = TRUE to make this faster (multi core)
+  data = comb, mc = TRUE) 
+# can add the option mc = TRUE to make this faster (multi core)
 l1b &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
   pv5math + pv6math + pv7math + pv8math + #note correction, pv8
   pv9math + pv10math ~ gender + escs + immig2 +
@@ -73,10 +74,13 @@ Percent complete cases: 0.8154572
 &lt;pre&gt;&lt;code&gt;tall &amp;lt;- pivot_longer(wmiss, pv1math:pv10math, values_to = &#39;math&#39;)
 m &amp;lt;- 20 #number of datasets to impute
 ns &amp;lt;- nrow(wmiss) #count how many observations there are
-tall$.pv &amp;lt;- as.numeric(gsub(&amp;quot;[^0-9]&amp;quot;, &amp;quot;&amp;quot;, tall$name)) #extract the numeric value 
-nopv &amp;lt;- length(table(as.character(tall$.pv))) #the number of plausible values
+tall$.pv &amp;lt;- as.numeric(gsub(&amp;quot;[^0-9]&amp;quot;, &amp;quot;&amp;quot;, tall$name)) #extract the 
+  # numeric value 
+nopv &amp;lt;- length(table(as.character(tall$.pv))) #the number of 
+  # plausible values
 tall_numeric &amp;lt;- mutate(tall,
-  across(everything(), as.numeric) #blimp will only work with numeric data
+  across(everything(), as.numeric) #blimp will only work with 
+  # numeric data
 ) 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;4-impute-the-data&#34;&gt;4. Impute the data&lt;/h2&gt;
@@ -91,8 +95,8 @@ mymodel &amp;lt;- rblimp(
            stubeha lackstaff w_fstuwt&#39;, 
   options = &#39;labels&#39;,
   seed = 1234,
-  nimps = m
-) |&amp;gt; by_group(&#39;.pv&#39;) 
+  nimps = ) |&amp;gt; 
+  by_group(&#39;.pv&#39;) 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This will take a while. Suggest using 2 in the &lt;code&gt;nimps&lt;/code&gt; option to start
 and see if everything works properly first. The &lt;code&gt;by_group&lt;/code&gt; option is
@@ -122,14 +126,12 @@ table(impdat$lackstaff) #no attributes
 attributes(impdat$lackstaff) &amp;lt;- attributes(comb$lackstaff)
 table(impdat$lackstaff) #now with attributes
 
-
     Not at all    Very little To some extent          A lot 
         250958         720793         576658         146591 
 
 ## do this for the other variables that should be categorical
 attributes(impdat$gender) &amp;lt;- attributes(comb$gender)
 attributes(impdat$immig2) &amp;lt;- attributes(comb$immig2)
-
 
 ## Create a list for analysis
 alldat &amp;lt;- split(impdat, impdat$.implist)

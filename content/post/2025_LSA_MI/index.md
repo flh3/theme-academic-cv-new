@@ -4,6 +4,8 @@ author: admin
 date: 2025-04-16
 tags: 
   - large scale assessments
+  - multilevel models
+  - missing data
 header:
   caption: ''
   image: ''
@@ -18,11 +20,11 @@ the article:
 > large-scale assessments. *Large-scale Assessments in Education*. doi:
 > 10.1186/s40536-025-00248-9
 
-The article is open access but you can get the updated, corrected version [here](MIwithLSA.pdf).
+The article is open access but you can get the updated, corrected version [here](MIwithLSA.pdf) (as of 2025.04.16).
 
-There is a slight adjustment (for the original aticle) when it comes to
+There is a slight adjustment (for the original article) when it comes to
 parallel processing (an additional package needs to be loaded). This is
-using the Belgian PISA dataset.
+using the Belgian PISA dataset. Read the article as it explains the steps.
 
 ## 1. Read in the data and load the required libraries
 
@@ -47,7 +49,8 @@ comparison purposes (how do the results differ when we impute the data?)
       pv9math + pv10math ~ gender + escs + immig2 +
       stubeha + lackstaff + (1|cntschid),
       weights = c('w_fstuwt', 'w_schgrnrabwt'),
-      data = comb, mc = TRUE) # can add the option mc = TRUE to make this faster (multi core)
+      data = comb, mc = TRUE) 
+	# can add the option mc = TRUE to make this faster (multi core)
     l1b <- mixPV(pv1math + pv2math + pv3math + pv4math +
       pv5math + pv6math + pv7math + pv8math + #note correction, pv8
       pv9math + pv10math ~ gender + escs + immig2 +
@@ -75,10 +78,13 @@ Perform some necessary data management:
     tall <- pivot_longer(wmiss, pv1math:pv10math, values_to = 'math')
     m <- 20 #number of datasets to impute
     ns <- nrow(wmiss) #count how many observations there are
-    tall$.pv <- as.numeric(gsub("[^0-9]", "", tall$name)) #extract the numeric value 
-    nopv <- length(table(as.character(tall$.pv))) #the number of plausible values
+    tall$.pv <- as.numeric(gsub("[^0-9]", "", tall$name)) #extract the 
+	  # numeric value 
+    nopv <- length(table(as.character(tall$.pv))) #the number of 
+	  # plausible values
     tall_numeric <- mutate(tall,
-      across(everything(), as.numeric) #blimp will only work with numeric data
+      across(everything(), as.numeric) #blimp will only work with 
+	  # numeric data
     ) 
 
 ## 4. Impute the data
@@ -94,8 +100,8 @@ Perform some necessary data management:
                stubeha lackstaff w_fstuwt', 
       options = 'labels',
       seed = 1234,
-      nimps = m
-    ) |> by_group('.pv') 
+      nimps = ) |> 
+      by_group('.pv') 
 
 This will take a while. Suggest using 2 in the `nimps` option to start
 and see if everything works properly first. The `by_group` option is
@@ -129,14 +135,12 @@ And perform some data management.
     attributes(impdat$lackstaff) <- attributes(comb$lackstaff)
     table(impdat$lackstaff) #now with attributes
 
-
         Not at all    Very little To some extent          A lot 
             250958         720793         576658         146591 
 
     ## do this for the other variables that should be categorical
     attributes(impdat$gender) <- attributes(comb$gender)
     attributes(impdat$immig2) <- attributes(comb$immig2)
-
 
     ## Create a list for analysis
     alldat <- split(impdat, impdat$.implist)
