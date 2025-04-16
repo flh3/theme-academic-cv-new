@@ -84,7 +84,12 @@ tall_numeric &amp;lt;- mutate(tall,
 ) 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;4-impute-the-data&#34;&gt;4. Impute the data&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;# set_blimp(&amp;quot;/mnt/c/Blimp/blimp&amp;quot;) ### NOTE:: I need this for linux
+&lt;p&gt;Remember, you have to download and install Blimp separately (which performs the multiple imputations). You can get it here &lt;a href=&#34;https://www.appliedmissingdata.com/blimp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.appliedmissingdata.com/blimp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Then, you will have to install rblimp:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# install.packages(&#39;remotes&#39;)
+remotes::install_github(&#39;blimp-stats/rblimp&#39;)
+
+# set_blimp(&amp;quot;/mnt/c/Blimp/blimp&amp;quot;) ### NOTE:: I need this for linux
 mymodel &amp;lt;- rblimp(
   data = tall_numeric,
   nominal = &#39;gender immig2 lackstaff&#39;,
@@ -98,7 +103,7 @@ mymodel &amp;lt;- rblimp(
   nimps = ) |&amp;gt; 
   by_group(&#39;.pv&#39;) 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This will take a while. Suggest using 2 in the &lt;code&gt;nimps&lt;/code&gt; option to start
+&lt;p&gt;Again, read the article which explains the different options. This will take a while. Suggest using 2 in the &lt;code&gt;nimps&lt;/code&gt; option to start
 and see if everything works properly first. The &lt;code&gt;by_group&lt;/code&gt; option is
 important when there are plausible values.&lt;/p&gt;
 &lt;p&gt;After imputing, inspect the rhat values (see article)&lt;/p&gt;

@@ -89,6 +89,13 @@ Perform some necessary data management:
 
 ## 4. Impute the data
 
+Remember, you have to download and install Blimp separately (which performs the multiple imputations). You can get it here <https://www.appliedmissingdata.com/blimp>.
+
+Then, you will have to install rblimp: 
+
+    # install.packages('remotes')
+    remotes::install_github('blimp-stats/rblimp')
+
     # set_blimp("/mnt/c/Blimp/blimp") ### NOTE:: I need this for linux
     mymodel <- rblimp(
       data = tall_numeric,
@@ -103,7 +110,7 @@ Perform some necessary data management:
       nimps = ) |> 
       by_group('.pv') 
 
-This will take a while. Suggest using 2 in the `nimps` option to start
+Again, read the article which explains the different options. This will take a while. Suggest using 2 in the `nimps` option to start
 and see if everything works properly first. The `by_group` option is
 important when there are plausible values.
 

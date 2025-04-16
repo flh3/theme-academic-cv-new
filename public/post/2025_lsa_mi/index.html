@@ -2739,7 +2739,12 @@ tall_numeric &lt;- mutate(tall,
 ) 
 </code></pre>
 <h2 id="4-impute-the-data">4. Impute the data</h2>
-<pre><code># set_blimp(&quot;/mnt/c/Blimp/blimp&quot;) ### NOTE:: I need this for linux
+<p>Remember, you have to download and install Blimp separately (which performs the multiple imputations). You can get it here <a href="https://www.appliedmissingdata.com/blimp" target="_blank" rel="noopener">https://www.appliedmissingdata.com/blimp</a>.</p>
+<p>Then, you will have to install rblimp:</p>
+<pre><code># install.packages('remotes')
+remotes::install_github('blimp-stats/rblimp')
+
+# set_blimp(&quot;/mnt/c/Blimp/blimp&quot;) ### NOTE:: I need this for linux
 mymodel &lt;- rblimp(
   data = tall_numeric,
   nominal = 'gender immig2 lackstaff',
@@ -2753,7 +2758,7 @@ mymodel &lt;- rblimp(
   nimps = ) |&gt; 
   by_group('.pv') 
 </code></pre>
-<p>This will take a while. Suggest using 2 in the <code>nimps</code> option to start
+<p>Again, read the article which explains the different options. This will take a while. Suggest using 2 in the <code>nimps</code> option to start
 and see if everything works properly first. The <code>by_group</code> option is
 important when there are plausible values.</p>
 <p>After imputing, inspect the rhat values (see article)</p>

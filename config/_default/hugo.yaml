@@ -6,7 +6,8 @@
 # Website name
 title: FLH Website
 # Website URL
-baseURL: 'https://flh3v2.netlify.app/'
+# baseURL: 'https://flh3v2.netlify.app/'
+baseURL: 'https://francish.net/'
 
 ############################
 ## LANGUAGE
