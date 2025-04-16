@@ -397,6 +397,14 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
     </item>
     
     <item>
+      <title>Alternatives to logistic regression models when analyzing cluster randomized trials with binary outcomes</title>
+      <link>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>🎉 Comparing coefficients across logistic regression models</title>
       <link>http://localhost:1313/post/compare/</link>
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>

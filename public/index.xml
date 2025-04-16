@@ -13,6 +13,369 @@
     </image>
     
     <item>
+      <title>Working with missing data in large-scale assessments</title>
+      <link>http://localhost:1313/post/2025_lsa_mi/</link>
+      <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2025_lsa_mi/</guid>
+      <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
+large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies
+the article:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Huang, F., &amp;amp; Keller, B. (2025). Working with missing data in
+large-scale assessments. &lt;em&gt;Large-scale Assessments in Education&lt;/em&gt;. doi:
+10.1186/s40536-025-00248-9&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The article is open access but you can get the updated, corrected version &lt;a href=&#34;MIwithLSA.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is a slight adjustment (for the original aticle) when it comes to
+parallel processing (an additional package needs to be loaded). This is
+using the Belgian PISA dataset.&lt;/p&gt;
+&lt;h2 id=&#34;1-read-in-the-data-and-load-the-required-libraries&#34;&gt;1. Read in the data and load the required libraries&lt;/h2&gt;
+&lt;p&gt;Download the data from the TIMSS website.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;comb &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgium.rds&amp;quot;) #combined original dataset
+wmiss &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgiumwmiss.rds&amp;quot;) #dataset with additional missing data
+
+library(MLMusingR) # for mixPV and summary for pooling
+library(WeMix) # for mix
+library(tidyr) # to convert from wide to long
+library(dplyr) # data management
+library(rblimp) #for creating the imputations
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-fit-the-models&#34;&gt;2. Fit the models&lt;/h2&gt;
+&lt;p&gt;Done using the complete (90%) and missing info (82%) datasets. Done for
+comparison purposes (how do the results differ when we impute the data?)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;l1a &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
+  pv5math + pv6math + pv7math + pv8math + #note correction, pv8
+  pv9math + pv10math ~ gender + escs + immig2 +
+  stubeha + lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = comb, mc = TRUE) # can add the option mc = TRUE to make this faster (multi core)
+l1b &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
+  pv5math + pv6math + pv7math + pv8math + #note correction, pv8
+  pv9math + pv10math ~ gender + escs + immig2 +
+  stubeha + lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = wmiss, mc = TRUE) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-investigate-missingness&#34;&gt;3. Investigate missingness&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;MLMusingR::nmiss(wmiss) 
+
+Percent missing per variable:
+      pv1math       pv2math       pv3math       pv4math       pv5math       pv6math       pv7math 
+   0.00000000    0.00000000    0.00000000    0.00000000    0.00000000    0.00000000    0.00000000 
+      pv8math       pv9math      pv10math       stubeha     teachbeha        gender          escs 
+   0.00000000    0.00000000    0.00000000    0.03445428    0.03445428    0.00000000    0.12235988 
+       immig2     lackstaff      w_fstuwt w_schgrnrabwt      cntschid 
+   0.02595870    0.05699115    0.00000000    0.00000000    0.00000000 
+
+Percent complete cases: 0.8154572 
+(Minimum) number to impute: 18 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Perform some necessary data management:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tall &amp;lt;- pivot_longer(wmiss, pv1math:pv10math, values_to = &#39;math&#39;)
+m &amp;lt;- 20 #number of datasets to impute
+ns &amp;lt;- nrow(wmiss) #count how many observations there are
+tall$.pv &amp;lt;- as.numeric(gsub(&amp;quot;[^0-9]&amp;quot;, &amp;quot;&amp;quot;, tall$name)) #extract the numeric value 
+nopv &amp;lt;- length(table(as.character(tall$.pv))) #the number of plausible values
+tall_numeric &amp;lt;- mutate(tall,
+  across(everything(), as.numeric) #blimp will only work with numeric data
+) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-impute-the-data&#34;&gt;4. Impute the data&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# set_blimp(&amp;quot;/mnt/c/Blimp/blimp&amp;quot;) ### NOTE:: I need this for linux
+mymodel &amp;lt;- rblimp(
+  data = tall_numeric,
+  nominal = &#39;gender immig2 lackstaff&#39;,
+  # ordinal = &#39;&#39;,
+  clusterid = &#39;cntschid&#39;,
+  fixed = &#39;gender w_fstuwt&#39;, 
+  model = &#39;math ~ gender escs immig2 
+           stubeha lackstaff w_fstuwt&#39;, 
+  options = &#39;labels&#39;,
+  seed = 1234,
+  nimps = m
+) |&amp;gt; by_group(&#39;.pv&#39;) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will take a while. Suggest using 2 in the &lt;code&gt;nimps&lt;/code&gt; option to start
+and see if everything works properly first. The &lt;code&gt;by_group&lt;/code&gt; option is
+important when there are plausible values.&lt;/p&gt;
+&lt;p&gt;After imputing, inspect the rhat values (see article)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mymodel |&amp;gt; sapply(\(x) tail(x@psr, 1) |&amp;gt; max(na.rm = TRUE))
+
+     1      2      3      4      5      6      7      8      9     10 
+1.0480 1.0394 1.0401 1.0959 1.0312 1.0609 1.0489 1.0337 1.0401 1.0610 
+
+# lapply(mymodel, psr)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-extract-the-data&#34;&gt;5. Extract the data&lt;/h2&gt;
+&lt;p&gt;And perform some data management.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;impdat &amp;lt;- lapply(mymodel, as.mitml) |&amp;gt;
+  unlist(recursive = FALSE) |&amp;gt;
+  do.call(rbind, args = _)
+
+impdat$.implist &amp;lt;- rep(1:(m * nopv), each = ns)
+## Return factor attributes to the data
+table(impdat$lackstaff) #no attributes
+
+
+     1      2      3      4 
+250958 720793 576658 146591 
+
+attributes(impdat$lackstaff) &amp;lt;- attributes(comb$lackstaff)
+table(impdat$lackstaff) #now with attributes
+
+
+    Not at all    Very little To some extent          A lot 
+        250958         720793         576658         146591 
+
+## do this for the other variables that should be categorical
+attributes(impdat$gender) &amp;lt;- attributes(comb$gender)
+attributes(impdat$immig2) &amp;lt;- attributes(comb$immig2)
+
+
+## Create a list for analysis
+alldat &amp;lt;- split(impdat, impdat$.implist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-analyze-the-data&#34;&gt;6. Analyze the data&lt;/h2&gt;
+&lt;p&gt;Specify the model:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;modfit &amp;lt;- function(x) {
+  mix(math ~ gender + escs + immig2 + stubeha +
+  lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = x)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fit the model, two ways:&lt;/p&gt;
+&lt;p&gt;Method 1: Serial operation (slow)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# allres &amp;lt;- lapply(alldat, FUN = modfit)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Method 2: Parallel computation (much faster but still requires around 5
+minutes)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(parallel)
+library(doParallel) ### NEED THIS!
+cl &amp;lt;- makeCluster(detectCores() - 1)
+registerDoParallel(cl)
+clusterExport(cl, list(&#39;modfit&#39;, &#39;mix&#39;))
+allres &amp;lt;- parLapply(cl, alldat, fun = modfit)
+stopCluster(cl)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;7-pool-results&#34;&gt;7 Pool results&lt;/h2&gt;
+&lt;p&gt;Need to change the class for the &lt;code&gt;summary&lt;/code&gt; function to work:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class(allres) &amp;lt;- &#39;mixPV&#39;
+summary(allres)
+
+Results of multilevel analyses with 200 plausible values.
+Number of observations: 8475 
+
+Estimates for random effects: 
+                     estimate std.error statistic   df Pr(&amp;gt;t)    
+cntschid.(Intercept)  2878.60    377.84      7.62 1782 &amp;lt;2e-16 ***
+Residual              4353.26    163.94     26.55  454 &amp;lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Estimates for fixed effects: 
+                        estimate std.error statistic   df Pr(&amp;gt;t)    
+(Intercept)               496.88     10.74     46.28 4252 &amp;lt;2e-16 ***
+genderFemale              -19.50      2.31     -8.42  950 &amp;lt;2e-16 ***
+escs                       18.88      1.72     10.95  485 &amp;lt;2e-16 ***
+immig2Second-Generation   -22.31      3.62     -6.16 1747 &amp;lt;2e-16 ***
+immig2First-Generation    -26.35      4.60     -5.73 1330 &amp;lt;2e-16 ***
+stubeha                   -37.68      5.54     -6.81 5192 &amp;lt;2e-16 ***
+lackstaffVery little       28.12     13.97      2.01 4055  0.044 *  
+lackstaffTo some extent     9.23     14.20      0.65 4573  0.516    
+lackstaffA lot             21.61     17.98      1.20 2498  0.229    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Comparing results side by side:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source(&amp;quot;https://raw.githubusercontent.com/flh3/pubdata/refs/heads/main/mixPV/wemix_modelsummary.R&amp;quot;)
+library(modelsummary)
+modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#39; = allres), stars = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table style=&#34;width:98%;&#34;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#34;width: 30%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;90% comp&lt;/th&gt;
+&lt;th&gt;82% comp&lt;/th&gt;
+&lt;th&gt;MI&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;(Intercept)&lt;/td&gt;
+&lt;td&gt;499.886***&lt;/td&gt;
+&lt;td&gt;520.934***&lt;/td&gt;
+&lt;td&gt;496.875***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(10.312)&lt;/td&gt;
+&lt;td&gt;(9.069)&lt;/td&gt;
+&lt;td&gt;(10.737)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;genderFemale&lt;/td&gt;
+&lt;td&gt;-20.890***&lt;/td&gt;
+&lt;td&gt;-18.840***&lt;/td&gt;
+&lt;td&gt;-19.495***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(2.428)&lt;/td&gt;
+&lt;td&gt;(2.458)&lt;/td&gt;
+&lt;td&gt;(2.315)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;escs&lt;/td&gt;
+&lt;td&gt;17.674***&lt;/td&gt;
+&lt;td&gt;16.991***&lt;/td&gt;
+&lt;td&gt;18.878***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(1.510)&lt;/td&gt;
+&lt;td&gt;(1.625)&lt;/td&gt;
+&lt;td&gt;(1.724)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;immig2Second-Generation&lt;/td&gt;
+&lt;td&gt;-22.650***&lt;/td&gt;
+&lt;td&gt;-21.346***&lt;/td&gt;
+&lt;td&gt;-22.306***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(3.872)&lt;/td&gt;
+&lt;td&gt;(4.086)&lt;/td&gt;
+&lt;td&gt;(3.622)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;immig2First-Generation&lt;/td&gt;
+&lt;td&gt;-27.046***&lt;/td&gt;
+&lt;td&gt;-24.955***&lt;/td&gt;
+&lt;td&gt;-26.349***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(4.877)&lt;/td&gt;
+&lt;td&gt;(4.972)&lt;/td&gt;
+&lt;td&gt;(4.598)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;stubeha&lt;/td&gt;
+&lt;td&gt;-36.355***&lt;/td&gt;
+&lt;td&gt;-32.648***&lt;/td&gt;
+&lt;td&gt;-37.677***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(5.522)&lt;/td&gt;
+&lt;td&gt;(4.961)&lt;/td&gt;
+&lt;td&gt;(5.536)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffVery little&lt;/td&gt;
+&lt;td&gt;27.385*&lt;/td&gt;
+&lt;td&gt;12.016&lt;/td&gt;
+&lt;td&gt;28.116*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(13.242)&lt;/td&gt;
+&lt;td&gt;(12.071)&lt;/td&gt;
+&lt;td&gt;(13.967)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffTo some extent&lt;/td&gt;
+&lt;td&gt;9.347&lt;/td&gt;
+&lt;td&gt;-2.166&lt;/td&gt;
+&lt;td&gt;9.227&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(13.758)&lt;/td&gt;
+&lt;td&gt;(11.475)&lt;/td&gt;
+&lt;td&gt;(14.198)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffA lot&lt;/td&gt;
+&lt;td&gt;22.942&lt;/td&gt;
+&lt;td&gt;8.459&lt;/td&gt;
+&lt;td&gt;21.613&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(15.653)&lt;/td&gt;
+&lt;td&gt;(14.019)&lt;/td&gt;
+&lt;td&gt;(17.975)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;cntschid.(Intercept)&lt;/td&gt;
+&lt;td&gt;2714.714***&lt;/td&gt;
+&lt;td&gt;2137.460***&lt;/td&gt;
+&lt;td&gt;2878.599***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(362.636)&lt;/td&gt;
+&lt;td&gt;(370.142)&lt;/td&gt;
+&lt;td&gt;(377.836)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Residual&lt;/td&gt;
+&lt;td&gt;4385.549***&lt;/td&gt;
+&lt;td&gt;3885.879***&lt;/td&gt;
+&lt;td&gt;4353.262***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(179.614)&lt;/td&gt;
+&lt;td&gt;(165.660)&lt;/td&gt;
+&lt;td&gt;(163.942)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Nobs&lt;/td&gt;
+&lt;td&gt;7676&lt;/td&gt;
+&lt;td&gt;6911&lt;/td&gt;
+&lt;td&gt;8475&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;N.pv&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;200&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;AICbar&lt;/td&gt;
+&lt;td&gt;1195567.29545046&lt;/td&gt;
+&lt;td&gt;1061170.157846&lt;/td&gt;
+&lt;td&gt;1329601.33171994&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;BICbar&lt;/td&gt;
+&lt;td&gt;1195643.69984289&lt;/td&gt;
+&lt;td&gt;1061245.40741186&lt;/td&gt;
+&lt;td&gt;1329678.8253552&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;tfoot&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td colspan=&#34;4&#34;&gt;&lt;ul&gt;
+&lt;li&gt;p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/li&gt;
+&lt;/ul&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&amp;#10;&lt;/table&gt;
+&lt;p&gt;END&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Reassessing weights in large-scale assessments and multilevel models</title>
       <link>http://localhost:1313/publication/journal-article/2025/lsa-weights/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>

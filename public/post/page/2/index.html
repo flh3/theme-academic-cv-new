@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: April 13, 2025 --><html lang="en-us" dir="ltr"
+<!-- Last Published: April 16, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="auto">
   
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
@@ -195,7 +195,7 @@
     <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2025-03-21T00:00:00&#43;00:00" />
+      <meta property="og:updated_time" content="2025-04-16T00:00:00&#43;00:00" />
     
   
 
@@ -231,6 +231,7 @@
   
 
 
+  
   
   
   
@@ -1403,6 +1404,38 @@
     <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
       <div
         class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
+      <a href="/post/residuals_mlm/"><span
+        class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">Residuals with Multilevel Models</span></a>
+    </h2>
+    <time
+      class="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-1"
+      datetime="2023-09-01">
+      Sep 1, 2023
+    </time>
+    <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">(MLM notes). Residuals are often used for model diagnostics or for spotting outliers in the data. For single-level models, these are merely the observed - predicted data (i.e., $y_i - \hat{y}_i$). However, for multilevel models, these are a bit more complicated to compute. Since we have two error terms (in this example), we will have two sets of residuals. For example, a multilevel model with a single predictor at level one can be written as:</p>
+    <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-primary-500">
+    Read more
+      <svg aria-hidden="true" class="ml-1 h-4 w-4 stroke-current" fill="none" viewBox="0 0 16 16">
+        <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+      </svg>
+    </div>
+  </div>
+  <time
+    class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
+    datetime="2023-09-01">Sep 1, 2023
+  </time>
+</article>
+
+  
+  
+
+
+
+<article class="md:grid md:grid-cols-4 md:items-baseline">
+  <div class="md:col-span-3 group relative flex flex-col items-start">
+    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+      <div
+        class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
       <a href="/post/jobs-2023/"><span
         class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">🎉 Job postings 2022-2023</span></a>
     </h2>
@@ -1695,38 +1728,6 @@ where we assume $u \sim MVN(0, G)$ and $e \sim MVN(0, R)$. $V$ is:</p></p>
   <time
     class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
     datetime="2020-11-27">Nov 27, 2020
-  </time>
-</article>
-
-  
-  
-
-
-
-<article class="md:grid md:grid-cols-4 md:items-baseline">
-  <div class="md:col-span-3 group relative flex flex-col items-start">
-    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-      <div
-        class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
-      <a href="/post/compare/"><span
-        class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">🎉 Comparing coefficients across logistic regression models</span></a>
-    </h2>
-    <time
-      class="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-1"
-      datetime="2020-06-28">
-      Jun 28, 2020
-    </time>
-    <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400"><strong>ROUGH NOTES</strong>: <span style="color: red;"><em>[let me know if you spot any errors– there might be a couple!]</em></span> Often, in randomized control trial where individuals are randomly assigned to treatment and control conditions, covariates are included to improve precision by reducing error and improving statistical power. However, when binary outcomes are used (e.g., patient recovers or not), there are several additional concerns that have gone unnoticed by many applied researchers.</p>
-    <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-primary-500">
-    Read more
-      <svg aria-hidden="true" class="ml-1 h-4 w-4 stroke-current" fill="none" viewBox="0 0 16 16">
-        <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-      </svg>
-    </div>
-  </div>
-  <time
-    class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
-    datetime="2020-06-28">Jun 28, 2020
   </time>
 </article>
 
