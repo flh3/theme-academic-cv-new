@@ -32,13 +32,21 @@ sections:
           parallax: true
   - block: markdown
     content:
+      title: 📰 Updates
+      subtitle: 'My subtitle'
+      text: |-
+        <li> Finally updated my website! (2025.04.16)
+  - block: markdown
+    content:
       title: '📚 My Research'
       subtitle: ''
       text: |-
         My research interests focus on the use of applied quantitative methods for policy analysis (e.g., bullying, school violence), school climate, 
         large scale data analysis, and the development and validation of empirically supported measures and scales. My methodological interest focus on the analysis of clustered data (or dealing with nonindependent data structures) and the design and analysis of experiments.
     design:
-      columns: '2'
+      css_class: dark
+      background:
+        color: olive
   - block: collection
     id: papers
     content:
