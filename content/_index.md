@@ -35,7 +35,7 @@ sections:
       title: 📰 Updates
       subtitle: 'My subtitle'
       text: |-
-        <li> Finally updated my website! (2025.04.16)
+        <li> Finally updated my website! (2025.04.16) :v: 
   - block: markdown
     content:
       title: '📚 My Research'

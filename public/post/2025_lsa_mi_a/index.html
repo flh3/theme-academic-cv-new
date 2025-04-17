@@ -41,11 +41,12 @@
   
     
   
-  <meta name="description" content=" In an earlier post, I had shown this using iteratively reweighted least squares (IRLS). This is just an alternative method using Newton Raphson and the Fisher scoring algorithm. For further details, you can look here as well.
+  <meta name="description" content="This is the syntax for accounting for missing data/imputing data with large scale assessments (without plausible values). This is Appendix A and accompanies the article:
+Huang, F., &amp; Keller, B. (2025). Working with missing data in large-scale assessments. Large-scale Assessments in Education. doi: 10.1186/s40536-025-00248-9
 " />
 
   
-  <link rel="alternate" hreflang="en-us" href="http://localhost:1313/post/logistic-regression-fisher-scoring/" />
+  <link rel="alternate" hreflang="en-us" href="http://localhost:1313/post/2025_lsa_mi_a/" />
 
   
   
@@ -162,7 +163,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu_3a05525e284cb133.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_f701646b16bb8941.png" />
 
-  <link rel="canonical" href="http://localhost:1313/post/logistic-regression-fisher-scoring/" />
+  <link rel="canonical" href="http://localhost:1313/post/2025_lsa_mi_a/" />
 
   
   
@@ -188,19 +189,24 @@
     <meta property="twitter:creator" content="@flhuang" />
   
   <meta property="og:site_name" content="FLH Website" />
-  <meta property="og:url" content="http://localhost:1313/post/logistic-regression-fisher-scoring/" />
-  <meta property="og:title" content="Logistic regression from scratch (Newton Raphson and Fisher Scoring) | FLH Website" />
-  <meta property="og:description" content="
-In an earlier post, I had shown this using iteratively reweighted least squares (IRLS). This is just an alternative method using Newton Raphson and the Fisher scoring algorithm. For further details, you can look here as well." /><meta property="og:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" />
+  <meta property="og:url" content="http://localhost:1313/post/2025_lsa_mi_a/" />
+  <meta property="og:title" content="Working with missing data in large-scale assessments (without plausible  values) | FLH Website" />
+  <meta property="og:description" content="This is the syntax for accounting for missing data/imputing data with
+large scale assessments (without plausible values). This is Appendix
+A and accompanies the article:
+
+Huang, F., &amp; Keller, B. (2025). Working with missing data in
+large-scale assessments. Large-scale Assessments in Education. doi:
+10.1186/s40536-025-00248-9" /><meta property="og:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" />
     <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2022-02-15T00:00:00&#43;00:00"
+        content="2025-04-17T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2022-02-15T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2025-04-17T00:00:00&#43;00:00">
   
 
   
@@ -210,7 +216,7 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
   
 
 
-  <title>Logistic regression from scratch (Newton Raphson and Fisher Scoring) | FLH Website</title>
+  <title>Working with missing data in large-scale assessments (without plausible  values) | FLH Website</title>
 
   
   
@@ -1434,13 +1440,22 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
         </span>
     </a><div class="ltr:pr-0 overflow-hidden">
-        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+        <ul class="hb-sidebar-list"><li class="flex flex-col open"><a
     class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
     href="/post/2025_lsa_mi_a/"
     
   >Working with missing data in large-scale assessments (without plausible  values)
     </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#"
+                class="hb-docs-link"
+              ></a>
+            </li>
+          </ul>
+  
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
@@ -1562,28 +1577,13 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
   >Robust standard errors in mixed models
     </a>
               
-            </li><li class="flex flex-col open"><a
+            </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
-      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
     href="/post/logistic-regression-fisher-scoring/"
     
   >Logistic regression from scratch (Newton Raphson and Fisher Scoring)
     </a>
-  
-    <ul class="hb-sidebar-mobile-toc"><li>
-              <a
-                href="#"
-                class="hb-docs-link"
-              ></a>
-            </li>
-          <li>
-              <a
-                href="#an-alternative-using-maximum-likelihood-estimation-mle"
-                class="hb-docs-link"
-              >An alternative using maximum likelihood estimation (MLE)</a>
-            </li>
-          </ul>
-  
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
@@ -2580,7 +2580,16 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
 
   <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">On this page</p><ul>
       <li class="my-2 scroll-my-6 scroll-py-6">
-        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#an-alternative-using-maximum-likelihood-estimation-mle">An alternative using maximum likelihood estimation (MLE)</a>
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#load-in-the-required-packages">Load in the required packages</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#1-load-data">1. LOAD DATA</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#2-imputing">2. IMPUTING</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#3-fitting-the-models">3. FITTING THE MODELS</a>
       </li></ul>
 
   
@@ -2616,22 +2625,22 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
         <div class="mt-1.5 flex items-center gap-1 overflow-hidden text-sm text-gray-500 dark:text-gray-400">
       <div class="whitespace-nowrap transition-colors min-w-[24px] overflow-hidden text-ellipsis hover:text-gray-900 dark:hover:text-gray-100">
         <a href="http://localhost:1313/post/">Posts</a>
-      </div><svg class="w-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg><div class="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100">Logistic regression from scratch (Newton Raphson and Fisher Scoring)</div>
+      </div><svg class="w-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg><div class="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100">Working with missing data in large-scale assessments (without plausible  values)</div>
 </div>
 
       </div>
       
 
-      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Logistic regression from scratch (Newton Raphson and Fisher Scoring)</h1>
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Working with missing data in large-scale assessments (without plausible  values)</h1>
 
       <div class="mt-4 mb-16">
-      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Feb 15, 2022</span>
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Apr 17, 2025</span>
         
 
         
         <span class="mx-1">·</span>
         <span class="mx-1">
-          3 min read
+          8 min read
         </span>
         
         </div>
@@ -2656,134 +2665,483 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
       
 
       <div class="prose prose-slate lg:prose-xl dark:prose-invert">
-        <h2></h2>
-<p>In an earlier <a href="../logistic-regression-using-matrices/">post</a>, I had shown this using iteratively reweighted least squares (IRLS). This is just an alternative method using Newton Raphson and the Fisher scoring algorithm. For further details, you can look here as <a href="http://www.jtrive.com/estimating-logistic-regression-coefficents-from-scratch-r-version.html" target="_blank" rel="noopener">well</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">MLMusingR</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">suspend</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">m1</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">sus</span> <span class="o">~</span> <span class="n">male</span> <span class="o">+</span> <span class="n">gpa</span> <span class="o">*</span> <span class="n">frpl</span> <span class="o">+</span> <span class="n">fight</span> <span class="o">+</span> <span class="n">frmp.c</span> <span class="o">*</span> <span class="n">pminor.c</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">          <span class="n">data</span> <span class="o">=</span> <span class="n">suspend</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">          <span class="n">family</span> <span class="o">=</span> <span class="n">binomial</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">### extracting raw components</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">model.frame</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">fml</span> <span class="o">&lt;-</span> <span class="nf">formula</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">model.matrix</span><span class="p">(</span><span class="n">fml</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">model.response</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="s">&#39;numeric&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">k</span> <span class="o">&lt;-</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#pp &lt;- function(x) 1 / (1 + exp(-x)) #convert logit to pred prob</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">beta_0</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="c1">#initialize with zeroes</span>
-</span></span><span class="line"><span class="cl"><span class="n">eta</span> <span class="o">&lt;-</span> <span class="n">X</span> <span class="o">%*%</span> <span class="n">beta_0</span> <span class="c1">#predicted logit</span>
-</span></span><span class="line"><span class="cl"><span class="n">mu</span> <span class="o">&lt;-</span> <span class="nf">plogis</span><span class="p">(</span><span class="n">eta</span><span class="p">)</span> <span class="c1">#same as pp but built-in; convert logit to pred prob</span>
-</span></span><span class="line"><span class="cl"><span class="n">vr</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="n">mu</span><span class="p">))</span> <span class="c1">#variance</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">wts</span> <span class="o">&lt;-</span> <span class="nf">diag</span><span class="p">(</span><span class="nf">as.vector</span><span class="p">(</span><span class="n">vr</span><span class="p">))</span> <span class="c1">#create weight matrix</span>
-</span></span><span class="line"><span class="cl"><span class="n">d2</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">%*%</span> <span class="n">wts</span> <span class="o">%*%</span> <span class="n">X</span> <span class="c1">#the Fisher information matrix</span>
-</span></span><span class="line"><span class="cl"><span class="n">u1</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">%*%</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="c1">#the score function</span>
-</span></span><span class="line"><span class="cl"><span class="n">iter</span> <span class="o">&lt;-</span> <span class="m">50</span> <span class="c1">#max number of iterations</span>
-</span></span><span class="line"><span class="cl"><span class="n">tol</span> <span class="o">&lt;-</span> <span class="m">1e-8</span> <span class="c1">#tolerance</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">### now iterate</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">for</span> <span class="p">(</span><span class="n">i</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">iter</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">#beta_1 &lt;- beta_0 + solve(d2) %*% u1 #update beta</span>
-</span></span><span class="line"><span class="cl">  <span class="n">beta_1</span> <span class="o">&lt;-</span> <span class="n">beta_0</span> <span class="o">+</span> <span class="nf">chol2inv</span><span class="p">(</span><span class="nf">chol</span><span class="p">(</span><span class="n">d2</span><span class="p">))</span> <span class="o">%*%</span> <span class="n">u1</span> <span class="c1">#update beta avoiding inversion</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">#print(beta_1) #show estimates</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="kr">if</span><span class="p">(</span><span class="nf">any</span><span class="p">(</span><span class="nf">abs</span><span class="p">((</span><span class="n">beta_1</span> <span class="o">-</span> <span class="n">beta_0</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta_0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">))</span> <span class="kr">break</span> <span class="c1">#stop loop if no change</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">eta</span> <span class="o">&lt;-</span> <span class="n">X</span> <span class="o">%*%</span> <span class="n">beta_1</span> <span class="c1">#predicted logit</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mu</span> <span class="o">&lt;-</span> <span class="nf">plogis</span><span class="p">(</span><span class="n">eta</span><span class="p">)</span> <span class="c1">#this is just pp(eta)</span>
-</span></span><span class="line"><span class="cl">  <span class="n">vr</span> <span class="o">&lt;-</span> <span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="c1">#variance</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="n">wts</span> <span class="o">&lt;-</span> <span class="nf">diag</span><span class="p">(</span><span class="nf">as.vector</span><span class="p">(</span><span class="n">vr</span><span class="p">))</span> <span class="c1">#putting in a weight matrix</span>
-</span></span><span class="line"><span class="cl">  <span class="n">d2</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">%*%</span> <span class="n">wts</span> <span class="o">%*%</span> <span class="n">X</span> <span class="c1">#information matrix</span>
-</span></span><span class="line"><span class="cl">  <span class="n">u1</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">%*%</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="c1">#score function</span>
-</span></span><span class="line"><span class="cl">  <span class="n">beta_0</span> <span class="o">&lt;-</span> <span class="n">beta_1</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">cat</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s">&#34;::&#34;</span><span class="p">)</span> <span class="c1">#show iteration number</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1 ::2 ::3 ::4 ::5 ::6 ::7 ::
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">### compare results</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">se</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">diag</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="n">d2</span><span class="p">)))</span> <span class="c1">#get standard error, inverse of information matrix</span>
-</span></span><span class="line"><span class="cl"><span class="n">z</span> <span class="o">&lt;-</span> <span class="n">beta_1</span> <span class="o">/</span> <span class="n">se</span>
-</span></span><span class="line"><span class="cl"><span class="n">p.val</span> <span class="o">&lt;-</span> <span class="m">2</span> <span class="o">*</span> <span class="nf">pt</span><span class="p">(</span><span class="o">-</span><span class="nf">abs</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">df</span> <span class="o">=</span> <span class="kc">Inf</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">beta</span> <span class="o">=</span> <span class="n">beta_1</span><span class="p">,</span> <span class="n">se</span> <span class="o">=</span> <span class="n">se</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="nf">format</span><span class="p">(</span><span class="n">p.val</span><span class="p">,</span> <span class="m">3</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="n">df</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                     beta       se      z        p
-</span></span><span class="line"><span class="cl">(Intercept)     -1.592202 0.269404 -5.910 3.42e-09
-</span></span><span class="line"><span class="cl">male             0.324897 0.099384  3.269 1.08e-03
-</span></span><span class="line"><span class="cl">gpa             -0.795479 0.084849 -9.375 6.90e-21
-</span></span><span class="line"><span class="cl">frpl            -0.562734 0.318874 -1.765 7.76e-02
-</span></span><span class="line"><span class="cl">fight            2.078100 0.098472 21.103 7.40e-99
-</span></span><span class="line"><span class="cl">frmp.c           0.003004 0.003189  0.942 3.46e-01
-</span></span><span class="line"><span class="cl">pminor.c        -0.002236 0.002302 -0.971 3.31e-01
-</span></span><span class="line"><span class="cl">gpa:frpl         0.387256 0.109169  3.547 3.89e-04
-</span></span><span class="line"><span class="cl">frmp.c:pminor.c  0.000124 0.000107  1.167 2.43e-01
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#### to compare</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">m2</span> <span class="o">&lt;-</span> <span class="nf">update</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">epsilon</span> <span class="o">=</span> <span class="m">1e-16</span><span class="p">)</span> <span class="c1">#change tolerance so results match</span>
-</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span><span class="o">$</span><span class="n">coef</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                 Estimate Std. Error z value Pr(&gt;|z|)
-</span></span><span class="line"><span class="cl">(Intercept)     -1.592202   0.269404  -5.910 3.42e-09
-</span></span><span class="line"><span class="cl">male             0.324897   0.099384   3.269 1.08e-03
-</span></span><span class="line"><span class="cl">gpa             -0.795479   0.084849  -9.375 6.90e-21
-</span></span><span class="line"><span class="cl">frpl            -0.562734   0.318874  -1.765 7.76e-02
-</span></span><span class="line"><span class="cl">fight            2.078100   0.098472  21.103 7.40e-99
-</span></span><span class="line"><span class="cl">frmp.c           0.003004   0.003189   0.942 3.46e-01
-</span></span><span class="line"><span class="cl">pminor.c        -0.002236   0.002302  -0.971 3.31e-01
-</span></span><span class="line"><span class="cl">gpa:frpl         0.387256   0.109169   3.547 3.89e-04
-</span></span><span class="line"><span class="cl">frmp.c:pminor.c  0.000124   0.000107   1.167 2.43e-01
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">## equal deviances</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="m">-2</span> <span class="o">*</span> <span class="nf">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">*</span> <span class="nf">log</span><span class="p">(</span><span class="n">mu</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="nf">log</span><span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="n">mu</span><span class="p">))</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 3331
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">deviance</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 3331
-</span></span></code></pre></div><h2 id="an-alternative-using-maximum-likelihood-estimation-mle">An alternative using maximum likelihood estimation (MLE)</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m3</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">sus</span> <span class="o">~</span> <span class="n">male</span> <span class="o">+</span> <span class="n">gpa</span> <span class="o">+</span> <span class="n">frpl</span> <span class="o">+</span> <span class="n">gpa</span> <span class="o">*</span> <span class="n">frpl</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">          <span class="n">data</span> <span class="o">=</span> <span class="n">suspend</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">          <span class="n">family</span> <span class="o">=</span> <span class="n">binomial</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">model.matrix</span><span class="p">(</span><span class="n">m3</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">## this is the function to maximize</span>
-</span></span><span class="line"><span class="cl"><span class="n">mle</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">b</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">  <span class="n">pp</span> <span class="o">&lt;-</span> <span class="nf">plogis</span><span class="p">(</span><span class="n">X</span> <span class="o">%*%</span> <span class="n">b</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="nf">dbinom</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">pp</span><span class="p">,</span> <span class="n">log</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">k</span> <span class="o">&lt;-</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="c1">#number of variables</span>
-</span></span><span class="line"><span class="cl"><span class="n">sta</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="c1">#initial values</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">out</span> <span class="o">&lt;-</span> <span class="nf">optim</span><span class="p">(</span><span class="n">par</span> <span class="o">=</span> <span class="n">sta</span><span class="p">,</span> <span class="n">mle</span><span class="p">,</span> <span class="c1">#starting values and function to optimize</span>
-</span></span><span class="line"><span class="cl">            <span class="n">control</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">fnscale</span> <span class="o">=</span> <span class="m">-1</span><span class="p">,</span> <span class="c1">#-1 to maximize</span>
-</span></span><span class="line"><span class="cl">            <span class="n">reltol</span> <span class="o">=</span> <span class="m">1e-15</span><span class="p">,</span> <span class="c1">#tolerance</span>
-</span></span><span class="line"><span class="cl">            <span class="n">maxit</span> <span class="o">=</span> <span class="m">1000</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">hessian</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="c1">#so it doesn&#39;t keep iterating</span>
-</span></span><span class="line"><span class="cl"><span class="n">out</span><span class="o">$</span><span class="n">par</span> <span class="c1">#coefficients, difference due to tolerance?</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] -0.371  0.673 -0.988 -0.543  0.406
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">coef</span><span class="p">(</span><span class="n">m3</span><span class="p">)</span> <span class="c1">#using built in function</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(Intercept)        male         gpa        frpl    gpa:frpl 
-</span></span><span class="line"><span class="cl">     -0.371       0.673      -0.988      -0.543       0.406 
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">out</span><span class="o">$</span><span class="n">value</span> <span class="c1">#the log likelihood</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] -1908
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">logLik</span><span class="p">(</span><span class="n">m3</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;log Lik.&#39; -1908 (df=5)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sqrt</span><span class="p">(</span><span class="nf">diag</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="o">-</span><span class="n">out</span><span class="o">$</span><span class="n">hessian</span><span class="p">)))</span> <span class="c1">#standard errors</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[1] 0.2386 0.0931 0.0777 0.2941 0.1010
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sqrt</span><span class="p">(</span><span class="nf">diag</span><span class="p">(</span><span class="nf">vcov</span><span class="p">(</span><span class="n">m3</span><span class="p">)))</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(Intercept)        male         gpa        frpl    gpa:frpl 
-</span></span><span class="line"><span class="cl">     0.2386      0.0931      0.0777      0.2941      0.1010 
-</span></span></code></pre></div><p>&ndash; END</p>
+        <p>This is the syntax for accounting for missing data/imputing data with
+large scale assessments (without <strong>plausible values</strong>). This is Appendix
+A and accompanies the article:</p>
+<blockquote>
+<p>Huang, F., &amp; Keller, B. (2025). Working with missing data in
+large-scale assessments. <em>Large-scale Assessments in Education</em>. doi:
+10.1186/s40536-025-00248-9</p></blockquote>
+<p>The syntax for fitting the models with plausible values can be found
+<a href="https://francish.net/post/2025_lsa_mi/" target="_blank" rel="noopener">here</a>. The article is open
+access but you can get the updated, corrected version
+<a href="The%20article%20is%20open%20access%20but%20you%20can%20get%20the%20updated,%20corrected%20version%20here%20%28as%20of%202025.04.16%29.">here</a>
+(as of 2025.04.16).</p>
+<p>The following example is if multiple plausible values are <em>not</em> going to
+be used (e.g., some scale as the outcome, belonging, etc.). <strong>For this
+example, only one plausible value is going to be used (only as an
+example for a continuous variable).</strong> Researchers may be interested in
+predicting some outcome like bullying or school belonging that does not
+use plausible values. If users really want to use a variable that has
+plausible value as an outcome, <strong>ALL</strong> of the values should be used
+properly. See full article for the syntax for multiple imputation using
+all the plausible values. To learn more about plausible values, see <a href="https://francish.net/post/pv3/" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="load-in-the-required-packages">Load in the required packages</h3>
+<pre><code>library(dplyr) #for data management
+library(rblimp) #for imputing
+library(WeMix) #for fitting models
+library(doParallel) #for parallel computing
+library(modelsummary) #to output models side by side
+library(tidyr) #to convert to tall format
+library(MLMusingR) #for the mixPV function
+</code></pre>
+<h3 id="1-load-data">1. LOAD DATA</h3>
+<p>The following example uses the Belgian 2018 PISA dataset.</p>
+<p>A dataset is saved into the <code>comb</code> object (this has 90% complete data):</p>
+<pre><code># source(&quot;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&quot;) #if MLMusingR is not installed
+comb &lt;- rio::import(&quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgium.rds&quot;,
+ trust = TRUE)
+</code></pre>
+<p>Afterwards, the model of interest is fit:</p>
+<pre><code>## using dataset as-is
+l1a &lt;- mix(pv1math ~ gender + escs + immig2 + (1|cntschid) +
+  stubeha + lackstaff,
+  weights = c('w_fstuwt', 'w_schgrnrabwt'),
+  data = comb)
+
+Warning in mix(pv1math ~ gender + escs + immig2 + (1 | cntschid) + stubeha +
+: There were 799 rows with missing data. These have been removed.
+
+summary(l1a) # minimal missing data
+
+Call:
+mix(formula = pv1math ~ gender + escs + immig2 + (1 | cntschid) + 
+    stubeha + lackstaff, data = comb, weights = c(&quot;w_fstuwt&quot;, 
+    &quot;w_schgrnrabwt&quot;))
+
+Variance terms:
+ Level    Group        Name Variance Std. Error Std.Dev.
+     2 cntschid (Intercept)     2548      275.9    50.48
+     1 Residual                 4463      112.3    66.81
+Groups:
+ Level    Group n size mean wgt sum wgt
+     2 cntschid    270    5.791    1564
+     1      Obs   7676   13.817  106058
+
+Fixed Effects:
+                        Estimate Std. Error t value
+(Intercept)              499.148     10.483  47.617
+genderFemale             -20.906      1.899 -11.008
+escs                      18.054      1.216  14.845
+immig2Second-Generation  -20.033      3.492  -5.737
+immig2First-Generation   -25.541      3.759  -6.795
+stubeha                  -35.424      5.414  -6.543
+lackstaffVery little      31.221     12.900   2.420
+lackstaffTo some extent   11.141     13.851   0.804
+lackstaffA lot            19.328     15.533   1.244
+
+lnl= -598666.14 
+Intraclass Correlation= 0.3634 
+</code></pre>
+<p>A second dataset- <code>wmiss</code> is loaded which has additional missing values
+in the <code>escs</code> variable:</p>
+<pre><code># this dataset has more missing data
+wmiss &lt;- rio::import(&quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgiumwmiss.rds&quot;,
+ trust = TRUE)
+MLMusingR::nmiss(wmiss) # how much missing data?
+
+Percent missing per variable:
+      pv1math       pv2math       pv3math       pv4math       pv5math 
+   0.00000000    0.00000000    0.00000000    0.00000000    0.00000000 
+      pv6math       pv7math       pv8math       pv9math      pv10math 
+   0.00000000    0.00000000    0.00000000    0.00000000    0.00000000 
+      stubeha     teachbeha        gender          escs        immig2 
+   0.03445428    0.03445428    0.00000000    0.12235988    0.02595870 
+    lackstaff      w_fstuwt w_schgrnrabwt      cntschid 
+   0.05699115    0.00000000    0.00000000    0.00000000 
+
+Percent complete cases: 0.8154572 
+(Minimum) number to impute: 18 
+
+l1b &lt;- mix(pv1math ~ gender + escs + immig2 + (1|cntschid) +
+ stubeha + lackstaff,
+ weights = c('w_fstuwt', 'w_schgrnrabwt'),
+ data = wmiss)
+
+Warning in mix(pv1math ~ gender + escs + immig2 + (1 | cntschid) + stubeha +
+: There were 1564 rows with missing data. These have been removed.
+
+summary(l1b)
+
+Call:
+mix(formula = pv1math ~ gender + escs + immig2 + (1 | cntschid) + 
+    stubeha + lackstaff, data = wmiss, weights = c(&quot;w_fstuwt&quot;, 
+    &quot;w_schgrnrabwt&quot;))
+
+Variance terms:
+ Level    Group        Name Variance Std. Error Std.Dev.
+     2 cntschid (Intercept)     1701     200.06    41.24
+     1 Residual                 3671      80.92    60.59
+Groups:
+ Level    Group n size mean wgt sum wgt
+     2 cntschid    268    5.729    1535
+     1      Obs   6911   13.768   95153
+
+Fixed Effects:
+                        Estimate Std. Error t value
+(Intercept)              524.990      7.739  67.835
+genderFemale             -17.952      1.778 -10.098
+escs                      16.946      1.248  13.580
+immig2Second-Generation  -18.519      3.288  -5.632
+immig2First-Generation   -22.359      3.587  -6.233
+stubeha                  -29.170      3.876  -7.526
+lackstaffVery little      11.851     10.241   1.157
+lackstaffTo some extent   -2.132      9.863  -0.216
+lackstaffA lot             2.408     11.286   0.213
+
+lnl= -527776.77 
+Intraclass Correlation= 0.3167 
+</code></pre>
+<h3 id="2-imputing">2. IMPUTING</h3>
+<p>Prior to imputing the data, we need to get our data ready.</p>
+<pre><code>ns &lt;- nrow(wmiss) #how many observations 
+m &lt;- 20 #number of imputations
+</code></pre>
+<p>Blimp requires all numeric variables. We convert our factors into
+numeric variables.</p>
+<pre><code>tall &lt;-  mutate(wmiss,
+  across(everything(), as.numeric)
+)
+# the character variable turns into NA
+</code></pre>
+<p>We are now ready to impute 20 datasets. We do not need to do this per
+plausible value.</p>
+<div class="flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
+<span class="pr-3 pt-1 text-primary-600 dark:text-primary-300">
+  <svg height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z"/></svg>
+</span>
+  <span class="dark:text-neutral-300">Remember, you have to download and install Blimp separately (which performs the multiple imputations). You can get it here <a href="https://www.appliedmissingdata.com/blimp" target="_blank" rel="noopener">https://www.appliedmissingdata.com/blimp</a>.</span>
+</div>
+<p>The <code>rblimp</code> package also needs to be installed using:
+<code>remotes::install_github('blimp-stats/rblimp')</code></p>
+<pre><code>mymodel2 &lt;- rblimp(
+  data = tall,
+  nominal = 'gender immig2 lackstaff',
+  # ordinal = '',
+  clusterid = 'cntschid',
+  fixed = 'gender w_fstuwt', 
+  model = 'pv1math ~ gender escs immig2 
+           stubeha lackstaff w_fstuwt', #model based FCSscs
+  options = 'labels',
+  seed = 1234,
+  nimps = m
+)
+</code></pre>
+<p>This takes some time. A lot of output is printed (not shown). We can
+check the PSR values.</p>
+<pre><code>mymodel2@psr %&gt;% tail(1) %&gt;% max(., na.rm = TRUE)
+
+[1] 1.048
+</code></pre>
+<p>This seems fine (value is &lt; 1.1). We can then proceed to create the
+stacked dataset (called <code>tmp</code>).</p>
+<pre><code>tmp &lt;- as.mitml(mymodel2) |&gt;
+  do.call(rbind, args = _)
+</code></pre>
+<p>We create an imputation counter:</p>
+<pre><code>tmp$.implist &lt;- rep(1:m, each = ns)
+</code></pre>
+<p>We can now add back the factor attributes to the numeric variables:</p>
+<pre><code>attributes(tmp$lackstaff) &lt;- attributes(comb$lackstaff)
+attributes(tmp$gender) &lt;- attributes(comb$gender)
+attributes(tmp$immig2) &lt;- attributes(comb$immig2)
+</code></pre>
+<p>We can check how many observations there are per imputation (we have 20
+imputations):</p>
+<pre><code>table(tmp$.implist)
+
+
+   1    2    3    4    5    6    7    8    9   10   11   12   13   14   15 
+8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 
+  16   17   18   19   20 
+8475 8475 8475 8475 8475 
+</code></pre>
+<p>Afterwards, we can create a list with the 20 datasets for final
+analysis:</p>
+<pre><code>alld2 &lt;- split(tmp, tmp$.implist)
+</code></pre>
+<h3 id="3-fitting-the-models">3. FITTING THE MODELS</h3>
+<p>We will use parallel processing here to speed up the computation:</p>
+<p>First, write out our function. This is where you will modify the model
+to fit what the substantive (or analytic) model of interest is:</p>
+<pre><code>fnc &lt;- function(x) {
+  mix(pv1math ~ gender + escs + immig2 + stubeha +
+      lackstaff  + (1|cntschid),
+  weights = c('w_fstuwt', 'w_schgrnrabwt'),
+  data = x)
+}
+</code></pre>
+<p>Here, <code>x</code> is a placeholder.</p>
+<p>We use the following statements to fit the <code>fnc</code> function above to our
+imputed datasets:</p>
+<pre><code>## fitting models using multiple cores
+st &lt;- Sys.time() #optional
+cl &lt;- makeCluster(detectCores() - 1) #use all cores less one so the computer can still be used for other things...
+registerDoParallel(cl)
+clusterExport(cl, list('fnc', 'mix')) #need to specify the functiosn to use
+mires &lt;- parLapply(cl, alld2, fun = fnc)
+Sys.time() - st #optional
+
+Time difference of 49.27839 secs
+
+stopCluster(cl)
+</code></pre>
+<p>Afterwards, we need to pool results. This is done using the <code>summary</code>
+function in the <code>mixPV</code> function. We need to have the output as a
+<code>mivPV</code> class (although this was fit with <code>mix</code>), to “fool” the
+<code>summary</code> function to combine the results using Rubin’s rules:</p>
+<pre><code>class(mires) &lt;- 'mixPV'
+summary(mires) #this does the pooling 
+
+Results of multilevel analyses with 20 plausible values.
+Number of observations: 8475 
+
+Estimates for random effects: 
+                     estimate std.error statistic   df Pr(&gt;t)    
+cntschid.(Intercept)  2721.34    318.77      8.54 1992 &lt;2e-16 ***
+Residual              4423.45    103.34     42.81 7676 &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Estimates for fixed effects: 
+                        estimate std.error statistic   df Pr(&gt;t)    
+(Intercept)              496.620    10.838    45.821 1205 &lt;2e-16 ***
+genderFemale             -19.312     1.848   -10.450 8055 &lt;2e-16 ***
+escs                      20.044     1.277    15.701  507 &lt;2e-16 ***
+immig2Second-Generation  -19.260     3.244    -5.937 3847 &lt;2e-16 ***
+immig2First-Generation   -24.198     3.492    -6.929 6472 &lt;2e-16 ***
+stubeha                  -35.947     5.250    -6.847 4331 &lt;2e-16 ***
+lackstaffVery little      30.873    13.690     2.255  708  0.024 *  
+lackstaffTo some extent    8.356    14.465     0.578 1006  0.564    
+lackstaffA lot            17.722    17.473     1.014  495  0.311    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+<p>We can compare results side by side using <code>modelsummary</code>. Need a
+function so <code>mix</code> objects will display too (that’s why the <code>source</code>
+function is used below):</p>
+<pre><code>source(&quot;https://raw.githubusercontent.com/flh3/pubdata/refs/heads/main/mixPV/wemix_modelsummary.R&quot;)
+modelsummary(list('90% comp' = l1a, '82% comp' = l1b, 'MI' = mires), stars = TRUE)
+</code></pre>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>90% comp</th>
+<th>82% comp</th>
+<th>MI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td>499.148***</td>
+<td>524.990***</td>
+<td>496.620***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(10.483)</td>
+<td>(7.739)</td>
+<td>(10.838)</td>
+</tr>
+<tr class="odd">
+<td>genderFemale</td>
+<td>-20.906***</td>
+<td>-17.952***</td>
+<td>-19.312***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(1.899)</td>
+<td>(1.778)</td>
+<td>(1.848)</td>
+</tr>
+<tr class="odd">
+<td>escs</td>
+<td>18.054***</td>
+<td>16.946***</td>
+<td>20.044***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(1.216)</td>
+<td>(1.248)</td>
+<td>(1.277)</td>
+</tr>
+<tr class="odd">
+<td>immig2Second-Generation</td>
+<td>-20.033***</td>
+<td>-18.519***</td>
+<td>-19.260***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(3.492)</td>
+<td>(3.288)</td>
+<td>(3.244)</td>
+</tr>
+<tr class="odd">
+<td>immig2First-Generation</td>
+<td>-25.541***</td>
+<td>-22.359***</td>
+<td>-24.198***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(3.759)</td>
+<td>(3.587)</td>
+<td>(3.492)</td>
+</tr>
+<tr class="odd">
+<td>stubeha</td>
+<td>-35.424***</td>
+<td>-29.170***</td>
+<td>-35.947***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(5.414)</td>
+<td>(3.876)</td>
+<td>(5.250)</td>
+</tr>
+<tr class="odd">
+<td>lackstaffVery little</td>
+<td>31.221*</td>
+<td>11.851</td>
+<td>30.873*</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(12.900)</td>
+<td>(10.241)</td>
+<td>(13.690)</td>
+</tr>
+<tr class="odd">
+<td>lackstaffTo some extent</td>
+<td>11.141</td>
+<td>-2.132</td>
+<td>8.356</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(13.851)</td>
+<td>(9.863)</td>
+<td>(14.465)</td>
+</tr>
+<tr class="odd">
+<td>lackstaffA lot</td>
+<td>19.328</td>
+<td>2.408</td>
+<td>17.722</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(15.533)</td>
+<td>(11.286)</td>
+<td>(17.473)</td>
+</tr>
+<tr class="odd">
+<td>cntschid.(Intercept)</td>
+<td>2547.812***</td>
+<td>1701.117***</td>
+<td>2721.342***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(275.856)</td>
+<td>(200.061)</td>
+<td>(318.770)</td>
+</tr>
+<tr class="odd">
+<td>Residual</td>
+<td>4463.001***</td>
+<td>3670.943***</td>
+<td>4423.448***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(112.308)</td>
+<td>(80.921)</td>
+<td>(103.337)</td>
+</tr>
+<tr class="odd">
+<td>Nobs</td>
+<td>7676</td>
+<td>6911</td>
+<td>8475</td>
+</tr>
+<tr class="even">
+<td>lnl</td>
+<td>-598666.141908678</td>
+<td>-527776.771623781</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>N.grps</td>
+<td>270</td>
+<td>268</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>icc.x</td>
+<td>0.363411731755597</td>
+<td>0.31666002745425</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>N.pv</td>
+<td></td>
+<td></td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>AICbar</td>
+<td></td>
+<td></td>
+<td>1331427.46293097</td>
+</tr>
+<tr class="odd">
+<td>BICbar</td>
+<td></td>
+<td></td>
+<td>1331504.95656622</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td colspan="4"><ul>
+<li>p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</li>
+</ul></td>
+</tr>
+</tfoot>
+&#10;</table>
+<p>Results of the first and third models are similar. Model 2, with
+additional missing data in <code>escs</code> have different results– for the
+level-2 coefficients (see <code>lackstaff</code> results).</p>
+<p>&ndash; END</p>
 
       </div>
 
       
-  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2022-02-15T00:00:00.000Z">
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2025-04-17T00:00:00.000Z">
     <span>Last updated on</span>
-    Feb 15, 2022</time>
+    Apr 17, 2025</time>
 
       <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
         
@@ -2795,7 +3153,11 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
 
 <div class="flex justify-center">
   
-  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/logistic-regression/">Logistic Regression</a>
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/large-scale-assessments/">Large Scale Assessments</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/multilevel-models/">Multilevel Models</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/missing-data/">Missing Data</a>
   
 </div>
 
@@ -2813,7 +3175,7 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flogistic-regression-fisher-scoring%2F&amp;text=Logistic&#43;regression&#43;from&#43;scratch&#43;%28Newton&#43;Raphson&#43;and&#43;Fisher&#43;Scoring%29"
+    href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2025_lsa_mi_a%2F&amp;text=Working&#43;with&#43;missing&#43;data&#43;in&#43;large-scale&#43;assessments&#43;%28without&#43;plausible&#43;&#43;values%29"
     title="X"
     aria-label="X"
     id="share-link-x"
@@ -2831,7 +3193,7 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flogistic-regression-fisher-scoring%2F&amp;t=Logistic&#43;regression&#43;from&#43;scratch&#43;%28Newton&#43;Raphson&#43;and&#43;Fisher&#43;Scoring%29"
+    href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2025_lsa_mi_a%2F&amp;t=Working&#43;with&#43;missing&#43;data&#43;in&#43;large-scale&#43;assessments&#43;%28without&#43;plausible&#43;&#43;values%29"
     title="Facebook"
     aria-label="Facebook"
     id="share-link-facebook"
@@ -2851,7 +3213,7 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="mailto:?subject=Logistic%20regression%20from%20scratch%20%28Newton%20Raphson%20and%20Fisher%20Scoring%29&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flogistic-regression-fisher-scoring%2F"
+    href="mailto:?subject=Working%20with%20missing%20data%20in%20large-scale%20assessments%20%28without%20plausible%20%20values%29&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2025_lsa_mi_a%2F"
     title="Email"
     aria-label="Email"
     id="share-link-email"
@@ -2869,7 +3231,7 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flogistic-regression-fisher-scoring%2F&amp;title=Logistic&#43;regression&#43;from&#43;scratch&#43;%28Newton&#43;Raphson&#43;and&#43;Fisher&#43;Scoring%29"
+    href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2025_lsa_mi_a%2F&amp;title=Working&#43;with&#43;missing&#43;data&#43;in&#43;large-scale&#43;assessments&#43;%28without&#43;plausible&#43;&#43;values%29"
     title="LinkedIn"
     aria-label="LinkedIn"
     id="share-link-linkedin"
@@ -2887,7 +3249,7 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="whatsapp://send?text=Logistic&#43;regression&#43;from&#43;scratch&#43;%28Newton&#43;Raphson&#43;and&#43;Fisher&#43;Scoring%29%20http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flogistic-regression-fisher-scoring%2F"
+    href="whatsapp://send?text=Working&#43;with&#43;missing&#43;data&#43;in&#43;large-scale&#43;assessments&#43;%28without&#43;plausible&#43;&#43;values%29%20http%3A%2F%2Flocalhost%3A1313%2Fpost%2F2025_lsa_mi_a%2F"
     title="WhatsApp"
     aria-label="WhatsApp"
     id="share-link-whatsapp"
@@ -3114,34 +3476,18 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
   <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
     <div class="">
       
-        <a class="group flex no-underline" href="/post/2022_cr2/">
-          <span
-            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
-          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
-          <span class="flex flex-col">
-            <span
-              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >Robust standard errors in mixed models</span>
-            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-              
-                May 24, 2022
-              
-            </span>
-          </span>
-        </a>
-      
     </div>
     <div class="">
       
-        <a class="group flex text-right no-underline" href="/post/likelihood_2022/">
+        <a class="group flex text-right no-underline" href="/post/2025_lsa_mi/">
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >Using REML and ML for estimation</span
+            >Working with missing data in large-scale assessments</span
             >
             <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
               
-                Jun 19, 2021
+                Apr 16, 2025
               
             </span>
           </span>
@@ -3165,9 +3511,15 @@ In an earlier post, I had shown this using iteratively reweighted least squares 
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/post/compare/">🎉 Comparing coefficients across logistic regression models</a></li>
+      <li><a href="/post/2025_lsa_mi/">Working with missing data in large-scale assessments</a></li>
       
-      <li><a href="/post/applied/">🎉 Applied example for alternatives to logistic regression</a></li>
+      <li><a href="/publication/journal-article/2025/lsa-mi/">Working with missing data in large-scale assessments</a></li>
+      
+      <li><a href="/publication/journal-article/test3/huang-using-2024/">Using plausible values when fitting multilevel models with large-scale assessment data using R</a></li>
+      
+      <li><a href="/publication/journal-article/2025/lsa-weights/">Reassessing weights in large-scale assessments and multilevel models</a></li>
+      
+      <li><a href="/post/weights_2025/">Weights with Multilevel Models</a></li>
       
     </ul>
   </div>

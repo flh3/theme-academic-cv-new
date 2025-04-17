@@ -49,7 +49,8 @@ profiles:
     url: https://scholar.google.com/citations?user=mLNk1a8AAAAJ&hl=en
   - icon: academicons/orcid
     url: https://orcid.org/0000-0002-5900-7763
-
+  - icon: "researchgate"
+    url: "https://www.researchgate.net/profile/Francis-Huang"	
 interests:
   - Analysis of Clustered Data (Multilevel Modeling)
   - Measurement of School Climate
