@@ -89,7 +89,10 @@ Perform some necessary data management:
 
 ## 4. Impute the data
 
+{{% callout note %}}
 Remember, you have to download and install Blimp separately (which performs the multiple imputations). You can get it here <https://www.appliedmissingdata.com/blimp>.
+{{% /callout %}}
+
 
 Then, you will have to install rblimp: 
 
