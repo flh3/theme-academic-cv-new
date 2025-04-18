@@ -165,13 +165,9 @@ Prior to imputing the data, we need to get our data ready.
     ns <- nrow(wmiss) #how many observations 
     m <- 20 #number of imputations
 
-Blimp requires all numeric variables. We convert our factors into
-numeric variables.
-
-    tall <-  mutate(wmiss,
-      across(everything(), as.numeric)
-    )
-    # the character variable turns into NA
+{{% callout note %}}
+UPDATE: rblimp used to require all numeric variables only (at the time of acceptance of the manuscript). However, this has been updated (in version 0.2.7) and there is no need to convert factors into numeric variables anymore. We can use the `wmiss` dataset as-is and this is used in the imputation.
+{{% /callout %}}
 
 We are now ready to impute 20 datasets. We do not need to do this per
 plausible value. 
@@ -184,13 +180,13 @@ The `rblimp` package also needs to be installed using:
 `remotes::install_github('blimp-stats/rblimp')`
 
     mymodel2 <- rblimp(
-      data = tall,
+      data = wmiss, #this is different from the manuscript
       nominal = 'gender immig2 lackstaff',
       # ordinal = '',
       clusterid = 'cntschid',
       fixed = 'gender w_fstuwt', 
       model = 'pv1math ~ gender escs immig2 
-               stubeha lackstaff w_fstuwt', #model based FCSscs
+               stubeha lackstaff w_fstuwt', 
       options = 'labels',
       seed = 1234,
       nimps = m
@@ -213,11 +209,9 @@ We create an imputation counter:
 
     tmp$.implist <- rep(1:m, each = ns)
 
-We can now add back the factor attributes to the numeric variables:
-
-    attributes(tmp$lackstaff) <- attributes(comb$lackstaff)
-    attributes(tmp$gender) <- attributes(comb$gender)
-    attributes(tmp$immig2) <- attributes(comb$immig2)
+{{% callout note %}}
+UPDATE: The original manuscript required copying the variable attributes of factors back into the numeric variables. This is not needed anymore with the latest version of `rblimp`.
+{{% /callout %}}
 
 We can check how many observations there are per imputation (we have 20
 imputations):

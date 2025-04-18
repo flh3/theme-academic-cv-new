@@ -1440,7 +1440,15 @@ large-scale assessments. Large-scale Assessments in Education. doi:
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
         </span>
     </a><div class="ltr:pr-0 overflow-hidden">
-        <ul class="hb-sidebar-list"><li class="flex flex-col open"><a
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2025_lsa_mi/"
+    
+  >Working with missing data in large-scale assessments (with plausible values)
+    </a>
+              
+            </li><li class="flex flex-col open"><a
     class="hb-sidebar-custom-link
       sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
     href="/post/2025_lsa_mi_a/"
@@ -1456,14 +1464,6 @@ large-scale assessments. Large-scale Assessments in Education. doi:
             </li>
           </ul>
   
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/2025_lsa_mi/"
-    
-  >Working with missing data in large-scale assessments
-    </a>
               
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
@@ -2807,13 +2807,12 @@ Intraclass Correlation= 0.3167
 <pre><code>ns &lt;- nrow(wmiss) #how many observations 
 m &lt;- 20 #number of imputations
 </code></pre>
-<p>Blimp requires all numeric variables. We convert our factors into
-numeric variables.</p>
-<pre><code>tall &lt;-  mutate(wmiss,
-  across(everything(), as.numeric)
-)
-# the character variable turns into NA
-</code></pre>
+<div class="flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
+<span class="pr-3 pt-1 text-primary-600 dark:text-primary-300">
+  <svg height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z"/></svg>
+</span>
+  <span class="dark:text-neutral-300">UPDATE: rblimp used to require all numeric variables only (at the time of acceptance of the manuscript). However, this has been updated (in version 0.2.7) and there is no need to convert factors into numeric variables anymore. We can use the <code>wmiss</code> dataset as-is and this is used in the imputation.</span>
+</div>
 <p>We are now ready to impute 20 datasets. We do not need to do this per
 plausible value.</p>
 <div class="flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
@@ -2825,13 +2824,13 @@ plausible value.</p>
 <p>The <code>rblimp</code> package also needs to be installed using:
 <code>remotes::install_github('blimp-stats/rblimp')</code></p>
 <pre><code>mymodel2 &lt;- rblimp(
-  data = tall,
+  data = wmiss, #this is different from the manuscript
   nominal = 'gender immig2 lackstaff',
   # ordinal = '',
   clusterid = 'cntschid',
   fixed = 'gender w_fstuwt', 
   model = 'pv1math ~ gender escs immig2 
-           stubeha lackstaff w_fstuwt', #model based FCSscs
+           stubeha lackstaff w_fstuwt', 
   options = 'labels',
   seed = 1234,
   nimps = m
@@ -2851,11 +2850,12 @@ stacked dataset (called <code>tmp</code>).</p>
 <p>We create an imputation counter:</p>
 <pre><code>tmp$.implist &lt;- rep(1:m, each = ns)
 </code></pre>
-<p>We can now add back the factor attributes to the numeric variables:</p>
-<pre><code>attributes(tmp$lackstaff) &lt;- attributes(comb$lackstaff)
-attributes(tmp$gender) &lt;- attributes(comb$gender)
-attributes(tmp$immig2) &lt;- attributes(comb$immig2)
-</code></pre>
+<div class="flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
+<span class="pr-3 pt-1 text-primary-600 dark:text-primary-300">
+  <svg height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z"/></svg>
+</span>
+  <span class="dark:text-neutral-300">UPDATE: The original manuscript required copying the variable attributes of factors back into the numeric variables. This is not needed anymore with the latest version of <code>rblimp</code>.</span>
+</div>
 <p>We can check how many observations there are per imputation (we have 20
 imputations):</p>
 <pre><code>table(tmp$.implist)
@@ -3476,18 +3476,34 @@ level-2 coefficients (see <code>lackstaff</code> results).</p>
   <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
     <div class="">
       
-    </div>
-    <div class="">
-      
-        <a class="group flex text-right no-underline" href="/post/2025_lsa_mi/">
+        <a class="group flex no-underline" href="/post/2025_lsa_mi/">
+          <span
+            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-            >Working with missing data in large-scale assessments</span
+            >Working with missing data in large-scale assessments (with plausible values)</span>
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Apr 17, 2025
+              
+            </span>
+          </span>
+        </a>
+      
+    </div>
+    <div class="">
+      
+        <a class="group flex text-right no-underline" href="/post/weights_2025/">
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >Weights with Multilevel Models</span
             >
             <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
               
-                Apr 16, 2025
+                Mar 21, 2025
               
             </span>
           </span>
@@ -3511,7 +3527,7 @@ level-2 coefficients (see <code>lackstaff</code> results).</p>
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/post/2025_lsa_mi/">Working with missing data in large-scale assessments</a></li>
+      <li><a href="/post/2025_lsa_mi/">Working with missing data in large-scale assessments (with plausible values)</a></li>
       
       <li><a href="/publication/journal-article/2025/lsa-mi/">Working with missing data in large-scale assessments</a></li>
       

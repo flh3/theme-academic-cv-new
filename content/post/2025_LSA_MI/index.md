@@ -1,7 +1,7 @@
 ---
-title: Working with missing data in large-scale assessments
+title: Working with missing data in large-scale assessments (with plausible values)
 author: admin
-date: 2025-04-16
+date: 2025-04-17
 tags: 
   - large scale assessments
   - multilevel models
@@ -23,8 +23,8 @@ the article:
 The article is open access but you can get the updated, corrected version [here](MIwithLSA.pdf) (as of 2025.04.16).
 
 There is a slight adjustment (for the original article) when it comes to
-parallel processing (an additional package needs to be loaded). This is
-using the Belgian PISA dataset. Read the article as it explains the steps.
+parallel processing (an additional package needs to be loaded). `rblimp` has also been updated to work with factor variables. This example
+uses the Belgian PISA dataset. Read the article as it explains the steps.
 
 ## 1. Read in the data and load the required libraries
 
@@ -82,10 +82,11 @@ Perform some necessary data management:
 	  # numeric value 
     nopv <- length(table(as.character(tall$.pv))) #the number of 
 	  # plausible values
-    tall_numeric <- mutate(tall,
-      across(everything(), as.numeric) #blimp will only work with 
-	  # numeric data
-    ) 
+
+{{% callout note %}}
+UPDATE: rblimp used to require all numeric variables only (at the time of acceptance of the manuscript). However, this has been updated (in version 0.2.7) and there is no need to convert factors into numeric variables anymore. We can use the `tall` dataset as-is and this is used in the imputation.
+{{% /callout %}}
+
 
 ## 4. Impute the data
 
@@ -101,7 +102,7 @@ Then, you will have to install rblimp:
 
     # set_blimp("/mnt/c/Blimp/blimp") ### NOTE:: I need this for linux
     mymodel <- rblimp(
-      data = tall_numeric,
+      data = tall, #this is different, new version of rblimp
       nominal = 'gender immig2 lackstaff',
       # ordinal = '',
       clusterid = 'cntschid',
@@ -135,22 +136,10 @@ And perform some data management.
       do.call(rbind, args = _)
 
     impdat$.implist <- rep(1:(m * nopv), each = ns)
-    ## Return factor attributes to the data
-    table(impdat$lackstaff) #no attributes
-
-
-         1      2      3      4 
-    250958 720793 576658 146591 
-
-    attributes(impdat$lackstaff) <- attributes(comb$lackstaff)
-    table(impdat$lackstaff) #now with attributes
-
-        Not at all    Very little To some extent          A lot 
-            250958         720793         576658         146591 
-
-    ## do this for the other variables that should be categorical
-    attributes(impdat$gender) <- attributes(comb$gender)
-    attributes(impdat$immig2) <- attributes(comb$immig2)
+	
+{{% callout note %}}
+UPDATE: The original manuscript required copying the variable attributes of factors back into the numeric variables. This is not needed anymore with the latest version of `rblimp` which works with factors.
+{{% /callout %}}
 
     ## Create a list for analysis
     alldat <- split(impdat, impdat$.implist)
