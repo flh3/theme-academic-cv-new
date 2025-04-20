@@ -27,11 +27,11 @@ publication_types:
 
 # Publication name and optional abbreviated publication name.
 publication: '*Journal of School Violence*'
-publication_short: ''
+publication_short: 'JSV'
 
 doi: 10.1080/15388220.2022.2146127
 
-abstract: ''
+abstract: 'This study investigated teacher perceptions of school resource officers (SROs) and their associations with school safety. The sample consisted of 10,668 teachers in 404 middle schools and 11,900 teachers in 284 high schools. Most middle (86.5%) and high (85.5%) school teachers agreed that the SRO makes them feel safer; however, endorsement differed by race, gender, and teaching experience. Regression analyses found favorable teacher perceptions of their SRO were associated with a greater feeling of safety and security, higher job commitment, and lower teacher victimization. Although correlational, these results add a missing teacher perspective that should be considered in policy debates over the role of SROs in schools.'
 
 # Summary. An optional shortened abstract.
 summary: ''
@@ -44,7 +44,7 @@ tags:
 featured: false
 
 # Links
-url_pdf: ''
+url_pdf: 'https://www.tandfonline.com/doi/full/10.1080/15388220.2022.2146127'
 url_code: ''
 url_dataset: ''
 url_poster: ''

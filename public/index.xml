@@ -867,6 +867,14 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
     </item>
     
     <item>
+      <title>Student attacks following a school threat assessment: Statewide trends in student and case characteristics.</title>
+      <link>http://localhost:1313/publication/journal-article/jtam/kerere-student-2025/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/journal-article/jtam/kerere-student-2025/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Reassessing weights in large-scale assessments and multilevel models</title>
       <link>http://localhost:1313/publication/journal-article/2025/lsa-weights/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
@@ -5822,7 +5830,14 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
       <link>http://localhost:1313/publication/book/huang-practical-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/book/huang-practical-2023/</guid>
-      <description>&lt;blockquote&gt;
+      <description>&lt;p&gt;Check out the latest info on the book &lt;a href=&#34;https://francish.net/MLMusingR/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sample chapters&lt;/li&gt;
+&lt;li&gt;additional code and an online appendix&lt;/li&gt;
+&lt;li&gt;errata&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some reviews:&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;p&gt;A major strength of this book is its accessibility. Huang effortlessly bridges the divide between the sometimes-abstruse literature on advanced statistics and the needs of applied researchers who lack extensive quantitative training. The result is an approachable text that covers all the basics, but also does not shy away from important advanced topics such as diagnostics, detecting and handling heteroscedasticity, and missing data handling methods. This book would make not only a useful guide to the application of multilevel modeling, but could also serve as an excellent companion text for a course on multilevel modeling. - Kristopher J. Preacher, Vanderbilt University&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;This book is an excellent book for a graduate level multilevel modeling course that utilizes R; it perfectly combines the depth and breadth on this topic. - Wei Wang, The Graduate Center, City University of New York&lt;/p&gt;&lt;/blockquote&gt;

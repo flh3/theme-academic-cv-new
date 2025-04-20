@@ -31,7 +31,7 @@ publication_types:
 
 # Publication name and optional abbreviated publication name.
 publication: '*School Psychology Review*'
-publication_short: ''
+publication_short: 'SPR'
 
 doi: 10.1080/2372966X.2025.2457006
 

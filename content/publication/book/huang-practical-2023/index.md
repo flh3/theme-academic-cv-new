@@ -68,6 +68,12 @@ image:
 #   Otherwise, set `projects: []`.
 projects: []
 ---
+Check out the latest info on the book [here](https://francish.net/MLMusingR/)
+- sample chapters
+- additional code and an online appendix
+- errata
+
+Some reviews:
 
 > A major strength of this book is its accessibility. Huang effortlessly bridges the divide between the sometimes-abstruse literature on advanced statistics and the needs of applied researchers who lack extensive quantitative training. The result is an approachable text that covers all the basics, but also does not shy away from important advanced topics such as diagnostics, detecting and handling heteroscedasticity, and missing data handling methods. This book would make not only a useful guide to the application of multilevel modeling, but could also serve as an excellent companion text for a course on multilevel modeling. - Kristopher J. Preacher, Vanderbilt University
 
