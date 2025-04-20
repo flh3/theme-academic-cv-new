@@ -7,7 +7,7 @@
 appearance:
   mode: auto
   color: blue
-  theme_default: light
+  theme_default: system
 
 
 # SEO
