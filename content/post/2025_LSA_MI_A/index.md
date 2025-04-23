@@ -35,7 +35,7 @@ predicting some outcome like bullying or school belonging that does not
 use plausible values. If users really want to use a variable that has
 plausible value as an outcome, **ALL** of the values should be used
 properly. See full article for the syntax for multiple imputation using
-all the plausible values. To learn more about plausible values, see [here](https://francish.net/post/pv3/).
+all the plausible values. To learn more about plausible values, see [here](https://francish.net/post/LSA2/).
 
 ### Load in the required packages
 
