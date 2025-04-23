@@ -5,12 +5,857 @@
     <link>http://localhost:1313/tags/large-scale-assessments/</link>
       <atom:link href="http://localhost:1313/tags/large-scale-assessments/index.xml" rel="self" type="application/rss+xml" />
     <description>Large Scale Assessments</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 16 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Large Scale Assessments</title>
       <link>http://localhost:1313/tags/large-scale-assessments/</link>
     </image>
+    
+    <item>
+      <title>Working with missing data in large-scale assessments (with plausible values)</title>
+      <link>http://localhost:1313/post/2025_lsa_mi/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2025_lsa_mi/</guid>
+      <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
+large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies
+the article:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Huang, F., &amp;amp; Keller, B. (2025). Working with missing data in
+large-scale assessments. &lt;em&gt;Large-scale Assessments in Education&lt;/em&gt;. doi:
+10.1186/s40536-025-00248-9&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The article is open access but you can get the updated, corrected version &lt;a href=&#34;MIwithLSA.pdf&#34;&gt;here&lt;/a&gt; (as of 2025.04.16).&lt;/p&gt;
+&lt;p&gt;There is a slight adjustment (for the original article) when it comes to
+parallel processing (an additional package needs to be loaded). &lt;code&gt;rblimp&lt;/code&gt; has also been updated to work with factor variables. This example
+uses the Belgian PISA dataset. Read the article as it explains the steps.&lt;/p&gt;
+&lt;h2 id=&#34;1-read-in-the-data-and-load-the-required-libraries&#34;&gt;1. Read in the data and load the required libraries&lt;/h2&gt;
+&lt;p&gt;Download the data from the TIMSS website.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;comb &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgium.rds&amp;quot;) #combined original dataset
+wmiss &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgiumwmiss.rds&amp;quot;) #dataset with additional missing data
+
+library(MLMusingR) # for mixPV and summary for pooling
+library(WeMix) # for mix
+library(tidyr) # to convert from wide to long
+library(dplyr) # data management
+library(rblimp) #for creating the imputations
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-fit-the-models&#34;&gt;2. Fit the models&lt;/h2&gt;
+&lt;p&gt;Done using the complete (90%) and missing info (82%) datasets. Done for
+comparison purposes (how do the results differ when we impute the data?)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;l1a &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
+  pv5math + pv6math + pv7math + pv8math + #note correction, pv8
+  pv9math + pv10math ~ gender + escs + immig2 +
+  stubeha + lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = comb, mc = TRUE) 
+# can add the option mc = TRUE to make this faster (multi core)
+l1b &amp;lt;- mixPV(pv1math + pv2math + pv3math + pv4math +
+  pv5math + pv6math + pv7math + pv8math + #note correction, pv8
+  pv9math + pv10math ~ gender + escs + immig2 +
+  stubeha + lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = wmiss, mc = TRUE) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-investigate-missingness&#34;&gt;3. Investigate missingness&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;MLMusingR::nmiss(wmiss) 
+
+Percent missing per variable:
+      pv1math       pv2math       pv3math       pv4math       pv5math       pv6math       pv7math 
+   0.00000000    0.00000000    0.00000000    0.00000000    0.00000000    0.00000000    0.00000000 
+      pv8math       pv9math      pv10math       stubeha     teachbeha        gender          escs 
+   0.00000000    0.00000000    0.00000000    0.03445428    0.03445428    0.00000000    0.12235988 
+       immig2     lackstaff      w_fstuwt w_schgrnrabwt      cntschid 
+   0.02595870    0.05699115    0.00000000    0.00000000    0.00000000 
+
+Percent complete cases: 0.8154572 
+(Minimum) number to impute: 18 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Perform some necessary data management:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tall &amp;lt;- pivot_longer(wmiss, pv1math:pv10math, values_to = &#39;math&#39;)
+m &amp;lt;- 20 #number of datasets to impute
+ns &amp;lt;- nrow(wmiss) #count how many observations there are
+tall$.pv &amp;lt;- as.numeric(gsub(&amp;quot;[^0-9]&amp;quot;, &amp;quot;&amp;quot;, tall$name)) #extract the 
+  # numeric value 
+nopv &amp;lt;- length(table(as.character(tall$.pv))) #the number of 
+  # plausible values
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;UPDATE: rblimp used to require all numeric variables only (at the time of acceptance of the manuscript). However, this has been updated (in version 0.2.7) and there is no need to convert factors into numeric variables anymore. We can use the &lt;code&gt;tall&lt;/code&gt; dataset as-is and this is used in the imputation.&lt;/span&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;4-impute-the-data&#34;&gt;4. Impute the data&lt;/h2&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Remember, you have to download and install Blimp separately (which performs the multiple imputations). You can get it here &lt;a href=&#34;https://www.appliedmissingdata.com/blimp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.appliedmissingdata.com/blimp&lt;/a&gt;.&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;Then, you will have to install rblimp:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# install.packages(&#39;remotes&#39;)
+remotes::install_github(&#39;blimp-stats/rblimp&#39;)
+
+# set_blimp(&amp;quot;/mnt/c/Blimp/blimp&amp;quot;) ### NOTE:: I need this for linux
+mymodel &amp;lt;- rblimp(
+  data = tall, #this is different, new version of rblimp
+  nominal = &#39;gender immig2 lackstaff&#39;,
+  # ordinal = &#39;&#39;,
+  clusterid = &#39;cntschid&#39;,
+  fixed = &#39;gender w_fstuwt&#39;, 
+  model = &#39;math ~ gender escs immig2 
+           stubeha lackstaff w_fstuwt&#39;, 
+  options = &#39;labels&#39;,
+  seed = 1234,
+  nimps = ) |&amp;gt; 
+  by_group(&#39;.pv&#39;) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Again, read the article which explains the different options. This will take a while. Suggest using 2 in the &lt;code&gt;nimps&lt;/code&gt; option to start
+and see if everything works properly first. The &lt;code&gt;by_group&lt;/code&gt; option is
+important when there are plausible values.&lt;/p&gt;
+&lt;p&gt;After imputing, inspect the rhat values (see article)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mymodel |&amp;gt; sapply(\(x) tail(x@psr, 1) |&amp;gt; max(na.rm = TRUE))
+
+     1      2      3      4      5      6      7      8      9     10 
+1.0480 1.0394 1.0401 1.0959 1.0312 1.0609 1.0489 1.0337 1.0401 1.0610 
+
+# lapply(mymodel, psr)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-extract-the-data&#34;&gt;5. Extract the data&lt;/h2&gt;
+&lt;p&gt;And perform some data management.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;impdat &amp;lt;- lapply(mymodel, as.mitml) |&amp;gt;
+  unlist(recursive = FALSE) |&amp;gt;
+  do.call(rbind, args = _)
+
+impdat$.implist &amp;lt;- rep(1:(m * nopv), each = ns)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;UPDATE: The original manuscript required copying the variable attributes of factors back into the numeric variables. This is not needed anymore with the latest version of &lt;code&gt;rblimp&lt;/code&gt; which works with factors.&lt;/span&gt;
+&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;## Create a list for analysis
+alldat &amp;lt;- split(impdat, impdat$.implist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-analyze-the-data&#34;&gt;6. Analyze the data&lt;/h2&gt;
+&lt;p&gt;Specify the model:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;modfit &amp;lt;- function(x) {
+  mix(math ~ gender + escs + immig2 + stubeha +
+  lackstaff + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = x)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fit the model, two ways:&lt;/p&gt;
+&lt;p&gt;Method 1: Serial operation (slow)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# allres &amp;lt;- lapply(alldat, FUN = modfit)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Method 2: Parallel computation (much faster but still requires around 5
+minutes)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(parallel)
+library(doParallel) ### NEED THIS!
+cl &amp;lt;- makeCluster(detectCores() - 1)
+registerDoParallel(cl)
+clusterExport(cl, list(&#39;modfit&#39;, &#39;mix&#39;))
+allres &amp;lt;- parLapply(cl, alldat, fun = modfit)
+stopCluster(cl)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;7-pool-results&#34;&gt;7 Pool results&lt;/h2&gt;
+&lt;p&gt;Need to change the class for the &lt;code&gt;summary&lt;/code&gt; function to work:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class(allres) &amp;lt;- &#39;mixPV&#39;
+summary(allres)
+
+Results of multilevel analyses with 200 plausible values.
+Number of observations: 8475 
+
+Estimates for random effects: 
+                     estimate std.error statistic   df Pr(&amp;gt;t)    
+cntschid.(Intercept)  2878.60    377.84      7.62 1782 &amp;lt;2e-16 ***
+Residual              4353.26    163.94     26.55  454 &amp;lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Estimates for fixed effects: 
+                        estimate std.error statistic   df Pr(&amp;gt;t)    
+(Intercept)               496.88     10.74     46.28 4252 &amp;lt;2e-16 ***
+genderFemale              -19.50      2.31     -8.42  950 &amp;lt;2e-16 ***
+escs                       18.88      1.72     10.95  485 &amp;lt;2e-16 ***
+immig2Second-Generation   -22.31      3.62     -6.16 1747 &amp;lt;2e-16 ***
+immig2First-Generation    -26.35      4.60     -5.73 1330 &amp;lt;2e-16 ***
+stubeha                   -37.68      5.54     -6.81 5192 &amp;lt;2e-16 ***
+lackstaffVery little       28.12     13.97      2.01 4055  0.044 *  
+lackstaffTo some extent     9.23     14.20      0.65 4573  0.516    
+lackstaffA lot             21.61     17.98      1.20 2498  0.229    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Comparing results side by side:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source(&amp;quot;https://raw.githubusercontent.com/flh3/pubdata/refs/heads/main/mixPV/wemix_modelsummary.R&amp;quot;)
+library(modelsummary)
+modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#39; = allres), stars = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table style=&#34;width:98%;&#34;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#34;width: 30%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;90% comp&lt;/th&gt;
+&lt;th&gt;82% comp&lt;/th&gt;
+&lt;th&gt;MI&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;(Intercept)&lt;/td&gt;
+&lt;td&gt;499.886***&lt;/td&gt;
+&lt;td&gt;520.934***&lt;/td&gt;
+&lt;td&gt;496.875***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(10.312)&lt;/td&gt;
+&lt;td&gt;(9.069)&lt;/td&gt;
+&lt;td&gt;(10.737)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;genderFemale&lt;/td&gt;
+&lt;td&gt;-20.890***&lt;/td&gt;
+&lt;td&gt;-18.840***&lt;/td&gt;
+&lt;td&gt;-19.495***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(2.428)&lt;/td&gt;
+&lt;td&gt;(2.458)&lt;/td&gt;
+&lt;td&gt;(2.315)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;escs&lt;/td&gt;
+&lt;td&gt;17.674***&lt;/td&gt;
+&lt;td&gt;16.991***&lt;/td&gt;
+&lt;td&gt;18.878***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(1.510)&lt;/td&gt;
+&lt;td&gt;(1.625)&lt;/td&gt;
+&lt;td&gt;(1.724)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;immig2Second-Generation&lt;/td&gt;
+&lt;td&gt;-22.650***&lt;/td&gt;
+&lt;td&gt;-21.346***&lt;/td&gt;
+&lt;td&gt;-22.306***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(3.872)&lt;/td&gt;
+&lt;td&gt;(4.086)&lt;/td&gt;
+&lt;td&gt;(3.622)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;immig2First-Generation&lt;/td&gt;
+&lt;td&gt;-27.046***&lt;/td&gt;
+&lt;td&gt;-24.955***&lt;/td&gt;
+&lt;td&gt;-26.349***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(4.877)&lt;/td&gt;
+&lt;td&gt;(4.972)&lt;/td&gt;
+&lt;td&gt;(4.598)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;stubeha&lt;/td&gt;
+&lt;td&gt;-36.355***&lt;/td&gt;
+&lt;td&gt;-32.648***&lt;/td&gt;
+&lt;td&gt;-37.677***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(5.522)&lt;/td&gt;
+&lt;td&gt;(4.961)&lt;/td&gt;
+&lt;td&gt;(5.536)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffVery little&lt;/td&gt;
+&lt;td&gt;27.385*&lt;/td&gt;
+&lt;td&gt;12.016&lt;/td&gt;
+&lt;td&gt;28.116*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(13.242)&lt;/td&gt;
+&lt;td&gt;(12.071)&lt;/td&gt;
+&lt;td&gt;(13.967)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffTo some extent&lt;/td&gt;
+&lt;td&gt;9.347&lt;/td&gt;
+&lt;td&gt;-2.166&lt;/td&gt;
+&lt;td&gt;9.227&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(13.758)&lt;/td&gt;
+&lt;td&gt;(11.475)&lt;/td&gt;
+&lt;td&gt;(14.198)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffA lot&lt;/td&gt;
+&lt;td&gt;22.942&lt;/td&gt;
+&lt;td&gt;8.459&lt;/td&gt;
+&lt;td&gt;21.613&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(15.653)&lt;/td&gt;
+&lt;td&gt;(14.019)&lt;/td&gt;
+&lt;td&gt;(17.975)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;cntschid.(Intercept)&lt;/td&gt;
+&lt;td&gt;2714.714***&lt;/td&gt;
+&lt;td&gt;2137.460***&lt;/td&gt;
+&lt;td&gt;2878.599***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(362.636)&lt;/td&gt;
+&lt;td&gt;(370.142)&lt;/td&gt;
+&lt;td&gt;(377.836)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Residual&lt;/td&gt;
+&lt;td&gt;4385.549***&lt;/td&gt;
+&lt;td&gt;3885.879***&lt;/td&gt;
+&lt;td&gt;4353.262***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(179.614)&lt;/td&gt;
+&lt;td&gt;(165.660)&lt;/td&gt;
+&lt;td&gt;(163.942)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Nobs&lt;/td&gt;
+&lt;td&gt;7676&lt;/td&gt;
+&lt;td&gt;6911&lt;/td&gt;
+&lt;td&gt;8475&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;N.pv&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;200&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;AICbar&lt;/td&gt;
+&lt;td&gt;1195567.29545046&lt;/td&gt;
+&lt;td&gt;1061170.157846&lt;/td&gt;
+&lt;td&gt;1329601.33171994&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;BICbar&lt;/td&gt;
+&lt;td&gt;1195643.69984289&lt;/td&gt;
+&lt;td&gt;1061245.40741186&lt;/td&gt;
+&lt;td&gt;1329678.8253552&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;tfoot&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td colspan=&#34;4&#34;&gt;&lt;ul&gt;
+&lt;li&gt;p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/li&gt;
+&lt;/ul&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&amp;#10;&lt;/table&gt;
+&lt;p&gt;END&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Working with missing data in large-scale assessments (without plausible  values)</title>
+      <link>http://localhost:1313/post/2025_lsa_mi_a/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2025_lsa_mi_a/</guid>
+      <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
+large scale assessments (without &lt;strong&gt;plausible values&lt;/strong&gt;). This is Appendix
+A and accompanies the article:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Huang, F., &amp;amp; Keller, B. (2025). Working with missing data in
+large-scale assessments. &lt;em&gt;Large-scale Assessments in Education&lt;/em&gt;. doi:
+10.1186/s40536-025-00248-9&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The syntax for fitting the models with plausible values can be found
+&lt;a href=&#34;https://francish.net/post/2025_lsa_mi/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. The article is open
+access but you can get the updated, corrected version
+&lt;a href=&#34;The%20article%20is%20open%20access%20but%20you%20can%20get%20the%20updated,%20corrected%20version%20here%20%28as%20of%202025.04.16%29.&#34;&gt;here&lt;/a&gt;
+(as of 2025.04.16).&lt;/p&gt;
+&lt;p&gt;The following example is if multiple plausible values are &lt;em&gt;not&lt;/em&gt; going to
+be used (e.g., some scale as the outcome, belonging, etc.). &lt;strong&gt;For this
+example, only one plausible value is going to be used (only as an
+example for a continuous variable).&lt;/strong&gt; Researchers may be interested in
+predicting some outcome like bullying or school belonging that does not
+use plausible values. If users really want to use a variable that has
+plausible value as an outcome, &lt;strong&gt;ALL&lt;/strong&gt; of the values should be used
+properly. See full article for the syntax for multiple imputation using
+all the plausible values. To learn more about plausible values, see &lt;a href=&#34;https://francish.net/post/pv3/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;load-in-the-required-packages&#34;&gt;Load in the required packages&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;library(dplyr) #for data management
+library(rblimp) #for imputing
+library(WeMix) #for fitting models
+library(doParallel) #for parallel computing
+library(modelsummary) #to output models side by side
+library(tidyr) #to convert to tall format
+library(MLMusingR) #for the mixPV function
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;1-load-data&#34;&gt;1. LOAD DATA&lt;/h3&gt;
+&lt;p&gt;The following example uses the Belgian 2018 PISA dataset.&lt;/p&gt;
+&lt;p&gt;A dataset is saved into the &lt;code&gt;comb&lt;/code&gt; object (this has 90% complete data):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# source(&amp;quot;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&amp;quot;) #if MLMusingR is not installed
+comb &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgium.rds&amp;quot;,
+ trust = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Afterwards, the model of interest is fit:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## using dataset as-is
+l1a &amp;lt;- mix(pv1math ~ gender + escs + immig2 + (1|cntschid) +
+  stubeha + lackstaff,
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = comb)
+
+Warning in mix(pv1math ~ gender + escs + immig2 + (1 | cntschid) + stubeha +
+: There were 799 rows with missing data. These have been removed.
+
+summary(l1a) # minimal missing data
+
+Call:
+mix(formula = pv1math ~ gender + escs + immig2 + (1 | cntschid) + 
+    stubeha + lackstaff, data = comb, weights = c(&amp;quot;w_fstuwt&amp;quot;, 
+    &amp;quot;w_schgrnrabwt&amp;quot;))
+
+Variance terms:
+ Level    Group        Name Variance Std. Error Std.Dev.
+     2 cntschid (Intercept)     2548      275.9    50.48
+     1 Residual                 4463      112.3    66.81
+Groups:
+ Level    Group n size mean wgt sum wgt
+     2 cntschid    270    5.791    1564
+     1      Obs   7676   13.817  106058
+
+Fixed Effects:
+                        Estimate Std. Error t value
+(Intercept)              499.148     10.483  47.617
+genderFemale             -20.906      1.899 -11.008
+escs                      18.054      1.216  14.845
+immig2Second-Generation  -20.033      3.492  -5.737
+immig2First-Generation   -25.541      3.759  -6.795
+stubeha                  -35.424      5.414  -6.543
+lackstaffVery little      31.221     12.900   2.420
+lackstaffTo some extent   11.141     13.851   0.804
+lackstaffA lot            19.328     15.533   1.244
+
+lnl= -598666.14 
+Intraclass Correlation= 0.3634 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A second dataset- &lt;code&gt;wmiss&lt;/code&gt; is loaded which has additional missing values
+in the &lt;code&gt;escs&lt;/code&gt; variable:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# this dataset has more missing data
+wmiss &amp;lt;- rio::import(&amp;quot;https://github.com/flh3/pubdata/raw/refs/heads/main/miscdata/belgiumwmiss.rds&amp;quot;,
+ trust = TRUE)
+MLMusingR::nmiss(wmiss) # how much missing data?
+
+Percent missing per variable:
+      pv1math       pv2math       pv3math       pv4math       pv5math 
+   0.00000000    0.00000000    0.00000000    0.00000000    0.00000000 
+      pv6math       pv7math       pv8math       pv9math      pv10math 
+   0.00000000    0.00000000    0.00000000    0.00000000    0.00000000 
+      stubeha     teachbeha        gender          escs        immig2 
+   0.03445428    0.03445428    0.00000000    0.12235988    0.02595870 
+    lackstaff      w_fstuwt w_schgrnrabwt      cntschid 
+   0.05699115    0.00000000    0.00000000    0.00000000 
+
+Percent complete cases: 0.8154572 
+(Minimum) number to impute: 18 
+
+l1b &amp;lt;- mix(pv1math ~ gender + escs + immig2 + (1|cntschid) +
+ stubeha + lackstaff,
+ weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+ data = wmiss)
+
+Warning in mix(pv1math ~ gender + escs + immig2 + (1 | cntschid) + stubeha +
+: There were 1564 rows with missing data. These have been removed.
+
+summary(l1b)
+
+Call:
+mix(formula = pv1math ~ gender + escs + immig2 + (1 | cntschid) + 
+    stubeha + lackstaff, data = wmiss, weights = c(&amp;quot;w_fstuwt&amp;quot;, 
+    &amp;quot;w_schgrnrabwt&amp;quot;))
+
+Variance terms:
+ Level    Group        Name Variance Std. Error Std.Dev.
+     2 cntschid (Intercept)     1701     200.06    41.24
+     1 Residual                 3671      80.92    60.59
+Groups:
+ Level    Group n size mean wgt sum wgt
+     2 cntschid    268    5.729    1535
+     1      Obs   6911   13.768   95153
+
+Fixed Effects:
+                        Estimate Std. Error t value
+(Intercept)              524.990      7.739  67.835
+genderFemale             -17.952      1.778 -10.098
+escs                      16.946      1.248  13.580
+immig2Second-Generation  -18.519      3.288  -5.632
+immig2First-Generation   -22.359      3.587  -6.233
+stubeha                  -29.170      3.876  -7.526
+lackstaffVery little      11.851     10.241   1.157
+lackstaffTo some extent   -2.132      9.863  -0.216
+lackstaffA lot             2.408     11.286   0.213
+
+lnl= -527776.77 
+Intraclass Correlation= 0.3167 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-imputing&#34;&gt;2. IMPUTING&lt;/h3&gt;
+&lt;p&gt;Prior to imputing the data, we need to get our data ready.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ns &amp;lt;- nrow(wmiss) #how many observations 
+m &amp;lt;- 20 #number of imputations
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;UPDATE: rblimp used to require all numeric variables only (at the time of acceptance of the manuscript). However, this has been updated (in version 0.2.7) and there is no need to convert factors into numeric variables anymore. We can use the &lt;code&gt;wmiss&lt;/code&gt; dataset as-is and this is used in the imputation.&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;We are now ready to impute 20 datasets. We do not need to do this per
+plausible value.&lt;/p&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Remember, you have to download and install Blimp separately (which performs the multiple imputations). You can get it here &lt;a href=&#34;https://www.appliedmissingdata.com/blimp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.appliedmissingdata.com/blimp&lt;/a&gt;.&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;rblimp&lt;/code&gt; package also needs to be installed using:
+&lt;code&gt;remotes::install_github(&#39;blimp-stats/rblimp&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mymodel2 &amp;lt;- rblimp(
+  data = wmiss, #this is different from the manuscript
+  nominal = &#39;gender immig2 lackstaff&#39;,
+  # ordinal = &#39;&#39;,
+  clusterid = &#39;cntschid&#39;,
+  fixed = &#39;gender w_fstuwt&#39;, 
+  model = &#39;pv1math ~ gender escs immig2 
+           stubeha lackstaff w_fstuwt&#39;, 
+  options = &#39;labels&#39;,
+  seed = 1234,
+  nimps = m
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This takes some time. A lot of output is printed (not shown). We can
+check the PSR values.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mymodel2@psr %&amp;gt;% tail(1) %&amp;gt;% max(., na.rm = TRUE)
+
+[1] 1.048
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This seems fine (value is &amp;lt; 1.1). We can then proceed to create the
+stacked dataset (called &lt;code&gt;tmp&lt;/code&gt;).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tmp &amp;lt;- as.mitml(mymodel2) |&amp;gt;
+  do.call(rbind, args = _)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We create an imputation counter:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tmp$.implist &amp;lt;- rep(1:m, each = ns)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;UPDATE: The original manuscript required copying the variable attributes of factors back into the numeric variables. This is not needed anymore with the latest version of &lt;code&gt;rblimp&lt;/code&gt;.&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;We can check how many observations there are per imputation (we have 20
+imputations):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;table(tmp$.implist)
+
+
+   1    2    3    4    5    6    7    8    9   10   11   12   13   14   15 
+8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 8475 
+  16   17   18   19   20 
+8475 8475 8475 8475 8475 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Afterwards, we can create a list with the 20 datasets for final
+analysis:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alld2 &amp;lt;- split(tmp, tmp$.implist)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-fitting-the-models&#34;&gt;3. FITTING THE MODELS&lt;/h3&gt;
+&lt;p&gt;We will use parallel processing here to speed up the computation:&lt;/p&gt;
+&lt;p&gt;First, write out our function. This is where you will modify the model
+to fit what the substantive (or analytic) model of interest is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fnc &amp;lt;- function(x) {
+  mix(pv1math ~ gender + escs + immig2 + stubeha +
+      lackstaff  + (1|cntschid),
+  weights = c(&#39;w_fstuwt&#39;, &#39;w_schgrnrabwt&#39;),
+  data = x)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, &lt;code&gt;x&lt;/code&gt; is a placeholder.&lt;/p&gt;
+&lt;p&gt;We use the following statements to fit the &lt;code&gt;fnc&lt;/code&gt; function above to our
+imputed datasets:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## fitting models using multiple cores
+st &amp;lt;- Sys.time() #optional
+cl &amp;lt;- makeCluster(detectCores() - 1) #use all cores less one so the computer can still be used for other things...
+registerDoParallel(cl)
+clusterExport(cl, list(&#39;fnc&#39;, &#39;mix&#39;)) #need to specify the functiosn to use
+mires &amp;lt;- parLapply(cl, alld2, fun = fnc)
+Sys.time() - st #optional
+
+Time difference of 49.27839 secs
+
+stopCluster(cl)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Afterwards, we need to pool results. This is done using the &lt;code&gt;summary&lt;/code&gt;
+function in the &lt;code&gt;mixPV&lt;/code&gt; function. We need to have the output as a
+&lt;code&gt;mivPV&lt;/code&gt; class (although this was fit with &lt;code&gt;mix&lt;/code&gt;), to “fool” the
+&lt;code&gt;summary&lt;/code&gt; function to combine the results using Rubin’s rules:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class(mires) &amp;lt;- &#39;mixPV&#39;
+summary(mires) #this does the pooling 
+
+Results of multilevel analyses with 20 plausible values.
+Number of observations: 8475 
+
+Estimates for random effects: 
+                     estimate std.error statistic   df Pr(&amp;gt;t)    
+cntschid.(Intercept)  2721.34    318.77      8.54 1992 &amp;lt;2e-16 ***
+Residual              4423.45    103.34     42.81 7676 &amp;lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Estimates for fixed effects: 
+                        estimate std.error statistic   df Pr(&amp;gt;t)    
+(Intercept)              496.620    10.838    45.821 1205 &amp;lt;2e-16 ***
+genderFemale             -19.312     1.848   -10.450 8055 &amp;lt;2e-16 ***
+escs                      20.044     1.277    15.701  507 &amp;lt;2e-16 ***
+immig2Second-Generation  -19.260     3.244    -5.937 3847 &amp;lt;2e-16 ***
+immig2First-Generation   -24.198     3.492    -6.929 6472 &amp;lt;2e-16 ***
+stubeha                  -35.947     5.250    -6.847 4331 &amp;lt;2e-16 ***
+lackstaffVery little      30.873    13.690     2.255  708  0.024 *  
+lackstaffTo some extent    8.356    14.465     0.578 1006  0.564    
+lackstaffA lot            17.722    17.473     1.014  495  0.311    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can compare results side by side using &lt;code&gt;modelsummary&lt;/code&gt;. Need a
+function so &lt;code&gt;mix&lt;/code&gt; objects will display too (that’s why the &lt;code&gt;source&lt;/code&gt;
+function is used below):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source(&amp;quot;https://raw.githubusercontent.com/flh3/pubdata/refs/heads/main/mixPV/wemix_modelsummary.R&amp;quot;)
+modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#39; = mires), stars = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table style=&#34;width:98%;&#34;&gt;
+&lt;colgroup&gt;
+&lt;col style=&#34;width: 29%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;col style=&#34;width: 22%&#34; /&gt;
+&lt;col style=&#34;width: 21%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;90% comp&lt;/th&gt;
+&lt;th&gt;82% comp&lt;/th&gt;
+&lt;th&gt;MI&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;(Intercept)&lt;/td&gt;
+&lt;td&gt;499.148***&lt;/td&gt;
+&lt;td&gt;524.990***&lt;/td&gt;
+&lt;td&gt;496.620***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(10.483)&lt;/td&gt;
+&lt;td&gt;(7.739)&lt;/td&gt;
+&lt;td&gt;(10.838)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;genderFemale&lt;/td&gt;
+&lt;td&gt;-20.906***&lt;/td&gt;
+&lt;td&gt;-17.952***&lt;/td&gt;
+&lt;td&gt;-19.312***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(1.899)&lt;/td&gt;
+&lt;td&gt;(1.778)&lt;/td&gt;
+&lt;td&gt;(1.848)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;escs&lt;/td&gt;
+&lt;td&gt;18.054***&lt;/td&gt;
+&lt;td&gt;16.946***&lt;/td&gt;
+&lt;td&gt;20.044***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(1.216)&lt;/td&gt;
+&lt;td&gt;(1.248)&lt;/td&gt;
+&lt;td&gt;(1.277)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;immig2Second-Generation&lt;/td&gt;
+&lt;td&gt;-20.033***&lt;/td&gt;
+&lt;td&gt;-18.519***&lt;/td&gt;
+&lt;td&gt;-19.260***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(3.492)&lt;/td&gt;
+&lt;td&gt;(3.288)&lt;/td&gt;
+&lt;td&gt;(3.244)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;immig2First-Generation&lt;/td&gt;
+&lt;td&gt;-25.541***&lt;/td&gt;
+&lt;td&gt;-22.359***&lt;/td&gt;
+&lt;td&gt;-24.198***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(3.759)&lt;/td&gt;
+&lt;td&gt;(3.587)&lt;/td&gt;
+&lt;td&gt;(3.492)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;stubeha&lt;/td&gt;
+&lt;td&gt;-35.424***&lt;/td&gt;
+&lt;td&gt;-29.170***&lt;/td&gt;
+&lt;td&gt;-35.947***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(5.414)&lt;/td&gt;
+&lt;td&gt;(3.876)&lt;/td&gt;
+&lt;td&gt;(5.250)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffVery little&lt;/td&gt;
+&lt;td&gt;31.221*&lt;/td&gt;
+&lt;td&gt;11.851&lt;/td&gt;
+&lt;td&gt;30.873*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(12.900)&lt;/td&gt;
+&lt;td&gt;(10.241)&lt;/td&gt;
+&lt;td&gt;(13.690)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffTo some extent&lt;/td&gt;
+&lt;td&gt;11.141&lt;/td&gt;
+&lt;td&gt;-2.132&lt;/td&gt;
+&lt;td&gt;8.356&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(13.851)&lt;/td&gt;
+&lt;td&gt;(9.863)&lt;/td&gt;
+&lt;td&gt;(14.465)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;lackstaffA lot&lt;/td&gt;
+&lt;td&gt;19.328&lt;/td&gt;
+&lt;td&gt;2.408&lt;/td&gt;
+&lt;td&gt;17.722&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(15.533)&lt;/td&gt;
+&lt;td&gt;(11.286)&lt;/td&gt;
+&lt;td&gt;(17.473)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;cntschid.(Intercept)&lt;/td&gt;
+&lt;td&gt;2547.812***&lt;/td&gt;
+&lt;td&gt;1701.117***&lt;/td&gt;
+&lt;td&gt;2721.342***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(275.856)&lt;/td&gt;
+&lt;td&gt;(200.061)&lt;/td&gt;
+&lt;td&gt;(318.770)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Residual&lt;/td&gt;
+&lt;td&gt;4463.001***&lt;/td&gt;
+&lt;td&gt;3670.943***&lt;/td&gt;
+&lt;td&gt;4423.448***&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;(112.308)&lt;/td&gt;
+&lt;td&gt;(80.921)&lt;/td&gt;
+&lt;td&gt;(103.337)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Nobs&lt;/td&gt;
+&lt;td&gt;7676&lt;/td&gt;
+&lt;td&gt;6911&lt;/td&gt;
+&lt;td&gt;8475&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;lnl&lt;/td&gt;
+&lt;td&gt;-598666.141908678&lt;/td&gt;
+&lt;td&gt;-527776.771623781&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;N.grps&lt;/td&gt;
+&lt;td&gt;270&lt;/td&gt;
+&lt;td&gt;268&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;icc.x&lt;/td&gt;
+&lt;td&gt;0.363411731755597&lt;/td&gt;
+&lt;td&gt;0.31666002745425&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;N.pv&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;AICbar&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1331427.46293097&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;BICbar&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1331504.95656622&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;tfoot&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td colspan=&#34;4&#34;&gt;&lt;ul&gt;
+&lt;li&gt;p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/li&gt;
+&lt;/ul&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&amp;#10;&lt;/table&gt;
+&lt;p&gt;Results of the first and third models are similar. Model 2, with
+additional missing data in &lt;code&gt;escs&lt;/code&gt; have different results– for the
+level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
+&lt;p&gt;&amp;ndash; END&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Working with missing data in large-scale assessments</title>
@@ -2219,17 +3064,21 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R (update)</title>
-      <link>http://localhost:1313/post/pv3/</link>
+      <link>http://localhost:1313/post/lsa2/</link>
       <pubDate>Sat, 08 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/pv3/</guid>
+      <guid>http://localhost:1313/post/lsa2/</guid>
       <description>&lt;p&gt;This is an update to:&lt;/p&gt;
 &lt;p&gt;Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. &lt;a href=&#34;https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Large-scale Assessments in Education.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;This is an update to &lt;code&gt;mixPV&lt;/code&gt;, ~~load it using this function:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;~~
-The function has been updated to be able to use parallel processing or multiple cores of your computer (to make computation faster).&lt;/p&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;There is an update to the &lt;code&gt;mixPV&lt;/code&gt; function where it is now available in the &lt;code&gt;MLMusingR&lt;/code&gt; package (no need to load it through Github anymore).&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MLMusingR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The function has been updated to be able to use parallel processing or multiple cores of your computer (to make computation faster).&lt;/p&gt;
 &lt;p&gt;Load in the dataset.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;MLMusingR&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#in MLMusingR&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The usual &lt;code&gt;mixPV&lt;/code&gt; function can be used as normal. This is done to establish the baseline time it takes to complete this:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;st&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Sys.time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mixPV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pv1math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv2math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv3math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv4math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pv5math&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; 
@@ -2252,8 +3101,8 @@ The function has been updated to be able to use parallel processing or multiple 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attempting to use 15 cores. Progress will not be displayed. Please wait.
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;Sys.time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;st&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Time difference of 13.95518 secs
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is being done on a Chromebook (so there are only four cores). One core is left so the computer can still be used for other processes. Even with three cores, the time to complete is only a fraction of when using serial processing.&lt;/p&gt;
-&lt;p&gt;By default, the degrees of freedom (dof) will be the Barnard Rubin dof.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The performance improvement can be dramatic (a tenth of the time) but not in this example. One core is left so the computer can still be used for other processes.&lt;/p&gt;
+&lt;p&gt;By default, the degrees of freedom (dof) will be the Barnard Rubin dof (this is a change).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m1a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Results of multilevel analyses with 5 plausible values.
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Number of observations: 3136 
@@ -2377,10 +3226,16 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R</title>
-      <link>http://localhost:1313/post/pv/</link>
+      <link>http://localhost:1313/post/lsa_1/</link>
       <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/pv/</guid>
-      <description>&lt;p&gt;Syntax to accompany the article:&lt;/p&gt;
+      <guid>http://localhost:1313/post/lsa_1/</guid>
+      <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;The &lt;code&gt;mixPV&lt;/code&gt; function has been updated. You can read more about it &lt;a href=&#34;../LSA2/&#34;&gt;here&lt;/a&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;Syntax to accompany the article:&lt;/p&gt;
 &lt;p&gt;Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. &lt;a href=&#34;https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Large-scale Assessments in Education.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;When fitting multilevel models using large scale assessments such as PISA or TIMSS, it is important to account for:&lt;/p&gt;
 &lt;ol&gt;

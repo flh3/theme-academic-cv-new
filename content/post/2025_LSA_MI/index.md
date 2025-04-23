@@ -10,7 +10,7 @@ header:
   caption: ''
   image: ''
   preview: yes
-draft: true
+draft: false
 ---
 
 This is the syntax for accounting for missing data/imputing data with
