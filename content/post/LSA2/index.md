@@ -4,7 +4,6 @@ author: Francis Huang
 date: 2024-06-08
 show_date: true
 reading_time: true
-slug: pv3
 categories:
   - wemix
   - plausible values 
@@ -23,10 +22,13 @@ This is an update to:
 
 Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. [*Large-scale Assessments in Education.*](https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0)
 
-This is an update to `mixPV`, load it using this function:
+{{% callout note %}}
+There is an update to the `mixPV` function where it is now available in the `MLMusingR` package (no need to load it through Github anymore).
+{{% /callout %}}
+
 
 ``` r
-source("https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R")
+library(MLMusingR)
 ```
 
 The function has been updated to be able to use parallel processing or multiple cores of your computer (to make computation faster).
@@ -35,7 +37,7 @@ Load in the dataset.
 
 
 ``` r
-data(pisa2012, package = 'MLMusingR') 
+data(pisa2012) #in MLMusingR
 ```
 
 The usual `mixPV` function can be used as normal. This is done to establish the baseline time it takes to complete this:
@@ -88,9 +90,9 @@ Sys.time() - st
 Time difference of 13.95518 secs
 ```
 
-This is being done on a Chromebook (so there are only four cores). One core is left so the computer can still be used for other processes. Even with three cores, the time to complete is only a fraction of when using serial processing. 
+The performance improvement can be dramatic (a tenth of the time) but not in this example. One core is left so the computer can still be used for other processes. 
 
-By default, the degrees of freedom (dof) will be the Barnard Rubin dof.
+By default, the degrees of freedom (dof) will be the Barnard Rubin dof (this is a change).
 
 ``` r
 summary(m1a)

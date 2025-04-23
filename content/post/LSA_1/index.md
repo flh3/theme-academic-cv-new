@@ -2,7 +2,6 @@
 title: Using Plausible Values with Multilevel Models Using R
 author: Francis Huang
 date: '2024-01-28'
-slug: pv
 categories:
   - wemix
   - plausible values 
@@ -15,7 +14,9 @@ header:
 ---
 
 
-
+{{% callout note %}}
+The `mixPV` function has been updated. You can read more about it [here](../LSA2/)
+{{% /callout %}}
 
 Syntax to accompany the article: 
 

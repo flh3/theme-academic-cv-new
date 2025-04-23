@@ -2224,9 +2224,10 @@ and type of scaling need to be specified:&lt;/p&gt;
       <guid>http://localhost:1313/post/pv3/</guid>
       <description>&lt;p&gt;This is an update to:&lt;/p&gt;
 &lt;p&gt;Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. &lt;a href=&#34;https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Large-scale Assessments in Education.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;This is an update to &lt;code&gt;mixPV&lt;/code&gt;, load it using this function:&lt;/p&gt;
+&lt;p&gt;This is an update to &lt;code&gt;mixPV&lt;/code&gt;, ~~load it using this function:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The function has been updated to be able to use parallel processing or multiple cores of your computer (to make computation faster).&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;~~
+The function has been updated to be able to use parallel processing or multiple cores of your computer (to make computation faster).&lt;/p&gt;
 &lt;p&gt;Load in the dataset.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pisa2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;MLMusingR&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The usual &lt;code&gt;mixPV&lt;/code&gt; function can be used as normal. This is done to establish the baseline time it takes to complete this:&lt;/p&gt;

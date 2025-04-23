@@ -43,7 +43,7 @@
   
   <meta name="description" content="This is an update to:
 Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. Large-scale Assessments in Education.
-This is an update to mixPV, load it using this function:
+There is an update to the mixPV function where it is now available in the MLMusingR package (no need to load it through Github):
 " />
 
   
@@ -194,7 +194,7 @@ This is an update to mixPV, load it using this function:
   <meta property="og:title" content="Using Plausible Values with Multilevel Models Using R (update) | FLH Website" />
   <meta property="og:description" content="This is an update to:
 Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. Large-scale Assessments in Education.
-This is an update to mixPV, load it using this function:" /><meta property="og:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" />
+There is an update to the mixPV function where it is now available in the MLMusingR package (no need to load it through Github):" /><meta property="og:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" />
     <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1426,283 +1426,6 @@ This is an update to mixPV, load it using this function:" /><meta property="og:i
     <ul class="flex flex-col gap-1 lg:hidden">
       
       
-        <li class="open"><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/"
-    
-  >Posts
-        <span data-hb-sidebar-toggle>
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
-        </span>
-    </a><div class="ltr:pr-0 overflow-hidden">
-        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/weights_2025/"
-    
-  >Weights with Multilevel Models
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/jobs-2025/"
-    
-  >🎉 Job postings 2024-2025
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/pca-image/"
-    
-  >Fun with PCA using Images
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/2024_lsa/"
-    
-  >Selecting the proper weights in LSAs with multilevel models
-    </a>
-              
-            </li><li class="flex flex-col open"><a
-    class="hb-sidebar-custom-link
-      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
-    href="/post/pv3/"
-    
-  >Using Plausible Values with Multilevel Models Using R (update)
-    </a>
-  
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/pv/"
-    
-  >Using Plausible Values with Multilevel Models Using R
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/jobs-2024/"
-    
-  >🎉 Job postings 2023-2024
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/gd_example/"
-    
-  >Gradient descent example 1
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/logreg_matrix/"
-    
-  >🖩 Logistic regression with matrices
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/residuals_mlm/"
-    
-  >Residuals with Multilevel Models
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/jobs-2023/"
-    
-  >🎉 Job postings 2022-2023
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/residuals/"
-    
-  >Fun with residuals
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/mi_pt3/"
-    
-  >Using FIML in R for Multilevel Data
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/2022_cr2/"
-    
-  >Robust standard errors in mixed models
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/logistic-regression-fisher-scoring/"
-    
-  >Logistic regression from scratch (Newton Raphson and Fisher Scoring)
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/likelihood_2022/"
-    
-  >Using REML and ML for estimation
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/extracting-v-matrix/"
-    
-  >Extracting the V matrix for MLMs
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/gee/"
-    
-  >🎉 Analyzing clustered data using GEEs
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/ml/"
-    
-  >🎉 Using maximum likelihood
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/compare/"
-    
-  >🎉 Comparing coefficients across logistic regression models
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/prior-problem-behavior-and-suspensions-a-replication/"
-    
-  >Prior problem behavior and suspensions: A replication
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/mdata/"
-    
-  >🎉 Using FIML and MI in R
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/applied/"
-    
-  >🎉 Applied example for alternatives to logistic regression
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/pca_2020/"
-    
-  >🎉 Principal Components Analysis using R
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/centering/"
-    
-  >🎉 Why does centering reduce multicollinearity?
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/poisson-and-negative-binomial-regression-using-r/"
-    
-  >Poisson and Negative Binomial Regression using R
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/mlcfa/"
-    
-  >Multilevel CFA (MLCFA) in R, part 2
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/sim2data/"
-    
-  >🎉 Simulating two level data
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/"
-    
-  >🧠 Difference between correlation and covariance matrices
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/"
-    
-  >Instrumental variables within an SEM framework
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/se/"
-    
-  >🎉 Class Example- Standard Errors Too Small
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/iv/"
-    
-  >🎉 Understanding instrumental variables
-    </a>
-              
-            </li><li class="flex flex-col "><a
-    class="hb-sidebar-custom-link
-      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/post/ovb/"
-    
-  >Omitted Variable Bias (OVB) Example
-    </a>
-              
-            </li></ul>
-      </div></li>
         <li class=""><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
@@ -2379,6 +2102,283 @@ This is an update to mixPV, load it using this function:" /><meta property="og:i
               
             </li></ul>
       </div></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Posts
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/weights_2025/"
+    
+  >Weights with Multilevel Models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2025/"
+    
+  >🎉 Job postings 2024-2025
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pca-image/"
+    
+  >Fun with PCA using Images
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2024_lsa/"
+    
+  >Selecting the proper weights in LSAs with multilevel models
+    </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/pv3/"
+    
+  >Using Plausible Values with Multilevel Models Using R (update)
+    </a>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/lsa_1/"
+    
+  >Using Plausible Values with Multilevel Models Using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2024/"
+    
+  >🎉 Job postings 2023-2024
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gd_example/"
+    
+  >Gradient descent example 1
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/logreg_matrix/"
+    
+  >🖩 Logistic regression with matrices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/residuals_mlm/"
+    
+  >Residuals with Multilevel Models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/jobs-2023/"
+    
+  >🎉 Job postings 2022-2023
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/residuals/"
+    
+  >Fun with residuals
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mi_pt3/"
+    
+  >Using FIML in R for Multilevel Data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2022_cr2/"
+    
+  >Robust standard errors in mixed models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/logistic-regression-fisher-scoring/"
+    
+  >Logistic regression from scratch (Newton Raphson and Fisher Scoring)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/likelihood_2022/"
+    
+  >Using REML and ML for estimation
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/extracting-v-matrix/"
+    
+  >Extracting the V matrix for MLMs
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/gee/"
+    
+  >🎉 Analyzing clustered data using GEEs
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ml/"
+    
+  >🎉 Using maximum likelihood
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/compare/"
+    
+  >🎉 Comparing coefficients across logistic regression models
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/prior-problem-behavior-and-suspensions-a-replication/"
+    
+  >Prior problem behavior and suspensions: A replication
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mdata/"
+    
+  >🎉 Using FIML and MI in R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/applied/"
+    
+  >🎉 Applied example for alternatives to logistic regression
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/pca_2020/"
+    
+  >🎉 Principal Components Analysis using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/centering/"
+    
+  >🎉 Why does centering reduce multicollinearity?
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/poisson-and-negative-binomial-regression-using-r/"
+    
+  >Poisson and Negative Binomial Regression using R
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/mlcfa/"
+    
+  >Multilevel CFA (MLCFA) in R, part 2
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/sim2data/"
+    
+  >🎉 Simulating two level data
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/"
+    
+  >🧠 Difference between correlation and covariance matrices
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/"
+    
+  >Instrumental variables within an SEM framework
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/se/"
+    
+  >🎉 Class Example- Standard Errors Too Small
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/iv/"
+    
+  >🎉 Understanding instrumental variables
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/ovb/"
+    
+  >Omitted Variable Bias (OVB) Example
+    </a>
+              
+            </li></ul>
+      </div></li>
         <li class=""><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
@@ -2635,11 +2635,11 @@ This is an update to mixPV, load it using this function:" /><meta property="og:i
       <div class="prose prose-slate lg:prose-xl dark:prose-invert">
         <p>This is an update to:</p>
 <p>Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. <a href="https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0" target="_blank" rel="noopener"><em>Large-scale Assessments in Education.</em></a></p>
-<p>This is an update to <code>mixPV</code>, load it using this function:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">source</span><span class="p">(</span><span class="s">&#34;https://raw.githubusercontent.com/flh3/pubdata/main/mixPV/mixPVv2.R&#34;</span><span class="p">)</span>
+<p>There is an update to the <code>mixPV</code> function where it is now available in the <code>MLMusingR</code> package (no need to load it through Github):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">MLMusingR</span><span class="p">)</span>
 </span></span></code></pre></div><p>The function has been updated to be able to use parallel processing or multiple cores of your computer (to make computation faster).</p>
 <p>Load in the dataset.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">pisa2012</span><span class="p">,</span> <span class="n">package</span> <span class="o">=</span> <span class="s">&#39;MLMusingR&#39;</span><span class="p">)</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">pisa2012</span><span class="p">)</span> <span class="c1">#in MLMusingR</span>
 </span></span></code></pre></div><p>The usual <code>mixPV</code> function can be used as normal. This is done to establish the baseline time it takes to complete this:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">st</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">m1a</span> <span class="o">&lt;-</span> <span class="nf">mixPV</span><span class="p">(</span><span class="n">pv1math</span> <span class="o">+</span> <span class="n">pv2math</span> <span class="o">+</span> <span class="n">pv3math</span> <span class="o">+</span> <span class="n">pv4math</span> <span class="o">+</span> <span class="n">pv5math</span> <span class="o">~</span> 
@@ -2662,8 +2662,8 @@ This is an update to mixPV, load it using this function:" /><meta property="og:i
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Attempting to use 15 cores. Progress will not be displayed. Please wait.
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">Sys.time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Time difference of 13.95518 secs
-</span></span></code></pre></div><p>This is being done on a Chromebook (so there are only four cores). One core is left so the computer can still be used for other processes. Even with three cores, the time to complete is only a fraction of when using serial processing.</p>
-<p>By default, the degrees of freedom (dof) will be the Barnard Rubin dof.</p>
+</span></span></code></pre></div><p>The performance improvement can be dramatic (a tenth of the time) but not in this example. One core is left so the computer can still be used for other processes.</p>
+<p>By default, the degrees of freedom (dof) will be the Barnard Rubin dof (this is a change).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">m1a</span><span class="p">)</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Results of multilevel analyses with 5 plausible values.
 </span></span><span class="line"><span class="cl">Number of observations: 3136 
@@ -3070,7 +3070,7 @@ This is an update to mixPV, load it using this function:" /><meta property="og:i
     </div>
     <div class="">
       
-        <a class="group flex text-right no-underline" href="/post/pv/">
+        <a class="group flex text-right no-underline" href="/post/lsa_1/">
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
@@ -3104,7 +3104,7 @@ This is an update to mixPV, load it using this function:" /><meta property="og:i
       
       <li><a href="/event/mlm_ph/">Multilevel Modeling with Large-Scale International Databases Using HLM (Philadelphia)</a></li>
       
-      <li><a href="/post/pv/">Using Plausible Values with Multilevel Models Using R</a></li>
+      <li><a href="/post/lsa_1/">Using Plausible Values with Multilevel Models Using R</a></li>
       
     </ul>
   </div>
