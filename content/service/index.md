@@ -62,6 +62,8 @@ Ongoing:
 * [Gifted Child Quarterly](http://journals.sagepub.com/home/gcq/) (2011-2020)
 
 ## Other recent experience
+* External Reviewer for the Internal Research Assessment Exercise (RAE), Education University of Hong Kong (2025)
+* Expert Opinion for Department of Education, College of Education, Seoul National University (2024)
 * Grant review panel: National Science Foundation (NSF) DRK12 (2025: postponed)
 * Grant Reviewer/Principal member of the Scientific Review Panel: U.S. Department of Education [Institute of Education Science](https://ies.ed.gov/) (2018, 10/2019 - 9/2024)
 * Grant Reviewer: National Science Foundation [NSF](https://www.nsf.gov/) (2019)

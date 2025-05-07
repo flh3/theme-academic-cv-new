@@ -1,5 +1,5 @@
 ---
-title: Replication studies using secondary and nonexperimental datasets
+title: Replication studies using secondary and nonexperimental datasets (Hong Kong)
 
 event: Invited lecture
 event_url: https://example.org
