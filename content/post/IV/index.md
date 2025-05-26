@@ -13,6 +13,7 @@ authors:
 
 tags:
   - instrumental variable
+  - causality
 ---
 
 <div id="instrumental-variables-itt-and-tot" class="section level2">

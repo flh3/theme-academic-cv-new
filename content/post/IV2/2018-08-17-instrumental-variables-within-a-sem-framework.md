@@ -6,9 +6,11 @@ categories:
   - instrumental variable
   - evaluation
   - SEM
+  - causality
 tags:
   - instrumental variable
   - R
+  - causality
 header:
   caption: ''
   image: ''

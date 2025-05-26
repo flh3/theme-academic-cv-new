@@ -14,12 +14,12 @@
     
     <item>
       <title>Correlation and causation revisited</title>
-      <link>http://localhost:1313/post/dda/dda/</link>
+      <link>http://localhost:1313/post/dda/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/dda/dda/</guid>
+      <guid>http://localhost:1313/post/dda/</guid>
       <description>&lt;p&gt;Statistics students are taught that correlation does not equal
 causation. Just because two variables (e.g., x and y) are related to
-each other does not necessarily mean that one causes the other (e.g.,, x
+each other does not necessarily mean that one causes the other (e.g., x
 causes y). The correlation coefficients (i.e., &lt;em&gt;ρ&lt;/em&gt;) for &lt;em&gt;ρ&lt;/em&gt;(&lt;em&gt;x&lt;/em&gt;, &lt;em&gt;y&lt;/em&gt;)
 and &lt;em&gt;ρ&lt;/em&gt;(&lt;em&gt;y&lt;/em&gt;, &lt;em&gt;x&lt;/em&gt;) are the same and does not provide information on the
 directionality of the effect (e.g., &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; or &lt;em&gt;x&lt;/em&gt; ← &lt;em&gt;y&lt;/em&gt;). It could
@@ -27,13 +27,14 @@ also be that the variables are related due to a third variable z which
 causes both (i.e., a confounder).&lt;/p&gt;
 &lt;p&gt;However, over, two decades ago, Dodge and Rousson (DR; 2001) published a
 paper on &lt;em&gt;On Asymmetric Properties of the Correlation Coefficient in the
-Regression Setting&lt;/em&gt; (which, as of 2025.05.26 had 106 citations). In the
+Regression Setting&lt;/em&gt; (which, as of 2025.05.26 had 106 citations based on Google Scholar). In the
 paper, &lt;em&gt;when one of the variables is skewed or non-normally
 distributed&lt;/em&gt;, DR indicated that the cube of the correlation coefficient
 (&lt;em&gt;ρ&lt;/em&gt;&lt;sup&gt;3&lt;/sup&gt;) is equal to the ratio of the skewness of y and the
 skewness of x (see DR eq. 5):&lt;/p&gt;
-$$\rho(x, y)^3 = \frac{\gamma\_y}{\gamma\_x}$$&lt;p&gt;
-where the &lt;em&gt;γ&lt;/em&gt;s represent the skewness of the variables. We can show this
+$$\rho(x, y)^3 = \frac{\gamma_y}{\gamma_x}$$&lt;p&gt;
+where the $\gamma$s represent the skewness of the variables.&lt;/p&gt;
+&lt;p&gt;We can show this
 using simulated data. We create a skewed &lt;em&gt;x&lt;/em&gt; variable using a gamma
 distribution (other code is there to show this using a chisq or a beta
 distribution):&lt;/p&gt;
@@ -63,11 +64,18 @@ hist(x) #show the skewness
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;dda_files/figure-markdown_strict/unnamed-chunk-1-1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;hist&#34; srcset=&#34;
+               /post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp 400w,
+               /post/dda/unnamed-chunk-1-1_hu_b0af35ba8c73119d.webp 760w,
+               /post/dda/unnamed-chunk-1-1_hu_ec6356837277ac96.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;We then create a &lt;em&gt;y&lt;/em&gt; variable which is a function of &lt;em&gt;x&lt;/em&gt; plus some
-random noise. In this case, by construction, we know that &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; and
+random error. In this case, by construction, we know that &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; and
 not &lt;em&gt;x&lt;/em&gt; ← &lt;em&gt;y&lt;/em&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;y &amp;lt;- x + rnorm(ns)
 #plot(x, y)
@@ -90,10 +98,9 @@ the skewness of y (the alternative model).&lt;/p&gt;
 
 [1] 33.14125
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In this case, we have support to show that &lt;em&gt;y&lt;/em&gt; is our response or
-outcome variable.&lt;/p&gt;
-&lt;p&gt;This also extends the kurtosis of the distributions:&lt;/p&gt;
-$$\rho(x, y)^4 = \frac{\kappa\_y}{\kappa\_x}$$&lt;p&gt;where &lt;em&gt;κ&lt;/em&gt; refers to the kurtosis which is equivalent to the correlation
+&lt;p&gt;In this case, we have support to show that &lt;em&gt;y&lt;/em&gt; is our response/outcome variable.&lt;/p&gt;
+&lt;p&gt;This also extends to the kurtosis of the distributions:&lt;/p&gt;
+$$\rho(x, y)^4 = \frac{\kappa_y}{\kappa_x}$$&lt;p&gt;where &lt;em&gt;κ&lt;/em&gt; refers to the kurtosis which is equivalent to the correlation
 to the fourth power.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cor(x, y)^4
 
@@ -130,15 +137,15 @@ skew(resid(m2)) #further from zero
 [1] 1.699309
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ins&gt;
-**NOTE: an important limitation of these is that one of the variables
-should be skewed.**
+NOTE: an important limitation is that one of the variables
+should be skewed/non-normal.
 &lt;/ins&gt;
 &lt;p&gt;If both variables are normally distributed (e.g., the skewness is zero),
 then the ratio of the skewness of y and x will be undefined (i.e.,
 division by zero). In such a case, the results of the hypothesis testing
 procedure will be inconclusive and requires that one variable be
 non-normally distributed. So, if you have two sets of variables that are
-not skewed, this may be of more limited use. Also, the procedure have
+not skewed, this may be of more limited use. Also, the procedure has
 been critiqued by Thoemmes (2020) who suggests more sensitivity analysis
 be conducted when using these procedures (and also does not rule out
 that coefficients may be biased).&lt;/p&gt;
