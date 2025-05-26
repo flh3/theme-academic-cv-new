@@ -5,12 +5,157 @@
     <link>http://localhost:1313/post/</link>
       <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Posts</title>
       <link>http://localhost:1313/post/</link>
     </image>
+    
+    <item>
+      <title>Correlation and causation revisited</title>
+      <link>http://localhost:1313/post/dda/dda/</link>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/dda/dda/</guid>
+      <description>&lt;p&gt;Statistics students are taught that correlation does not equal
+causation. Just because two variables (e.g., x and y) are related to
+each other does not necessarily mean that one causes the other (e.g.,, x
+causes y). The correlation coefficients (i.e., &lt;em&gt;ρ&lt;/em&gt;) for &lt;em&gt;ρ&lt;/em&gt;(&lt;em&gt;x&lt;/em&gt;, &lt;em&gt;y&lt;/em&gt;)
+and &lt;em&gt;ρ&lt;/em&gt;(&lt;em&gt;y&lt;/em&gt;, &lt;em&gt;x&lt;/em&gt;) are the same and does not provide information on the
+directionality of the effect (e.g., &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; or &lt;em&gt;x&lt;/em&gt; ← &lt;em&gt;y&lt;/em&gt;). It could
+also be that the variables are related due to a third variable z which
+causes both (i.e., a confounder).&lt;/p&gt;
+&lt;p&gt;However, over, two decades ago, Dodge and Rousson (DR; 2001) published a
+paper on &lt;em&gt;On Asymmetric Properties of the Correlation Coefficient in the
+Regression Setting&lt;/em&gt; (which, as of 2025.05.26 had 106 citations). In the
+paper, &lt;em&gt;when one of the variables is skewed or non-normally
+distributed&lt;/em&gt;, DR indicated that the cube of the correlation coefficient
+(&lt;em&gt;ρ&lt;/em&gt;&lt;sup&gt;3&lt;/sup&gt;) is equal to the ratio of the skewness of y and the
+skewness of x (see DR eq. 5):&lt;/p&gt;
+$$\rho(x, y)^3 = \frac{\gamma\_y}{\gamma\_x}$$&lt;p&gt;
+where the &lt;em&gt;γ&lt;/em&gt;s represent the skewness of the variables. We can show this
+using simulated data. We create a skewed &lt;em&gt;x&lt;/em&gt; variable using a gamma
+distribution (other code is there to show this using a chisq or a beta
+distribution):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(psych) #for skew and kurtosi
+set.seed(246) #for reproducabiity
+ns &amp;lt;- 100000 #how many
+# x &amp;lt;- rchisq(ns, 1)
+x &amp;lt;- rgamma(ns, 1, 3)
+# x &amp;lt;- rbeta(ns, 2, 5)
+hist(x) #show the skewness
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;dda_files/figure-markdown_strict/unnamed-chunk-1-1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;We then create a &lt;em&gt;y&lt;/em&gt; variable which is a function of &lt;em&gt;x&lt;/em&gt; plus some
+random noise. In this case, by construction, we know that &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; and
+not &lt;em&gt;x&lt;/em&gt; ← &lt;em&gt;y&lt;/em&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;y &amp;lt;- x + rnorm(ns)
+#plot(x, y)
+cor(x, y)
+
+[1] 0.3116695
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can investigate eq. 5 of DR:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cor(x, y)^3
+
+[1] 0.03027492
+
+skew(y) / skew(x) #correct
+
+[1] 0.03017388
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;They are similar and this is quite different from the skewness of x over
+the skewness of y (the alternative model).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;skew(x) / skew(y) #incorrect
+
+[1] 33.14125
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this case, we have support to show that &lt;em&gt;y&lt;/em&gt; is our response or
+outcome variable.&lt;/p&gt;
+&lt;p&gt;This also extends the kurtosis of the distributions:&lt;/p&gt;
+$$\rho(x, y)^4 = \frac{\kappa\_y}{\kappa\_x}$$&lt;p&gt;where &lt;em&gt;κ&lt;/em&gt; refers to the kurtosis which is equivalent to the correlation
+to the fourth power.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cor(x, y)^4
+
+[1] 0.009435768
+
+kurtosi(y) / kurtosi(x)
+
+[1] 0.009291302
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The following (for the competing model) is way off:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kurtosi(x) / kurtosi(y) #incorrect
+
+[1] 107.6275
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These higher order moments (e.g., skewness and kurtosis) can be used to
+test competing hypotheses of whether &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; or &lt;em&gt;y&lt;/em&gt; → &lt;em&gt;x&lt;/em&gt;. The many
+papers of Wiedermann (see &lt;a href=&#34;https://www.ddaproject.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; for a list
+of papers and macros) explore different methods of testing what is
+referred to as the directionality of the effect (under more complex
+situations). There are many types of decision rules that can be used to
+test these hypothesis:&lt;/p&gt;
+&lt;p&gt;For example, in a regression framework (which is useful when there are
+more variables present), two competing models can be tested and the
+residuals from the model that are more normally distributed (closer to
+zero) is a more likely model:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;m1 &amp;lt;- lm(y ~ x)
+m2 &amp;lt;- lm(x ~ y)
+skew(resid(m1)) #closer to zero
+
+[1] -0.005953778
+
+skew(resid(m2)) #further from zero
+
+[1] 1.699309
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ins&gt;
+**NOTE: an important limitation of these is that one of the variables
+should be skewed.**
+&lt;/ins&gt;
+&lt;p&gt;If both variables are normally distributed (e.g., the skewness is zero),
+then the ratio of the skewness of y and x will be undefined (i.e.,
+division by zero). In such a case, the results of the hypothesis testing
+procedure will be inconclusive and requires that one variable be
+non-normally distributed. So, if you have two sets of variables that are
+not skewed, this may be of more limited use. Also, the procedure have
+been critiqued by Thoemmes (2020) who suggests more sensitivity analysis
+be conducted when using these procedures (and also does not rule out
+that coefficients may be biased).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Dodge, Y., &amp;amp; Rousson, V. (2001). On asymmetric properties of the
+correlation coeffcient in the regression setting. &lt;em&gt;The American
+Statistician, 55&lt;/em&gt;(1), 51–54.
+&lt;a href=&#34;https://doi.org/10.1198/000313001300339932&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.1198/000313001300339932&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Thoemmes, F. (2020). The assumptions of direction dependence analysis.
+&lt;em&gt;Multivariate Behavioral Research, 55&lt;/em&gt;(4), 516–522.
+&lt;a href=&#34;https://doi.org/10.1080/00273171.2019.1608800&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.1080/00273171.2019.1608800&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Wiedermann, W., &amp;amp; von Eye, A. (2015). Direction-dependence analysis: A
+confirmatory approach for testing directional theories. &lt;em&gt;International
+Journal of Behavioral Development, 39&lt;/em&gt;(6), 570–580.
+&lt;a href=&#34;https://doi.org/10.1177/0165025415582056&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.1177/0165025415582056&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Working with missing data in large-scale assessments (with plausible values)</title>
