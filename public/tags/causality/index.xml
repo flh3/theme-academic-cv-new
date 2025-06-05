@@ -14,12 +14,12 @@
     
     <item>
       <title>Correlation and causation revisited</title>
-      <link>http://localhost:1313/post/dda/dda/</link>
+      <link>http://localhost:1313/post/dda/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/dda/dda/</guid>
+      <guid>http://localhost:1313/post/dda/</guid>
       <description>&lt;p&gt;Statistics students are taught that correlation does not equal
 causation. Just because two variables (e.g., x and y) are related to
-each other does not necessarily mean that one causes the other (e.g.,, x
+each other does not necessarily mean that one causes the other (e.g., x
 causes y). The correlation coefficients (i.e., &lt;em&gt;ρ&lt;/em&gt;) for &lt;em&gt;ρ&lt;/em&gt;(&lt;em&gt;x&lt;/em&gt;, &lt;em&gt;y&lt;/em&gt;)
 and &lt;em&gt;ρ&lt;/em&gt;(&lt;em&gt;y&lt;/em&gt;, &lt;em&gt;x&lt;/em&gt;) are the same and does not provide information on the
 directionality of the effect (e.g., &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; or &lt;em&gt;x&lt;/em&gt; ← &lt;em&gt;y&lt;/em&gt;). It could
@@ -27,13 +27,14 @@ also be that the variables are related due to a third variable z which
 causes both (i.e., a confounder).&lt;/p&gt;
 &lt;p&gt;However, over, two decades ago, Dodge and Rousson (DR; 2001) published a
 paper on &lt;em&gt;On Asymmetric Properties of the Correlation Coefficient in the
-Regression Setting&lt;/em&gt; (which, as of 2025.05.26 had 106 citations). In the
+Regression Setting&lt;/em&gt; (which, as of 2025.05.26 had 106 citations based on Google Scholar). In the
 paper, &lt;em&gt;when one of the variables is skewed or non-normally
 distributed&lt;/em&gt;, DR indicated that the cube of the correlation coefficient
 (&lt;em&gt;ρ&lt;/em&gt;&lt;sup&gt;3&lt;/sup&gt;) is equal to the ratio of the skewness of y and the
 skewness of x (see DR eq. 5):&lt;/p&gt;
-$$\rho(x, y)^3 = \frac{\gamma\_y}{\gamma\_x}$$&lt;p&gt;
-where the &lt;em&gt;γ&lt;/em&gt;s represent the skewness of the variables. We can show this
+$$\rho(x, y)^3 = \frac{\gamma_y}{\gamma_x}$$&lt;p&gt;
+where the $\gamma$s represent the skewness of the variables.&lt;/p&gt;
+&lt;p&gt;We can show this
 using simulated data. We create a skewed &lt;em&gt;x&lt;/em&gt; variable using a gamma
 distribution (other code is there to show this using a chisq or a beta
 distribution):&lt;/p&gt;
@@ -63,11 +64,18 @@ hist(x) #show the skewness
 
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;dda_files/figure-markdown_strict/unnamed-chunk-1-1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;hist&#34; srcset=&#34;
+               /post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp 400w,
+               /post/dda/unnamed-chunk-1-1_hu_b0af35ba8c73119d.webp 760w,
+               /post/dda/unnamed-chunk-1-1_hu_ec6356837277ac96.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp&#34;
+               width=&#34;672&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;We then create a &lt;em&gt;y&lt;/em&gt; variable which is a function of &lt;em&gt;x&lt;/em&gt; plus some
-random noise. In this case, by construction, we know that &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; and
+random error. In this case, by construction, we know that &lt;em&gt;x&lt;/em&gt; → &lt;em&gt;y&lt;/em&gt; and
 not &lt;em&gt;x&lt;/em&gt; ← &lt;em&gt;y&lt;/em&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;y &amp;lt;- x + rnorm(ns)
 #plot(x, y)
@@ -90,10 +98,9 @@ the skewness of y (the alternative model).&lt;/p&gt;
 
 [1] 33.14125
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In this case, we have support to show that &lt;em&gt;y&lt;/em&gt; is our response or
-outcome variable.&lt;/p&gt;
-&lt;p&gt;This also extends the kurtosis of the distributions:&lt;/p&gt;
-$$\rho(x, y)^4 = \frac{\kappa\_y}{\kappa\_x}$$&lt;p&gt;where &lt;em&gt;κ&lt;/em&gt; refers to the kurtosis which is equivalent to the correlation
+&lt;p&gt;In this case, we have support to show that &lt;em&gt;y&lt;/em&gt; is our response/outcome variable.&lt;/p&gt;
+&lt;p&gt;This also extends to the kurtosis of the distributions:&lt;/p&gt;
+$$\rho(x, y)^4 = \frac{\kappa_y}{\kappa_x}$$&lt;p&gt;where &lt;em&gt;κ&lt;/em&gt; refers to the kurtosis which is equivalent to the correlation
 to the fourth power.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cor(x, y)^4
 
@@ -130,15 +137,15 @@ skew(resid(m2)) #further from zero
 [1] 1.699309
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ins&gt;
-**NOTE: an important limitation of these is that one of the variables
-should be skewed.**
+NOTE: an important limitation is that one of the variables
+should be skewed/non-normal.
 &lt;/ins&gt;
 &lt;p&gt;If both variables are normally distributed (e.g., the skewness is zero),
 then the ratio of the skewness of y and x will be undefined (i.e.,
 division by zero). In such a case, the results of the hypothesis testing
 procedure will be inconclusive and requires that one variable be
 non-normally distributed. So, if you have two sets of variables that are
-not skewed, this may be of more limited use. Also, the procedure have
+not skewed, this may be of more limited use. Also, the procedure has
 been critiqued by Thoemmes (2020) who suggests more sensitivity analysis
 be conducted when using these procedures (and also does not rule out
 that coefficients may be biased).&lt;/p&gt;
@@ -154,6 +161,614 @@ Statistician, 55&lt;/em&gt;(1), 51–54.
 confirmatory approach for testing directional theories. &lt;em&gt;International
 Journal of Behavioral Development, 39&lt;/em&gt;(6), 570–580.
 &lt;a href=&#34;https://doi.org/10.1177/0165025415582056&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.1177/0165025415582056&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Instrumental variables within an SEM framework</title>
+      <link>http://localhost:1313/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</link>
+      <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</guid>
+      <description>&lt;p&gt;Earlier this year, I wrote an article on using &lt;a href=&#34;https://openpublishing.library.umass.edu/pare/article/id/1661/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;instrumental variables&lt;/a&gt; (IV) to analyze data from randomized experiments with imperfect compliance (read the manuscript for full details; link updated; it&amp;rsquo;s open access). In the article, I described the steps of IV estimation and the logic behind it.&lt;/p&gt;
+&lt;p&gt;The sample code using two stage least squares regression (the correct analysis) is shown below (see article for specifics):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ivreg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.csv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;https://raw.githubusercontent.com/flh3/pubdata/refs/heads/main/IV/ivexample.csv&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  assign takeup y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1      0      0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2      0      0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3      0      0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;4      0      0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5      0      0 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;6      0      0 0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;tail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    assign takeup  y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;195      1      1  9
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;196      1      1 10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;197      1      1 10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;198      1      1 12
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;199      1      1 11
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;200      1      1  9
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     assign        takeup            y         
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; Min.   :0.0   Min.   :0.000   Min.   : 0.000  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 1st Qu.:0.0   1st Qu.:0.000   1st Qu.: 0.000  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; Median :0.5   Median :0.000   Median : 0.000  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; Mean   :0.5   Mean   :0.435   Mean   : 4.375  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 3rd Qu.:1.0   3rd Qu.:1.000   3rd Qu.:10.000  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; Max.   :1.0   Max.   :1.000   Max.   :13.000  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;iv1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;ivreg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;takeup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;assign&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iv1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Call:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ivreg(formula = y ~ takeup | assign, data = dat)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Residuals:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      Min        1Q    Median        3Q       Max 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-3.065942 -0.065942  0.006522  0.006522  2.934058 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Coefficients:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(Intercept) -0.006522   0.085095  -0.077    0.939    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;takeup      10.072464   0.153269  65.718   &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Diagnostic tests:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 df1 df2 statistic p-value    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Weak instruments   1 198   185.933  &amp;lt;2e-16 ***
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Wu-Hausman         1 197     0.018   0.892    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Sargan             0  NA        NA      NA    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Residual standard error: 0.7478 on 198 degrees of freedom
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Multiple R-Squared: 0.9782,	Adjusted R-squared: 0.9781 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Wald test:  4319 on 1 and 198 DF,  p-value: &amp;lt; 2.2e-16 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The treatment on treated (TOT) effect is &lt;strong&gt;10.072 (SE = 0.153)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;However, I indicated that:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Although conceptually, the model is a full mediation
+model, the effect is not estimated using path analysis
+or structural equation modeling (SEM) as is commonly
+done in education or psychology (i.e., the indirect path
+is not path a x path b).&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Using SEM, the results do not match.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lavaan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#incorrect&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;y ~ takeup
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;takeup ~ assign&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;res1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lavaan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;res1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lavaan 0.6-19 ended normally after 1 iteration
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Estimator                                         ML
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Optimization method                           NLMINB
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Number of model parameters                         4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Number of observations                           200
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Model Test User Model:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                      
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Test statistic                                 0.019
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Degrees of freedom                                 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  P-value (Chi-square)                           0.891
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Parameter Estimates:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Standard errors                             Standard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Information                                 Expected
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Information saturated (h1) model          Structured
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Regressions:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  y ~                                                 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    takeup           10.057    0.106   94.774    0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  takeup ~                                            
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    assign            0.690    0.050   13.704    0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Variances:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   .y                 0.554    0.055   10.000    0.000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   .takeup            0.127    0.013   10.000    0.000
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Although the path model looks correct, the estimates are off. The TOT (IV) effect is &lt;strong&gt;NOT&lt;/strong&gt; 0.69 $\times$ 10.057 which is 6.939 (vs. 10.072). The difference as well is  that $y$ is not regressed on the &lt;em&gt;actual/observed&lt;/em&gt; takeup values but the &lt;em&gt;predicted&lt;/em&gt; takeup values (read the article).&lt;/p&gt;
+&lt;p&gt;Later on, I came across this post by &lt;a href=&#34;https://statisticalhorizons.com/iv-in-sem&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paul Allison&lt;/a&gt; who had a solution to get the correct estimate. The solution just involved correlating the error terms of the outcome and the actual takeup values.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;### correct&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;t2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;y ~ takeup
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;takeup ~ assign
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;y ~~ takeup&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;res2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lavaan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;res2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;lavaan&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;19&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ended&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;normally&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;after&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;iterations&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Estimator&lt;/span&gt;                                         &lt;span class=&#34;n&#34;&gt;ML&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Optimization&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;                           &lt;span class=&#34;n&#34;&gt;NLMINB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Number&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;                         &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Number&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;observations&lt;/span&gt;                           &lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Test&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Model&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                      
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Test&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;statistic&lt;/span&gt;                                 &lt;span class=&#34;mf&#34;&gt;0.000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Degrees&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;freedom&lt;/span&gt;                                 &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Parameter&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Estimates&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Standard&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;errors&lt;/span&gt;                             &lt;span class=&#34;n&#34;&gt;Standard&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Information&lt;/span&gt;                                 &lt;span class=&#34;n&#34;&gt;Expected&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Information&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;saturated&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;          &lt;span class=&#34;n&#34;&gt;Structured&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Regressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;Estimate&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Err&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;                                                 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;takeup&lt;/span&gt;           &lt;span class=&#34;mf&#34;&gt;10.072&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.153&lt;/span&gt;   &lt;span class=&#34;mf&#34;&gt;66.049&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;takeup&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;                                            
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;assign&lt;/span&gt;            &lt;span class=&#34;mf&#34;&gt;0.690&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.050&lt;/span&gt;   &lt;span class=&#34;mf&#34;&gt;13.704&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Covariances&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;Estimate&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Err&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~~&lt;/span&gt;                                                
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;takeup&lt;/span&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.004&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.027&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.137&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.891&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Variances&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;Estimate&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Err&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;                 &lt;span class=&#34;mf&#34;&gt;0.554&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.055&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;9.998&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;takeup&lt;/span&gt;            &lt;span class=&#34;mf&#34;&gt;0.127&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.013&lt;/span&gt;   &lt;span class=&#34;mf&#34;&gt;10.000&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The point estimate and the standard errors of the takeup variable now match: &lt;strong&gt;10.072 (SE = 0.153)&lt;/strong&gt;. However, note that this is still not the same as testing the indirect effect of path (a) $\times$ path(b).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;END&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>🎉 Understanding instrumental variables</title>
+      <link>http://localhost:1313/post/iv/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/iv/</guid>
+      <description>&lt;div id=&#34;instrumental-variables-itt-and-tot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Instrumental variables, ITT, and TOT&lt;/h2&gt;
+&lt;p&gt;Based on:&lt;/p&gt;
+&lt;p&gt;Angrist, J. D. (2006). Instrumental variables methods in experimental criminological research: what, why and how. &lt;em&gt;Journal of Experimental Criminology&lt;/em&gt;, 2, 23-44. &lt;a href=&#34;https://doi.org/10.1007/s11292-005-5126-x&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1007/s11292-005-5126-x&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Evaluation of the Minneapolis Domestic Violence Experiment (MDVE): Evaluated the police response to domestic violence reports. Experiment conducted in 1981-82 by Lawrence Sherman and Richard Berk. Police may be reluctant to get involved for various reasons (e.g., might be viewed as a private matter, may not want to get involved).&lt;/p&gt;
+&lt;p&gt;Design applied only to simple misdemenors where both suspect and victim were present when the police arrived. Only included cases where the police were empowered to make a decision (but not required to make an arrest- but must have probable cause).&lt;/p&gt;
+&lt;p&gt;Each officer carried a pad of color coded report forms. Each time an officer encountered a situation that fit the experimental criteria, they were to take action as indicated by the color coded form (which were assigned by lottery assignment or random). To monitor the consistency of lottery assignment, research staff rode on patrols for a sample of evenings. (read the article below for further details):&lt;/p&gt;
+&lt;p&gt;See: &lt;a href=&#34;https://en.wikipedia.org/wiki/Minneapolis_Domestic_Violence_Experiment&#34; class=&#34;uri&#34;&gt;https://en.wikipedia.org/wiki/Minneapolis_Domestic_Violence_Experiment&lt;/a&gt;– link to the original article is there.&lt;/p&gt;
+&lt;p&gt;After qualifying a certain case, police officers were provided three randomized approaches that they could use:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Send abuser away for 8 hours&lt;/li&gt;
+&lt;li&gt;Advice and mediation of disputes&lt;/li&gt;
+&lt;li&gt;Make an arrest&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For purposes of the experiment, we refer to 1 and 2 as the coddling condition. The main outcome of interest was the rate of reoffending (which condition would have higher rates of reoffending: coddling or arrests?).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- rio::import(&amp;#39;http://faculty.missouri.edu/huangf/data/eval/coddled.sav&amp;#39;)
+#x$t_random &amp;lt;- factor(x$t_random, labels = c(&amp;#39;pink&amp;#39;,&amp;#39;yellow&amp;#39;,&amp;#39;blue&amp;#39;))
+#x$t_random &amp;lt;- factor(x$t_random, labels = c(&amp;#39;arrest&amp;#39;,&amp;#39;advise&amp;#39;,&amp;#39;separate&amp;#39;))
+#head(x)
+names(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;t_random&amp;quot;    &amp;quot;z_coddled&amp;quot;   &amp;quot;d_coddled&amp;quot;   &amp;quot;y82&amp;quot;         &amp;quot;q1&amp;quot;         
+##  [6] &amp;quot;q2&amp;quot;          &amp;quot;q3&amp;quot;          &amp;quot;mixed&amp;quot;       &amp;quot;s_influence&amp;quot; &amp;quot;anyweapon&amp;quot;  
+## [11] &amp;quot;nonwhite&amp;quot;    &amp;quot;fail_z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Inspect the variables: z_coddled represents the assigned treatment. d_coddled shows if the treatment was actually delivered.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;descr::crosstab(x$z_coddled, x$d_coddled, prop.r = T, plot = F)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Cell Contents 
+## |-------------------------|
+## |                   Count | 
+## |             Row Percent | 
+## |-------------------------|
+## 
+## ====================================
+##                x$d_coddled
+## x$z_coddled        0       1   Total
+## ------------------------------------
+## 0                91       1      92 
+##                98.9%    1.1%   29.3%
+## ------------------------------------
+## 1                45     177     222 
+##                20.3%   79.7%   70.7%
+## ------------------------------------
+## Total           136     178     314 
+## ====================================&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;79.7 - 1.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 78.6&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Based on this, 80% complied with the treatment delivery of coddling when assigned to coddle. On the other hand, 1 out of 92 coddled when assigned to not coddle. More precisely, 78.6% followed treatment assignment. This can also be estimated using OLS.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;assign1 &amp;lt;- (lm(d_coddled ~  z_coddled, data = x))
+assign2 &amp;lt;- (lm(d_coddled ~  z_coddled + anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed, data = x))
+summary(assign1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = d_coddled ~ z_coddled, data = x)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.79730 -0.01087  0.20270  0.20270  0.98913 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)  0.01087    0.03584   0.303    0.762    
+## z_coddled    0.78643    0.04262  18.451   &amp;lt;2e-16 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.3438 on 312 degrees of freedom
+## Multiple R-squared:  0.5218, Adjusted R-squared:  0.5203 
+## F-statistic: 340.4 on 1 and 312 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(assign2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = d_coddled ~ z_coddled + anyweapon + s_influence + 
+##     y82 + q1 + q2 + q3 + nonwhite + mixed, data = x)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.92651 -0.03539  0.11573  0.21259  0.90118 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)  0.047312   0.068947   0.686   0.4931    
+## z_coddled    0.773049   0.042849  18.041   &amp;lt;2e-16 ***
+## anyweapon   -0.064339   0.044525  -1.445   0.1495    
+## s_influence -0.087523   0.040233  -2.175   0.0304 *  
+## y82         -0.036886   0.048734  -0.757   0.4497    
+## q1           0.053236   0.073185   0.727   0.4675    
+## q2           0.063912   0.058087   1.100   0.2721    
+## q3          -0.002788   0.063121  -0.044   0.9648    
+## nonwhite     0.024477   0.039752   0.616   0.5385    
+## mixed        0.042235   0.045305   0.932   0.3520    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.3422 on 304 degrees of freedom
+## Multiple R-squared:  0.5382, Adjusted R-squared:  0.5245 
+## F-statistic: 39.37 on 9 and 304 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#jtools::export_summs(assign1, assign2)
+&lt;p&gt;mean(x$d_coddled) #mean of coddling delivered&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.566879&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#match this with p. 33&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With controls, the compliance rate was 77.3%.&lt;/p&gt;
+&lt;p&gt;Let’s investigate the outcome, if the suspect was rearrested. On p. 28, this refers to recidivism or “the occurence of post-treatment domestic assault by the same suspect.”&lt;/p&gt;
+&lt;p&gt;Using simple descriptives:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;descr::crosstab(x$fail_z, x$z_coddled, prop.c = T, plot = F)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Cell Contents 
+## |-------------------------|
+## |                   Count | 
+## |          Column Percent | 
+## |-------------------------|
+## 
+## =================================
+##             x$z_coddled
+## x$fail_z        0       1   Total
+## ---------------------------------
+## 0             83     175     258 
+##             90.2%   78.8%        
+## ---------------------------------
+## 1              9      47      56 
+##              9.8%   21.2%        
+## ---------------------------------
+## Total         92     222     314 
+##             29.3%   70.7%        
+## =================================&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using a linear model. Get the same results. The second model allows for the inclusion of covariates. (including a year dummy and quarter dummies).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;itt1 &amp;lt;- lm(fail_z ~  z_coddled, data = x)
+itt2 &amp;lt;- lm(fail_z ~  z_coddled + anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed  , data = x)
+#jtools::export_summs(itt1, itt2)
+stargazer::stargazer(itt1, itt2, star.cutoffs = c(.05,.01,.001), type = &amp;#39;text&amp;#39;, no.space = T)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ================================================================
+##                                 Dependent variable:             
+##                     --------------------------------------------
+##                                        fail_z                   
+##                             (1)                    (2)          
+## ----------------------------------------------------------------
+## z_coddled                  0.114*                0.108**        
+##                           (0.047)                (0.041)        
+## anyweapon                                        -0.004         
+##                                                  (0.042)        
+## s_influence                                       0.052         
+##                                                  (0.038)        
+## y82                                             -0.363***       
+##                                                  (0.046)        
+## q1                                              0.322***        
+##                                                  (0.069)        
+## q2                                              0.442***        
+##                                                  (0.055)        
+## q3                                               0.186**        
+##                                                  (0.060)        
+## nonwhite                                         -0.017         
+##                                                  (0.038)        
+## mixed                                             0.047         
+##                                                  (0.043)        
+## Constant                   0.098*                -0.093         
+##                           (0.040)                (0.065)        
+## ----------------------------------------------------------------
+## Observations                314                    314          
+## R2                         0.018                  0.307         
+## Adjusted R2                0.015                  0.287         
+## Residual Std. Error   0.380 (df = 312)      0.324 (df = 304)    
+## F Statistic         5.827* (df = 1; 312) 14.970*** (df = 9; 304)
+## ================================================================
+## Note:                              *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#summary(itt1)
+#summary(itt2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The ITT rate is generally more conservative as this factors in noncompliance (10.8% more arrest if coddled). Often reported because this is in actuality what you get on average if a policy is implemented on a large scale basis. Not everyone complies maybe. Coddling is associated with an increase of rearrests by around 11%. This is the Intent to Treat (ITT) effect.&lt;/p&gt;
+&lt;p&gt;If you just look at the actual treatment delivery (d_coddled), the effect is smaller than it should be. The effect of coddling here is ~ 8.7%.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;t1 &amp;lt;- lm(fail_z ~  d_coddled , data = x)
+t2 &amp;lt;- lm(fail_z ~  d_coddled + anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed , data = x)
+stargazer::stargazer(t1, t2, star.cutoffs = c(.05,.01,.001), type = &amp;#39;text&amp;#39;, no.space = T)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ================================================================
+##                                 Dependent variable:             
+##                     --------------------------------------------
+##                                        fail_z                   
+##                             (1)                    (2)          
+## ----------------------------------------------------------------
+## d_coddled                  0.107*                0.087*         
+##                           (0.043)                (0.038)        
+## anyweapon                                        -0.002         
+##                                                  (0.042)        
+## s_influence                                       0.057         
+##                                                  (0.038)        
+## y82                                             -0.360***       
+##                                                  (0.046)        
+## q1                                              0.316***        
+##                                                  (0.069)        
+## q2                                              0.437***        
+##                                                  (0.055)        
+## q3                                               0.185**        
+##                                                  (0.060)        
+## nonwhite                                         -0.022         
+##                                                  (0.038)        
+## mixed                                             0.045         
+##                                                  (0.043)        
+## Constant                  0.118***               -0.065         
+##                           (0.033)                (0.062)        
+## ----------------------------------------------------------------
+## Observations                314                    314          
+## R2                         0.019                  0.303         
+## Adjusted R2                0.016                  0.282         
+## Residual Std. Error   0.380 (df = 312)      0.325 (df = 304)    
+## F Statistic         6.111* (df = 1; 312) 14.683*** (df = 9; 304)
+## ================================================================
+## Note:                              *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To ‘recover’ the actual effect, divide the ITT estimate (10.8%) with the compliance rate (77.3%).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;.108/.773&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.1397154&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The effect is actually a bit higher (14.0%). However, no one really calculates it this way– just shows how this is done. The other way is to run two regressions. In the first regression (or the first stage as it is called), predict actual compliance using treatment assignment (here we use the &lt;code&gt;fitted&lt;/code&gt; function). We already did this in the &lt;code&gt;assign2&lt;/code&gt; model earlier (to get the compliance rate). Next, we estimate the outcome using the predicted values based on &lt;code&gt;assign2&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stage1 &amp;lt;- lm(fail_z ~ fitted(assign1), data = x)
+stage2 &amp;lt;- lm(fail_z ~ fitted(assign2) + anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed, data = x)
+stargazer::stargazer(stage1, stage2, star.cutoffs = c(.05,.01,.001), type = &amp;#39;text&amp;#39;, no.space = T)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ================================================================
+##                                 Dependent variable:             
+##                     --------------------------------------------
+##                                        fail_z                   
+##                             (1)                    (2)          
+## ----------------------------------------------------------------
+## fitted(assign1)            0.145*                               
+##                           (0.060)                               
+## fitted(assign2)                                  0.140**        
+##                                                  (0.052)        
+## anyweapon                                         0.005         
+##                                                  (0.043)        
+## s_influence                                       0.064         
+##                                                  (0.039)        
+## y82                                             -0.358***       
+##                                                  (0.046)        
+## q1                                              0.314***        
+##                                                  (0.069)        
+## q2                                              0.433***        
+##                                                  (0.055)        
+## q3                                               0.186**        
+##                                                  (0.060)        
+## nonwhite                                         -0.021         
+##                                                  (0.038)        
+## mixed                                             0.041         
+##                                                  (0.043)        
+## Constant                   0.096*                -0.100         
+##                           (0.040)                (0.067)        
+## ----------------------------------------------------------------
+## Observations                314                    314          
+## R2                         0.018                  0.307         
+## Adjusted R2                0.015                  0.287         
+## Residual Std. Error   0.380 (df = 312)      0.324 (df = 304)    
+## F Statistic         5.827* (df = 1; 312) 14.970*** (df = 9; 304)
+## ================================================================
+## Note:                              *p&amp;lt;0.05; **p&amp;lt;0.01; ***p&amp;lt;0.001&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The point estimate is correct though the standard error (.052) may be off. In general, this is computed using canned functions in statistics programs. In this case though, the standard errors were similar.&lt;/p&gt;
+&lt;p&gt;The actual IV reg using two stage least squares estimation (2SLS). Can be done using the &lt;code&gt;sem&lt;/code&gt; or &lt;code&gt;AER&lt;/code&gt; package. Shown both ways below (one with no controls, other with controls).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;iv1 &amp;lt;- sem::tsls(fail_z ~  d_coddled, ~ z_coddled, data = x)
+iv2 &amp;lt;- sem::tsls(fail_z ~  d_coddled + anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed, ~ anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed + z_coddled , data = x)
+summary(iv1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  2SLS Estimates
+## 
+## Model Formula: fail_z ~ d_coddled
+## 
+## Instruments: ~z_coddled
+## 
+## Residuals:
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -0.24107 -0.24107 -0.09625  0.00000 -0.09625  0.90375 
+## 
+##               Estimate Std. Error t value Pr(&amp;gt;|t|)  
+## (Intercept) 0.09625202 0.04024964 2.39138 0.017378 *
+## d_coddled   0.14481385 0.06003622 2.41211 0.016437 *
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.3807832 on 312 degrees of freedom&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(iv2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  2SLS Estimates
+## 
+## Model Formula: fail_z ~ d_coddled + anyweapon + s_influence + y82 + q1 + q2 + 
+##     q3 + nonwhite + mixed
+## 
+## Instruments: ~anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed + 
+##     z_coddled
+## 
+## Residuals:
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -0.55831 -0.20427 -0.04468  0.00000  0.11556  0.97566 
+## 
+##                 Estimate   Std. Error  t value   Pr(&amp;gt;|t|)    
+## (Intercept) -0.099921186  0.066920037 -1.49314  0.1364369    
+## d_coddled    0.139898052  0.052777514  2.65071  0.0084529 ** 
+## anyweapon    0.004955654  0.042832553  0.11570  0.9079680    
+## s_influence  0.064255255  0.038909632  1.65140  0.0996901 .  
+## y82         -0.358006623  0.046428421 -7.71094 1.7941e-13 ***
+## q1           0.314227128  0.069686777  4.50914 9.3049e-06 ***
+## q2           0.433264526  0.055436372  7.81553 9.0150e-14 ***
+## q3           0.186213372  0.060104751  3.09815  0.0021293 ** 
+## nonwhite    -0.020594117  0.037793842 -0.54491  0.5862172    
+## mixed        0.041405215  0.043250600  0.95733  0.3391600    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.3258485 on 304 degrees of freedom&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;iv1a &amp;lt;- AER::ivreg(fail_z ~ d_coddled | z_coddled, data = x)
+iv2a &amp;lt;- AER::ivreg(fail_z ~ d_coddled + anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed | anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed + z_coddled , data = x)
+&lt;p&gt;summary(iv1a)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## AER::ivreg(formula = fail_z ~ d_coddled | z_coddled, data = x)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.24107 -0.24107 -0.09625 -0.09625  0.90375 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)  
+## (Intercept)  0.09625    0.04025   2.391   0.0174 *
+## d_coddled    0.14481    0.06004   2.412   0.0164 *
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.3808 on 312 degrees of freedom
+## Multiple R-Squared: 0.01682, Adjusted R-squared: 0.01367 
+## Wald test: 5.818 on 1 and 312 DF,  p-value: 0.01644&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(iv2a)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## AER::ivreg(formula = fail_z ~ d_coddled + anyweapon + s_influence + 
+##     y82 + q1 + q2 + q3 + nonwhite + mixed | anyweapon + s_influence + 
+##     y82 + q1 + q2 + q3 + nonwhite + mixed + z_coddled, data = x)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.55831 -0.20427 -0.04468  0.11556  0.97566 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) -0.099921   0.066920  -1.493  0.13644    
+## d_coddled    0.139898   0.052778   2.651  0.00845 ** 
+## anyweapon    0.004956   0.042833   0.116  0.90797    
+## s_influence  0.064255   0.038910   1.651  0.09969 .  
+## y82         -0.358007   0.046428  -7.711 1.79e-13 ***
+## q1           0.314227   0.069687   4.509 9.30e-06 ***
+## q2           0.433265   0.055436   7.816 9.01e-14 ***
+## q3           0.186213   0.060105   3.098  0.00213 ** 
+## nonwhite    -0.020594   0.037794  -0.545  0.58622    
+## mixed        0.041405   0.043251   0.957  0.33916    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.3258 on 304 degrees of freedom
+## Multiple R-Squared: 0.2985,  Adjusted R-squared: 0.2777 
+## Wald test: 14.79 on 9 and 304 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ivpack)
+iv.nocov &amp;lt;- ivreg(fail_z ~ d_coddled | z_coddled, data = x)
+summary(iv.nocov)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## ivreg(formula = fail_z ~ d_coddled | z_coddled, data = x)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.24107 -0.24107 -0.09625 -0.09625  0.90375 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)  
+## (Intercept)  0.09625    0.04025   2.391   0.0174 *
+## d_coddled    0.14481    0.06004   2.412   0.0164 *
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.3808 on 312 degrees of freedom
+## Multiple R-Squared: 0.01682, Adjusted R-squared: 0.01367 
+## Wald test: 5.818 on 1 and 312 DF,  p-value: 0.01644&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;robust.se(iv.nocov)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Robust Standard Errors&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## t test of coefficients:
+## 
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)   
+## (Intercept) 0.096252   0.031498  3.0558 0.002438 **
+## d_coddled   0.144814   0.052694  2.7482 0.006341 **
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;iv.wcov &amp;lt;- ivreg(fail_z ~ d_coddled + anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed | anyweapon + s_influence + y82 + q1 + q2 + q3 + nonwhite + mixed + z_coddled , data = x)
+robust.se(iv.wcov)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Robust Standard Errors&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## t test of coefficients:
+## 
+##               Estimate Std. Error t value  Pr(&amp;gt;|t|)    
+## (Intercept) -0.0999212  0.0461484 -2.1652 0.0311488 *  
+## d_coddled    0.1398981  0.0481670  2.9044 0.0039489 ** 
+## anyweapon    0.0049557  0.0420239  0.1179 0.9062053    
+## s_influence  0.0642553  0.0369475  1.7391 0.0830302 .  
+## y82         -0.3580066  0.0421370 -8.4962 8.879e-16 ***
+## q1           0.3142271  0.0537986  5.8408 1.335e-08 ***
+## q2           0.4332645  0.0504189  8.5933 4.510e-16 ***
+## q3           0.1862134  0.0475390  3.9171 0.0001107 ***
+## nonwhite    -0.0205941  0.0367519 -0.5604 0.5756499    
+## mixed        0.0414052  0.0415748  0.9959 0.3200808    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;BEWARE&lt;/em&gt;: Even though the model may look like a strucural equation model (SEM), &lt;em&gt;do not&lt;/em&gt; run it like one. Answers will not be the same.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lavaan)
+sem1 &amp;lt;- &amp;#39;
+fail_z ~ a*d_coddled
+d_coddled ~ b*z_coddled
+ab := a*b #indirect effect
+&amp;#39;
+&lt;p&gt;sem1 &amp;lt;- sem(data = x, model = sem1)
+summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## lavaan (0.6-1.1186) converged normally after  21 iterations
+## 
+##   Number of observations                           314
+## 
+##   Estimator                                         ML
+##   Model Fit Test Statistic                       0.835
+##   Degrees of freedom                                 1
+##   P-value (Chi-square)                           0.361
+## 
+## Parameter Estimates:
+## 
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+##   Standard Errors                             Standard
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##   fail_z ~                                            
+##     d_coddled  (a)    0.107    0.043    2.480    0.013
+##   d_coddled ~                                         
+##     z_coddled  (b)    0.786    0.042   18.510    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##    .fail_z            0.144    0.011   12.530    0.000
+##    .d_coddled         0.117    0.009   12.530    0.000
+## 
+## Defined Parameters:
+##                    Estimate  Std.Err  z-value  P(&amp;gt;|z|)
+##     ab                0.084    0.034    2.458    0.014&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
     </item>
     

@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: May 26, 2025 --><html lang="en-us" dir="ltr"
+<!-- Last Published: June 5, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="auto">
   
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
@@ -195,7 +195,7 @@
     <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2025-05-26T00:00:00&#43;00:00" />
+      <meta property="og:updated_time" content="2025-06-05T00:00:00&#43;00:00" />
     
   
 
@@ -231,6 +231,8 @@
   
 
 
+  
+  
   
   
   
@@ -1429,6 +1431,40 @@
     <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
       <div
         class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
+      <a href="/post/extracting-v-matrix/"><span
+        class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">Extracting the V matrix for MLMs</span></a>
+    </h2>
+    <time
+      class="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-1"
+      datetime="2021-06-18">
+      Jun 18, 2021
+    </time>
+    <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400"><p><em>Notes to self (and anyone else who might find this useful).</em> With the general linear mixed models (to simplify, I am just omitting super/subscripts):</p>
+$$Y = X\beta + Zu + e$$<p>
+where we assume $u \sim MVN(0, G)$ and $e \sim MVN(0, R)$. $V$ is:</p></p>
+    <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-primary-500">
+    Read more
+      <svg aria-hidden="true" class="ml-1 h-4 w-4 stroke-current" fill="none" viewBox="0 0 16 16">
+        <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+      </svg>
+    </div>
+  </div>
+  <time
+    class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
+    datetime="2021-06-18">Jun 18, 2021
+  </time>
+</article>
+
+  
+  
+
+
+
+<article class="md:grid md:grid-cols-4 md:items-baseline">
+  <div class="md:col-span-3 group relative flex flex-col items-start">
+    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+      <div
+        class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
       <a href="/post/gee/"><span
         class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">🎉 Analyzing clustered data using GEEs</span></a>
     </h2>
@@ -1714,50 +1750,6 @@ be run that may provide easier to interpret results.</p></p>
   <time
     class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
     datetime="2019-05-21">May 21, 2019
-  </time>
-</article>
-
-  
-  
-
-
-
-<article class="md:grid md:grid-cols-4 md:items-baseline">
-  <div class="md:col-span-3 group relative flex flex-col items-start">
-    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-      <div
-        class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
-      <a href="/post/mlcfa/"><span
-        class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">Multilevel CFA (MLCFA) in R, part 2</span></a>
-    </h2>
-    <time
-      class="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-1"
-      datetime="2018-11-01">
-      Nov 1, 2018
-    </time>
-    <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">A while back, I wrote a note about how to conduct a <a href="https://github.com/flh3/mcfa/blob/main/MCFAinRHUANG.pdf" target="_blank" rel="noopener">multilevel
-confirmatory factor analysis (MLCFA) in
-R</a>. Part of the
-note shows how to setup <code>lavaan</code> to be able to run the MLCFA model.
-<em>NOTE:</em> one of the important aspects of an MLCFA is that the factor
-structure at the two levels <em>may not be the same</em>– that is the factor
-structures are <em>invariant</em> across levels. The setup process is/was
-cumbersome– but putting the note together was informative. Testing a 2-1
-factor model (i.e., 2 factors at the first level and 1 factor at the
-second level) required the following code (see the original note for the
-detailed explanation of the setup and what the variables represent).
-This is a measure of school engagement; <em>n</em> = 3,894 students in 254
-schools.</p>
-    <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-primary-500">
-    Read more
-      <svg aria-hidden="true" class="ml-1 h-4 w-4 stroke-current" fill="none" viewBox="0 0 16 16">
-        <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-      </svg>
-    </div>
-  </div>
-  <time
-    class="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
-    datetime="2018-11-01">Nov 1, 2018
   </time>
 </article>
 

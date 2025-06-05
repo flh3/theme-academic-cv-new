@@ -13,6 +13,91 @@
     </image>
     
     <item>
+      <title>Plausible Values as Predictors</title>
+      <link>http://localhost:1313/post/2025_pv_rhs/</link>
+      <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2025_pv_rhs/</guid>
+      <description>&lt;p&gt;Although the &lt;code&gt;mixPV&lt;/code&gt; function was introduced as a way to analyze large
+scale assessments using multiple plausible values (PV), the function
+only works if the plausible values are used as the outcome (i.e., it is
+the Y variable or on the left hand side [LHS] of the equation).
+However, there are times when the PV is the predictor of interest. This
+still has to be analyzed properly (i.e., just don’t average all the
+values).&lt;/p&gt;
+&lt;p&gt;Shown below are the steps (using a kind of nonsensical example) how to
+do this manually. The &lt;code&gt;mixPV&lt;/code&gt; function is still needed in order to
+properly pool the results though.&lt;/p&gt;
+&lt;p&gt;We’ll ask the research question if SES (&lt;code&gt;escs&lt;/code&gt;) and math performance
+(&lt;code&gt;math&lt;/code&gt;; five PVs) can predict math interest (e.g., look forward to
+lessons). I know, the directionality of this is unclear but this is for
+illustrative purposes only.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(MLMusingR)
+data(pisa2012)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using the dataset, we’ll need to convert it into a tall dataset and then
+convert it into a list object. We’ll use the &lt;code&gt;tidyr&lt;/code&gt; package:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(tidyr)
+tall &amp;lt;- pivot_longer(pisa2012, pv1math:pv5math, names_to = &#39;pv&#39;,
+                     values_to = &#39;math&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We’ll turn the categorical outcome into a continuous one for this
+example:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tall$mathinterest &amp;lt;- 4 - as.numeric(tall$st29q03) #outcome of interest
+# Maths interest- Look forward to lessons
+table(tall$mathinterest, tall$st29q03) #just checking
+
+   
+    Strongly agree Agree Disagree Strongly disagree  N/A Invalid Missing
+  0              0     0        0              2405    0       0       0
+  1              0     0     6155                 0    0       0       0
+  2              0  5185        0                 0    0       0       0
+  3           1935     0        0                 0    0       0       0
+
+## make into a list to be analyzed separately
+dat &amp;lt;- split(tall, tall$pv)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once we have our data stored as a list object, we can use the &lt;code&gt;mix&lt;/code&gt;
+function in the &lt;code&gt;WeMix&lt;/code&gt; package to analyze each dataset (there are five,
+one for each PV). I just standardize (z score) the math ability as well:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(WeMix)
+WeMix v4.0.3
+
+m1 &amp;lt;- \(x) { #change this function to what you are interested in
+  mix(mathinterest ~ scale(math) + escs + (1|schoolid), 
+        weights = c(&#39;w_fstuwt&#39;, &#39;w_fschwt&#39;),
+        data = x)
+}
+res &amp;lt;- lapply(dat, m1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The results are stored in the &lt;code&gt;res&lt;/code&gt; object as a list. This still needs
+to be pooled properly. To do that, we have to make the output something
+that &lt;code&gt;mixPV&lt;/code&gt; can understand and pool the results:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class(res) &amp;lt;- &#39;mixPV&#39; #need this to pool results
+summary(res)
+
+Results of multilevel analyses with 5 plausible values.
+Number of observations: 3136 
+
+Estimates for random effects: 
+                     estimate std.error statistic   df Pr(&amp;gt;t)    
+schoolid.(Intercept)   0.0942    0.0198    4.7544 3097 &amp;lt;2e-16 ***
+Residual               0.7143    0.0200   35.7462 2837 &amp;lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Estimates for fixed effects: 
+            estimate std.error statistic   df Pr(&amp;gt;t)    
+(Intercept)   1.3995    0.0478   29.2881 3118 &amp;lt;2e-16 ***
+scale(math)   0.1468    0.0235    6.2461  136 &amp;lt;2e-16 ***
+escs         -0.0149    0.0229   -0.6499 2315   0.52    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;– END&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Correlation and causation revisited</title>
       <link>http://localhost:1313/post/dda/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
