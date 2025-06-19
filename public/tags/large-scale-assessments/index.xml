@@ -17,7 +17,10 @@
       <link>http://localhost:1313/post/2025_pv_rhs/</link>
       <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/post/2025_pv_rhs/</guid>
-      <description>\[LHS\]&lt;p&gt; of the equation).
+      <description>&lt;p&gt;Although the &lt;code&gt;mixPV&lt;/code&gt; function was introduced as a way to analyze large
+scale assessments using multiple plausible values (PV), the function
+only works if the plausible values are used as the outcome (i.e., it is
+the Y variable or on the left hand side [LHS] of the equation).
 However, there are times when the PV is the predictor of interest. This
 still has to be analyzed properly (i.e., just don’t average all the
 values).&lt;/p&gt;
@@ -57,18 +60,6 @@ dat &amp;lt;- split(tall, tall$pv)
 function in the &lt;code&gt;WeMix&lt;/code&gt; package to analyze each dataset (there are five,
 one for each PV). I just standardize (z score) the math ability as well:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;library(WeMix)
-
-Loading required package: lme4
-
-Loading required package: Matrix
-
-
-Attaching package: &#39;Matrix&#39;
-
-The following objects are masked from &#39;package:tidyr&#39;:
-
-    expand, pack, unpack
-
 WeMix v4.0.3
 
 m1 &amp;lt;- \(x) { #change this function to what you are interested in

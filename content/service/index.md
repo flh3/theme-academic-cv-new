@@ -1,5 +1,5 @@
 ---
-title: ""  # Add a page title.
+title: "Service"  # Add a page title.
 summary: ""  # Add a page description.
 date: "2025-03-03"  # Add today's date.
 type: pages  # Page type is a Widget Page
@@ -14,12 +14,11 @@ comments: false
 
 Ongoing:
 
-* Xiuhan Chen
 * Seijoon Park
-* Bridget Disney
 
 ### University of Missouri
 
+* Xiuhan Chen (2025, June)
 * David Chuang (2023, May)
 * McKinzie Duesenberg (2023, May)
 * Soobin Choi (2023, May)
