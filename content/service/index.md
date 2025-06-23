@@ -8,46 +8,43 @@ show_date: true
 comments: false
 ---
 
-{{< toc >}} 
+{{< toc >}}
 
 ## Dissertation/thesis committees
 
-Ongoing:
-
-* Seijoon Park
-
 ### University of Missouri
 
+* Seijoon Park (2025, June)
 * Xiuhan Chen (2025, June)
 * David Chuang (2023, May)
 * McKinzie Duesenberg (2023, May)
 * Soobin Choi (2023, May)
 * Lindsay Brockmeier (2023, May)
-* Devon Whetstone (2022, Dec).
-* Xinyi Mao (2022, June).
-* Hyejin Shim (2022, May).
-* Danielle Turley (2021 Dec).
-* Jeong Mi Moon (2021 June).
-* [Colleen Lloyd Eddy](https://www.education.pitt.edu/faculty/directory/colleen-eddy/) (2020).
+* Devon Whetstone (2022, Dec)
+* Xinyi Mao (2022, June)
+* Hyejin Shim (2022, May)
+* Danielle Turley (2021 Dec)
+* Jeong Mi Moon (2021 June)
+* [Colleen Lloyd Eddy](https://www.education.pitt.edu/faculty/directory/colleen-eddy/) (2020)
 * David Chuang (2020). (Masters).
-* [Amanda Olsen](https://cehd.missouri.edu/person/amanda-olsen/). (Committee chair, 2018). 
-* Ti Zhang (2019).
-* Krista Edwards (2020). (Masters).
-* Metin Bulus (2017).
-* Lauren Henry (2017/2019). (Masters/PhD) 
-* Geetika Jaiswal (2017). 
-* Caroline Grossman (2017). (Masters).  
-* Stacy Lee (2016).
-* Sara Prewett (2016).
-* Nicholas McAfee (2016/2019). (Masters/PhD).
+* [Amanda Olsen](https://cehd.missouri.edu/person/amanda-olsen/). (Committee chair, 2018)
+* Ti Zhang (2019)
+* Krista Edwards (2020). (Masters)
+* Metin Bulus (2017)
+* Lauren Henry (2017/2019). (Masters/PhD)
+* Geetika Jaiswal (2017)
+* Caroline Grossman (2017). (Masters)  
+* Stacy Lee (2016)
+* Sara Prewett (2016)
+* Nicholas McAfee (2016/2019). (Masters/PhD)
 
 ### University of Virginia
-* [Laura Tortorelli](http://education.msu.edu/search/Formview.aspx?email=ltort@msu.edu) (2015).  
-* Dallas Hitt (2014). 
-* [Jason Bishop](https://edu7.auburn.edu/collegedirectory/profile_page.php?uid=jcb0140) (2013).  
-* Natasha Harris (2013).
-* [Wendy Snow](http://www.longwood.edu/directory/profile/snowwmlongwoodedu/) (2012). 
-* Carolyn Gosse (2012).
+* [Laura Tortorelli](http://education.msu.edu/search/Formview.aspx?email=ltort@msu.edu) (2015) 
+* Dallas Hitt (2014)
+* [Jason Bishop](https://edu7.auburn.edu/collegedirectory/profile_page.php?uid=jcb0140) (2013) 
+* Natasha Harris (2013)
+* [Wendy Snow](http://www.longwood.edu/directory/profile/snowwmlongwoodedu/) (2012)
+* Carolyn Gosse (2012)
 
 ## Associate Editor
 * [School Psychology Review](https://naspjournals.org/loi/spsr) (2020-present)
