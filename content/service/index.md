@@ -47,7 +47,8 @@ comments: false
 * Carolyn Gosse (2012)
 
 ## Associate Editor
-* [School Psychology Review](https://naspjournals.org/loi/spsr) (2020-present)
+* [Psychology in the Schools](https://onlinelibrary.wiley.com/journal/15206807)(2025 - present)
+* [School Psychology Review](https://naspjournals.org/loi/spsr) (2020-July, 2025)
 * [AERA Open](https://journals.sagepub.com/home/ero) (2021)
 
 ## Editorial boards
