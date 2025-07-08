@@ -14,6 +14,7 @@ comments: false
 
 ### University of Missouri
 
+* Kelsey Weitzel (ongoing)
 * Seijoon Park (2025, June)
 * Xiuhan Chen (2025, June)
 * David Chuang (2023, May)

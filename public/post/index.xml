@@ -11279,6 +11279,902 @@ Run the models:&lt;/p&gt;
     </item>
     
     <item>
+      <title>Note on Robust Standard Errors</title>
+      <link>http://localhost:1313/post/note-on-robust-standard-errors/</link>
+      <pubDate>Sun, 04 Nov 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/note-on-robust-standard-errors/</guid>
+      <description>&lt;p&gt;Illustration showing different flavors of robust standard errors. Load
+in library, dataset, and recode. Do not really need to dummy code but
+may make making the &lt;strong&gt;X&lt;/strong&gt; matrix easier. Using the High School &amp;amp; Beyond
+(hsb) dataset.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(mlmRev) #has the hsb dataset
+library(summarytools) #for descriptives
+library(jtools) #for output
+library(dplyr) #for pipes and selecting
+library(sandwich) #robust SEs
+library(lmtest) #for coeftest
+
+hsb &amp;lt;- Hsb82
+names(hsb) &amp;lt;- tolower(names(hsb))
+dim(hsb)
+
+## [1] 7185    8
+
+head(hsb)
+
+##   school minrty     sx    ses   mach   meanses sector        cses
+## 1   1224     No Female -1.528  5.876 -0.434383 Public -1.09361702
+## 2   1224     No Female -0.588 19.708 -0.434383 Public -0.15361702
+## 3   1224     No   Male -0.528 20.349 -0.434383 Public -0.09361702
+## 4   1224     No   Male -0.668  8.781 -0.434383 Public -0.23361702
+## 5   1224     No   Male -0.158 17.898 -0.434383 Public  0.27638298
+## 6   1224     No   Male  0.022  4.583 -0.434383 Public  0.45638298
+
+hsb$private &amp;lt;- ifelse(hsb$sector == &amp;quot;Public&amp;quot;, 0, 1)
+hsb$female &amp;lt;- ifelse(hsb$sx == &amp;quot;Male&amp;quot;, 0, 1)
+
+freq(hsb$private)
+
+## Frequencies  
+## hsb$private  
+## Type: Numeric  
+## 
+##               Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+## ----------- ------ --------- -------------- --------- --------------
+##           0   3642     50.69          50.69     50.69          50.69
+##           1   3543     49.31         100.00     49.31         100.00
+##        &amp;lt;NA&amp;gt;      0                               0.00         100.00
+##       Total   7185    100.00         100.00    100.00         100.00
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run an OLS regression predicting math achievement. NOTE: private is a
+level 2, school-level variable.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;m1 &amp;lt;- lm(mach ~ ses + female + private, data = hsb)
+summ(m1, digits = 3)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Observations
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7185
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Dependent variable
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+mach
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Type
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+OLS linear regression
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+F(3,7181)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+454.392
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+R²
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.160
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Adj. R²
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.159
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Est.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+S.E.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+t val.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+(Intercept)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.521
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.131
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+95.691
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+ses
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.884
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.097
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+29.586
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+female
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-1.404
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.149
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-9.393
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+private
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.963
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.152
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.949
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;sup&gt;&lt;/sup&gt; Standard errors: OLS
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;pre&gt;&lt;code&gt;###
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Reproduce results using matrix algebra:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;B&lt;/em&gt; = (&lt;em&gt;X&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;)&lt;sup&gt;−1&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;Y&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;X &amp;lt;- model.matrix(m1)
+head(X)
+
+##   (Intercept)    ses female private
+## 1           1 -1.528      1       0
+## 2           1 -0.588      1       0
+## 3           1 -0.528      0       0
+## 4           1 -0.668      0       0
+## 5           1 -0.158      0       0
+## 6           1  0.022      0       0
+
+#regression coefficients
+###
+Bs &amp;lt;- solve(t(X) %*% X) %*% t(X) %*% hsb$mach
+Bs
+
+##                  [,1]
+## (Intercept) 12.520715
+## ses          2.884130
+## female      -1.403538
+## private      1.963150
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now for the standard errors: method 1&lt;/p&gt;
+&lt;p&gt;$\sigma^2 = \frac{u^Tu}{n - k - 1}$&lt;/p&gt;
+&lt;p&gt;where &lt;em&gt;u&lt;/em&gt; is the residual (or &lt;em&gt;y&lt;/em&gt; − &lt;em&gt;X**B&lt;/em&gt;).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;u &amp;lt;- resid(m1)
+num &amp;lt;- t(u) %*% u #numerator
+den &amp;lt;- nobs(m1) - m1$rank #denominator
+(num/den) %&amp;gt;% sqrt #residual standard error (manually)
+
+##          [,1]
+## [1,] 6.307042
+
+summary(m1)$sigma #residual standard error (computed using lm)
+
+## [1] 6.307042
+
+var2 &amp;lt;- as.numeric(num/den) #from matrix, convert to numeric
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To generate the variance covariance matrix:
+&lt;em&gt;V&lt;strong&gt;a&lt;/strong&gt;r&lt;/em&gt;(&lt;em&gt;B&lt;/em&gt;) = &lt;em&gt;σ&lt;/em&gt;&lt;sup&gt;2&lt;/sup&gt;(&lt;em&gt;X&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;)&lt;sup&gt;−1&lt;/sup&gt;. The
+square root of the diagonal are the standard errors.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vce &amp;lt;- var2 * solve(t(X) %*% X)
+ses &amp;lt;- sqrt(diag(vce)) #standard errors
+
+cbind(B = Bs, ses, t = round(Bs/ses, 3))
+
+##                              ses       
+## (Intercept) 12.520715 0.13084584 95.691
+## ses          2.884130 0.09748345 29.586
+## female      -1.403538 0.14942396 -9.393
+## private      1.963150 0.15160531 12.949
+
+summary(m1)
+
+## 
+## Call:
+## lm(formula = mach ~ ses + female + private, data = hsb)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -19.9037  -4.6864   0.2104   4.8645  17.1868 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 12.52071    0.13085  95.691   &amp;lt;2e-16 ***
+## ses          2.88413    0.09748  29.586   &amp;lt;2e-16 ***
+## female      -1.40354    0.14942  -9.393   &amp;lt;2e-16 ***
+## private      1.96315    0.15161  12.949   &amp;lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.307 on 7181 degrees of freedom
+## Multiple R-squared:  0.1595, Adjusted R-squared:  0.1592 
+## F-statistic: 454.4 on 3 and 7181 DF,  p-value: &amp;lt; 2.2e-16
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Doing it using a general form using Method 2:&lt;/p&gt;
+&lt;p&gt;(&lt;em&gt;X&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;)&lt;sup&gt;−1&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;u&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;u**X&lt;/em&gt;(&lt;em&gt;X&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;)&lt;sup&gt;−1&lt;/sup&gt;.
+In the general case, &lt;em&gt;u&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;u&lt;/em&gt; is a &lt;em&gt;n&lt;/em&gt; × &lt;em&gt;n&lt;/em&gt; diagonal with a
+constant &lt;em&gt;σ&lt;/em&gt;&lt;sup&gt;2&lt;/sup&gt; on the diagonal.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;######### correct::: doing this using a general form::: METHOD 2
+### bread * meat * bread
+
+#constant variance on the diagonal
+n &amp;lt;- nobs(m1)
+mm &amp;lt;- diag(var2, nrow = n) #creating a matrix with the constant variance on the diagonal
+mm[1:5, 1:5] #just taking a peek at the first five rows/columns
+
+##          [,1]     [,2]     [,3]     [,4]     [,5]
+## [1,] 39.77878  0.00000  0.00000  0.00000  0.00000
+## [2,]  0.00000 39.77878  0.00000  0.00000  0.00000
+## [3,]  0.00000  0.00000 39.77878  0.00000  0.00000
+## [4,]  0.00000  0.00000  0.00000 39.77878  0.00000
+## [5,]  0.00000  0.00000  0.00000  0.00000 39.77878
+
+mt &amp;lt;- t(X) %*% mm %*% X #the meat
+br &amp;lt;- solve(crossprod(X)) #this is the same as solve(t(X) %*% X)
+(vce3 &amp;lt;- br %*% mt %*% br)
+
+##               (Intercept)           ses        female       private
+## (Intercept)  0.0171206345  0.0008451577 -0.0115724586 -0.0110969152
+## ses          0.0008451577  0.0095030234  0.0010249165 -0.0028145087
+## female      -0.0115724586  0.0010249165  0.0223275203 -0.0004476095
+## private     -0.0110969152 -0.0028145087 -0.0004476095  0.0229841695
+
+vce
+
+##               (Intercept)           ses        female       private
+## (Intercept)  0.0171206345  0.0008451577 -0.0115724586 -0.0110969152
+## ses          0.0008451577  0.0095030234  0.0010249165 -0.0028145087
+## female      -0.0115724586  0.0010249165  0.0223275203 -0.0004476095
+## private     -0.0110969152 -0.0028145087 -0.0004476095  0.0229841695
+
+vcov(m1) #all the same :: this is automatically computed using the vcov function
+
+##               (Intercept)           ses        female       private
+## (Intercept)  0.0171206345  0.0008451577 -0.0115724586 -0.0110969152
+## ses          0.0008451577  0.0095030234  0.0010249165 -0.0028145087
+## female      -0.0115724586  0.0010249165  0.0223275203 -0.0004476095
+## private     -0.0110969152 -0.0028145087 -0.0004476095  0.0229841695
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the case where homoskedasticity is not a reasonable assumption, we
+can create a heteroskedasticity-consistent covariance matrix (HCCM).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;########### Heteroscedasticity Consistent SEs
+
+u &amp;lt;- resid(m1) #just recreating
+uu &amp;lt;- diag(u %*% t(u)) %&amp;gt;% diag #get the diagonal, then make a diagonal matrix
+uu[1:5, 1:5] #taking a peek, differing variances on the diagonal
+
+##           [,1]    [,2]     [,3]     [,4]     [,5]
+## [1,] 0.6959333   0.000  0.00000 0.000000  0.00000
+## [2,] 0.0000000 105.816  0.00000 0.000000  0.00000
+## [3,] 0.0000000   0.000 87.44319 0.000000  0.00000
+## [4,] 0.0000000   0.000  0.00000 3.287388  0.00000
+## [5,] 0.0000000   0.000  0.00000 0.000000 34.02363
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Unlike the first matrix with constant variance, the variance is allowed
+to vary per observation. That new matrix is used in the meat matrix.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mt &amp;lt;- t(X) %*% uu %*% X
+br &amp;lt;- solve(crossprod(X))
+(vce4 &amp;lt;- br %*% mt %*% br) * (7185 / 7181) # n / n- k--&amp;gt; uses an adjustment too
+
+##             (Intercept)          ses       female      private
+## (Intercept)  0.01941891  0.001236800 -0.012945247 -0.012716403
+## ses          0.00123680  0.008964747  0.001322174 -0.003971380
+## female      -0.01294525  0.001322174  0.022554135  0.000554395
+## private     -0.01271640 -0.003971380  0.000554395  0.023658248
+
+vcovHC(m1, type = &#39;HC1&#39;) #same, automated using the sandwich package
+
+##             (Intercept)          ses       female      private
+## (Intercept)  0.01941891  0.001236800 -0.012945247 -0.012716403
+## ses          0.00123680  0.008964747  0.001322174 -0.003971380
+## female      -0.01294525  0.001322174  0.022554135  0.000554395
+## private     -0.01271640 -0.003971380  0.000554395  0.023658248
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are different types of robust standard errors. What was shown was
+using what was called ‘HC1’. The simplest version is HC0 with no degrees
+of freedom adjustment.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(vc.hc0 &amp;lt;- br %*% mt %*% br) #simplest version, no df adjustment
+
+##              (Intercept)          ses        female       private
+## (Intercept)  0.019408094  0.001236111 -0.0129380402 -0.0127093240
+## ses          0.001236111  0.008959756  0.0013214379 -0.0039691692
+## female      -0.012938040  0.001321438  0.0225415788  0.0005540864
+## private     -0.012709324 -0.003969169  0.0005540864  0.0236450776
+
+vcovHC(m1, type = &#39;HC0&#39;) #identical
+
+##              (Intercept)          ses        female       private
+## (Intercept)  0.019408094  0.001236111 -0.0129380402 -0.0127093240
+## ses          0.001236111  0.008959756  0.0013214379 -0.0039691692
+## female      -0.012938040  0.001321438  0.0225415788  0.0005540864
+## private     -0.012709324 -0.003969169  0.0005540864  0.0236450776
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Other types, HC2 uses the hat values &lt;em&gt;X&lt;/em&gt;(&lt;em&gt;X&lt;/em&gt;′&lt;em&gt;X&lt;/em&gt;)&lt;sup&gt;−1&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;′.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ht &amp;lt;- diag(X %*% solve((t(X) %*% X)) %*% t(X))
+tmp &amp;lt;- hatvalues(m1) #same, just comparing
+#compare
+ht[1:10]
+
+##            1            2            3            4            5            6            7 
+## 0.0008239518 0.0004371588 0.0004745605 0.0005086124 0.0004296461 0.0004314467 0.0004429814 
+##            8            9           10 
+## 0.0006259305 0.0005147352 0.0004610464
+
+tmp[1:10]
+
+##            1            2            3            4            5            6            7 
+## 0.0008239518 0.0004371588 0.0004745605 0.0005086124 0.0004296461 0.0004314467 0.0004429814 
+##            8            9           10 
+## 0.0006259305 0.0005147352 0.0004610464
+
+### for HC2, divided by 1-ht
+newu &amp;lt;- u^2/(1-ht)    
+newu[1:6]
+
+##           1           2           3           4           5           6 
+##   0.6965072 105.8623008  87.4847037   3.2890610  34.0382573  64.0462798
+
+dd &amp;lt;- diag(newu, nrow = n)
+(vcov.HC2 &amp;lt;- br %*% (t(X) %*% dd %*% X) %*% br)
+
+##              (Intercept)          ses        female       private
+## (Intercept)  0.019419000  0.001236993 -0.0129453531 -0.0127163888
+## ses          0.001236993  0.008966698  0.0013225142 -0.0039723682
+## female      -0.012945353  0.001322514  0.0225540732  0.0005542377
+## private     -0.012716389 -0.003972368  0.0005542377  0.0236585058
+
+vcovHC(m1, type = &#39;HC2&#39;) #same
+
+##              (Intercept)          ses        female       private
+## (Intercept)  0.019419000  0.001236993 -0.0129453531 -0.0127163888
+## ses          0.001236993  0.008966698  0.0013225142 -0.0039723682
+## female      -0.012945353  0.001322514  0.0225540732  0.0005542377
+## private     -0.012716389 -0.003972368  0.0005542377  0.0236585058
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The preferred version, which is also the default of the sandwich
+function, is HC3 where diagonal is: $\frac{u^{2}}{(1 - h)^2}$.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;### for HC3, divided by (1-ht)^2
+newu &amp;lt;- u^2/(1-ht)^2    
+dd &amp;lt;- diag(newu, nrow = n)
+(vcov.HC3 &amp;lt;- br %*% (t(X) %*% dd %*% X) %*% br)
+
+##              (Intercept)          ses       female      private
+## (Intercept)  0.019429912  0.001237875 -0.012952671 -0.012723458
+## ses          0.001237875  0.008973645  0.001323592 -0.003975570
+## female      -0.012952671  0.001323592  0.022566575  0.000554389
+## private     -0.012723458 -0.003975570  0.000554389  0.023671943
+
+vcovHC(m1, type = &#39;HC3&#39;) #same
+
+##              (Intercept)          ses       female      private
+## (Intercept)  0.019429912  0.001237875 -0.012952671 -0.012723458
+## ses          0.001237875  0.008973645  0.001323592 -0.003975570
+## female      -0.012952671  0.001323592  0.022566575  0.000554389
+## private     -0.012723458 -0.003975570  0.000554389  0.023671943
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These are shown on p. 4 of this sandwich package manual
+&lt;a href=&#34;https://cran.r-project.org/web/packages/sandwich/vignettes/sandwich.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cran.r-project.org/web/packages/sandwich/vignettes/sandwich.pdf&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;cluster-robust&#34;&gt;Cluster Robust&lt;/h2&gt;
+&lt;p&gt;Now, another flavor is to have a cluster robust variance covariance
+matrix.&lt;/p&gt;
+&lt;p&gt;Cluster
+VCV(&lt;em&gt;B̂&lt;/em&gt; = (&lt;em&gt;X&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;)&lt;sup&gt;−1&lt;/sup&gt;&lt;em&gt;Ω̂&lt;/em&gt;(&lt;em&gt;X&lt;/em&gt;&lt;sup&gt;&lt;em&gt;T&lt;/em&gt;&lt;/sup&gt;&lt;em&gt;X&lt;/em&gt;)&lt;sup&gt;−1&lt;/sup&gt;
+where&lt;/p&gt;
+&lt;p&gt;$\hat{\Omega} = \sum\_{g=1}^G  X^T\_g \hat{u}\_g \hat{u}\_g^T   X\_g$&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;head(hsb)
+
+##   school minrty     sx    ses   mach   meanses sector        cses private female
+## 1   1224     No Female -1.528  5.876 -0.434383 Public -1.09361702       0      1
+## 2   1224     No Female -0.588 19.708 -0.434383 Public -0.15361702       0      1
+## 3   1224     No   Male -0.528 20.349 -0.434383 Public -0.09361702       0      0
+## 4   1224     No   Male -0.668  8.781 -0.434383 Public -0.23361702       0      0
+## 5   1224     No   Male -0.158 17.898 -0.434383 Public  0.27638298       0      0
+## 6   1224     No   Male  0.022  4.583 -0.434383 Public  0.45638298       0      0
+
+cdata &amp;lt;- data.frame(cluster = hsb$school, r = resid(m1))
+(m &amp;lt;- length(table(cdata$cluster))) #number of clusters
+
+## [1] 160
+
+n &amp;lt;- nobs(m1)
+k &amp;lt;- m1$rank
+dfa &amp;lt;- (m/(m-1))  * ((n-1)/(n-k))
+gs &amp;lt;- names(table(cdata$cluster))
+u &amp;lt;- matrix(NA, nrow = m, ncol = k) #clusters x rank:: creating a new u matrix
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The u matrix is now a &lt;em&gt;m&lt;/em&gt; × &lt;em&gt;k&lt;/em&gt; matrix. It is the transpose of the
+residuals multiplied by the design matrix PER cluster.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;### do this per cluster
+for(i in 1:m){
+  u[i,] &amp;lt;- t(cdata$r[cdata$cluster == gs[i]]) %*% X[hsb$school == gs[i], 1:k]
+} #this is now a 160 x 4 matrix
+#4 x 160 multipled by 160 x 4 = 4 by 4 matrix
+
+(mt &amp;lt;- crossprod(u)) #which is the same as t(u) %*% u
+
+##            [,1]      [,2]      [,3]     [,4]
+## [1,] 1127414.04 -32276.29 524452.13 599712.7
+## [2,]  -32276.29 261299.92 -42889.74  10432.7
+## [3,]  524452.13 -42889.74 404206.13 249132.6
+## [4,]  599712.74  10432.70 249132.57 599712.7
+
+(clvc &amp;lt;- br %*% mt %*% br * dfa) #same:: manually computed
+
+##              (Intercept)          ses       female     private
+## (Intercept)  0.055118621  0.003473873 -0.027093581 -0.03596669
+## ses          0.003473873  0.015449763  0.001932605 -0.01272128
+## female      -0.027093581  0.001932605  0.052099373 -0.01256699
+## private     -0.035966689 -0.012721285 -0.012566991  0.09446861
+
+vcovCL(m1, cluster = hsb$school) #same:: using the sandwich package
+
+##              (Intercept)          ses       female     private
+## (Intercept)  0.055118621  0.003473873 -0.027093581 -0.03596669
+## ses          0.003473873  0.015449763  0.001932605 -0.01272128
+## female      -0.027093581  0.001932605  0.052099373 -0.01256699
+## private     -0.035966689 -0.012721285 -0.012566991  0.09446861
+
+coeftest(m1, vcovCL(m1, cluster = hsb$school))
+
+## 
+## t test of coefficients:
+## 
+##             Estimate Std. Error t value  Pr(&amp;gt;|t|)    
+## (Intercept) 12.52071    0.23477 53.3310 &amp;lt; 2.2e-16 ***
+## ses          2.88413    0.12430 23.2035 &amp;lt; 2.2e-16 ***
+## female      -1.40354    0.22825 -6.1490 8.213e-10 ***
+## private      1.96315    0.30736  6.3872 1.795e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+coeftest(m1, clvc)
+
+## 
+## t test of coefficients:
+## 
+##             Estimate Std. Error t value  Pr(&amp;gt;|t|)    
+## (Intercept) 12.52071    0.23477 53.3310 &amp;lt; 2.2e-16 ***
+## ses          2.88413    0.12430 23.2035 &amp;lt; 2.2e-16 ***
+## female      -1.40354    0.22825 -6.1490 8.213e-10 ***
+## private      1.96315    0.30736  6.3872 1.795e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+summ(m1, cluster = &#39;school&#39;, robust= &amp;quot;HC1&amp;quot;, digits = 5) #using jtools
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Observations
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7185
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Dependent variable
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+mach
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Type
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+OLS linear regression
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+F(3,7181)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+454.39243
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+R²
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.15954
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Adj. R²
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.15919
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Est.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+S.E.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+t val.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+(Intercept)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.52071
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.23477
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+53.33103
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.00000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+ses
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.88413
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.12430
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+23.20352
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.00000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+female
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-1.40354
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.22825
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-6.14905
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.00000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+private
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.96315
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.30736
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.38719
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.00000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;sup&gt;&lt;/sup&gt; Standard errors: Cluster-robust, type = HC1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;Compare the standard errors of the cluster robust version with the
+standard version below for the private coefficient (school level). This
+is .15 vs .30.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;summ(m1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Observations
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7185
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Dependent variable
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+mach
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Type
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+OLS linear regression
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+F(3,7181)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+454.39
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+R²
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.16
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Adj. R²
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.16
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;color: black; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Est.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+S.E.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+t val.
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+(Intercept)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.52
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.13
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+95.69
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+ses
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.88
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.10
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+29.59
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+female
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-1.40
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-9.39
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+private
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.96
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.95
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;sup&gt;&lt;/sup&gt; Standard errors: OLS
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;What about multiway clustering? Cameron, Gelbach, and Miller (2011)
+provide a simple way of computing the multiway vcv matrix. Given two
+sets of clusters (e.g., firm by year clusters), compute the vcv using
+firm as the cluster (A). Then compute the vcv with year as the cluster
+(B) and the vcv with an interaction of firm x year as the cluster (C).
+Finally, the multiway vcv is A + B - C.&lt;/p&gt;
+&lt;p&gt;** multiwaycov ** is not available anymore for some reason?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# library(multiwayvcov)
+# #data(package = &#39;multiwayvcov&#39;)
+# data(&amp;quot;petersen&amp;quot;) #this is in the multiwayvcov package-- this has been deprecated already in favor of the sandwich package
+# dim(petersen)
+# summary(petersen)
+# length(table(petersen$firmid))
+# length(table(petersen$year))
+# 
+# head(petersen)
+# test &amp;lt;- petersen
+# 
+# library(ggplot2)
+# ggplot(petersen, aes(x = year, y = y, group = firmid)) + geom_point(alpha = .05) + geom_line(alpha = .05)
+# 
+# fm &amp;lt;- lm(y ~ x, data=test)
+# 
+# summary(fm)
+# coeftest(fm, vcovCL(fm, cluster = test$firmid)) #A
+# coeftest(fm, vcovCL(fm, cluster = test$year)) #B
+# 
+# #doing this using multiway clustering
+# coeftest(fm, vcovCL(fm, cluster = test[,c(&#39;firmid&#39;,&#39;year&#39;)]))
+# #automatic
+# lfe::felm(y ~ x | 0 | 0 | year + firmid, data = test) %&amp;gt;% summary #same result
+# 
+# #### doing this multiway manually
+# 
+# #test$int &amp;lt;- paste0(test$firmid, test$year) #cross of firm and year
+# test$int &amp;lt;- interaction(test$firmid, test$year)
+# length(table(test$int))
+# 
+# M1 &amp;lt;- vcovCL(fm, cluster = test$firmid)
+# M2 &amp;lt;- vcovCL(fm, cluster = test$year)
+# M3 &amp;lt;- vcovCL(fm, cluster = test$int)
+# M1 + M2 - M3 #add first 2, subtract the third: p 336, Cameron
+# vcovCL(fm, cluster = test[,c(&#39;year&#39;,&#39;firmid&#39;)]) #same results!
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Multilevel CFA (MLCFA) in R, part 2</title>
       <link>http://localhost:1313/post/mlcfa/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>

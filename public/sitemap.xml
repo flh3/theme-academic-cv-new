@@ -838,6 +838,14 @@
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>http://localhost:1313/post/note-on-robust-standard-errors/</loc>
+    <lastmod>2018-11-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/standard-errors/</loc>
+    <lastmod>2018-11-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>http://localhost:1313/post/mlcfa/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -879,10 +887,6 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>http://localhost:1313/post/se/</loc>
-    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://localhost:1313/tags/standard-errors/</loc>
     <lastmod>2018-06-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
