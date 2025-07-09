@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Correlation Matrix | FLH Website</title>
-    <link>http://localhost:1313/tags/correlation-matrix/</link>
-      <atom:link href="http://localhost:1313/tags/correlation-matrix/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/correlation-matrix/</link>
+      <atom:link href="http://localhost:65084/tags/correlation-matrix/index.xml" rel="self" type="application/rss+xml" />
     <description>Correlation Matrix</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 26 Oct 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Correlation Matrix</title>
-      <link>http://localhost:1313/tags/correlation-matrix/</link>
+      <link>http://localhost:65084/tags/correlation-matrix/</link>
     </image>
     
     <item>
       <title>🧠 Difference between correlation and covariance matrices</title>
-      <link>http://localhost:1313/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</link>
+      <link>http://localhost:65084/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</link>
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</guid>
+      <guid>http://localhost:65084/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</guid>
       <description>&lt;h2 id=&#34;variancecovariance&#34;&gt;Variance/Covariance&lt;/h2&gt;
 &lt;p&gt;To start off, the sample variance formula is:&lt;/p&gt;
 $$s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})^2} {n - 1 }$$&lt;p&gt;First of all, $x - \overline{x}$ is a deviation score (deviation from

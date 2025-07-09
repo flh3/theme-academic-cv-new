@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FLH Website</title>
-    <link>http://localhost:1313/r/</link>
-      <atom:link href="http://localhost:1313/r/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/r/</link>
+      <atom:link href="http://localhost:65084/r/index.xml" rel="self" type="application/rss+xml" />
     <description>FLH Website</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>FLH Website</title>
-      <link>http://localhost:1313/r/</link>
+      <link>http://localhost:65084/r/</link>
     </image>
     
   </channel>

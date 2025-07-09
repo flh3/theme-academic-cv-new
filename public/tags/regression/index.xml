@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Regression | FLH Website</title>
-    <link>http://localhost:1313/tags/regression/</link>
-      <atom:link href="http://localhost:1313/tags/regression/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/regression/</link>
+      <atom:link href="http://localhost:65084/tags/regression/index.xml" rel="self" type="application/rss+xml" />
     <description>Regression</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Nov 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Regression</title>
-      <link>http://localhost:1313/tags/regression/</link>
+      <link>http://localhost:65084/tags/regression/</link>
     </image>
     
     <item>
       <title>Gradient descent example 1</title>
-      <link>http://localhost:1313/post/gd_example/</link>
+      <link>http://localhost:65084/post/gd_example/</link>
       <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/gd_example/</guid>
+      <guid>http://localhost:65084/post/gd_example/</guid>
       <description>&lt;p&gt;Random notes. Regression based techniques often involve finding a maximum (e.g., the maximum likelihood) or a minimum (e.g., least squares or mean square error) value. Gradient descent is an iterative optimization algorithm used to find the minimum of a function (or gradient &lt;em&gt;ascent&lt;/em&gt; to find the maximum).&lt;/p&gt;
 &lt;p&gt;The algorithm for solving for $\theta_j$ looks like:&lt;/p&gt;
 $$\theta_j = \theta_j - \alpha\frac{\partial{}}{\partial{\theta_j} }J(\theta)$$&lt;ul&gt;

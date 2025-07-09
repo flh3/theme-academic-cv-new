@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Instrumental Variable | FLH Website</title>
-    <link>http://localhost:1313/tags/instrumental-variable/</link>
-      <atom:link href="http://localhost:1313/tags/instrumental-variable/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/instrumental-variable/</link>
+      <atom:link href="http://localhost:65084/tags/instrumental-variable/index.xml" rel="self" type="application/rss+xml" />
     <description>Instrumental Variable</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 17 Aug 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Instrumental Variable</title>
-      <link>http://localhost:1313/tags/instrumental-variable/</link>
+      <link>http://localhost:65084/tags/instrumental-variable/</link>
     </image>
     
     <item>
       <title>Instrumental variables within an SEM framework</title>
-      <link>http://localhost:1313/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</link>
+      <link>http://localhost:65084/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</link>
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</guid>
+      <guid>http://localhost:65084/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</guid>
       <description>&lt;p&gt;Earlier this year, I wrote an article on using &lt;a href=&#34;https://openpublishing.library.umass.edu/pare/article/id/1661/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;instrumental variables&lt;/a&gt; (IV) to analyze data from randomized experiments with imperfect compliance (read the manuscript for full details; link updated; it&amp;rsquo;s open access). In the article, I described the steps of IV estimation and the logic behind it.&lt;/p&gt;
 &lt;p&gt;The sample code using two stage least squares regression (the correct analysis) is shown below (see article for specifics):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ivreg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -174,9 +174,9 @@ is not path a x path b).&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>🎉 Understanding instrumental variables</title>
-      <link>http://localhost:1313/post/iv/</link>
+      <link>http://localhost:65084/post/iv/</link>
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/iv/</guid>
+      <guid>http://localhost:65084/post/iv/</guid>
       <description>&lt;div id=&#34;instrumental-variables-itt-and-tot&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Instrumental variables, ITT, and TOT&lt;/h2&gt;
 &lt;p&gt;Based on:&lt;/p&gt;

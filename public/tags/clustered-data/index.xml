@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clustered Data | FLH Website</title>
-    <link>http://localhost:1313/tags/clustered-data/</link>
-      <atom:link href="http://localhost:1313/tags/clustered-data/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/clustered-data/</link>
+      <atom:link href="http://localhost:65084/tags/clustered-data/index.xml" rel="self" type="application/rss+xml" />
     <description>Clustered Data</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 28 Mar 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Clustered Data</title>
-      <link>http://localhost:1313/tags/clustered-data/</link>
+      <link>http://localhost:65084/tags/clustered-data/</link>
     </image>
     
     <item>
       <title>Reassessing weights in large-scale assessments and multilevel models</title>
-      <link>http://localhost:1313/publication/journal-article/2025/lsa-weights/</link>
+      <link>http://localhost:65084/publication/journal-article/2025/lsa-weights/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2025/lsa-weights/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2025/lsa-weights/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cluster-robust standard errors with three-level data</title>
-      <link>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</link>
+      <link>http://localhost:65084/publication/journal-article/2025/huang-cluster-robust-2025/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2025/huang-cluster-robust-2025/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using robust standard errors for the analysis of binary outcomes with a small number of clusters</title>
-      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</link>
+      <link>http://localhost:65084/publication/journal-article/test3/huang-using-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</guid>
+      <guid>http://localhost:65084/publication/journal-article/test3/huang-using-2023/</guid>
       <description>&lt;p&gt;CR2 plug in for SPSS can be downloaded from: &lt;a href=&#34;https://github.com/flh3/CR2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Analyzing cross-sectionally clustered data using generalized estimating equations</title>
-      <link>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</link>
+      <link>http://localhost:65084/publication/journal-article/2022/huang-analyzing-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2022/huang-analyzing-2022/</guid>
       <description>&lt;p&gt;As of 2024.10.03, the most read article on JEBS (for the last 6 months)!&lt;/p&gt;
 &lt;p&gt;
 
@@ -65,7 +65,7 @@
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp 400w,
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_c2fa98b20b25e821.webp 760w,
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_bc691bc4ace80636.webp 1200w&#34;
-               src=&#34;http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp&#34;
+               src=&#34;http://localhost:65084/publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp&#34;
                width=&#34;760&#34;
                height=&#34;536&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -90,26 +90,26 @@
     
     <item>
       <title>Using cluster-robust standard errors when analyzing group-randomized trials with few clusters</title>
-      <link>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</link>
+      <link>http://localhost:65084/publication/journal-article/2022/huang-using-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2022/huang-using-2022/</guid>
       <description>&lt;p&gt;The SPSS version can be accessed here: &lt;a href=&#34;https://github.com/flh3/CR2/tree/master/SPSS&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2/tree/master/SPSS&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Multilevel modeling and ordinary least squares regression:  How comparable are they?</title>
-      <link>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</link>
+      <link>http://localhost:65084/publication/journal-article/2018/huang-multilevel-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2018/huang-multilevel-2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using cluster bootstrapping to analyze nested data with a few clusters</title>
-      <link>http://localhost:1313/publication/journal-article/2018/huang-using-2018-1/</link>
+      <link>http://localhost:65084/publication/journal-article/2018/huang-using-2018-1/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2018/huang-using-2018-1/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2018/huang-using-2018-1/</guid>
       <description></description>
     </item>
     

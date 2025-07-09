@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Restorative Practices | FLH Website</title>
-    <link>http://localhost:1313/tags/restorative-practices/</link>
-      <atom:link href="http://localhost:1313/tags/restorative-practices/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/restorative-practices/</link>
+      <atom:link href="http://localhost:65084/tags/restorative-practices/index.xml" rel="self" type="application/rss+xml" />
     <description>Restorative Practices</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Restorative Practices</title>
-      <link>http://localhost:1313/tags/restorative-practices/</link>
+      <link>http://localhost:65084/tags/restorative-practices/</link>
     </image>
     
     <item>
       <title>Restorative justice conferences in elementary and secondary schools</title>
-      <link>http://localhost:1313/publication/journal-article/test2/gregory-restorative-2025/</link>
+      <link>http://localhost:65084/publication/journal-article/test2/gregory-restorative-2025/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/test2/gregory-restorative-2025/</guid>
+      <guid>http://localhost:65084/publication/journal-article/test2/gregory-restorative-2025/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Adolescent exposure to restorative practices and their perceptions of support, structure, and bullying in the school climate</title>
-      <link>http://localhost:1313/publication/journal-article/test3/gregory-adolescent-2024/</link>
+      <link>http://localhost:65084/publication/journal-article/test3/gregory-adolescent-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/test3/gregory-adolescent-2024/</guid>
+      <guid>http://localhost:65084/publication/journal-article/test3/gregory-adolescent-2024/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Evaluation of the whole school restorative practices project: One-year impact on discipline incidents</title>
-      <link>http://localhost:1313/publication/journal-article/2022/gregory-evaluation-2022/</link>
+      <link>http://localhost:65084/publication/journal-article/2022/gregory-evaluation-2022/</link>
       <pubDate>Thu, 01 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2022/gregory-evaluation-2022/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2022/gregory-evaluation-2022/</guid>
       <description></description>
     </item>
     

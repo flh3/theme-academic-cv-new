@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chapter | FLH Website</title>
-    <link>http://localhost:1313/publication_types/chapter/</link>
-      <atom:link href="http://localhost:1313/publication_types/chapter/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/publication_types/chapter/</link>
+      <atom:link href="http://localhost:65084/publication_types/chapter/index.xml" rel="self" type="application/rss+xml" />
     <description>Chapter</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Chapter</title>
-      <link>http://localhost:1313/publication_types/chapter/</link>
+      <link>http://localhost:65084/publication_types/chapter/</link>
     </image>
     
     <item>
       <title>Investigating the use of robust standard errors to account for two-way clustering in cross-classified data structures</title>
-      <link>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</link>
+      <link>http://localhost:65084/publication/journal-article/2025/stemmler-investigating-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2025/stemmler-investigating-2024/</guid>
       <description></description>
     </item>
     

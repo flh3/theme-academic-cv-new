@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Logistic Regression | FLH Website</title>
-    <link>http://localhost:1313/tags/logistic-regression/</link>
-      <atom:link href="http://localhost:1313/tags/logistic-regression/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/logistic-regression/</link>
+      <atom:link href="http://localhost:65084/tags/logistic-regression/index.xml" rel="self" type="application/rss+xml" />
     <description>Logistic Regression</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 27 Oct 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Logistic Regression</title>
-      <link>http://localhost:1313/tags/logistic-regression/</link>
+      <link>http://localhost:65084/tags/logistic-regression/</link>
     </image>
     
     <item>
       <title>🖩 Logistic regression with matrices</title>
-      <link>http://localhost:1313/post/logreg_matrix/</link>
+      <link>http://localhost:65084/post/logreg_matrix/</link>
       <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/logreg_matrix/</guid>
+      <guid>http://localhost:65084/post/logreg_matrix/</guid>
       <description>
 
 
@@ -261,9 +261,9 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
     
     <item>
       <title>Logistic regression from scratch (Newton Raphson and Fisher Scoring)</title>
-      <link>http://localhost:1313/post/logistic-regression-fisher-scoring/</link>
+      <link>http://localhost:65084/post/logistic-regression-fisher-scoring/</link>
       <pubDate>Tue, 15 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/logistic-regression-fisher-scoring/</guid>
+      <guid>http://localhost:65084/post/logistic-regression-fisher-scoring/</guid>
       <description>&lt;h2&gt;&lt;/h2&gt;
 &lt;p&gt;In an earlier &lt;a href=&#34;../logistic-regression-using-matrices/&#34;&gt;post&lt;/a&gt;, I had shown this using iteratively reweighted least squares (IRLS). This is just an alternative method using Newton Raphson and the Fisher scoring algorithm. For further details, you can look here as &lt;a href=&#34;http://www.jtrive.com/estimating-logistic-regression-coefficents-from-scratch-r-version.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;well&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MLMusingR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -390,25 +390,25 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
     
     <item>
       <title>Alternatives to logistic regression models in experimental studies</title>
-      <link>http://localhost:1313/publication/journal-article/2022/huang-alternatives-2022/</link>
+      <link>http://localhost:65084/publication/journal-article/2022/huang-alternatives-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2022/huang-alternatives-2022/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2022/huang-alternatives-2022/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Alternatives to logistic regression models when analyzing cluster randomized trials with binary outcomes</title>
-      <link>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</link>
+      <link>http://localhost:65084/publication/journal-article/alternatives/huang-alternatives-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</guid>
+      <guid>http://localhost:65084/publication/journal-article/alternatives/huang-alternatives-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>🎉 Comparing coefficients across logistic regression models</title>
-      <link>http://localhost:1313/post/compare/</link>
+      <link>http://localhost:65084/post/compare/</link>
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/compare/</guid>
+      <guid>http://localhost:65084/post/compare/</guid>
       <description>&lt;p&gt;&lt;strong&gt;ROUGH NOTES&lt;/strong&gt;: &lt;span style=&#34;color: red;&#34;&gt;&lt;em&gt;[let me know if you spot any errors– there might be a couple!]&lt;/em&gt;&lt;/span&gt; Often, in randomized control trial where individuals are randomly assigned to treatment and control conditions, covariates are included to improve precision by reducing error and improving statistical power. However, when binary outcomes are used (e.g., patient recovers or not), there are several additional concerns that have gone unnoticed by many applied researchers.&lt;/p&gt;
 &lt;p&gt;Take a simulated example where our true model data generating process is (to keep things simple, the intercept is zero and the parameters are both set to 1):&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[log(\frac{p}{1 - p}) = 1 + 1 \times (tr) + 1 \times (x2)\]&lt;/span&gt;&lt;/p&gt;
@@ -691,9 +691,9 @@ stargazer(reduced.ols, full.ols,
     
     <item>
       <title>🎉 Applied example for alternatives to logistic regression</title>
-      <link>http://localhost:1313/post/applied/</link>
+      <link>http://localhost:65084/post/applied/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/applied/</guid>
+      <guid>http://localhost:65084/post/applied/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Logistic regression is often used to analyze experiments with binary
 outcomes (e.g., pass vs fail) and binary predictors (e.g., treatment vs

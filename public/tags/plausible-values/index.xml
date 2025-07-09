@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Plausible Values | FLH Website</title>
-    <link>http://localhost:1313/tags/plausible-values/</link>
-      <atom:link href="http://localhost:1313/tags/plausible-values/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/plausible-values/</link>
+      <atom:link href="http://localhost:65084/tags/plausible-values/index.xml" rel="self" type="application/rss+xml" />
     <description>Plausible Values</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 05 Jun 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Plausible Values</title>
-      <link>http://localhost:1313/tags/plausible-values/</link>
+      <link>http://localhost:65084/tags/plausible-values/</link>
     </image>
     
     <item>
       <title>Plausible Values as Predictors</title>
-      <link>http://localhost:1313/post/2025_pv_rhs/</link>
+      <link>http://localhost:65084/post/2025_pv_rhs/</link>
       <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2025_pv_rhs/</guid>
+      <guid>http://localhost:65084/post/2025_pv_rhs/</guid>
       <description>&lt;p&gt;Although the &lt;code&gt;mixPV&lt;/code&gt; function was introduced as a way to analyze large
 scale assessments using multiple plausible values (PV), the function
 only works if the plausible values are used as the outcome (i.e., it is

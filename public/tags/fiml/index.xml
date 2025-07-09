@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FIML | FLH Website</title>
-    <link>http://localhost:1313/tags/fiml/</link>
-      <atom:link href="http://localhost:1313/tags/fiml/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/fiml/</link>
+      <atom:link href="http://localhost:65084/tags/fiml/index.xml" rel="self" type="application/rss+xml" />
     <description>FIML</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>FIML</title>
-      <link>http://localhost:1313/tags/fiml/</link>
+      <link>http://localhost:65084/tags/fiml/</link>
     </image>
     
     <item>
       <title>🎉 Using FIML and MI in R</title>
-      <link>http://localhost:1313/post/mdata/</link>
+      <link>http://localhost:65084/post/mdata/</link>
       <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/mdata/</guid>
+      <guid>http://localhost:65084/post/mdata/</guid>
       <description>&lt;div id=&#34;using-fiml-in-r-part-2&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Using FIML in R (Part 2)&lt;/h2&gt;
 &lt;p&gt;A recurring question that I get asked is how to handle missing data when researchers are interested in performing a multiple regression analysis. There are so many excellent articles, books, and websites that discuss the theory and rationale behind what can be done. Often, what is recommended is to either use full information likelihood (FIML) or multiple imputation (MI). Many excellent articles explain in detail how these work. The purpose though of this post is to show &lt;em&gt;how&lt;/em&gt; (again) to just run these models in &lt;code&gt;R&lt;/code&gt; (the examples I show here are just for single-level data). I had already shown some of this before over &lt;a href=&#34;https://francish.netlify.com/post/01_missing/&#34;&gt;here&lt;/a&gt; though I am adding to those notes to show some comparability with Mplus results. I will use &lt;code&gt;lavaan&lt;/code&gt; for getting FIML results.&lt;/p&gt;

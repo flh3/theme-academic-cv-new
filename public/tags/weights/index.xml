@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Weights | FLH Website</title>
-    <link>http://localhost:1313/tags/weights/</link>
-      <atom:link href="http://localhost:1313/tags/weights/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/weights/</link>
+      <atom:link href="http://localhost:65084/tags/weights/index.xml" rel="self" type="application/rss+xml" />
     <description>Weights</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 16 Apr 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Weights</title>
-      <link>http://localhost:1313/tags/weights/</link>
+      <link>http://localhost:65084/tags/weights/</link>
     </image>
     
     <item>
       <title>Working with missing data in large-scale assessments</title>
-      <link>http://localhost:1313/publication/journal-article/2025/lsa-mi/</link>
+      <link>http://localhost:65084/publication/journal-article/2025/lsa-mi/</link>
       <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2025/lsa-mi/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2025/lsa-mi/</guid>
       <description>&lt;p&gt;The article is open access. Additional syntax can also be seen &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. An updated, corrected version of the article can be accessed &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/MIwithLSA.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Reassessing weights in large-scale assessments and multilevel models</title>
-      <link>http://localhost:1313/publication/journal-article/2025/lsa-weights/</link>
+      <link>http://localhost:65084/publication/journal-article/2025/lsa-weights/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/journal-article/2025/lsa-weights/</guid>
+      <guid>http://localhost:65084/publication/journal-article/2025/lsa-weights/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Selecting the proper weights in LSAs with multilevel models</title>
-      <link>http://localhost:1313/post/2024_lsa/</link>
+      <link>http://localhost:65084/post/2024_lsa/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2024_lsa/</guid>
+      <guid>http://localhost:65084/post/2024_lsa/</guid>
       <description>&lt;p&gt;A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.&lt;/p&gt;
 &lt;p&gt;Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).&lt;/p&gt;
 &lt;p&gt;To illustrate this using R (with the &lt;code&gt;mixPV&lt;/code&gt; function):&lt;/p&gt;

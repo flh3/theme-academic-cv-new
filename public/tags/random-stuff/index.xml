@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Random-Stuff | FLH Website</title>
-    <link>http://localhost:1313/tags/random-stuff/</link>
-      <atom:link href="http://localhost:1313/tags/random-stuff/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/tags/random-stuff/</link>
+      <atom:link href="http://localhost:65084/tags/random-stuff/index.xml" rel="self" type="application/rss+xml" />
     <description>Random-Stuff</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 21 Nov 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Random-Stuff</title>
-      <link>http://localhost:1313/tags/random-stuff/</link>
+      <link>http://localhost:65084/tags/random-stuff/</link>
     </image>
     
     <item>
       <title>Fun with residuals</title>
-      <link>http://localhost:1313/post/residuals/</link>
+      <link>http://localhost:65084/post/residuals/</link>
       <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/residuals/</guid>
+      <guid>http://localhost:65084/post/residuals/</guid>
       <description>&lt;h2 id=&#34;random-stuff-ii-plotting-residuals&#34;&gt;Random stuff II: Plotting residuals&lt;/h2&gt;
 &lt;p&gt;I was poking around my old teaching files and I found an old file and I wasn&amp;rsquo;t sure what it was:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/main/Stefanski_2007/mizzo_1_data_yx1x5.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -57,7 +57,7 @@
                /post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp 400w,
                /post/residuals/unnamed-chunk-3-1_hu_551e92a96ff14f04.webp 760w,
                /post/residuals/unnamed-chunk-3-1_hu_5d481a04fc9b0af8.webp 1200w&#34;
-               src=&#34;http://localhost:1313/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
+               src=&#34;http://localhost:65084/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

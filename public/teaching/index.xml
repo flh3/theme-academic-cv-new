@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Teaching | FLH Website</title>
-    <link>http://localhost:1313/teaching/</link>
-      <atom:link href="http://localhost:1313/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:65084/teaching/</link>
+      <atom:link href="http://localhost:65084/teaching/index.xml" rel="self" type="application/rss+xml" />
     <description>Teaching</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Teaching</title>
-      <link>http://localhost:1313/teaching/</link>
+      <link>http://localhost:65084/teaching/</link>
     </image>
     
     <item>
       <title>Data Management (using R)</title>
-      <link>http://localhost:1313/teaching/dm/</link>
+      <link>http://localhost:65084/teaching/dm/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/teaching/dm/</guid>
+      <guid>http://localhost:65084/teaching/dm/</guid>
       <description>&lt;p&gt;Good data management is a prerequisite for successful research, needed for reproducibility of results, and essential when collaborating with others.&lt;/p&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
@@ -28,9 +28,9 @@
     
     <item>
       <title>Monte Carlo Simulation</title>
-      <link>http://localhost:1313/teaching/mcsim/</link>
+      <link>http://localhost:65084/teaching/mcsim/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/teaching/mcsim/</guid>
+      <guid>http://localhost:65084/teaching/mcsim/</guid>
       <description>&lt;p&gt;How to conduct Monte Carlo Simulation studies.&lt;/p&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
@@ -42,9 +42,9 @@
     
     <item>
       <title>Multilevel Modeling</title>
-      <link>http://localhost:1313/teaching/mlm/</link>
+      <link>http://localhost:65084/teaching/mlm/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/teaching/mlm/</guid>
+      <guid>http://localhost:65084/teaching/mlm/</guid>
       <description>&lt;p&gt;The goal of the course is to provide students with the necessary skills needed to review/critique, analyze, interpret, and write-up studies involving nested (clustered) data using multilevel modeling (MLM). Clustered data (e.g., students within schools, patients within clinics) occur quite naturally in the social sciences and being able to understand and conduct their own analyses using nested data is an important skill. Alternatives are discussed as well.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://mlmusingr.netlify.app/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://mlmusingr.netlify.app/&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -52,18 +52,18 @@
     
     <item>
       <title>Program Evaluation</title>
-      <link>http://localhost:1313/teaching/eval/</link>
+      <link>http://localhost:65084/teaching/eval/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/teaching/eval/</guid>
+      <guid>http://localhost:65084/teaching/eval/</guid>
       <description>&lt;p&gt;Evaluating the quantifiable impact of social programs is a key task that policy makers, governments, and program funders perform. In education and the social sciences, a fundamental question asked is “How do we know our policy or program works?” Topics to be covered will include the analysis of experimental data, clustered data (e.g., multilevel models, fixed effect models- as most data in education involve nested data), the use of difference in difference models, regression discontinuity designs, and power analysis.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Quantitative Foundations</title>
-      <link>http://localhost:1313/teaching/quantfound/</link>
+      <link>http://localhost:65084/teaching/quantfound/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/teaching/quantfound/</guid>
+      <guid>http://localhost:65084/teaching/quantfound/</guid>
       <description>&lt;p&gt;This course is designed to provide students the fundamental and necessary quantitative methods in educational research. Topics include one-way and factorial analysis of variance (ANOVA), analysis of covariance (ANCOVA), multiple regression, regression diagnostics, basic mediation analysis, and statistical power analysis.&lt;/p&gt;
 </description>
     </item>
