@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sims | FLH Website</title>
-    <link>http://localhost:65084/tags/sims/</link>
-      <atom:link href="http://localhost:65084/tags/sims/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/tags/sims/</link>
+      <atom:link href="http://localhost:57190/tags/sims/index.xml" rel="self" type="application/rss+xml" />
     <description>Sims</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 14 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Sims</title>
-      <link>http://localhost:65084/tags/sims/</link>
+      <link>http://localhost:57190/tags/sims/</link>
     </image>
     
     <item>
       <title>Correct standard errors?</title>
-      <link>http://localhost:65084/post/correct-standard-errors/</link>
+      <link>http://localhost:57190/post/correct-standard-errors/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/correct-standard-errors/</guid>
+      <guid>http://localhost:57190/post/correct-standard-errors/</guid>
       <description>&lt;p&gt;The other day in class, while talking about instances (e.g., analyzing
 clustered data or heteroskedastic residuals) where adjustments are
 required to the standard errors of a regression model, a student asked:
@@ -81,7 +81,7 @@ plot(x1, rstudent(m1), ylab = &#39;Studentized residuals&#39;) #classic fan spre
                /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp 400w,
                /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_387649c8cbd984b9.webp 760w,
                /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_a45b3d07d59a75b0.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp&#34;
+               src=&#34;http://localhost:57190/post/correct-standard-errors/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -157,7 +157,7 @@ abline(v = 3, col = &#39;red&#39;)
                /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp 400w,
                /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_7f5b53136d6baf4d.webp 760w,
                /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_2604a16ba99eb863.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp&#34;
+               src=&#34;http://localhost:57190/post/correct-standard-errors/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -217,7 +217,7 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
                /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_119343749df1c237.webp 400w,
                /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_c0c1580489a6d469.webp 760w,
                /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_307867fb3fd9af38.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-5-1_hu_119343749df1c237.webp&#34;
+               src=&#34;http://localhost:57190/post/correct-standard-errors/img/unnamed-chunk-5-1_hu_119343749df1c237.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -229,9 +229,9 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
     
     <item>
       <title>Omitted Variable Bias (OVB) Example</title>
-      <link>http://localhost:65084/post/ovb/</link>
+      <link>http://localhost:57190/post/ovb/</link>
       <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/ovb/</guid>
+      <guid>http://localhost:57190/post/ovb/</guid>
       <description>&lt;h2 id=&#34;illustrates-why-ovb-is-an-issue&#34;&gt;Illustrates why OVB is an issue&lt;/h2&gt;
 &lt;p&gt;This issue plagues a lot of the analysis using secondary or observational data&lt;/p&gt;
 &lt;ul&gt;
@@ -273,7 +273,7 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
                /post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp 400w,
                /post/ovb/unnamed-chunk-2-1_hu_ee76ac9bf3af02dd.webp 760w,
                /post/ovb/unnamed-chunk-2-1_hu_9230742c251c79c7.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp&#34;
+               src=&#34;http://localhost:57190/post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -374,7 +374,7 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
                /post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp 400w,
                /post/ovb/unnamed-chunk-8-1_hu_5576bfd183feebdf.webp 760w,
                /post/ovb/unnamed-chunk-8-1_hu_8562130d4218bdc3.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp&#34;
+               src=&#34;http://localhost:57190/post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

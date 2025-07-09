@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MLM | FLH Website</title>
-    <link>http://localhost:65084/tags/mlm/</link>
-      <atom:link href="http://localhost:65084/tags/mlm/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/tags/mlm/</link>
+      <atom:link href="http://localhost:57190/tags/mlm/index.xml" rel="self" type="application/rss+xml" />
     <description>MLM</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>MLM</title>
-      <link>http://localhost:65084/tags/mlm/</link>
+      <link>http://localhost:57190/tags/mlm/</link>
     </image>
     
     <item>
       <title>Multilevel Modeling</title>
-      <link>http://localhost:65084/teaching/mlm/</link>
+      <link>http://localhost:57190/teaching/mlm/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/teaching/mlm/</guid>
+      <guid>http://localhost:57190/teaching/mlm/</guid>
       <description>&lt;p&gt;The goal of the course is to provide students with the necessary skills needed to review/critique, analyze, interpret, and write-up studies involving nested (clustered) data using multilevel modeling (MLM). Clustered data (e.g., students within schools, patients within clinics) occur quite naturally in the social sciences and being able to understand and conduct their own analyses using nested data is an important skill. Alternatives are discussed as well.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://mlmusingr.netlify.app/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://mlmusingr.netlify.app/&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -24,9 +24,9 @@
     
     <item>
       <title>Using REML and ML for estimation</title>
-      <link>http://localhost:65084/post/likelihood_2022/</link>
+      <link>http://localhost:57190/post/likelihood_2022/</link>
       <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/likelihood_2022/</guid>
+      <guid>http://localhost:57190/post/likelihood_2022/</guid>
       <description>&lt;p&gt;&lt;em&gt;More notes to self&amp;hellip;&lt;/em&gt; Obtaining estimates of the unknown parameters in multilevel models is often done by optimizing a likelihood function. The estimates are the values that maximize the likelihood function given certain distributional assumptions.&lt;/p&gt;
 &lt;p&gt;The likelihood function differs depending on whether maximum (ML) or restricted maximum (REML) likelihood is used. For ML, the log likelihood function to be maximized is:&lt;/p&gt;
 $$
@@ -178,9 +178,9 @@ $$&lt;p&gt;Now there are four terms to add together (the first and last terms di
     
     <item>
       <title>Extracting the V matrix for MLMs</title>
-      <link>http://localhost:65084/post/extracting-v-matrix/</link>
+      <link>http://localhost:57190/post/extracting-v-matrix/</link>
       <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/extracting-v-matrix/</guid>
+      <guid>http://localhost:57190/post/extracting-v-matrix/</guid>
       <description>&lt;p&gt;&lt;em&gt;Notes to self (and anyone else who might find this useful).&lt;/em&gt; With the general linear mixed models (to simplify, I am just omitting super/subscripts):&lt;/p&gt;
 $$Y = X\beta + Zu + e$$&lt;p&gt;
 where we assume $u \sim MVN(0, G)$ and $e \sim MVN(0, R)$. $V$ is:&lt;/p&gt;
@@ -380,7 +380,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_eae07adfdeb3e827.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_2d1b1a4d2138989d.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp&#34;
+               src=&#34;http://localhost:57190/post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -422,7 +422,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_e761401fc7920b4d.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_dd7ca869956a71dc.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp&#34;
+               src=&#34;http://localhost:57190/post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -501,7 +501,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_6a8a960aa886e209.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_75cc487881a1151f.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp&#34;
+               src=&#34;http://localhost:57190/post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

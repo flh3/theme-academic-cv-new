@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mixed-Effects | FLH Website</title>
-    <link>http://localhost:65084/tags/mixed-effects/</link>
-      <atom:link href="http://localhost:65084/tags/mixed-effects/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/tags/mixed-effects/</link>
+      <atom:link href="http://localhost:57190/tags/mixed-effects/index.xml" rel="self" type="application/rss+xml" />
     <description>Mixed-Effects</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Mixed-Effects</title>
-      <link>http://localhost:65084/tags/mixed-effects/</link>
+      <link>http://localhost:57190/tags/mixed-effects/</link>
     </image>
     
     <item>
       <title>Multilevel Modeling</title>
-      <link>http://localhost:65084/teaching/mlm/</link>
+      <link>http://localhost:57190/teaching/mlm/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/teaching/mlm/</guid>
+      <guid>http://localhost:57190/teaching/mlm/</guid>
       <description>&lt;p&gt;The goal of the course is to provide students with the necessary skills needed to review/critique, analyze, interpret, and write-up studies involving nested (clustered) data using multilevel modeling (MLM). Clustered data (e.g., students within schools, patients within clinics) occur quite naturally in the social sciences and being able to understand and conduct their own analyses using nested data is an important skill. Alternatives are discussed as well.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://mlmusingr.netlify.app/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://mlmusingr.netlify.app/&lt;/a&gt;&lt;/p&gt;
 </description>

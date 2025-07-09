@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Poisson | FLH Website</title>
-    <link>http://localhost:65084/tags/poisson/</link>
-      <atom:link href="http://localhost:65084/tags/poisson/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/tags/poisson/</link>
+      <atom:link href="http://localhost:57190/tags/poisson/index.xml" rel="self" type="application/rss+xml" />
     <description>Poisson</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 21 May 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Poisson</title>
-      <link>http://localhost:65084/tags/poisson/</link>
+      <link>http://localhost:57190/tags/poisson/</link>
     </image>
     
     <item>
       <title>Poisson and Negative Binomial Regression using R</title>
-      <link>http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/</link>
+      <link>http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/</link>
       <pubDate>Tue, 21 May 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/</guid>
+      <guid>http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/</guid>
       <description>&lt;p&gt;A few years ago, I  published an article on using Poisson, negative binomial, and zero inflated models in analyzing count data (see &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/15388220.2012.682010&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pick Your Poisson&lt;/a&gt;). The abstract of the article indicates:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;School violence research is often concerned with infrequently occurring events such as counts of the number of bullying incidents or fights a student may experience. Analyzing count data using ordinary least squares regression may produce improbable predicted values, and as a result of regression assumption violations, result in higher Type I errors. Count data are optimally analyzed using Poisson-based regression techniques such as Poisson or negative binomial regression. We apply these techniques to an example study of bullying in a statewide sample of 290 high schools and explain how Poisson-based analyses, although less familiar to many researchers, can produce findings that are more accurate and reliable, and are easier to interpret in real-world contexts.&lt;/p&gt;&lt;/blockquote&gt;
@@ -105,7 +105,7 @@
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_7a364430517e3992.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_a299d4a8a001a464.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -471,7 +471,7 @@ With a Poisson distribution, the mean and the variances are both equal ($\mu = \
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_3be059cd57a9f9d2.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_902e2127e8cd0b1d.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -584,7 +584,7 @@ With a Poisson distribution, the mean and the variances are both equal ($\mu = \
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_f0ce2e207d87b939.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_223a3143fc375970.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -683,7 +683,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_e95e543cda7cee89.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_ec63239498e0e1a1.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -778,7 +778,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_adb155b5da58cfb1.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_2dd82166471c1cba.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -818,7 +818,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_148e93479cb1d9f.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_53a0d3dcfb62baac.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

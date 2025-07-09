@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Monte Carlo Simulation | FLH Website</title>
-    <link>http://localhost:65084/tags/monte-carlo-simulation/</link>
-      <atom:link href="http://localhost:65084/tags/monte-carlo-simulation/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/tags/monte-carlo-simulation/</link>
+      <atom:link href="http://localhost:57190/tags/monte-carlo-simulation/index.xml" rel="self" type="application/rss+xml" />
     <description>Monte Carlo Simulation</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Monte Carlo Simulation</title>
-      <link>http://localhost:65084/tags/monte-carlo-simulation/</link>
+      <link>http://localhost:57190/tags/monte-carlo-simulation/</link>
     </image>
     
     <item>
       <title>Monte Carlo Simulation</title>
-      <link>http://localhost:65084/teaching/mcsim/</link>
+      <link>http://localhost:57190/teaching/mcsim/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/teaching/mcsim/</guid>
+      <guid>http://localhost:57190/teaching/mcsim/</guid>
       <description>&lt;p&gt;How to conduct Monte Carlo Simulation studies.&lt;/p&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;

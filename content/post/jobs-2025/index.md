@@ -1,18 +1,25 @@
 ---
 title: 🎉 Job postings 2024-2025
 summary: Job postings
-date: 2025-02-27
+date: 2025-07-09
 authors:
 - admin
 tags:
 - job postings
 ---
   
-**List of Research, Statistics, and Evaluation job postings (that I've seen) as of Feb 2025.**
+**List of Research, Statistics, and Evaluation job postings (that I've seen) as of July 2025.**
 
 Postings for (2024-2025):     
 
-As of 2025.01 
+As of 2025.07
+- Post-doctoral Associate (5 openings!) [Rutgers University](https://www.higheredjobs.com/details.cfm?JobCode=179180338), New Jersey.
+- Post-doctoral Associate (w/Guanglei Hong) [University of Chicago]("att/postdoc ad_GH_2025-2026_OOP_approved.docx"), Chicago, IL
+
+As of 2025.06
+- Post-doctoral Associate, University of Southern Denmark
+
+As of 2025.01
 
 - Post-doctoral Research Associate- Educational Measurement and Statistics- [University of Tennessee](https://www.higheredjobs.com/details.cfm?JobCode=179041668), Knoxville, Knoxville, TN
 - Learning Sciences Faculty Cluster Hires (Open-Rank and Tenure-Track; Educational Data Science and Analytics, AI and Education, and Advanced Quantitative Research Methods, Measurement and/or Evaluation; **5** positions) [Clemson University](https://apply.interfolio.com/162168) in Clemson, SC

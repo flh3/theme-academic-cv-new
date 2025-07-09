@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>School Climate | FLH Website</title>
-    <link>http://localhost:65084/tags/school-climate/</link>
-      <atom:link href="http://localhost:65084/tags/school-climate/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/tags/school-climate/</link>
+      <atom:link href="http://localhost:57190/tags/school-climate/index.xml" rel="self" type="application/rss+xml" />
     <description>School Climate</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>School Climate</title>
-      <link>http://localhost:65084/tags/school-climate/</link>
+      <link>http://localhost:57190/tags/school-climate/</link>
     </image>
     
     <item>
       <title>Potential moderation across racial groups in perceptions of authoritative school climate and peer victimization and student engagement</title>
-      <link>http://localhost:65084/publication/journal-article/test3/chuang-potential-2022/</link>
+      <link>http://localhost:57190/publication/journal-article/test3/chuang-potential-2022/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/chuang-potential-2022/</guid>
+      <guid>http://localhost:57190/publication/journal-article/test3/chuang-potential-2022/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The seasonality of school climate</title>
-      <link>http://localhost:65084/publication/journal-article/test3/huang-seasonality-2023/</link>
+      <link>http://localhost:57190/publication/journal-article/test3/huang-seasonality-2023/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/huang-seasonality-2023/</guid>
+      <guid>http://localhost:57190/publication/journal-article/test3/huang-seasonality-2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Authoritative school climate and out-of-school suspensions: Results from a nationally-representative survey of 10th grade students</title>
-      <link>http://localhost:65084/publication/journal-article/2020/huang-authoritative-2021/</link>
+      <link>http://localhost:57190/publication/journal-article/2020/huang-authoritative-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2020/huang-authoritative-2021/</guid>
+      <guid>http://localhost:57190/publication/journal-article/2020/huang-authoritative-2021/</guid>
       <description></description>
     </item>
     

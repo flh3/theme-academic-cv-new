@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts | FLH Website</title>
-    <link>http://localhost:65084/post/</link>
-      <atom:link href="http://localhost:65084/post/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/post/</link>
+      <atom:link href="http://localhost:57190/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 05 Jun 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Posts</title>
-      <link>http://localhost:65084/post/</link>
+      <link>http://localhost:57190/post/</link>
     </image>
     
     <item>
       <title>Plausible Values as Predictors</title>
-      <link>http://localhost:65084/post/2025_pv_rhs/</link>
+      <link>http://localhost:57190/post/2025_pv_rhs/</link>
       <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2025_pv_rhs/</guid>
+      <guid>http://localhost:57190/post/2025_pv_rhs/</guid>
       <description>&lt;p&gt;Although the &lt;code&gt;mixPV&lt;/code&gt; function was introduced as a way to analyze large
 scale assessments using multiple plausible values (PV), the function
 only works if the plausible values are used as the outcome (i.e., it is
@@ -99,9 +99,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
     
     <item>
       <title>Correlation and causation revisited</title>
-      <link>http://localhost:65084/post/dda/</link>
+      <link>http://localhost:57190/post/dda/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/dda/</guid>
+      <guid>http://localhost:57190/post/dda/</guid>
       <description>&lt;p&gt;Statistics students are taught that correlation does not equal
 causation. Just because two variables (e.g., x and y) are related to
 each other does not necessarily mean that one causes the other (e.g., x
@@ -153,7 +153,7 @@ hist(x) #show the skewness
                /post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp 400w,
                /post/dda/unnamed-chunk-1-1_hu_b0af35ba8c73119d.webp 760w,
                /post/dda/unnamed-chunk-1-1_hu_ec6356837277ac96.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp&#34;
+               src=&#34;http://localhost:57190/post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -251,9 +251,9 @@ Journal of Behavioral Development, 39&lt;/em&gt;(6), 570–580.
     
     <item>
       <title>Working with missing data in large-scale assessments (with plausible values)</title>
-      <link>http://localhost:65084/post/2025_lsa_mi/</link>
+      <link>http://localhost:57190/post/2025_lsa_mi/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2025_lsa_mi/</guid>
+      <guid>http://localhost:57190/post/2025_lsa_mi/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies
 the article:&lt;/p&gt;
@@ -618,9 +618,9 @@ modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#3
     
     <item>
       <title>Working with missing data in large-scale assessments (without plausible  values)</title>
-      <link>http://localhost:65084/post/2025_lsa_mi_a/</link>
+      <link>http://localhost:57190/post/2025_lsa_mi_a/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2025_lsa_mi_a/</guid>
+      <guid>http://localhost:57190/post/2025_lsa_mi_a/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (without &lt;strong&gt;plausible values&lt;/strong&gt;). This is Appendix
 A and accompanies the article:&lt;/p&gt;
@@ -1096,9 +1096,9 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
     
     <item>
       <title>Weights with Multilevel Models</title>
-      <link>http://localhost:65084/post/weights_2025/</link>
+      <link>http://localhost:57190/post/weights_2025/</link>
       <pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/weights_2025/</guid>
+      <guid>http://localhost:57190/post/weights_2025/</guid>
       <description>&lt;p&gt;This is an applied example regarding the use of weights in multilevel
 models when using large scale assessments. This is using the Germany
 TIMSS dataset. This accompanies the article:&lt;/p&gt;
@@ -2005,9 +2005,9 @@ level-1 weight only, they are (probably incorrect).&lt;/p&gt;
     
     <item>
       <title>🎉 Job postings 2024-2025</title>
-      <link>http://localhost:65084/post/jobs-2025/</link>
+      <link>http://localhost:57190/post/jobs-2025/</link>
       <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/jobs-2025/</guid>
+      <guid>http://localhost:57190/post/jobs-2025/</guid>
       <description>&lt;p&gt;&lt;strong&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of Feb 2025.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Postings for (2024-2025):&lt;/p&gt;
 &lt;p&gt;As of 2025.01&lt;/p&gt;
@@ -2070,9 +2070,9 @@ level-1 weight only, they are (probably incorrect).&lt;/p&gt;
     
     <item>
       <title>Fun with PCA using Images</title>
-      <link>http://localhost:65084/post/pca-image/</link>
+      <link>http://localhost:57190/post/pca-image/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/pca-image/</guid>
+      <guid>http://localhost:57190/post/pca-image/</guid>
       <description>&lt;h2 id=&#34;creating-grayscale-images-using-pca&#34;&gt;Creating grayscale images using PCA&lt;/h2&gt;
 &lt;p&gt;The following links were helpful: 1.
 &lt;a href=&#34;https://cran.r-project.org/web/packages/imager/vignettes/gettingstarted.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cran.r-project.org/web/packages/imager/vignettes/gettingstarted.html&lt;/a&gt;
@@ -2110,7 +2110,7 @@ image1 &amp;lt;- load.image(&amp;quot;c:/data/snorlax_g2.jpg&amp;quot;)
                /post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp 400w,
                /post/pca-image/unnamed-chunk-7-1_hu_b87dd1919abc4f0c.webp 760w,
                /post/pca-image/unnamed-chunk-7-1_hu_53f84cfd42005336.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp&#34;
+               src=&#34;http://localhost:57190/post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2169,7 +2169,7 @@ ggplot(dat, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp 400w,
                /post/pca-image/unnamed-chunk-7-2_hu_fd9464fb6812b921.webp 760w,
                /post/pca-image/unnamed-chunk-7-2_hu_b110a1ce8a0fbeb9.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp&#34;
+               src=&#34;http://localhost:57190/post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2205,7 +2205,7 @@ ggplot(dat, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp 400w,
                /post/pca-image/unnamed-chunk-7-3_hu_fc216afeca2d0a96.webp 760w,
                /post/pca-image/unnamed-chunk-7-3_hu_977bd2cac5f907da.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp&#34;
+               src=&#34;http://localhost:57190/post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2316,7 +2316,7 @@ plot(evalues[1:20], type = &#39;b&#39;,
                /post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp 400w,
                /post/pca-image/unnamed-chunk-9-1_hu_a1344702945ad1c4.webp 760w,
                /post/pca-image/unnamed-chunk-9-1_hu_859ee6eb678441b6.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp&#34;
+               src=&#34;http://localhost:57190/post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2414,7 +2414,7 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp 400w,
                /post/pca-image/unnamed-chunk-10-1_hu_fc216afeca2d0a96.webp 760w,
                /post/pca-image/unnamed-chunk-10-1_hu_977bd2cac5f907da.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp&#34;
+               src=&#34;http://localhost:57190/post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2482,7 +2482,7 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp 400w,
                /post/pca-image/unnamed-chunk-11-1_hu_85ed057e4a947a55.webp 760w,
                /post/pca-image/unnamed-chunk-11-1_hu_b80f1af2d77028d.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp&#34;
+               src=&#34;http://localhost:57190/post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2525,7 +2525,7 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp 400w,
                /post/pca-image/unnamed-chunk-12-1_hu_6081a7adede4bb62.webp 760w,
                /post/pca-image/unnamed-chunk-12-1_hu_f70ab6bd2032b4f7.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp&#34;
+               src=&#34;http://localhost:57190/post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2658,7 +2658,7 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp 400w,
                /post/pca-image/unnamed-chunk-13-1_hu_884e6a88ac9dd861.webp 760w,
                /post/pca-image/unnamed-chunk-13-1_hu_945d5a9c79f15b1.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp&#34;
+               src=&#34;http://localhost:57190/post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2670,9 +2670,9 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
     
     <item>
       <title>Selecting the proper weights in LSAs with multilevel models</title>
-      <link>http://localhost:65084/post/2024_lsa/</link>
+      <link>http://localhost:57190/post/2024_lsa/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2024_lsa/</guid>
+      <guid>http://localhost:57190/post/2024_lsa/</guid>
       <description>&lt;p&gt;A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.&lt;/p&gt;
 &lt;p&gt;Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).&lt;/p&gt;
 &lt;p&gt;To illustrate this using R (with the &lt;code&gt;mixPV&lt;/code&gt; function):&lt;/p&gt;
@@ -3949,9 +3949,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R (update)</title>
-      <link>http://localhost:65084/post/lsa2/</link>
+      <link>http://localhost:57190/post/lsa2/</link>
       <pubDate>Sat, 08 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/lsa2/</guid>
+      <guid>http://localhost:57190/post/lsa2/</guid>
       <description>&lt;p&gt;This is an update to:&lt;/p&gt;
 &lt;p&gt;Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. &lt;a href=&#34;https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Large-scale Assessments in Education.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
@@ -4043,9 +4043,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R</title>
-      <link>http://localhost:65084/post/lsa_1/</link>
+      <link>http://localhost:57190/post/lsa_1/</link>
       <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/lsa_1/</guid>
+      <guid>http://localhost:57190/post/lsa_1/</guid>
       <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
   &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
@@ -4942,9 +4942,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>🎉 Job postings 2023-2024</title>
-      <link>http://localhost:65084/post/jobs-2024/</link>
+      <link>http://localhost:57190/post/jobs-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/jobs-2024/</guid>
+      <guid>http://localhost:57190/post/jobs-2024/</guid>
       <description>&lt;p&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of April 2024.&lt;/p&gt;
 &lt;p&gt;Postings for (2023-2024):&lt;/p&gt;
 &lt;p&gt;As of 2024.04&lt;/p&gt;
@@ -5078,9 +5078,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Gradient descent example 1</title>
-      <link>http://localhost:65084/post/gd_example/</link>
+      <link>http://localhost:57190/post/gd_example/</link>
       <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/gd_example/</guid>
+      <guid>http://localhost:57190/post/gd_example/</guid>
       <description>&lt;p&gt;Random notes. Regression based techniques often involve finding a maximum (e.g., the maximum likelihood) or a minimum (e.g., least squares or mean square error) value. Gradient descent is an iterative optimization algorithm used to find the minimum of a function (or gradient &lt;em&gt;ascent&lt;/em&gt; to find the maximum).&lt;/p&gt;
 &lt;p&gt;The algorithm for solving for $\theta_j$ looks like:&lt;/p&gt;
 $$\theta_j = \theta_j - \alpha\frac{\partial{}}{\partial{\theta_j} }J(\theta)$$&lt;ul&gt;
@@ -5242,9 +5242,9 @@ $$\theta_j = \theta_j - \alpha\frac{\partial{}}{\partial{\theta_j} }J(\theta)$$&
     
     <item>
       <title>Residuals with Multilevel Models</title>
-      <link>http://localhost:65084/post/residuals_mlm/</link>
+      <link>http://localhost:57190/post/residuals_mlm/</link>
       <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/residuals_mlm/</guid>
+      <guid>http://localhost:57190/post/residuals_mlm/</guid>
       <description>&lt;p&gt;(MLM notes). Residuals are often used for model diagnostics or for spotting outliers in the data. For single-level models, these are merely the observed - predicted data (i.e., $y_i - \hat{y}_i$). However, for multilevel models, these are a bit more complicated to compute. Since we have two error terms (in this example), we will have two sets of residuals. For example, a multilevel model with a single predictor at level one can be written as:&lt;/p&gt;
 $$y_{ij} = \gamma_{00} + \gamma_{01}x_{ij} + u_{0j} + r_{ij}$$&lt;p&gt;
 The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be normally distributed with a mean of 0 and variance of $\tau_{00}$ or $\mathcal{N}\sim(0, \tau_{00})$.&lt;/p&gt;
@@ -5283,7 +5283,7 @@ The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be nor
                /post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp 400w,
                /post/residuals_mlm/unnamed-chunk-1-1_hu_428b99cb8edbbc2.webp 760w,
                /post/residuals_mlm/unnamed-chunk-1-1_hu_28a467643da43829.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp&#34;
+               src=&#34;http://localhost:57190/post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -5445,7 +5445,7 @@ The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be nor
                /post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp 400w,
                /post/residuals_mlm/unnamed-chunk-11-1_hu_2db523d52d9cff62.webp 760w,
                /post/residuals_mlm/unnamed-chunk-11-1_hu_167e45d12bd7e4e8.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp&#34;
+               src=&#34;http://localhost:57190/post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -5494,9 +5494,9 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>🎉 Job postings 2022-2023</title>
-      <link>http://localhost:65084/post/jobs-2023/</link>
+      <link>http://localhost:57190/post/jobs-2023/</link>
       <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/jobs-2023/</guid>
+      <guid>http://localhost:57190/post/jobs-2023/</guid>
       <description>&lt;p&gt;&lt;strong&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of Feb 2023.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Postings for (2022-2023):&lt;/p&gt;
 &lt;ul&gt;
@@ -5526,9 +5526,9 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>Fun with residuals</title>
-      <link>http://localhost:65084/post/residuals/</link>
+      <link>http://localhost:57190/post/residuals/</link>
       <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/residuals/</guid>
+      <guid>http://localhost:57190/post/residuals/</guid>
       <description>&lt;h2 id=&#34;random-stuff-ii-plotting-residuals&#34;&gt;Random stuff II: Plotting residuals&lt;/h2&gt;
 &lt;p&gt;I was poking around my old teaching files and I found an old file and I wasn&amp;rsquo;t sure what it was:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/main/Stefanski_2007/mizzo_1_data_yx1x5.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -5569,7 +5569,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp 400w,
                /post/residuals/unnamed-chunk-3-1_hu_551e92a96ff14f04.webp 760w,
                /post/residuals/unnamed-chunk-3-1_hu_5d481a04fc9b0af8.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
+               src=&#34;http://localhost:57190/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -5590,9 +5590,9 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>Using FIML in R for Multilevel Data</title>
-      <link>http://localhost:65084/post/mi_pt3/</link>
+      <link>http://localhost:57190/post/mi_pt3/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/mi_pt3/</guid>
+      <guid>http://localhost:57190/post/mi_pt3/</guid>
       <description>&lt;h2 id=&#34;using-fiml-in-r-with-multilevel-data-part-3&#34;&gt;Using FIML in R with Multilevel Data (Part 3)&lt;/h2&gt;
 &lt;p&gt;A recurring question that I get asked is how to use full information maximum likelihood (FIML) when performing a multiple regression analysis BUT this time, accounting for nesting or clustered data structure. For this example, I use the the &lt;code&gt;leadership&lt;/code&gt; dataset in the &lt;code&gt;mitml&lt;/code&gt; package (Grund et al., 2021). We&amp;rsquo;ll also use &lt;code&gt;lavaan&lt;/code&gt; (Roseel, 2012) to estimate the two-level model. The chapter of Grund et al. (2019) is available &lt;a href=&#34;https://simongrund1.github.io/publications/2019-chap-apa/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. We&amp;rsquo;ll replicate the &lt;code&gt;Mplus&lt;/code&gt; FIML results in Table 16.3 in the chapter and is shown below:&lt;/p&gt;
 &lt;p&gt;
@@ -5617,7 +5617,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp 400w,
                /post/mi_pt3/table_grund_hu_bf963bf355d4e4b2.webp 760w,
                /post/mi_pt3/table_grund_hu_d949c2b383c220e8.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
+               src=&#34;http://localhost:57190/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
                width=&#34;511&#34;
                height=&#34;292&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -5662,7 +5662,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp 400w,
                /post/mi_pt3/unnamed-chunk-1-1_hu_59cbb56c16052742.webp 760w,
                /post/mi_pt3/unnamed-chunk-1-1_hu_2325058c725a745e.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp&#34;
+               src=&#34;http://localhost:57190/post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -5989,7 +5989,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp 400w,
                /post/mi_pt3/table_grund_hu_bf963bf355d4e4b2.webp 760w,
                /post/mi_pt3/table_grund_hu_d949c2b383c220e8.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
+               src=&#34;http://localhost:57190/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
                width=&#34;511&#34;
                height=&#34;292&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6004,9 +6004,9 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>Robust standard errors in mixed models</title>
-      <link>http://localhost:65084/post/2022_cr2/</link>
+      <link>http://localhost:57190/post/2022_cr2/</link>
       <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2022_cr2/</guid>
+      <guid>http://localhost:57190/post/2022_cr2/</guid>
       <description>&lt;p&gt;In a recent article in &lt;em&gt;Multivariate Behavioral Research&lt;/em&gt;, we (Huang, Wiedermann, and Zhang; HWZ; doi: 10.1080/00273171.2022.2077290) discuss a robust standard error that can be used with mixed models that accounts for violations of homogeneity. Note that these robust standard errors have been around for years though are not always provided in statistical software. These can also be computed using the &lt;code&gt;CR2&lt;/code&gt; package or the &lt;code&gt;clubSandwich&lt;/code&gt; package. This page shows how to compute the traditional Liang and Zeger (1986) robust standard errors (CR0) and the CR2 estimator- see Bell and McCaffrey (2002) as well as McCaffrey, Bell, and Botts (2001) (BM and MBB).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Cluster robust standard errors can also be computed using our &lt;strong&gt;SPSS&lt;/strong&gt; add-on available here: &lt;a href=&#34;https://github.com/flh3/CR2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2&lt;/a&gt;. This doesn&amp;rsquo;t work though with mixed models.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;d1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rio&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;import&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;https://github.com/flh3/evalclass/raw/main/ccrem/ccrem.sav&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -6143,7 +6143,7 @@ X_{c}$$&lt;p&gt;For both CR0 and CR2, we need the residuals&amp;hellip;&lt;/p&gt
                /post/2022_cr2/empirical_mixed_hu_9021bc12661ca61.webp 400w,
                /post/2022_cr2/empirical_mixed_hu_672b658016c02053.webp 760w,
                /post/2022_cr2/empirical_mixed_hu_8131f0f97ef5e72a.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/2022_cr2/empirical_mixed_hu_9021bc12661ca61.webp&#34;
+               src=&#34;http://localhost:57190/post/2022_cr2/empirical_mixed_hu_9021bc12661ca61.webp&#34;
                width=&#34;457&#34;
                height=&#34;206&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6278,9 +6278,9 @@ where $U_c$ is an upper triangular matrix such that $V_c = U_c&#39;U_c$ so that 
     
     <item>
       <title>Logistic regression from scratch (Newton Raphson and Fisher Scoring)</title>
-      <link>http://localhost:65084/post/logistic-regression-fisher-scoring/</link>
+      <link>http://localhost:57190/post/logistic-regression-fisher-scoring/</link>
       <pubDate>Tue, 15 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/logistic-regression-fisher-scoring/</guid>
+      <guid>http://localhost:57190/post/logistic-regression-fisher-scoring/</guid>
       <description>&lt;h2&gt;&lt;/h2&gt;
 &lt;p&gt;In an earlier &lt;a href=&#34;../logistic-regression-using-matrices/&#34;&gt;post&lt;/a&gt;, I had shown this using iteratively reweighted least squares (IRLS). This is just an alternative method using Newton Raphson and the Fisher scoring algorithm. For further details, you can look here as &lt;a href=&#34;http://www.jtrive.com/estimating-logistic-regression-coefficents-from-scratch-r-version.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;well&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MLMusingR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -6407,9 +6407,9 @@ where $U_c$ is an upper triangular matrix such that $V_c = U_c&#39;U_c$ so that 
     
     <item>
       <title>Using REML and ML for estimation</title>
-      <link>http://localhost:65084/post/likelihood_2022/</link>
+      <link>http://localhost:57190/post/likelihood_2022/</link>
       <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/likelihood_2022/</guid>
+      <guid>http://localhost:57190/post/likelihood_2022/</guid>
       <description>&lt;p&gt;&lt;em&gt;More notes to self&amp;hellip;&lt;/em&gt; Obtaining estimates of the unknown parameters in multilevel models is often done by optimizing a likelihood function. The estimates are the values that maximize the likelihood function given certain distributional assumptions.&lt;/p&gt;
 &lt;p&gt;The likelihood function differs depending on whether maximum (ML) or restricted maximum (REML) likelihood is used. For ML, the log likelihood function to be maximized is:&lt;/p&gt;
 $$
@@ -6561,9 +6561,9 @@ $$&lt;p&gt;Now there are four terms to add together (the first and last terms di
     
     <item>
       <title>Extracting the V matrix for MLMs</title>
-      <link>http://localhost:65084/post/extracting-v-matrix/</link>
+      <link>http://localhost:57190/post/extracting-v-matrix/</link>
       <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/extracting-v-matrix/</guid>
+      <guid>http://localhost:57190/post/extracting-v-matrix/</guid>
       <description>&lt;p&gt;&lt;em&gt;Notes to self (and anyone else who might find this useful).&lt;/em&gt; With the general linear mixed models (to simplify, I am just omitting super/subscripts):&lt;/p&gt;
 $$Y = X\beta + Zu + e$$&lt;p&gt;
 where we assume $u \sim MVN(0, G)$ and $e \sim MVN(0, R)$. $V$ is:&lt;/p&gt;
@@ -6763,7 +6763,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_eae07adfdeb3e827.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_2d1b1a4d2138989d.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp&#34;
+               src=&#34;http://localhost:57190/post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6805,7 +6805,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_e761401fc7920b4d.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_dd7ca869956a71dc.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp&#34;
+               src=&#34;http://localhost:57190/post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6884,7 +6884,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_6a8a960aa886e209.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_75cc487881a1151f.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp&#34;
+               src=&#34;http://localhost:57190/post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6897,9 +6897,9 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
     
     <item>
       <title>🎉 Analyzing clustered data using GEEs</title>
-      <link>http://localhost:65084/post/gee/</link>
+      <link>http://localhost:57190/post/gee/</link>
       <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/gee/</guid>
+      <guid>http://localhost:57190/post/gee/</guid>
       <description>&lt;p&gt;I show this in a recent JEBS article on using Generalized Estimating Equations (GEEs). Shown below is some annotated syntax and examples.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Huang, F. (2021). Analyzing cross-sectionally clustered data using generalized estimating equations. &lt;em&gt;Journal of Educational and Behavioral Statistics.&lt;/em&gt; doi: 10.3102/10769986211017480&lt;/p&gt;&lt;/blockquote&gt;
@@ -7328,10 +7328,10 @@ So we need to get the residuals per group&lt;/p&gt;
     
     <item>
       <title>🎉 Using maximum likelihood</title>
-      <link>http://localhost:65084/post/ml/</link>
+      <link>http://localhost:57190/post/ml/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/ml/</guid>
-      <description>&lt;script src=&#34;http://localhost:65084/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+      <guid>http://localhost:57190/post/ml/</guid>
+      <description>&lt;script src=&#34;http://localhost:57190/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;em&gt;Notes to self.&lt;/em&gt; Often, discussions related to maximum likelihood refer to (A) estimating parameters likely to have come from some (B) probability distribution (PD) by (C) maximizing a likelihood function (from Wikipedia).&lt;/p&gt;
 &lt;p&gt;In many cases, (A) is the unknown which we want to figure out (e.g., means, variances, regression coefficients). We make an assumption about the PD where the data come from and determine the likelihood or the log likelihood of observing the datum. Get the product of all the likelihoods (multiplicative) or the sum of the log likelihoods (additive) and you will get the total likelihood.&lt;/p&gt;
 &lt;p&gt;An example will help:&lt;/p&gt;
@@ -7477,9 +7477,9 @@ summary(t1)$coef&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>🎉 Comparing coefficients across logistic regression models</title>
-      <link>http://localhost:65084/post/compare/</link>
+      <link>http://localhost:57190/post/compare/</link>
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/compare/</guid>
+      <guid>http://localhost:57190/post/compare/</guid>
       <description>&lt;p&gt;&lt;strong&gt;ROUGH NOTES&lt;/strong&gt;: &lt;span style=&#34;color: red;&#34;&gt;&lt;em&gt;[let me know if you spot any errors– there might be a couple!]&lt;/em&gt;&lt;/span&gt; Often, in randomized control trial where individuals are randomly assigned to treatment and control conditions, covariates are included to improve precision by reducing error and improving statistical power. However, when binary outcomes are used (e.g., patient recovers or not), there are several additional concerns that have gone unnoticed by many applied researchers.&lt;/p&gt;
 &lt;p&gt;Take a simulated example where our true model data generating process is (to keep things simple, the intercept is zero and the parameters are both set to 1):&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[log(\frac{p}{1 - p}) = 1 + 1 \times (tr) + 1 \times (x2)\]&lt;/span&gt;&lt;/p&gt;
@@ -7762,9 +7762,9 @@ stargazer(reduced.ols, full.ols,
     
     <item>
       <title>Prior problem behavior and suspensions: A replication</title>
-      <link>http://localhost:65084/post/prior-problem-behavior-and-suspensions-a-replication/</link>
+      <link>http://localhost:57190/post/prior-problem-behavior-and-suspensions-a-replication/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/prior-problem-behavior-and-suspensions-a-replication/</guid>
+      <guid>http://localhost:57190/post/prior-problem-behavior-and-suspensions-a-replication/</guid>
       <description>&lt;p&gt;This post accompanies the article (this was originally submitted as an Issue Brief which is why the Discussion section and Introduction are so short):&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Huang, F. (2020). Prior problem behaviors do not account for the racial suspension gap. Educational Researcher. Advance online publication.&lt;/p&gt;
@@ -9476,9 +9476,9 @@ print(k, type = &amp;quot;models&amp;quot;) #not cluster robust, just looking at
     
     <item>
       <title>🎉 Using FIML and MI in R</title>
-      <link>http://localhost:65084/post/mdata/</link>
+      <link>http://localhost:57190/post/mdata/</link>
       <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/mdata/</guid>
+      <guid>http://localhost:57190/post/mdata/</guid>
       <description>&lt;div id=&#34;using-fiml-in-r-part-2&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Using FIML in R (Part 2)&lt;/h2&gt;
 &lt;p&gt;A recurring question that I get asked is how to handle missing data when researchers are interested in performing a multiple regression analysis. There are so many excellent articles, books, and websites that discuss the theory and rationale behind what can be done. Often, what is recommended is to either use full information likelihood (FIML) or multiple imputation (MI). Many excellent articles explain in detail how these work. The purpose though of this post is to show &lt;em&gt;how&lt;/em&gt; (again) to just run these models in &lt;code&gt;R&lt;/code&gt; (the examples I show here are just for single-level data). I had already shown some of this before over &lt;a href=&#34;https://francish.netlify.com/post/01_missing/&#34;&gt;here&lt;/a&gt; though I am adding to those notes to show some comparability with Mplus results. I will use &lt;code&gt;lavaan&lt;/code&gt; for getting FIML results.&lt;/p&gt;
@@ -9717,9 +9717,9 @@ round(summary(pool(mi1)), 3)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>🎉 Applied example for alternatives to logistic regression</title>
-      <link>http://localhost:65084/post/applied/</link>
+      <link>http://localhost:57190/post/applied/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/applied/</guid>
+      <guid>http://localhost:57190/post/applied/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Logistic regression is often used to analyze experiments with binary
 outcomes (e.g., pass vs fail) and binary predictors (e.g., treatment vs
@@ -9930,9 +9930,9 @@ Assessment, 27,&lt;/em&gt; 1484-1493. doi: &lt;a href=&#34;http://dx.doi.org/10.
     
     <item>
       <title>🎉 Principal Components Analysis using R</title>
-      <link>http://localhost:65084/post/pca_2020/</link>
+      <link>http://localhost:57190/post/pca_2020/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/pca_2020/</guid>
+      <guid>http://localhost:57190/post/pca_2020/</guid>
       <description>&lt;p style=&#34;color:red&#34;&gt;
 [Rough notes: Let me know if there are corrections]
 &lt;/p&gt;
@@ -10361,10 +10361,10 @@ cor(manual, fscores) #almost perfect!&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
     
     <item>
       <title>🎉 Why does centering reduce multicollinearity?</title>
-      <link>http://localhost:65084/post/centering/</link>
+      <link>http://localhost:57190/post/centering/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/centering/</guid>
-      <description>&lt;script src=&#34;http://localhost:65084/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+      <guid>http://localhost:57190/post/centering/</guid>
+      <description>&lt;script src=&#34;http://localhost:57190/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;p&gt;Centering often reduces the correlation between the individual variables (x1, x2) and the product term (x1 &lt;span class=&#34;math inline&#34;&gt;\(\times\)&lt;/span&gt; x2). In the example below, r(x1, x1x2) = .80. With the centered variables, r(x1c, x1x2c) = -.15.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;NOTE:&lt;/em&gt; For examples of when centering may &lt;strong&gt;not&lt;/strong&gt; reduce multicollinearity but may make it worse, see &lt;a href=&#34;https://pubmed.ncbi.nlm.nih.gov/31488914/&#34;&gt;EPM article&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
@@ -10446,9 +10446,9 @@ mm %&amp;gt;% ggplot(aes(x = r)) +
     
     <item>
       <title>Poisson and Negative Binomial Regression using R</title>
-      <link>http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/</link>
+      <link>http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/</link>
       <pubDate>Tue, 21 May 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/</guid>
+      <guid>http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/</guid>
       <description>&lt;p&gt;A few years ago, I  published an article on using Poisson, negative binomial, and zero inflated models in analyzing count data (see &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/15388220.2012.682010&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pick Your Poisson&lt;/a&gt;). The abstract of the article indicates:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;School violence research is often concerned with infrequently occurring events such as counts of the number of bullying incidents or fights a student may experience. Analyzing count data using ordinary least squares regression may produce improbable predicted values, and as a result of regression assumption violations, result in higher Type I errors. Count data are optimally analyzed using Poisson-based regression techniques such as Poisson or negative binomial regression. We apply these techniques to an example study of bullying in a statewide sample of 290 high schools and explain how Poisson-based analyses, although less familiar to many researchers, can produce findings that are more accurate and reliable, and are easier to interpret in real-world contexts.&lt;/p&gt;&lt;/blockquote&gt;
@@ -10537,7 +10537,7 @@ mm %&amp;gt;% ggplot(aes(x = r)) +
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_7a364430517e3992.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_a299d4a8a001a464.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -10903,7 +10903,7 @@ With a Poisson distribution, the mean and the variances are both equal ($\mu = \
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_3be059cd57a9f9d2.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_902e2127e8cd0b1d.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11016,7 +11016,7 @@ With a Poisson distribution, the mean and the variances are both equal ($\mu = \
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_f0ce2e207d87b939.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_223a3143fc375970.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11115,7 +11115,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_e95e543cda7cee89.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_ec63239498e0e1a1.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11210,7 +11210,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_adb155b5da58cfb1.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_2dd82166471c1cba.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11250,7 +11250,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_148e93479cb1d9f.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_53a0d3dcfb62baac.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp&#34;
+               src=&#34;http://localhost:57190/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11280,9 +11280,9 @@ Run the models:&lt;/p&gt;
     
     <item>
       <title>Correct standard errors?</title>
-      <link>http://localhost:65084/post/correct-standard-errors/</link>
+      <link>http://localhost:57190/post/correct-standard-errors/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/correct-standard-errors/</guid>
+      <guid>http://localhost:57190/post/correct-standard-errors/</guid>
       <description>&lt;p&gt;The other day in class, while talking about instances (e.g., analyzing
 clustered data or heteroskedastic residuals) where adjustments are
 required to the standard errors of a regression model, a student asked:
@@ -11347,7 +11347,7 @@ plot(x1, rstudent(m1), ylab = &#39;Studentized residuals&#39;) #classic fan spre
                /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp 400w,
                /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_387649c8cbd984b9.webp 760w,
                /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_a45b3d07d59a75b0.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp&#34;
+               src=&#34;http://localhost:57190/post/correct-standard-errors/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11423,7 +11423,7 @@ abline(v = 3, col = &#39;red&#39;)
                /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp 400w,
                /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_7f5b53136d6baf4d.webp 760w,
                /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_2604a16ba99eb863.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp&#34;
+               src=&#34;http://localhost:57190/post/correct-standard-errors/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11483,7 +11483,7 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
                /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_119343749df1c237.webp 400w,
                /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_c0c1580489a6d469.webp 760w,
                /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_307867fb3fd9af38.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-5-1_hu_119343749df1c237.webp&#34;
+               src=&#34;http://localhost:57190/post/correct-standard-errors/img/unnamed-chunk-5-1_hu_119343749df1c237.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11495,9 +11495,9 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
     
     <item>
       <title>Note on Robust Standard Errors</title>
-      <link>http://localhost:65084/post/note-on-robust-standard-errors/</link>
+      <link>http://localhost:57190/post/note-on-robust-standard-errors/</link>
       <pubDate>Sun, 04 Nov 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/note-on-robust-standard-errors/</guid>
+      <guid>http://localhost:57190/post/note-on-robust-standard-errors/</guid>
       <description>&lt;p&gt;Illustration showing different flavors of robust standard errors. Load
 in library, dataset, and recode. Do not really need to dummy code but
 may make making the &lt;strong&gt;X&lt;/strong&gt; matrix easier. Using the High School &amp;amp; Beyond
@@ -12391,9 +12391,9 @@ Finally, the multiway vcv is A + B - C.&lt;/p&gt;
     
     <item>
       <title>Multilevel CFA (MLCFA) in R, part 2</title>
-      <link>http://localhost:65084/post/mlcfa/</link>
+      <link>http://localhost:57190/post/mlcfa/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/mlcfa/</guid>
+      <guid>http://localhost:57190/post/mlcfa/</guid>
       <description>&lt;p&gt;A while back, I wrote a note about how to conduct a &lt;a href=&#34;https://github.com/flh3/mcfa/blob/main/MCFAinRHUANG.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;multilevel
 confirmatory factor analysis (MLCFA) in
 R&lt;/a&gt;. Part of the
@@ -12447,7 +12447,7 @@ head(raw)
                /post/mlcfa/tab1_hu_fdedfdfbca4547a4.webp 400w,
                /post/mlcfa/tab1_hu_5c01dafa97f1bec5.webp 760w,
                /post/mlcfa/tab1_hu_a42e806942eec3a6.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mlcfa/tab1_hu_fdedfdfbca4547a4.webp&#34;
+               src=&#34;http://localhost:57190/post/mlcfa/tab1_hu_fdedfdfbca4547a4.webp&#34;
                width=&#34;733&#34;
                height=&#34;271&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -12524,7 +12524,7 @@ x$icc #view intraclass correlation (ICCs) of the six variables
                /post/mlcfa/fig2_hu_ff5cef18c1e38bf3.webp 400w,
                /post/mlcfa/fig2_hu_d716fdb48797bdde.webp 760w,
                /post/mlcfa/fig2_hu_aa21bb9bf9900825.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mlcfa/fig2_hu_ff5cef18c1e38bf3.webp&#34;
+               src=&#34;http://localhost:57190/post/mlcfa/fig2_hu_ff5cef18c1e38bf3.webp&#34;
                width=&#34;760&#34;
                height=&#34;474&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -12872,9 +12872,9 @@ using &lt;code&gt;lavaan&lt;/code&gt; and WLSMV.&lt;/p&gt;
     
     <item>
       <title>🎉 Simulating two level data</title>
-      <link>http://localhost:65084/post/sim2data/</link>
+      <link>http://localhost:57190/post/sim2data/</link>
       <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/sim2data/</guid>
+      <guid>http://localhost:57190/post/sim2data/</guid>
       <description>
 
 
@@ -13012,9 +13012,9 @@ ols1 &amp;lt;- lm(y ~ l2 + l1, data = dat)
     
     <item>
       <title>🧠 Difference between correlation and covariance matrices</title>
-      <link>http://localhost:65084/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</link>
+      <link>http://localhost:57190/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</link>
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</guid>
+      <guid>http://localhost:57190/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</guid>
       <description>&lt;h2 id=&#34;variancecovariance&#34;&gt;Variance/Covariance&lt;/h2&gt;
 &lt;p&gt;To start off, the sample variance formula is:&lt;/p&gt;
 $$s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})^2} {n - 1 }$$&lt;p&gt;First of all, $x - \overline{x}$ is a deviation score (deviation from
@@ -13198,9 +13198,9 @@ covariance matrix if all you had is the correlation matrix?&lt;/p&gt;
     
     <item>
       <title>Instrumental variables within an SEM framework</title>
-      <link>http://localhost:65084/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</link>
+      <link>http://localhost:57190/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</link>
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</guid>
+      <guid>http://localhost:57190/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</guid>
       <description>&lt;p&gt;Earlier this year, I wrote an article on using &lt;a href=&#34;https://openpublishing.library.umass.edu/pare/article/id/1661/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;instrumental variables&lt;/a&gt; (IV) to analyze data from randomized experiments with imperfect compliance (read the manuscript for full details; link updated; it&amp;rsquo;s open access). In the article, I described the steps of IV estimation and the logic behind it.&lt;/p&gt;
 &lt;p&gt;The sample code using two stage least squares regression (the correct analysis) is shown below (see article for specifics):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ivreg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -13358,9 +13358,9 @@ is not path a x path b).&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>🎉 Class Example- Standard Errors Too Small</title>
-      <link>http://localhost:65084/post/se/</link>
+      <link>http://localhost:57190/post/se/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/se/</guid>
+      <guid>http://localhost:57190/post/se/</guid>
       <description>&lt;p&gt;In our module on regression diagnostics, I mentioned 1) that at times (with clustered data) standard errors may be misestimated and may be too low, resulting in a greater chance of making a Type I error (i.e., claiming statistically significant results when they should not be). In our ANCOVA session, I also indicated that 2) covariates are helpful because they help to lower the (standard) error in the model and increase power. So, it sounds like we would like to have models with lower standard errors. However, there are cases when the standard error is estimated &lt;em&gt;lower&lt;/em&gt; than it should be (i.e., the standard error is &lt;em&gt;biased&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;Here’s an example– we have 30 schools with 20 student participants in each school. Fifteen schools are assigned to the treatment group (tr = 1) and 15 schools are assigned to the control (tr = 0) condition. The treatment is expected to improve reading achievement (Y). We also have a pre-test for each child (Ypre) which we can use as a covariate.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;### These next few lines create the simulated dataset
@@ -13500,9 +13500,9 @@ summ(mod1, cluster = &amp;#39;sid&amp;#39;, robust = T, digits = 3)&lt;/code&gt;
     
     <item>
       <title>🎉 Understanding instrumental variables</title>
-      <link>http://localhost:65084/post/iv/</link>
+      <link>http://localhost:57190/post/iv/</link>
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/iv/</guid>
+      <guid>http://localhost:57190/post/iv/</guid>
       <description>&lt;div id=&#34;instrumental-variables-itt-and-tot&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Instrumental variables, ITT, and TOT&lt;/h2&gt;
 &lt;p&gt;Based on:&lt;/p&gt;
@@ -13948,9 +13948,9 @@ summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
     
     <item>
       <title>Omitted Variable Bias (OVB) Example</title>
-      <link>http://localhost:65084/post/ovb/</link>
+      <link>http://localhost:57190/post/ovb/</link>
       <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/ovb/</guid>
+      <guid>http://localhost:57190/post/ovb/</guid>
       <description>&lt;h2 id=&#34;illustrates-why-ovb-is-an-issue&#34;&gt;Illustrates why OVB is an issue&lt;/h2&gt;
 &lt;p&gt;This issue plagues a lot of the analysis using secondary or observational data&lt;/p&gt;
 &lt;ul&gt;
@@ -13992,7 +13992,7 @@ summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
                /post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp 400w,
                /post/ovb/unnamed-chunk-2-1_hu_ee76ac9bf3af02dd.webp 760w,
                /post/ovb/unnamed-chunk-2-1_hu_9230742c251c79c7.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp&#34;
+               src=&#34;http://localhost:57190/post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -14093,7 +14093,7 @@ summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
                /post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp 400w,
                /post/ovb/unnamed-chunk-8-1_hu_5576bfd183feebdf.webp 760w,
                /post/ovb/unnamed-chunk-8-1_hu_8562130d4218bdc3.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp&#34;
+               src=&#34;http://localhost:57190/post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

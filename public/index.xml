@@ -2,21 +2,95 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Francis Huang | FLH Website</title>
-    <link>http://localhost:65084/</link>
-      <atom:link href="http://localhost:65084/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/</link>
+      <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <description>Francis Huang</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Francis Huang</title>
-      <link>http://localhost:65084/</link>
+      <link>http://localhost:1313/</link>
     </image>
     
     <item>
+      <title>🎉 Job postings 2024-2025</title>
+      <link>http://localhost:1313/post/jobs-2025/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/jobs-2025/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of July 2025.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Postings for (2024-2025):&lt;/p&gt;
+&lt;p&gt;As of 2025.07&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Post-doctoral Associate (5 openings!) &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=179180338&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rutgers University&lt;/a&gt;, New Jersey.&lt;/li&gt;
+&lt;li&gt;Post-doctoral Associate (w/Guanglei Hong) [University of Chicago](&amp;ldquo;att/postdoc ad_GH_2025-2026_OOP_approved.docx&amp;rdquo;), Chicago, IL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2025.06&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Post-doctoral Associate, University of Southern Denmark&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2025.01&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Post-doctoral Research Associate- Educational Measurement and Statistics- &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=179041668&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Tennessee&lt;/a&gt;, Knoxville, Knoxville, TN&lt;/li&gt;
+&lt;li&gt;Learning Sciences Faculty Cluster Hires (Open-Rank and Tenure-Track; Educational Data Science and Analytics, AI and Education, and Advanced Quantitative Research Methods, Measurement and/or Evaluation; &lt;strong&gt;5&lt;/strong&gt; positions) &lt;a href=&#34;https://apply.interfolio.com/162168&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Clemson University&lt;/a&gt; in Clemson, SC&lt;/li&gt;
+&lt;li&gt;Assistant Director for Education Research, The &lt;a href=&#34;https://uic.csod.com/ux/ats/careersite/1/home/requisition/13915?c=uic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Illinois at Chicago&lt;/a&gt; in Chicago, IL&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor of Research Design, Methods, and Analysis, &lt;a href=&#34;https://jobs.wm.edu/postings/63482&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William &amp;amp; Mary&lt;/a&gt; in Williamsburg, VA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.12&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Professor in Quantitative Methods in Educational Research, &lt;a href=&#34;https://recruit.ap.ucsb.edu/JPF02883&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UC Santa Barbara&lt;/a&gt; (NOTE: may also be at the Associate level)&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor, Quantitative and/or Mixed Methods Applied Research, &lt;a href=&#34;https://appstate.peopleadmin.com/postings/48926&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Appalachian State University&lt;/a&gt;, North Carolina, United States&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.11&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Professor in Quantitative Methods in Educational Research, &lt;a href=&#34;https://recruit.ap.ucsb.edu/JPF02883&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California&lt;/a&gt; Santa Barbara&lt;/li&gt;
+&lt;li&gt;Tenure Eligible (probationary) Open Rank for the Department of Emergency Medicine as a Research Methodologist, Professor (Open Rank) - R106021
+&lt;a href=&#34;https://uofl.wd1.myworkdayjobs.com/en-US/UofLCareerSite/job/Health-Sciences-Center/Professor--Open-Rank-_R106021?jobFamilyGroup=122eabeb58371000c79b8793f92f0000?source=francish&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Louisville&lt;/a&gt; in Louisville, KY&lt;/li&gt;
+&lt;li&gt;Assistant or Associate Professor of Critical Quantitative Research &lt;a href=&#34;https://aprecruit.ucr.edu/JPF02027&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California&lt;/a&gt;, Riverside, CA&lt;/li&gt;
+&lt;li&gt;Assistant Professor of Psychology - Quantitative Analysis, &lt;a href=&#34;https://jobs.oakland.edu/postings/32847&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Oakland University&lt;/a&gt;, Department of Psychology, Michigan&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor, Educational Research, &lt;a href=&#34;https://usm.csod.com/ats/careersite/JobDetails.aspx?id=4410&amp;amp;site=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Southern Mississippi&lt;/a&gt;, Hattiesburg, MS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.10&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Professor in the SDSU College of Education focused on Quantitative Research Methods, &lt;a href=&#34;https://apply.interfolio.com/156881&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;San Diego State University&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Assistant Professor of Quantitative Methods and Assessment in Education, &lt;a href=&#34;https://uni.wd5.myworkdayjobs.com/en-US/UNI/job/Main-Campus/Assistant-Professor-of-Quantitative-Methods-and-Assessment-in-Education_JR283&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Northern Iowa&lt;/a&gt;, Cedar Falls, IA&lt;/li&gt;
+&lt;li&gt;Assistant Professor-Educational Research, Measurement, and Analysis, &lt;a href=&#34;https://www.auemployment.com/postings/49210&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Auburn University&lt;/a&gt;, Auburn, AL&lt;/li&gt;
+&lt;li&gt;Assistant Professor - Psychology, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178937871&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Arkansas&lt;/a&gt; at Little Rock, AR&lt;/li&gt;
+&lt;li&gt;School Of Education-Tenure-track Assistant Professor- Educational Psychology And Research; Department Human Studies, &lt;a href=&#34;https://uab.peopleadmin.com/postings/23082&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Alabama at Birmingham&lt;/a&gt;, Birmingham, AL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.09&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant/Associate Professor Of Quantitative Methodology, &lt;a href=&#34;https://facultycareers.gsu.edu/postings/4858&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Georgia State University&lt;/a&gt; Atlanta, GA&lt;/li&gt;
+&lt;li&gt;Assistant Professor (Quant Psych), &lt;a href=&#34;https://unc.peopleadmin.com/postings/288570&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of North Carolina&lt;/a&gt; at Chapel Hill&lt;/li&gt;
+&lt;li&gt;Open-Rank Tenure-Track Faculty Position in Quantitative Methods, &lt;a href=&#34;https://usccareers.usc.edu/job/los-angeles/open-rank-tenure-track-faculty-position-in-quantitative-methods-rossier-school-of-education/1209/70221450528&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rossier School of Education&lt;/a&gt;, Los Angeles, California&lt;/li&gt;
+&lt;li&gt;Tenured Associate or Full Professor in Evaluation Studies (# 364671), &lt;a href=&#34;https://hr.myu.umn.edu/psc/hrprd/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&amp;amp;Action=U&amp;amp;SiteId=1&amp;amp;FOCUS=Applicant&amp;amp;JobOpeningId=364671&amp;amp;PostingSeq=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Minnesota&lt;/a&gt;, Twin Cities, MN&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor - QME Educational Statistics, &lt;a href=&#34;https://hr.myu.umn.edu/psc/hrprd/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&amp;amp;Action=U&amp;amp;SiteId=1&amp;amp;FOCUS=Applicant&amp;amp;JobOpeningId=364621&amp;amp;PostingSeq=1&amp;amp;&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Minnesota&lt;/a&gt; Twin Cities, MN&lt;/li&gt;
+&lt;li&gt;Assistant Professor of Quantitative Psychology, &lt;a href=&#34;https://careers.pageuppeople.com/873/lb/en-us/job/541543/assistant-professor-of-quantitative-psychology&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;California State University&lt;/a&gt;, Long Beach&lt;/li&gt;
+&lt;li&gt;Assistant Professor, Quantitative Psychology (Open Area), &lt;a href=&#34;https://webapps.cmc.edu/jobs/faculty/faculty_opening_detail.php?PostingID=17040&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Claremont McKenna College&lt;/a&gt;, California&lt;/li&gt;
+&lt;li&gt;Assistant/Associate Professor of Evaluation in Education, &lt;a href=&#34;https://recruit.apo.ucla.edu/JPF09709&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California Los Angeles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Associate/Full Professor, Tenured, Quantitative Methods, Educational Psychology, &lt;a href=&#34;https://apply.interfolio.com/153027&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Baylor University&lt;/a&gt;, Waco, TX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.08&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Professor, Psychology (Quantitative) Tenure-track, &lt;a href=&#34;https://jobs.chronicle.com/job/37701200/assistant-professor-psychology-quantitative-tenure-track/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ohio University&lt;/a&gt;, Athens, Ohio&lt;/li&gt;
+&lt;li&gt;Assistant Professor of Quantitative Psychology, &lt;a href=&#34;https://jobs.chronicle.com/job/37695060/assistant-professor-of-quantitative-psychology/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;California State University&lt;/a&gt;, Long Beach&lt;/li&gt;
+&lt;li&gt;Research Assistant Professor, &lt;a href=&#34;https://employment.unl.edu/postings/92950&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nebraska Academy for Methodology, Analytics &amp;amp; Psychometrics&lt;/a&gt;, Nebraska Center for Research on Children, Youth, Families and Schools, College of Education and Human Sciences, University of Nebraska-Lincoln&lt;/li&gt;
+&lt;li&gt;Assistant Professor, Tenure-Track, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178892364&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Educational Data Science&lt;/a&gt; - Counseling, School, and Educational Psychology, University at Buffalo, Buffalo, NY&lt;/li&gt;
+&lt;li&gt;Lecturer, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178889719&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multivariate Statistics&lt;/a&gt;, University of California Santa Barbara, Santa Barbara, CA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2024.07&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assistant Prof, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178848717&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Educational Studies&lt;/a&gt;, University of Cincinnati, Cincinnati, OH&lt;/li&gt;
+&lt;li&gt;Assistant Professor in Mixed Methods, Qualitative and Quantitative Tenure-Track, &lt;a href=&#34;https://jobs.chronicle.com/job/37678495/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;St. John&amp;rsquo;s University&lt;/a&gt;, New York&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;mdash;END&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Plausible Values as Predictors</title>
-      <link>http://localhost:65084/post/2025_pv_rhs/</link>
+      <link>http://localhost:1313/post/2025_pv_rhs/</link>
       <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2025_pv_rhs/</guid>
+      <guid>http://localhost:1313/post/2025_pv_rhs/</guid>
       <description>&lt;p&gt;Although the &lt;code&gt;mixPV&lt;/code&gt; function was introduced as a way to analyze large
 scale assessments using multiple plausible values (PV), the function
 only works if the plausible values are used as the outcome (i.e., it is
@@ -99,9 +173,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
     
     <item>
       <title>Correlation and causation revisited</title>
-      <link>http://localhost:65084/post/dda/</link>
+      <link>http://localhost:1313/post/dda/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/dda/</guid>
+      <guid>http://localhost:1313/post/dda/</guid>
       <description>&lt;p&gt;Statistics students are taught that correlation does not equal
 causation. Just because two variables (e.g., x and y) are related to
 each other does not necessarily mean that one causes the other (e.g., x
@@ -153,7 +227,7 @@ hist(x) #show the skewness
                /post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp 400w,
                /post/dda/unnamed-chunk-1-1_hu_b0af35ba8c73119d.webp 760w,
                /post/dda/unnamed-chunk-1-1_hu_ec6356837277ac96.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp&#34;
+               src=&#34;http://localhost:1313/post/dda/unnamed-chunk-1-1_hu_9efbba54d12f9cca.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -251,9 +325,9 @@ Journal of Behavioral Development, 39&lt;/em&gt;(6), 570–580.
     
     <item>
       <title>Working with missing data in large-scale assessments (with plausible values)</title>
-      <link>http://localhost:65084/post/2025_lsa_mi/</link>
+      <link>http://localhost:1313/post/2025_lsa_mi/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2025_lsa_mi/</guid>
+      <guid>http://localhost:1313/post/2025_lsa_mi/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies
 the article:&lt;/p&gt;
@@ -618,9 +692,9 @@ modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#3
     
     <item>
       <title>Working with missing data in large-scale assessments (without plausible  values)</title>
-      <link>http://localhost:65084/post/2025_lsa_mi_a/</link>
+      <link>http://localhost:1313/post/2025_lsa_mi_a/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2025_lsa_mi_a/</guid>
+      <guid>http://localhost:1313/post/2025_lsa_mi_a/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (without &lt;strong&gt;plausible values&lt;/strong&gt;). This is Appendix
 A and accompanies the article:&lt;/p&gt;
@@ -1096,34 +1170,34 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
     
     <item>
       <title>Working with missing data in large-scale assessments</title>
-      <link>http://localhost:65084/publication/journal-article/2025/lsa-mi/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/lsa-mi/</link>
       <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2025/lsa-mi/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/lsa-mi/</guid>
       <description>&lt;p&gt;The article is open access. Additional syntax can also be seen &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. An updated, corrected version of the article can be accessed &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/MIwithLSA.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Student attacks following a school threat assessment: Statewide trends in student and case characteristics.</title>
-      <link>http://localhost:65084/publication/journal-article/jtam/kerere-student-2025/</link>
+      <link>http://localhost:1313/publication/journal-article/jtam/kerere-student-2025/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/jtam/kerere-student-2025/</guid>
+      <guid>http://localhost:1313/publication/journal-article/jtam/kerere-student-2025/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reassessing weights in large-scale assessments and multilevel models</title>
-      <link>http://localhost:65084/publication/journal-article/2025/lsa-weights/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/lsa-weights/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2025/lsa-weights/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/lsa-weights/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Weights with Multilevel Models</title>
-      <link>http://localhost:65084/post/weights_2025/</link>
+      <link>http://localhost:1313/post/weights_2025/</link>
       <pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/weights_2025/</guid>
+      <guid>http://localhost:1313/post/weights_2025/</guid>
       <description>&lt;p&gt;This is an applied example regarding the use of weights in multilevel
 models when using large scale assessments. This is using the Germany
 TIMSS dataset. This accompanies the article:&lt;/p&gt;
@@ -2030,9 +2104,9 @@ level-1 weight only, they are (probably incorrect).&lt;/p&gt;
     
     <item>
       <title>Service</title>
-      <link>http://localhost:65084/service/</link>
+      <link>http://localhost:1313/service/</link>
       <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/service/</guid>
+      <guid>http://localhost:1313/service/</guid>
       <description>
 
 
@@ -2171,148 +2245,83 @@ level-1 weight only, they are (probably incorrect).&lt;/p&gt;
     
     <item>
       <title>Youth Violence Project @ UVA</title>
-      <link>http://localhost:65084/project/uva/</link>
+      <link>http://localhost:1313/project/uva/</link>
       <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/project/uva/</guid>
+      <guid>http://localhost:1313/project/uva/</guid>
       <description>&lt;p&gt;Our team of faculty and graduate students conducts research on effective methods and policies for youth violence prevention and school safety.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>🎉 Job postings 2024-2025</title>
-      <link>http://localhost:65084/post/jobs-2025/</link>
-      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/jobs-2025/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of Feb 2025.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Postings for (2024-2025):&lt;/p&gt;
-&lt;p&gt;As of 2025.01&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Post-doctoral Research Associate- Educational Measurement and Statistics- &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=179041668&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Tennessee&lt;/a&gt;, Knoxville, Knoxville, TN&lt;/li&gt;
-&lt;li&gt;Learning Sciences Faculty Cluster Hires (Open-Rank and Tenure-Track; Educational Data Science and Analytics, AI and Education, and Advanced Quantitative Research Methods, Measurement and/or Evaluation; &lt;strong&gt;5&lt;/strong&gt; positions) &lt;a href=&#34;https://apply.interfolio.com/162168&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Clemson University&lt;/a&gt; in Clemson, SC&lt;/li&gt;
-&lt;li&gt;Assistant Director for Education Research, The &lt;a href=&#34;https://uic.csod.com/ux/ats/careersite/1/home/requisition/13915?c=uic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Illinois at Chicago&lt;/a&gt; in Chicago, IL&lt;/li&gt;
-&lt;li&gt;Assistant/Associate Professor of Research Design, Methods, and Analysis, &lt;a href=&#34;https://jobs.wm.edu/postings/63482&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William &amp;amp; Mary&lt;/a&gt; in Williamsburg, VA&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As of 2024.12&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Assistant Professor in Quantitative Methods in Educational Research, &lt;a href=&#34;https://recruit.ap.ucsb.edu/JPF02883&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UC Santa Barbara&lt;/a&gt; (NOTE: may also be at the Associate level)&lt;/li&gt;
-&lt;li&gt;Assistant/Associate Professor, Quantitative and/or Mixed Methods Applied Research, &lt;a href=&#34;https://appstate.peopleadmin.com/postings/48926&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Appalachian State University&lt;/a&gt;, North Carolina, United States&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As of 2024.11&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Assistant Professor in Quantitative Methods in Educational Research, &lt;a href=&#34;https://recruit.ap.ucsb.edu/JPF02883&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California&lt;/a&gt; Santa Barbara&lt;/li&gt;
-&lt;li&gt;Tenure Eligible (probationary) Open Rank for the Department of Emergency Medicine as a Research Methodologist, Professor (Open Rank) - R106021
-&lt;a href=&#34;https://uofl.wd1.myworkdayjobs.com/en-US/UofLCareerSite/job/Health-Sciences-Center/Professor--Open-Rank-_R106021?jobFamilyGroup=122eabeb58371000c79b8793f92f0000?source=francish&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Louisville&lt;/a&gt; in Louisville, KY&lt;/li&gt;
-&lt;li&gt;Assistant or Associate Professor of Critical Quantitative Research &lt;a href=&#34;https://aprecruit.ucr.edu/JPF02027&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California&lt;/a&gt;, Riverside, CA&lt;/li&gt;
-&lt;li&gt;Assistant Professor of Psychology - Quantitative Analysis, &lt;a href=&#34;https://jobs.oakland.edu/postings/32847&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Oakland University&lt;/a&gt;, Department of Psychology, Michigan&lt;/li&gt;
-&lt;li&gt;Assistant/Associate Professor, Educational Research, &lt;a href=&#34;https://usm.csod.com/ats/careersite/JobDetails.aspx?id=4410&amp;amp;site=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Southern Mississippi&lt;/a&gt;, Hattiesburg, MS&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As of 2024.10&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Assistant Professor in the SDSU College of Education focused on Quantitative Research Methods, &lt;a href=&#34;https://apply.interfolio.com/156881&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;San Diego State University&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Assistant Professor of Quantitative Methods and Assessment in Education, &lt;a href=&#34;https://uni.wd5.myworkdayjobs.com/en-US/UNI/job/Main-Campus/Assistant-Professor-of-Quantitative-Methods-and-Assessment-in-Education_JR283&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Northern Iowa&lt;/a&gt;, Cedar Falls, IA&lt;/li&gt;
-&lt;li&gt;Assistant Professor-Educational Research, Measurement, and Analysis, &lt;a href=&#34;https://www.auemployment.com/postings/49210&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Auburn University&lt;/a&gt;, Auburn, AL&lt;/li&gt;
-&lt;li&gt;Assistant Professor - Psychology, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178937871&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Arkansas&lt;/a&gt; at Little Rock, AR&lt;/li&gt;
-&lt;li&gt;School Of Education-Tenure-track Assistant Professor- Educational Psychology And Research; Department Human Studies, &lt;a href=&#34;https://uab.peopleadmin.com/postings/23082&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Alabama at Birmingham&lt;/a&gt;, Birmingham, AL&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As of 2024.09&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Assistant/Associate Professor Of Quantitative Methodology, &lt;a href=&#34;https://facultycareers.gsu.edu/postings/4858&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Georgia State University&lt;/a&gt; Atlanta, GA&lt;/li&gt;
-&lt;li&gt;Assistant Professor (Quant Psych), &lt;a href=&#34;https://unc.peopleadmin.com/postings/288570&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of North Carolina&lt;/a&gt; at Chapel Hill&lt;/li&gt;
-&lt;li&gt;Open-Rank Tenure-Track Faculty Position in Quantitative Methods, &lt;a href=&#34;https://usccareers.usc.edu/job/los-angeles/open-rank-tenure-track-faculty-position-in-quantitative-methods-rossier-school-of-education/1209/70221450528&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rossier School of Education&lt;/a&gt;, Los Angeles, California&lt;/li&gt;
-&lt;li&gt;Tenured Associate or Full Professor in Evaluation Studies (# 364671), &lt;a href=&#34;https://hr.myu.umn.edu/psc/hrprd/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&amp;amp;Action=U&amp;amp;SiteId=1&amp;amp;FOCUS=Applicant&amp;amp;JobOpeningId=364671&amp;amp;PostingSeq=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Minnesota&lt;/a&gt;, Twin Cities, MN&lt;/li&gt;
-&lt;li&gt;Assistant/Associate Professor - QME Educational Statistics, &lt;a href=&#34;https://hr.myu.umn.edu/psc/hrprd/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&amp;amp;Action=U&amp;amp;SiteId=1&amp;amp;FOCUS=Applicant&amp;amp;JobOpeningId=364621&amp;amp;PostingSeq=1&amp;amp;&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Minnesota&lt;/a&gt; Twin Cities, MN&lt;/li&gt;
-&lt;li&gt;Assistant Professor of Quantitative Psychology, &lt;a href=&#34;https://careers.pageuppeople.com/873/lb/en-us/job/541543/assistant-professor-of-quantitative-psychology&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;California State University&lt;/a&gt;, Long Beach&lt;/li&gt;
-&lt;li&gt;Assistant Professor, Quantitative Psychology (Open Area), &lt;a href=&#34;https://webapps.cmc.edu/jobs/faculty/faculty_opening_detail.php?PostingID=17040&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Claremont McKenna College&lt;/a&gt;, California&lt;/li&gt;
-&lt;li&gt;Assistant/Associate Professor of Evaluation in Education, &lt;a href=&#34;https://recruit.apo.ucla.edu/JPF09709&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of California Los Angeles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Associate/Full Professor, Tenured, Quantitative Methods, Educational Psychology, &lt;a href=&#34;https://apply.interfolio.com/153027&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Baylor University&lt;/a&gt;, Waco, TX&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As of 2024.08&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Assistant Professor, Psychology (Quantitative) Tenure-track, &lt;a href=&#34;https://jobs.chronicle.com/job/37701200/assistant-professor-psychology-quantitative-tenure-track/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ohio University&lt;/a&gt;, Athens, Ohio&lt;/li&gt;
-&lt;li&gt;Assistant Professor of Quantitative Psychology, &lt;a href=&#34;https://jobs.chronicle.com/job/37695060/assistant-professor-of-quantitative-psychology/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;California State University&lt;/a&gt;, Long Beach&lt;/li&gt;
-&lt;li&gt;Research Assistant Professor, &lt;a href=&#34;https://employment.unl.edu/postings/92950&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nebraska Academy for Methodology, Analytics &amp;amp; Psychometrics&lt;/a&gt;, Nebraska Center for Research on Children, Youth, Families and Schools, College of Education and Human Sciences, University of Nebraska-Lincoln&lt;/li&gt;
-&lt;li&gt;Assistant Professor, Tenure-Track, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178892364&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Educational Data Science&lt;/a&gt; - Counseling, School, and Educational Psychology, University at Buffalo, Buffalo, NY&lt;/li&gt;
-&lt;li&gt;Lecturer, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178889719&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multivariate Statistics&lt;/a&gt;, University of California Santa Barbara, Santa Barbara, CA&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As of 2024.07&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Assistant Prof, &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=178848717&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Educational Studies&lt;/a&gt;, University of Cincinnati, Cincinnati, OH&lt;/li&gt;
-&lt;li&gt;Assistant Professor in Mixed Methods, Qualitative and Quantitative Tenure-Track, &lt;a href=&#34;https://jobs.chronicle.com/job/37678495/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;St. John&amp;rsquo;s University&lt;/a&gt;, New York&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&amp;mdash;END&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Behavioral threat assessment and equity in exclusionary school discipline</title>
-      <link>http://localhost:65084/publication/journal-article/2025/cornell-behavioral-2025/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/cornell-behavioral-2025/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2025/cornell-behavioral-2025/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/cornell-behavioral-2025/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cluster-robust standard errors with three-level data</title>
-      <link>http://localhost:65084/publication/journal-article/2025/huang-cluster-robust-2025/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2025/huang-cluster-robust-2025/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Referral rates for school threat assessment</title>
-      <link>http://localhost:65084/publication/journal-article/2025/cornell-referral-2025/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/cornell-referral-2025/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2025/cornell-referral-2025/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/cornell-referral-2025/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Restorative justice conferences in elementary and secondary schools</title>
-      <link>http://localhost:65084/publication/journal-article/test2/gregory-restorative-2025/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/gregory-restorative-2025/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/gregory-restorative-2025/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/gregory-restorative-2025/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Advancing diversity, equity, and inclusion in school psychology science and scholarship: Changing training and practice in the field of school psychology</title>
-      <link>http://localhost:65084/publication/journal-article/test3/jimerson-advancing-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/jimerson-advancing-2024/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/jimerson-advancing-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/jimerson-advancing-2024/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Potential moderation across racial groups in perceptions of authoritative school climate and peer victimization and student engagement</title>
-      <link>http://localhost:65084/publication/journal-article/test3/chuang-potential-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/chuang-potential-2022/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/chuang-potential-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/chuang-potential-2022/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The seasonality of school climate</title>
-      <link>http://localhost:65084/publication/journal-article/test3/huang-seasonality-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-seasonality-2023/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/huang-seasonality-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-seasonality-2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>School bullying and gender minority youth: Victimization experiences and perceived prevalence</title>
-      <link>http://localhost:65084/publication/journal-article/test3/smith-school-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/smith-school-2024/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/smith-school-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/smith-school-2024/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MO Prison Transformation Project</title>
-      <link>http://localhost:65084/project/av/</link>
+      <link>http://localhost:1313/project/av/</link>
       <pubDate>Sat, 26 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/project/av/</guid>
+      <guid>http://localhost:1313/project/av/</guid>
       <description>&lt;p&gt;This project uses a randomized controlled trial to study the impact of improving living and working conditions in adult correctional facilities in Missouri.&lt;/p&gt;
 &lt;p&gt;Funded through the support of Arnold Ventures. &lt;a href=&#34;https://www.arnoldventures.org/stories/missouri-prison-transformation-project&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.arnoldventures.org/stories/missouri-prison-transformation-project&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To learn more about the project, check this out (with a video): &lt;a href=&#34;https://www.komu.com/a-look-inside-the-missouri-prison-transformation-project-housing-units/collection_1c747234-041e-11f0-a5fa-0303d6af493a.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.komu.com/a-look-inside-the-missouri-prison-transformation-project-housing-units/collection_1c747234-041e-11f0-a5fa-0303d6af493a.html&lt;/a&gt;&lt;/p&gt;</description>
@@ -2320,17 +2329,17 @@ level-1 weight only, they are (probably incorrect).&lt;/p&gt;
     
     <item>
       <title>Having a trusted adult in school: Concurrent and predictive relations with internalizing problems across development</title>
-      <link>http://localhost:65084/publication/journal-article/test3/reinke-having-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/reinke-having-2024/</link>
       <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/reinke-having-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/reinke-having-2024/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fun with PCA using Images</title>
-      <link>http://localhost:65084/post/pca-image/</link>
+      <link>http://localhost:1313/post/pca-image/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/pca-image/</guid>
+      <guid>http://localhost:1313/post/pca-image/</guid>
       <description>&lt;h2 id=&#34;creating-grayscale-images-using-pca&#34;&gt;Creating grayscale images using PCA&lt;/h2&gt;
 &lt;p&gt;The following links were helpful: 1.
 &lt;a href=&#34;https://cran.r-project.org/web/packages/imager/vignettes/gettingstarted.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cran.r-project.org/web/packages/imager/vignettes/gettingstarted.html&lt;/a&gt;
@@ -2368,7 +2377,7 @@ image1 &amp;lt;- load.image(&amp;quot;c:/data/snorlax_g2.jpg&amp;quot;)
                /post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp 400w,
                /post/pca-image/unnamed-chunk-7-1_hu_b87dd1919abc4f0c.webp 760w,
                /post/pca-image/unnamed-chunk-7-1_hu_53f84cfd42005336.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-1_hu_63336c063ba10636.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2427,7 +2436,7 @@ ggplot(dat, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp 400w,
                /post/pca-image/unnamed-chunk-7-2_hu_fd9464fb6812b921.webp 760w,
                /post/pca-image/unnamed-chunk-7-2_hu_b110a1ce8a0fbeb9.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-2_hu_3a35b856337f7487.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2463,7 +2472,7 @@ ggplot(dat, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp 400w,
                /post/pca-image/unnamed-chunk-7-3_hu_fc216afeca2d0a96.webp 760w,
                /post/pca-image/unnamed-chunk-7-3_hu_977bd2cac5f907da.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-7-3_hu_bccec96c4a64714.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2574,7 +2583,7 @@ plot(evalues[1:20], type = &#39;b&#39;,
                /post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp 400w,
                /post/pca-image/unnamed-chunk-9-1_hu_a1344702945ad1c4.webp 760w,
                /post/pca-image/unnamed-chunk-9-1_hu_859ee6eb678441b6.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-9-1_hu_4a019c30c9ff067c.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2672,7 +2681,7 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp 400w,
                /post/pca-image/unnamed-chunk-10-1_hu_fc216afeca2d0a96.webp 760w,
                /post/pca-image/unnamed-chunk-10-1_hu_977bd2cac5f907da.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-10-1_hu_bccec96c4a64714.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2740,7 +2749,7 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp 400w,
                /post/pca-image/unnamed-chunk-11-1_hu_85ed057e4a947a55.webp 760w,
                /post/pca-image/unnamed-chunk-11-1_hu_b80f1af2d77028d.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-11-1_hu_717cbb42fce51374.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2783,7 +2792,7 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp 400w,
                /post/pca-image/unnamed-chunk-12-1_hu_6081a7adede4bb62.webp 760w,
                /post/pca-image/unnamed-chunk-12-1_hu_f70ab6bd2032b4f7.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-12-1_hu_e8f88aa6cf00605d.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2916,7 +2925,7 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
                /post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp 400w,
                /post/pca-image/unnamed-chunk-13-1_hu_884e6a88ac9dd861.webp 760w,
                /post/pca-image/unnamed-chunk-13-1_hu_945d5a9c79f15b1.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp&#34;
+               src=&#34;http://localhost:1313/post/pca-image/unnamed-chunk-13-1_hu_6544d36f60e5b6ed.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2928,9 +2937,9 @@ ggplot(tall2, aes(x = x, y = y, fill = value)) +
     
     <item>
       <title>Selecting the proper weights in LSAs with multilevel models</title>
-      <link>http://localhost:65084/post/2024_lsa/</link>
+      <link>http://localhost:1313/post/2024_lsa/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2024_lsa/</guid>
+      <guid>http://localhost:1313/post/2024_lsa/</guid>
       <description>&lt;p&gt;A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.&lt;/p&gt;
 &lt;p&gt;Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).&lt;/p&gt;
 &lt;p&gt;To illustrate this using R (with the &lt;code&gt;mixPV&lt;/code&gt; function):&lt;/p&gt;
@@ -4207,26 +4216,26 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Positive student-teacher relationships and exclusionary discipline practices</title>
-      <link>http://localhost:65084/publication/journal-article/test3/eddy-positive-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/eddy-positive-2024/</link>
       <pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/eddy-positive-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/eddy-positive-2024/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Steadfast implementation of restorative practices during the Covid-19 pandemic: A case study of consultancy and leadership in an elementary school</title>
-      <link>http://localhost:65084/publication/journal-article/test2/gregory-steadfast-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/gregory-steadfast-2023/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/gregory-steadfast-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/gregory-steadfast-2023/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R (update)</title>
-      <link>http://localhost:65084/post/lsa2/</link>
+      <link>http://localhost:1313/post/lsa2/</link>
       <pubDate>Sat, 08 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/lsa2/</guid>
+      <guid>http://localhost:1313/post/lsa2/</guid>
       <description>&lt;p&gt;This is an update to:&lt;/p&gt;
 &lt;p&gt;Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. &lt;a href=&#34;https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Large-scale Assessments in Education.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
@@ -4318,17 +4327,17 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Projects</title>
-      <link>http://localhost:65084/projects/</link>
+      <link>http://localhost:1313/projects/</link>
       <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/projects/</guid>
+      <guid>http://localhost:1313/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Replication studies using secondary and nonexperimental datasets (Hong Kong)</title>
-      <link>http://localhost:65084/event/example/</link>
+      <link>http://localhost:1313/event/example/</link>
       <pubDate>Mon, 13 May 2024 13:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/event/example/</guid>
+      <guid>http://localhost:1313/event/example/</guid>
       <description>&lt;h1&gt;&lt;/h1&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
@@ -4359,7 +4368,7 @@ and type of scaling need to be specified:&lt;/p&gt;
                /event/example/lecture_hu_72803af5273a7270.webp 400w,
                /event/example/lecture_hu_f445ed1fac9e8a49.webp 760w,
                /event/example/lecture_hu_80229ba9a13b0c49.webp 1200w&#34;
-               src=&#34;http://localhost:65084/event/example/lecture_hu_72803af5273a7270.webp&#34;
+               src=&#34;http://localhost:1313/event/example/lecture_hu_72803af5273a7270.webp&#34;
                width=&#34;608&#34;
                height=&#34;398&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4370,9 +4379,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Multilevel Modeling with Large-Scale International Databases Using HLM (Philadelphia)</title>
-      <link>http://localhost:65084/event/mlm_ph/</link>
+      <link>http://localhost:1313/event/mlm_ph/</link>
       <pubDate>Wed, 10 Apr 2024 13:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/event/mlm_ph/</guid>
+      <guid>http://localhost:1313/event/mlm_ph/</guid>
       <description>&lt;p&gt;
 
 
@@ -4395,7 +4404,7 @@ and type of scaling need to be specified:&lt;/p&gt;
                /event/mlm_ph/lecture_hu_993d7e4e9432b042.webp 400w,
                /event/mlm_ph/lecture_hu_391cd18ed58d733c.webp 760w,
                /event/mlm_ph/lecture_hu_243d7193e5c88939.webp 1200w&#34;
-               src=&#34;http://localhost:65084/event/mlm_ph/lecture_hu_993d7e4e9432b042.webp&#34;
+               src=&#34;http://localhost:1313/event/mlm_ph/lecture_hu_993d7e4e9432b042.webp&#34;
                width=&#34;760&#34;
                height=&#34;570&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4408,18 +4417,18 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Replication studies using secondary or nonexperimental datasets</title>
-      <link>http://localhost:65084/publication/journal-article/test2/huang-replication-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-replication-2024/</link>
       <pubDate>Mon, 01 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/huang-replication-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-replication-2024/</guid>
       <description>&lt;p&gt;We present a framework of different types of replication studies with nonexperimental or secondary data and provide examples in the context of school psychology.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Data Management (using R)</title>
-      <link>http://localhost:65084/teaching/dm/</link>
+      <link>http://localhost:1313/teaching/dm/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/teaching/dm/</guid>
+      <guid>http://localhost:1313/teaching/dm/</guid>
       <description>&lt;p&gt;Good data management is a prerequisite for successful research, needed for reproducibility of results, and essential when collaborating with others.&lt;/p&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
@@ -4431,9 +4440,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Monte Carlo Simulation</title>
-      <link>http://localhost:65084/teaching/mcsim/</link>
+      <link>http://localhost:1313/teaching/mcsim/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/teaching/mcsim/</guid>
+      <guid>http://localhost:1313/teaching/mcsim/</guid>
       <description>&lt;p&gt;How to conduct Monte Carlo Simulation studies.&lt;/p&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
@@ -4445,9 +4454,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Multilevel Modeling</title>
-      <link>http://localhost:65084/teaching/mlm/</link>
+      <link>http://localhost:1313/teaching/mlm/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/teaching/mlm/</guid>
+      <guid>http://localhost:1313/teaching/mlm/</guid>
       <description>&lt;p&gt;The goal of the course is to provide students with the necessary skills needed to review/critique, analyze, interpret, and write-up studies involving nested (clustered) data using multilevel modeling (MLM). Clustered data (e.g., students within schools, patients within clinics) occur quite naturally in the social sciences and being able to understand and conduct their own analyses using nested data is an important skill. Alternatives are discussed as well.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://mlmusingr.netlify.app/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://mlmusingr.netlify.app/&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -4455,27 +4464,27 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Program Evaluation</title>
-      <link>http://localhost:65084/teaching/eval/</link>
+      <link>http://localhost:1313/teaching/eval/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/teaching/eval/</guid>
+      <guid>http://localhost:1313/teaching/eval/</guid>
       <description>&lt;p&gt;Evaluating the quantifiable impact of social programs is a key task that policy makers, governments, and program funders perform. In education and the social sciences, a fundamental question asked is “How do we know our policy or program works?” Topics to be covered will include the analysis of experimental data, clustered data (e.g., multilevel models, fixed effect models- as most data in education involve nested data), the use of difference in difference models, regression discontinuity designs, and power analysis.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Quantitative Foundations</title>
-      <link>http://localhost:65084/teaching/quantfound/</link>
+      <link>http://localhost:1313/teaching/quantfound/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/teaching/quantfound/</guid>
+      <guid>http://localhost:1313/teaching/quantfound/</guid>
       <description>&lt;p&gt;This course is designed to provide students the fundamental and necessary quantitative methods in educational research. Topics include one-way and factorial analysis of variance (ANOVA), analysis of covariance (ANCOVA), multiple regression, regression diagnostics, basic mediation analysis, and statistical power analysis.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Using plausible values when fitting multilevel models with large-scale assessment data using R</title>
-      <link>http://localhost:65084/publication/journal-article/test3/huang-using-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2024/</link>
       <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/huang-using-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2024/</guid>
       <description>&lt;p&gt;
 
 
@@ -4503,9 +4512,9 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R</title>
-      <link>http://localhost:65084/post/lsa_1/</link>
+      <link>http://localhost:1313/post/lsa_1/</link>
       <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/lsa_1/</guid>
+      <guid>http://localhost:1313/post/lsa_1/</guid>
       <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
   &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
@@ -5402,9 +5411,9 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>🎉 Job postings 2023-2024</title>
-      <link>http://localhost:65084/post/jobs-2024/</link>
+      <link>http://localhost:1313/post/jobs-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/jobs-2024/</guid>
+      <guid>http://localhost:1313/post/jobs-2024/</guid>
       <description>&lt;p&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of April 2024.&lt;/p&gt;
 &lt;p&gt;Postings for (2023-2024):&lt;/p&gt;
 &lt;p&gt;As of 2024.04&lt;/p&gt;
@@ -5538,25 +5547,25 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>Adolescent exposure to restorative practices and their perceptions of support, structure, and bullying in the school climate</title>
-      <link>http://localhost:65084/publication/journal-article/test3/gregory-adolescent-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/gregory-adolescent-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/gregory-adolescent-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/gregory-adolescent-2024/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Investigating the use of robust standard errors to account for two-way clustering in cross-classified data structures</title>
-      <link>http://localhost:65084/publication/journal-article/2025/stemmler-investigating-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2025/stemmler-investigating-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/stemmler-investigating-2024/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gradient descent example 1</title>
-      <link>http://localhost:65084/post/gd_example/</link>
+      <link>http://localhost:1313/post/gd_example/</link>
       <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/gd_example/</guid>
+      <guid>http://localhost:1313/post/gd_example/</guid>
       <description>&lt;p&gt;Random notes. Regression based techniques often involve finding a maximum (e.g., the maximum likelihood) or a minimum (e.g., least squares or mean square error) value. Gradient descent is an iterative optimization algorithm used to find the minimum of a function (or gradient &lt;em&gt;ascent&lt;/em&gt; to find the maximum).&lt;/p&gt;
 &lt;p&gt;The algorithm for solving for $\theta_j$ looks like:&lt;/p&gt;
 $$\theta_j = \theta_j - \alpha\frac{\partial{}}{\partial{\theta_j} }J(\theta)$$&lt;ul&gt;
@@ -5718,25 +5727,25 @@ $$\theta_j = \theta_j - \alpha\frac{\partial{}}{\partial{\theta_j} }J(\theta)$$&
     
     <item>
       <title>Experience</title>
-      <link>http://localhost:65084/experience/</link>
+      <link>http://localhost:1313/experience/</link>
       <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/experience/</guid>
+      <guid>http://localhost:1313/experience/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using cluster robust standard errors to analyze nested data with a few clusters (Korea)</title>
-      <link>http://localhost:65084/event/korea_23/</link>
+      <link>http://localhost:1313/event/korea_23/</link>
       <pubDate>Thu, 12 Oct 2023 14:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/event/korea_23/</guid>
+      <guid>http://localhost:1313/event/korea_23/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Residuals with Multilevel Models</title>
-      <link>http://localhost:65084/post/residuals_mlm/</link>
+      <link>http://localhost:1313/post/residuals_mlm/</link>
       <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/residuals_mlm/</guid>
+      <guid>http://localhost:1313/post/residuals_mlm/</guid>
       <description>&lt;p&gt;(MLM notes). Residuals are often used for model diagnostics or for spotting outliers in the data. For single-level models, these are merely the observed - predicted data (i.e., $y_i - \hat{y}_i$). However, for multilevel models, these are a bit more complicated to compute. Since we have two error terms (in this example), we will have two sets of residuals. For example, a multilevel model with a single predictor at level one can be written as:&lt;/p&gt;
 $$y_{ij} = \gamma_{00} + \gamma_{01}x_{ij} + u_{0j} + r_{ij}$$&lt;p&gt;
 The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be normally distributed with a mean of 0 and variance of $\tau_{00}$ or $\mathcal{N}\sim(0, \tau_{00})$.&lt;/p&gt;
@@ -5775,7 +5784,7 @@ The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be nor
                /post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp 400w,
                /post/residuals_mlm/unnamed-chunk-1-1_hu_428b99cb8edbbc2.webp 760w,
                /post/residuals_mlm/unnamed-chunk-1-1_hu_28a467643da43829.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp&#34;
+               src=&#34;http://localhost:1313/post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -5937,7 +5946,7 @@ The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be nor
                /post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp 400w,
                /post/residuals_mlm/unnamed-chunk-11-1_hu_2db523d52d9cff62.webp 760w,
                /post/residuals_mlm/unnamed-chunk-11-1_hu_167e45d12bd7e4e8.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp&#34;
+               src=&#34;http://localhost:1313/post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -5986,41 +5995,41 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>The impact of restorative practices on the use of out-of-school suspensions: Results from a cluster randomized controlled trial</title>
-      <link>http://localhost:65084/publication/journal-article/test3/huang-impact-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-impact-2023/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/huang-impact-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-impact-2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The relationship between teacher stress and job satisfaction as moderated by coping</title>
-      <link>http://localhost:65084/publication/journal-article/test3/woods-relationship-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/woods-relationship-2023/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/woods-relationship-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/woods-relationship-2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Usability and social consequences of the early identification system as a universal screener for social, emotional, and behavioral risks.</title>
-      <link>http://localhost:65084/publication/journal-article/test3/herman-usability-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/herman-usability-2023/</link>
       <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/herman-usability-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/herman-usability-2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Missouri Prevention Science Institute</title>
-      <link>http://localhost:65084/project/mpsi/</link>
+      <link>http://localhost:1313/project/mpsi/</link>
       <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/project/mpsi/</guid>
+      <guid>http://localhost:1313/project/mpsi/</guid>
       <description>&lt;p&gt;The Missouri Prevention Science Institute (MPSI) brings community members and researchers together to help schools and families apply techniques that promote social and academic success. Through community outreach, the institute&amp;rsquo;s staff provides parent training and teacher consultation services&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>🎉 Job postings 2022-2023</title>
-      <link>http://localhost:65084/post/jobs-2023/</link>
+      <link>http://localhost:1313/post/jobs-2023/</link>
       <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/jobs-2023/</guid>
+      <guid>http://localhost:1313/post/jobs-2023/</guid>
       <description>&lt;p&gt;&lt;strong&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of Feb 2023.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Postings for (2022-2023):&lt;/p&gt;
 &lt;ul&gt;
@@ -6050,34 +6059,34 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>Accounting for heteroskedasticity resulting from between-group differences in multilevel models</title>
-      <link>http://localhost:65084/publication/journal-article/test3/huang-accounting-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-accounting-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/huang-accounting-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-accounting-2023/</guid>
       <description>&lt;p&gt;Robust standard errors for multilevel models.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Advanced categorical data analysis in prevention science</title>
-      <link>http://localhost:65084/publication/journal-article/test3/wiedermann-advanced-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/wiedermann-advanced-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/wiedermann-advanced-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/wiedermann-advanced-2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>In-school and out-of-school suspension: Behavioral and psychological outcomes in a predominately black sample of middle school students</title>
-      <link>http://localhost:65084/publication/journal-article/test3/cohen-school-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/cohen-school-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/cohen-school-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/cohen-school-2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Practical multilevel modeling using R</title>
-      <link>http://localhost:65084/publication/book/huang-practical-2023/</link>
+      <link>http://localhost:1313/publication/book/huang-practical-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/book/huang-practical-2023/</guid>
+      <guid>http://localhost:1313/publication/book/huang-practical-2023/</guid>
       <description>&lt;p&gt;Check out the latest info on the book &lt;a href=&#34;https://francish.net/MLMusingR/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;sample chapters&lt;/li&gt;
@@ -6094,26 +6103,26 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>Teacher Perceptions of School Resource Officers and Associations with School Safety</title>
-      <link>http://localhost:65084/publication/journal-article/test3/maeng-teacher-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/maeng-teacher-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/maeng-teacher-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/maeng-teacher-2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using robust standard errors for the analysis of binary outcomes with a small number of clusters</title>
-      <link>http://localhost:65084/publication/journal-article/test3/huang-using-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/huang-using-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</guid>
       <description>&lt;p&gt;CR2 plug in for SPSS can be downloaded from: &lt;a href=&#34;https://github.com/flh3/CR2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Fun with residuals</title>
-      <link>http://localhost:65084/post/residuals/</link>
+      <link>http://localhost:1313/post/residuals/</link>
       <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/residuals/</guid>
+      <guid>http://localhost:1313/post/residuals/</guid>
       <description>&lt;h2 id=&#34;random-stuff-ii-plotting-residuals&#34;&gt;Random stuff II: Plotting residuals&lt;/h2&gt;
 &lt;p&gt;I was poking around my old teaching files and I found an old file and I wasn&amp;rsquo;t sure what it was:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/main/Stefanski_2007/mizzo_1_data_yx1x5.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -6154,7 +6163,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp 400w,
                /post/residuals/unnamed-chunk-3-1_hu_551e92a96ff14f04.webp 760w,
                /post/residuals/unnamed-chunk-3-1_hu_5d481a04fc9b0af8.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
+               src=&#34;http://localhost:1313/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6175,17 +6184,17 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>Interaction of socioeconomic status and class relations on reading</title>
-      <link>http://localhost:65084/publication/journal-article/2022/olsen-interaction-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/olsen-interaction-2022/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/olsen-interaction-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/olsen-interaction-2022/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using FIML in R for Multilevel Data</title>
-      <link>http://localhost:65084/post/mi_pt3/</link>
+      <link>http://localhost:1313/post/mi_pt3/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/mi_pt3/</guid>
+      <guid>http://localhost:1313/post/mi_pt3/</guid>
       <description>&lt;h2 id=&#34;using-fiml-in-r-with-multilevel-data-part-3&#34;&gt;Using FIML in R with Multilevel Data (Part 3)&lt;/h2&gt;
 &lt;p&gt;A recurring question that I get asked is how to use full information maximum likelihood (FIML) when performing a multiple regression analysis BUT this time, accounting for nesting or clustered data structure. For this example, I use the the &lt;code&gt;leadership&lt;/code&gt; dataset in the &lt;code&gt;mitml&lt;/code&gt; package (Grund et al., 2021). We&amp;rsquo;ll also use &lt;code&gt;lavaan&lt;/code&gt; (Roseel, 2012) to estimate the two-level model. The chapter of Grund et al. (2019) is available &lt;a href=&#34;https://simongrund1.github.io/publications/2019-chap-apa/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. We&amp;rsquo;ll replicate the &lt;code&gt;Mplus&lt;/code&gt; FIML results in Table 16.3 in the chapter and is shown below:&lt;/p&gt;
 &lt;p&gt;
@@ -6210,7 +6219,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp 400w,
                /post/mi_pt3/table_grund_hu_bf963bf355d4e4b2.webp 760w,
                /post/mi_pt3/table_grund_hu_d949c2b383c220e8.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
+               src=&#34;http://localhost:1313/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
                width=&#34;511&#34;
                height=&#34;292&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6255,7 +6264,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp 400w,
                /post/mi_pt3/unnamed-chunk-1-1_hu_59cbb56c16052742.webp 760w,
                /post/mi_pt3/unnamed-chunk-1-1_hu_2325058c725a745e.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp&#34;
+               src=&#34;http://localhost:1313/post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6582,7 +6591,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp 400w,
                /post/mi_pt3/table_grund_hu_bf963bf355d4e4b2.webp 760w,
                /post/mi_pt3/table_grund_hu_d949c2b383c220e8.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
+               src=&#34;http://localhost:1313/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
                width=&#34;511&#34;
                height=&#34;292&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6597,9 +6606,9 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>Robust standard errors in mixed models</title>
-      <link>http://localhost:65084/post/2022_cr2/</link>
+      <link>http://localhost:1313/post/2022_cr2/</link>
       <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2022_cr2/</guid>
+      <guid>http://localhost:1313/post/2022_cr2/</guid>
       <description>&lt;p&gt;In a recent article in &lt;em&gt;Multivariate Behavioral Research&lt;/em&gt;, we (Huang, Wiedermann, and Zhang; HWZ; doi: 10.1080/00273171.2022.2077290) discuss a robust standard error that can be used with mixed models that accounts for violations of homogeneity. Note that these robust standard errors have been around for years though are not always provided in statistical software. These can also be computed using the &lt;code&gt;CR2&lt;/code&gt; package or the &lt;code&gt;clubSandwich&lt;/code&gt; package. This page shows how to compute the traditional Liang and Zeger (1986) robust standard errors (CR0) and the CR2 estimator- see Bell and McCaffrey (2002) as well as McCaffrey, Bell, and Botts (2001) (BM and MBB).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Cluster robust standard errors can also be computed using our &lt;strong&gt;SPSS&lt;/strong&gt; add-on available here: &lt;a href=&#34;https://github.com/flh3/CR2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2&lt;/a&gt;. This doesn&amp;rsquo;t work though with mixed models.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;d1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rio&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;import&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;https://github.com/flh3/evalclass/raw/main/ccrem/ccrem.sav&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -6736,7 +6745,7 @@ X_{c}$$&lt;p&gt;For both CR0 and CR2, we need the residuals&amp;hellip;&lt;/p&gt
                /post/2022_cr2/empirical_mixed_hu_9021bc12661ca61.webp 400w,
                /post/2022_cr2/empirical_mixed_hu_672b658016c02053.webp 760w,
                /post/2022_cr2/empirical_mixed_hu_8131f0f97ef5e72a.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/2022_cr2/empirical_mixed_hu_9021bc12661ca61.webp&#34;
+               src=&#34;http://localhost:1313/post/2022_cr2/empirical_mixed_hu_9021bc12661ca61.webp&#34;
                width=&#34;457&#34;
                height=&#34;206&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6871,18 +6880,18 @@ where $U_c$ is an upper triangular matrix such that $V_c = U_c&#39;U_c$ so that 
     
     <item>
       <title>Student perceptions of school resource officers and threat reporting</title>
-      <link>http://localhost:65084/publication/journal-article/test2/crichlow-ball-student-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/crichlow-ball-student-2022/</link>
       <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/crichlow-ball-student-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/crichlow-ball-student-2022/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Logistic regression from scratch (Newton Raphson and Fisher Scoring)</title>
-      <link>http://localhost:65084/post/logistic-regression-fisher-scoring/</link>
+      <link>http://localhost:1313/post/logistic-regression-fisher-scoring/</link>
       <pubDate>Tue, 15 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/logistic-regression-fisher-scoring/</guid>
+      <guid>http://localhost:1313/post/logistic-regression-fisher-scoring/</guid>
       <description>&lt;h2&gt;&lt;/h2&gt;
 &lt;p&gt;In an earlier &lt;a href=&#34;../logistic-regression-using-matrices/&#34;&gt;post&lt;/a&gt;, I had shown this using iteratively reweighted least squares (IRLS). This is just an alternative method using Newton Raphson and the Fisher scoring algorithm. For further details, you can look here as &lt;a href=&#34;http://www.jtrive.com/estimating-logistic-regression-coefficents-from-scratch-r-version.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;well&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MLMusingR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -7009,25 +7018,25 @@ where $U_c$ is an upper triangular matrix such that $V_c = U_c&#39;U_c$ so that 
     
     <item>
       <title>Examining the validity of the Early Identification System – Student Version for screening in an elementary school sample</title>
-      <link>http://localhost:65084/publication/journal-article/2022/reinke-examining-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/reinke-examining-2022/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/reinke-examining-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/reinke-examining-2022/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Alternatives to logistic regression models in experimental studies</title>
-      <link>http://localhost:65084/publication/journal-article/2022/huang-alternatives-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-alternatives-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/huang-alternatives-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-alternatives-2022/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Analyzing cross-sectionally clustered data using generalized estimating equations</title>
-      <link>http://localhost:65084/publication/journal-article/2022/huang-analyzing-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/huang-analyzing-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</guid>
       <description>&lt;p&gt;As of 2024.10.03, the most read article on JEBS (for the last 6 months)!&lt;/p&gt;
 &lt;p&gt;
 
@@ -7051,7 +7060,7 @@ where $U_c$ is an upper triangular matrix such that $V_c = U_c&#39;U_c$ so that 
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp 400w,
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_c2fa98b20b25e821.webp 760w,
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_bc691bc4ace80636.webp 1200w&#34;
-               src=&#34;http://localhost:65084/publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp&#34;
+               src=&#34;http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp&#34;
                width=&#34;760&#34;
                height=&#34;536&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -7076,59 +7085,59 @@ where $U_c$ is an upper triangular matrix such that $V_c = U_c&#39;U_c$ so that 
     
     <item>
       <title>Evaluation of a bibliotherapy-based stress intervention for teachers</title>
-      <link>http://localhost:65084/publication/journal-article/2022/eddy-evaluation-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/eddy-evaluation-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/eddy-evaluation-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/eddy-evaluation-2022/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using cluster-robust standard errors when analyzing group-randomized trials with few clusters</title>
-      <link>http://localhost:65084/publication/journal-article/2022/huang-using-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/huang-using-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</guid>
       <description>&lt;p&gt;The SPSS version can be accessed here: &lt;a href=&#34;https://github.com/flh3/CR2/tree/master/SPSS&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2/tree/master/SPSS&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Individual and school predictors of teacher stress, coping, and wellness during the COVID-19 pandemic</title>
-      <link>http://localhost:65084/publication/journal-article/2022/herman-individual-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/herman-individual-2021/</link>
       <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/herman-individual-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/herman-individual-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The association between student socioeconomic status and student–teacher relationships on math achievement</title>
-      <link>http://localhost:65084/publication/journal-article/2022/olsen-association-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/olsen-association-2021/</link>
       <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/olsen-association-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/olsen-association-2021/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Does worrying matter? Priming and attitudes towards mask wearing in a midwestern state</title>
-      <link>http://localhost:65084/publication/journal-article/2022/huang-does-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-does-2021/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/huang-does-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-does-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>High school graduation outcomes of student threat assessment</title>
-      <link>http://localhost:65084/publication/journal-article/2022/stohlman-high-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/stohlman-high-2021/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/stohlman-high-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/stohlman-high-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using REML and ML for estimation</title>
-      <link>http://localhost:65084/post/likelihood_2022/</link>
+      <link>http://localhost:1313/post/likelihood_2022/</link>
       <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/likelihood_2022/</guid>
+      <guid>http://localhost:1313/post/likelihood_2022/</guid>
       <description>&lt;p&gt;&lt;em&gt;More notes to self&amp;hellip;&lt;/em&gt; Obtaining estimates of the unknown parameters in multilevel models is often done by optimizing a likelihood function. The estimates are the values that maximize the likelihood function given certain distributional assumptions.&lt;/p&gt;
 &lt;p&gt;The likelihood function differs depending on whether maximum (ML) or restricted maximum (REML) likelihood is used. For ML, the log likelihood function to be maximized is:&lt;/p&gt;
 $$
@@ -7280,9 +7289,9 @@ $$&lt;p&gt;Now there are four terms to add together (the first and last terms di
     
     <item>
       <title>Extracting the V matrix for MLMs</title>
-      <link>http://localhost:65084/post/extracting-v-matrix/</link>
+      <link>http://localhost:1313/post/extracting-v-matrix/</link>
       <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/extracting-v-matrix/</guid>
+      <guid>http://localhost:1313/post/extracting-v-matrix/</guid>
       <description>&lt;p&gt;&lt;em&gt;Notes to self (and anyone else who might find this useful).&lt;/em&gt; With the general linear mixed models (to simplify, I am just omitting super/subscripts):&lt;/p&gt;
 $$Y = X\beta + Zu + e$$&lt;p&gt;
 where we assume $u \sim MVN(0, G)$ and $e \sim MVN(0, R)$. $V$ is:&lt;/p&gt;
@@ -7482,7 +7491,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_eae07adfdeb3e827.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-8-1_hu_2d1b1a4d2138989d.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp&#34;
+               src=&#34;http://localhost:1313/post/extracting-v-matrix/unnamed-chunk-8-1_hu_18d52d1fbd39d4d7.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -7524,7 +7533,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_e761401fc7920b4d.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-10-1_hu_dd7ca869956a71dc.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp&#34;
+               src=&#34;http://localhost:1313/post/extracting-v-matrix/unnamed-chunk-10-1_hu_167a3343b26ed0d6.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -7603,7 +7612,7 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp 400w,
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_6a8a960aa886e209.webp 760w,
                /post/extracting-v-matrix/unnamed-chunk-15-1_hu_75cc487881a1151f.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp&#34;
+               src=&#34;http://localhost:1313/post/extracting-v-matrix/unnamed-chunk-15-1_hu_b8a1e1573bfd75ba.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -7616,9 +7625,9 @@ $$\hat{\beta} = (X^TV^{-1}X)^{-1}X^TV^{-1}y$$&lt;p&gt;.&lt;/p&gt;
     
     <item>
       <title>🎉 Analyzing clustered data using GEEs</title>
-      <link>http://localhost:65084/post/gee/</link>
+      <link>http://localhost:1313/post/gee/</link>
       <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/gee/</guid>
+      <guid>http://localhost:1313/post/gee/</guid>
       <description>&lt;p&gt;I show this in a recent JEBS article on using Generalized Estimating Equations (GEEs). Shown below is some annotated syntax and examples.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Huang, F. (2021). Analyzing cross-sectionally clustered data using generalized estimating equations. &lt;em&gt;Journal of Educational and Behavioral Statistics.&lt;/em&gt; doi: 10.3102/10769986211017480&lt;/p&gt;&lt;/blockquote&gt;
@@ -8047,58 +8056,58 @@ So we need to get the residuals per group&lt;/p&gt;
     
     <item>
       <title>Advancing diversity, equity, and inclusion in school psychology: Be the change</title>
-      <link>http://localhost:65084/publication/journal-article/test3/jimerson-advancing-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/jimerson-advancing-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test3/jimerson-advancing-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/jimerson-advancing-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Alternatives to logistic regression models when analyzing cluster randomized trials with binary outcomes</title>
-      <link>http://localhost:65084/publication/journal-article/alternatives/huang-alternatives-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/alternatives/huang-alternatives-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>An investigation of the psychometric properties of the Early Identification System–student report in a middle school sample</title>
-      <link>http://localhost:65084/publication/journal-article/2022/herman-investigation-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/herman-investigation-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2022/herman-investigation-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/herman-investigation-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Authoritative school climate and out-of-school suspensions: Results from a nationally-representative survey of 10th grade students</title>
-      <link>http://localhost:65084/publication/journal-article/2020/huang-authoritative-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/2020/huang-authoritative-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2020/huang-authoritative-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2020/huang-authoritative-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Confirmatory factor structure and predictive validity of the Early Identification System—Student Report in a community sample of high school students</title>
-      <link>http://localhost:65084/publication/journal-article/2020/thompson-confirmatory-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/2020/thompson-confirmatory-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2020/thompson-confirmatory-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2020/thompson-confirmatory-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Teacher support for zero tolerance is associated with higher suspension rates and lower feelings of safety</title>
-      <link>http://localhost:65084/publication/journal-article/test2/huang-teacher-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-teacher-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/huang-teacher-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-teacher-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>🎉 Using maximum likelihood</title>
-      <link>http://localhost:65084/post/ml/</link>
+      <link>http://localhost:1313/post/ml/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/ml/</guid>
-      <description>&lt;script src=&#34;http://localhost:65084/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+      <guid>http://localhost:1313/post/ml/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;em&gt;Notes to self.&lt;/em&gt; Often, discussions related to maximum likelihood refer to (A) estimating parameters likely to have come from some (B) probability distribution (PD) by (C) maximizing a likelihood function (from Wikipedia).&lt;/p&gt;
 &lt;p&gt;In many cases, (A) is the unknown which we want to figure out (e.g., means, variances, regression coefficients). We make an assumption about the PD where the data come from and determine the likelihood or the log likelihood of observing the datum. Get the product of all the likelihoods (multiplicative) or the sum of the log likelihoods (additive) and you will get the total likelihood.&lt;/p&gt;
 &lt;p&gt;An example will help:&lt;/p&gt;
@@ -8244,26 +8253,26 @@ summary(t1)$coef&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Student threat assessment as an alternative to exclusionary discipline</title>
-      <link>http://localhost:65084/publication/journal-article/test2/maeng-student-2020/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/maeng-student-2020/</link>
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/maeng-student-2020/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/maeng-student-2020/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>The role of the perceptions of school climate and teacher victimization by students</title>
-      <link>http://localhost:65084/publication/journal-article/jiv/huang-role-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</link>
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/jiv/huang-role-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/jiv/huang-role-2017/</guid>
       <description></description>
     </item>
     
     <item>
       <title>🎉 Comparing coefficients across logistic regression models</title>
-      <link>http://localhost:65084/post/compare/</link>
+      <link>http://localhost:1313/post/compare/</link>
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/compare/</guid>
+      <guid>http://localhost:1313/post/compare/</guid>
       <description>&lt;p&gt;&lt;strong&gt;ROUGH NOTES&lt;/strong&gt;: &lt;span style=&#34;color: red;&#34;&gt;&lt;em&gt;[let me know if you spot any errors– there might be a couple!]&lt;/em&gt;&lt;/span&gt; Often, in randomized control trial where individuals are randomly assigned to treatment and control conditions, covariates are included to improve precision by reducing error and improving statistical power. However, when binary outcomes are used (e.g., patient recovers or not), there are several additional concerns that have gone unnoticed by many applied researchers.&lt;/p&gt;
 &lt;p&gt;Take a simulated example where our true model data generating process is (to keep things simple, the intercept is zero and the parameters are both set to 1):&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[log(\frac{p}{1 - p}) = 1 + 1 \times (tr) + 1 \times (x2)\]&lt;/span&gt;&lt;/p&gt;
@@ -8546,9 +8555,9 @@ stargazer(reduced.ols, full.ols,
     
     <item>
       <title>Prior problem behavior and suspensions: A replication</title>
-      <link>http://localhost:65084/post/prior-problem-behavior-and-suspensions-a-replication/</link>
+      <link>http://localhost:1313/post/prior-problem-behavior-and-suspensions-a-replication/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/prior-problem-behavior-and-suspensions-a-replication/</guid>
+      <guid>http://localhost:1313/post/prior-problem-behavior-and-suspensions-a-replication/</guid>
       <description>&lt;p&gt;This post accompanies the article (this was originally submitted as an Issue Brief which is why the Discussion section and Introduction are so short):&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Huang, F. (2020). Prior problem behaviors do not account for the racial suspension gap. Educational Researcher. Advance online publication.&lt;/p&gt;
@@ -10260,26 +10269,26 @@ print(k, type = &amp;quot;models&amp;quot;) #not cluster robust, just looking at
     
     <item>
       <title>Does teacher emotional exhaustion and efficacy predict student discipline sanctions?</title>
-      <link>http://localhost:65084/publication/journal-article/2020/eddy-does-2020/</link>
+      <link>http://localhost:1313/publication/journal-article/2020/eddy-does-2020/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2020/eddy-does-2020/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2020/eddy-does-2020/</guid>
       <description>&lt;p&gt;[School Psychology Review, article of the year]&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Prior problem behaviors do not account for the racial suspension gap</title>
-      <link>http://localhost:65084/publication/journal-article/huang-prior-2020/</link>
+      <link>http://localhost:1313/publication/journal-article/huang-prior-2020/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/huang-prior-2020/</guid>
+      <guid>http://localhost:1313/publication/journal-article/huang-prior-2020/</guid>
       <description></description>
     </item>
     
     <item>
       <title>🎉 Using FIML and MI in R</title>
-      <link>http://localhost:65084/post/mdata/</link>
+      <link>http://localhost:1313/post/mdata/</link>
       <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/mdata/</guid>
+      <guid>http://localhost:1313/post/mdata/</guid>
       <description>&lt;div id=&#34;using-fiml-in-r-part-2&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Using FIML in R (Part 2)&lt;/h2&gt;
 &lt;p&gt;A recurring question that I get asked is how to handle missing data when researchers are interested in performing a multiple regression analysis. There are so many excellent articles, books, and websites that discuss the theory and rationale behind what can be done. Often, what is recommended is to either use full information likelihood (FIML) or multiple imputation (MI). Many excellent articles explain in detail how these work. The purpose though of this post is to show &lt;em&gt;how&lt;/em&gt; (again) to just run these models in &lt;code&gt;R&lt;/code&gt; (the examples I show here are just for single-level data). I had already shown some of this before over &lt;a href=&#34;https://francish.netlify.com/post/01_missing/&#34;&gt;here&lt;/a&gt; though I am adding to those notes to show some comparability with Mplus results. I will use &lt;code&gt;lavaan&lt;/code&gt; for getting FIML results.&lt;/p&gt;
@@ -10518,25 +10527,25 @@ round(summary(pool(mi1)), 3)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>MANOVA: A procedure whose time has passed?</title>
-      <link>http://localhost:65084/publication/journal-article/2020/huang-manova-2020/</link>
+      <link>http://localhost:1313/publication/journal-article/2020/huang-manova-2020/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2020/huang-manova-2020/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2020/huang-manova-2020/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The relationship between school disciplinary resolutions with school climate and attitudes toward school</title>
-      <link>http://localhost:65084/publication/journal-article/2020/huang-relationship-2020/</link>
+      <link>http://localhost:1313/publication/journal-article/2020/huang-relationship-2020/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2020/huang-relationship-2020/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2020/huang-relationship-2020/</guid>
       <description></description>
     </item>
     
     <item>
       <title>🎉 Applied example for alternatives to logistic regression</title>
-      <link>http://localhost:65084/post/applied/</link>
+      <link>http://localhost:1313/post/applied/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/applied/</guid>
+      <guid>http://localhost:1313/post/applied/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Logistic regression is often used to analyze experiments with binary
 outcomes (e.g., pass vs fail) and binary predictors (e.g., treatment vs
@@ -10747,9 +10756,9 @@ Assessment, 27,&lt;/em&gt; 1484-1493. doi: &lt;a href=&#34;http://dx.doi.org/10.
     
     <item>
       <title>🎉 Principal Components Analysis using R</title>
-      <link>http://localhost:65084/post/pca_2020/</link>
+      <link>http://localhost:1313/post/pca_2020/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/pca_2020/</guid>
+      <guid>http://localhost:1313/post/pca_2020/</guid>
       <description>&lt;p style=&#34;color:red&#34;&gt;
 [Rough notes: Let me know if there are corrections]
 &lt;/p&gt;
@@ -11178,10 +11187,10 @@ cor(manual, fscores) #almost perfect!&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
     
     <item>
       <title>🎉 Why does centering reduce multicollinearity?</title>
-      <link>http://localhost:65084/post/centering/</link>
+      <link>http://localhost:1313/post/centering/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/centering/</guid>
-      <description>&lt;script src=&#34;http://localhost:65084/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+      <guid>http://localhost:1313/post/centering/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;p&gt;Centering often reduces the correlation between the individual variables (x1, x2) and the product term (x1 &lt;span class=&#34;math inline&#34;&gt;\(\times\)&lt;/span&gt; x2). In the example below, r(x1, x1x2) = .80. With the centered variables, r(x1c, x1x2c) = -.15.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;NOTE:&lt;/em&gt; For examples of when centering may &lt;strong&gt;not&lt;/strong&gt; reduce multicollinearity but may make it worse, see &lt;a href=&#34;https://pubmed.ncbi.nlm.nih.gov/31488914/&#34;&gt;EPM article&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
@@ -11263,9 +11272,9 @@ mm %&amp;gt;% ggplot(aes(x = r)) +
     
     <item>
       <title>Poisson and Negative Binomial Regression using R</title>
-      <link>http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/</link>
+      <link>http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/</link>
       <pubDate>Tue, 21 May 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/</guid>
+      <guid>http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/</guid>
       <description>&lt;p&gt;A few years ago, I  published an article on using Poisson, negative binomial, and zero inflated models in analyzing count data (see &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/15388220.2012.682010&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pick Your Poisson&lt;/a&gt;). The abstract of the article indicates:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;School violence research is often concerned with infrequently occurring events such as counts of the number of bullying incidents or fights a student may experience. Analyzing count data using ordinary least squares regression may produce improbable predicted values, and as a result of regression assumption violations, result in higher Type I errors. Count data are optimally analyzed using Poisson-based regression techniques such as Poisson or negative binomial regression. We apply these techniques to an example study of bullying in a statewide sample of 290 high schools and explain how Poisson-based analyses, although less familiar to many researchers, can produce findings that are more accurate and reliable, and are easier to interpret in real-world contexts.&lt;/p&gt;&lt;/blockquote&gt;
@@ -11354,7 +11363,7 @@ mm %&amp;gt;% ggplot(aes(x = r)) +
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_7a364430517e3992.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_a299d4a8a001a464.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp&#34;
+               src=&#34;http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-3-1_hu_10f0263069df04e8.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11720,7 +11729,7 @@ With a Poisson distribution, the mean and the variances are both equal ($\mu = \
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_3be059cd57a9f9d2.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_902e2127e8cd0b1d.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp&#34;
+               src=&#34;http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-7-1_hu_665f6da976c8131a.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11833,7 +11842,7 @@ With a Poisson distribution, the mean and the variances are both equal ($\mu = \
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_f0ce2e207d87b939.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_223a3143fc375970.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp&#34;
+               src=&#34;http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-9-1_hu_b47ec7bda15f64fb.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -11932,7 +11941,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_e95e543cda7cee89.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_ec63239498e0e1a1.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp&#34;
+               src=&#34;http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-12-1_hu_851095bf9d6a7c0a.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -12027,7 +12036,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_adb155b5da58cfb1.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_2dd82166471c1cba.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp&#34;
+               src=&#34;http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-13-1_hu_30f55f11744adadb.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -12067,7 +12076,7 @@ Run the models:&lt;/p&gt;
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp 400w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_148e93479cb1d9f.webp 760w,
                /post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_53a0d3dcfb62baac.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp&#34;
+               src=&#34;http://localhost:1313/post/poisson-and-negative-binomial-regression-using-r/unnamed-chunk-14-1_hu_9c75e9109de6e770.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -12097,9 +12106,9 @@ Run the models:&lt;/p&gt;
     
     <item>
       <title>Correct standard errors?</title>
-      <link>http://localhost:65084/post/correct-standard-errors/</link>
+      <link>http://localhost:1313/post/correct-standard-errors/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/correct-standard-errors/</guid>
+      <guid>http://localhost:1313/post/correct-standard-errors/</guid>
       <description>&lt;p&gt;The other day in class, while talking about instances (e.g., analyzing
 clustered data or heteroskedastic residuals) where adjustments are
 required to the standard errors of a regression model, a student asked:
@@ -12161,10 +12170,10 @@ plot(x1, rstudent(m1), ylab = &#39;Studentized residuals&#39;) #classic fan spre
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp 400w,
-               /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_387649c8cbd984b9.webp 760w,
-               /post/correct-standard-errors/img/unnamed-chunk-1-1_hu_a45b3d07d59a75b0.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp&#34;
+               /post/2019-correctse/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp 400w,
+               /post/2019-correctse/img/unnamed-chunk-1-1_hu_387649c8cbd984b9.webp 760w,
+               /post/2019-correctse/img/unnamed-chunk-1-1_hu_a45b3d07d59a75b0.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/2019-correctse/img/unnamed-chunk-1-1_hu_33202dee3a650c70.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -12237,10 +12246,10 @@ abline(v = 3, col = &#39;red&#39;)
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp 400w,
-               /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_7f5b53136d6baf4d.webp 760w,
-               /post/correct-standard-errors/img/unnamed-chunk-3-1_hu_2604a16ba99eb863.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp&#34;
+               /post/2019-correctse/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp 400w,
+               /post/2019-correctse/img/unnamed-chunk-3-1_hu_7f5b53136d6baf4d.webp 760w,
+               /post/2019-correctse/img/unnamed-chunk-3-1_hu_2604a16ba99eb863.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/2019-correctse/img/unnamed-chunk-3-1_hu_8058a23a5257a635.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -12297,10 +12306,10 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
 &lt;figure  &gt;
   &lt;div class=&#34;flex justify-center	&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_119343749df1c237.webp 400w,
-               /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_c0c1580489a6d469.webp 760w,
-               /post/correct-standard-errors/img/unnamed-chunk-5-1_hu_307867fb3fd9af38.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/correct-standard-errors/img/unnamed-chunk-5-1_hu_119343749df1c237.webp&#34;
+               /post/2019-correctse/img/unnamed-chunk-5-1_hu_119343749df1c237.webp 400w,
+               /post/2019-correctse/img/unnamed-chunk-5-1_hu_c0c1580489a6d469.webp 760w,
+               /post/2019-correctse/img/unnamed-chunk-5-1_hu_307867fb3fd9af38.webp 1200w&#34;
+               src=&#34;http://localhost:1313/post/2019-correctse/img/unnamed-chunk-5-1_hu_119343749df1c237.webp&#34;
                width=&#34;672&#34;
                height=&#34;480&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -12312,26 +12321,26 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
     
     <item>
       <title>Student and teacher perceptions on student-teacher relationship quality: A middle school perspective</title>
-      <link>http://localhost:65084/publication/journal-article/test2/prewett-student-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/prewett-student-2019/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/prewett-student-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/prewett-student-2019/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>An investigation of the psychometric properties of the Early Identification System–Student Report</title>
-      <link>http://localhost:65084/publication/journal-article/2019/huang-investigation-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/2019/huang-investigation-2019/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2019/huang-investigation-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2019/huang-investigation-2019/</guid>
       <description></description>
     </item>
     
     <item>
       <title>School teasing and bullying after the presidential election</title>
-      <link>http://localhost:65084/publication/journal-article/test2/huang-school-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-school-2019/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/huang-school-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-school-2019/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;After 6 days of its release, the article was the third most read article in Educational Researcher (out of 707).&lt;/li&gt;
 &lt;li&gt;Study was in the top 5% of all research outputs scored by &lt;a href=&#34;https://sage.altmetric.com/details/53740219&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Altmetric&lt;/a&gt;.&lt;/li&gt;
@@ -12356,35 +12365,35 @@ ggplot(dat, aes(x = se, group = gr, col = factor(gr))) +
     
     <item>
       <title>School threat assessment versus suicide assessment: Statewide prevalence and case characteristics</title>
-      <link>http://localhost:65084/publication/journal-article/test2/burnette-school-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/burnette-school-2019/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/burnette-school-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/burnette-school-2019/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Teacher job satisfaction by principal support and teacher cooperation: Results from the Schools and Staffing Survey</title>
-      <link>http://localhost:65084/publication/journal-article/test2/olsen-teacher-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/olsen-teacher-2019/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/olsen-teacher-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/olsen-teacher-2019/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Understanding family–school engagement across and within elementary- and middle-school contexts</title>
-      <link>http://localhost:65084/publication/journal-article/2019/smith-understanding-2019/</link>
+      <link>http://localhost:1313/publication/journal-article/2019/smith-understanding-2019/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2019/smith-understanding-2019/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2019/smith-understanding-2019/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Note on Robust Standard Errors</title>
-      <link>http://localhost:65084/post/note-on-robust-standard-errors/</link>
+      <link>http://localhost:1313/post/note-on-robust-standard-errors/</link>
       <pubDate>Sun, 04 Nov 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/note-on-robust-standard-errors/</guid>
+      <guid>http://localhost:1313/post/note-on-robust-standard-errors/</guid>
       <description>&lt;p&gt;Illustration showing different flavors of robust standard errors. Load
 in library, dataset, and recode. Do not really need to dummy code but
 may make making the &lt;strong&gt;X&lt;/strong&gt; matrix easier. Using the High School &amp;amp; Beyond
@@ -13278,9 +13287,9 @@ Finally, the multiway vcv is A + B - C.&lt;/p&gt;
     
     <item>
       <title>Multilevel CFA (MLCFA) in R, part 2</title>
-      <link>http://localhost:65084/post/mlcfa/</link>
+      <link>http://localhost:1313/post/mlcfa/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/mlcfa/</guid>
+      <guid>http://localhost:1313/post/mlcfa/</guid>
       <description>&lt;p&gt;A while back, I wrote a note about how to conduct a &lt;a href=&#34;https://github.com/flh3/mcfa/blob/main/MCFAinRHUANG.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;multilevel
 confirmatory factor analysis (MLCFA) in
 R&lt;/a&gt;. Part of the
@@ -13334,7 +13343,7 @@ head(raw)
                /post/mlcfa/tab1_hu_fdedfdfbca4547a4.webp 400w,
                /post/mlcfa/tab1_hu_5c01dafa97f1bec5.webp 760w,
                /post/mlcfa/tab1_hu_a42e806942eec3a6.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mlcfa/tab1_hu_fdedfdfbca4547a4.webp&#34;
+               src=&#34;http://localhost:1313/post/mlcfa/tab1_hu_fdedfdfbca4547a4.webp&#34;
                width=&#34;733&#34;
                height=&#34;271&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -13411,7 +13420,7 @@ x$icc #view intraclass correlation (ICCs) of the six variables
                /post/mlcfa/fig2_hu_ff5cef18c1e38bf3.webp 400w,
                /post/mlcfa/fig2_hu_d716fdb48797bdde.webp 760w,
                /post/mlcfa/fig2_hu_aa21bb9bf9900825.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/mlcfa/fig2_hu_ff5cef18c1e38bf3.webp&#34;
+               src=&#34;http://localhost:1313/post/mlcfa/fig2_hu_ff5cef18c1e38bf3.webp&#34;
                width=&#34;760&#34;
                height=&#34;474&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -13759,9 +13768,9 @@ using &lt;code&gt;lavaan&lt;/code&gt; and WLSMV.&lt;/p&gt;
     
     <item>
       <title>🎉 Simulating two level data</title>
-      <link>http://localhost:65084/post/sim2data/</link>
+      <link>http://localhost:1313/post/sim2data/</link>
       <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/sim2data/</guid>
+      <guid>http://localhost:1313/post/sim2data/</guid>
       <description>
 
 
@@ -13899,9 +13908,9 @@ ols1 &amp;lt;- lm(y ~ l2 + l1, data = dat)
     
     <item>
       <title>🧠 Difference between correlation and covariance matrices</title>
-      <link>http://localhost:65084/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</link>
+      <link>http://localhost:1313/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</link>
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</guid>
+      <guid>http://localhost:1313/post/2018-06-16-difference-between-variance-covariance-and-correlation-matrix/</guid>
       <description>&lt;h2 id=&#34;variancecovariance&#34;&gt;Variance/Covariance&lt;/h2&gt;
 &lt;p&gt;To start off, the sample variance formula is:&lt;/p&gt;
 $$s^2 = \frac{\sum_{i=1}^{n}(x_i - \overline{x})^2} {n - 1 }$$&lt;p&gt;First of all, $x - \overline{x}$ is a deviation score (deviation from
@@ -14085,18 +14094,18 @@ covariance matrix if all you had is the correlation matrix?&lt;/p&gt;
     
     <item>
       <title>Multilevel modeling myths</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-multilevel-2018-1/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018-1/</link>
       <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-multilevel-2018-1/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018-1/</guid>
       <description>&lt;p&gt;Preprint available &lt;a href=&#34;05_Multilevel_myths_complete.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Instrumental variables within an SEM framework</title>
-      <link>http://localhost:65084/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</link>
+      <link>http://localhost:1313/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</link>
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</guid>
+      <guid>http://localhost:1313/post/iv2/2018-08-17-instrumental-variables-within-a-sem-framework/</guid>
       <description>&lt;p&gt;Earlier this year, I wrote an article on using &lt;a href=&#34;https://openpublishing.library.umass.edu/pare/article/id/1661/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;instrumental variables&lt;/a&gt; (IV) to analyze data from randomized experiments with imperfect compliance (read the manuscript for full details; link updated; it&amp;rsquo;s open access). In the article, I described the steps of IV estimation and the logic behind it.&lt;/p&gt;
 &lt;p&gt;The sample code using two stage least squares regression (the correct analysis) is shown below (see article for specifics):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ivreg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -14254,17 +14263,17 @@ is not path a x path b).&lt;/p&gt;&lt;/blockquote&gt;
     
     <item>
       <title>The relationship of school climate with out-of-school suspensions</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-relationship-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-relationship-2018/</link>
       <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-relationship-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-relationship-2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>🎉 Class Example- Standard Errors Too Small</title>
-      <link>http://localhost:65084/post/se/</link>
+      <link>http://localhost:1313/post/se/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/se/</guid>
+      <guid>http://localhost:1313/post/se/</guid>
       <description>&lt;p&gt;In our module on regression diagnostics, I mentioned 1) that at times (with clustered data) standard errors may be misestimated and may be too low, resulting in a greater chance of making a Type I error (i.e., claiming statistically significant results when they should not be). In our ANCOVA session, I also indicated that 2) covariates are helpful because they help to lower the (standard) error in the model and increase power. So, it sounds like we would like to have models with lower standard errors. However, there are cases when the standard error is estimated &lt;em&gt;lower&lt;/em&gt; than it should be (i.e., the standard error is &lt;em&gt;biased&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;Here’s an example– we have 30 schools with 20 student participants in each school. Fifteen schools are assigned to the treatment group (tr = 1) and 15 schools are assigned to the control (tr = 0) condition. The treatment is expected to improve reading achievement (Y). We also have a pre-test for each child (Ypre) which we can use as a covariate.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;### These next few lines create the simulated dataset
@@ -14404,9 +14413,9 @@ summ(mod1, cluster = &amp;#39;sid&amp;#39;, robust = T, digits = 3)&lt;/code&gt;
     
     <item>
       <title>🎉 Understanding instrumental variables</title>
-      <link>http://localhost:65084/post/iv/</link>
+      <link>http://localhost:1313/post/iv/</link>
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/iv/</guid>
+      <guid>http://localhost:1313/post/iv/</guid>
       <description>&lt;div id=&#34;instrumental-variables-itt-and-tot&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Instrumental variables, ITT, and TOT&lt;/h2&gt;
 &lt;p&gt;Based on:&lt;/p&gt;
@@ -14852,9 +14861,9 @@ summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
     
     <item>
       <title>Omitted Variable Bias (OVB) Example</title>
-      <link>http://localhost:65084/post/ovb/</link>
+      <link>http://localhost:1313/post/ovb/</link>
       <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/ovb/</guid>
+      <guid>http://localhost:1313/post/ovb/</guid>
       <description>&lt;h2 id=&#34;illustrates-why-ovb-is-an-issue&#34;&gt;Illustrates why OVB is an issue&lt;/h2&gt;
 &lt;p&gt;This issue plagues a lot of the analysis using secondary or observational data&lt;/p&gt;
 &lt;ul&gt;
@@ -14896,7 +14905,7 @@ summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
                /post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp 400w,
                /post/ovb/unnamed-chunk-2-1_hu_ee76ac9bf3af02dd.webp 760w,
                /post/ovb/unnamed-chunk-2-1_hu_9230742c251c79c7.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp&#34;
+               src=&#34;http://localhost:1313/post/ovb/unnamed-chunk-2-1_hu_7fb84d2965612f19.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -14997,7 +15006,7 @@ summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
                /post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp 400w,
                /post/ovb/unnamed-chunk-8-1_hu_5576bfd183feebdf.webp 760w,
                /post/ovb/unnamed-chunk-8-1_hu_8562130d4218bdc3.webp 1200w&#34;
-               src=&#34;http://localhost:65084/post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp&#34;
+               src=&#34;http://localhost:1313/post/ovb/unnamed-chunk-8-1_hu_e32e1a44c8547bd2.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -15039,85 +15048,85 @@ summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
     
     <item>
       <title>The effect of orthographic complexity on Spanish spelling in Grades 1–3</title>
-      <link>http://localhost:65084/publication/journal-article/2018/ford-effect-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/ford-effect-2018/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/ford-effect-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/ford-effect-2018/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>An examination of restorative interventions and racial equity in out-of-school suspensions</title>
-      <link>http://localhost:65084/publication/journal-article/2018/gregory-examination-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/gregory-examination-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/gregory-examination-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/gregory-examination-2018/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Bullying involvement, teacher-student relationships, and psychosocial outcomes</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-bullying-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-bullying-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-bullying-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-bullying-2018/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Do Black students misbehave more? Investigating the differential involvement hypothesis and out-of-school suspensions</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-black-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-black-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-black-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-black-2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Multilevel modeling and ordinary least squares regression:  How comparable are they?</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-multilevel-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-multilevel-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Racial/ethnic parity in disciplinary consequences using student threat assessment</title>
-      <link>http://localhost:65084/publication/journal-article/2018/cornell-racialethnic-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/cornell-racialethnic-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/cornell-racialethnic-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/cornell-racialethnic-2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The impact of validity screening on associations between self-reports of bullying victimization and student outcomes</title>
-      <link>http://localhost:65084/publication/journal-article/2018/jia-impact-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/jia-impact-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/jia-impact-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/jia-impact-2018/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Using cluster bootstrapping to analyze nested data with a few clusters</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-using-2018-1/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-using-2018-1/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-using-2018-1/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-using-2018-1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using instrumental variable estimation to evaluate randomized experiments with imperfect compliance</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-using-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-using-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-using-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-using-2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The toxicity of bullying by teachers and other school staff</title>
-      <link>http://localhost:65084/publication/journal-article/bullying/datta-toxicity-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/bullying/datta-toxicity-2017/</link>
       <pubDate>Fri, 01 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/bullying/datta-toxicity-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/bullying/datta-toxicity-2017/</guid>
       <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
   &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
@@ -15129,121 +15138,121 @@ summary(sem1)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
     
     <item>
       <title>Student Threat Assessment as a Standard School Safety Practice: Results From a Statewide Implementation Study.</title>
-      <link>http://localhost:65084/publication/journal-article/2018/cornell-student-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/cornell-student-2017/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/cornell-student-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/cornell-student-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Student Threat Assessment as a Standard School Safety Practice: Results From a Statewide Implementation Study.</title>
-      <link>http://localhost:65084/publication/journal-article/test2/cornell-student-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/cornell-student-2017/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/cornell-student-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/cornell-student-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Student attitudes and behaviors as explanations for the Black-White suspension gap</title>
-      <link>http://localhost:65084/publication/journal-article/test2/huang-student-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-student-2017/</link>
       <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/huang-student-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-student-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Racial/ethnic differences in perceptions of school climate and its association with student engagement and peer aggression</title>
-      <link>http://localhost:65084/publication/journal-article/konold-racialethnic-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/konold-racialethnic-2017/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/konold-racialethnic-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/konold-racialethnic-2017/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Question order affects the measurement of bullying victimization among middle school students</title>
-      <link>http://localhost:65084/publication/journal-article/huang-question-2016/</link>
+      <link>http://localhost:1313/publication/journal-article/huang-question-2016/</link>
       <pubDate>Sat, 01 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/huang-question-2016/</guid>
+      <guid>http://localhost:1313/publication/journal-article/huang-question-2016/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Aggressive attitudes and prevalence of bullying bystander behavior in middle school</title>
-      <link>http://localhost:65084/publication/journal-article/bullying/datta-aggressive-2016/</link>
+      <link>http://localhost:1313/publication/journal-article/bullying/datta-aggressive-2016/</link>
       <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/bullying/datta-aggressive-2016/</guid>
+      <guid>http://localhost:1313/publication/journal-article/bullying/datta-aggressive-2016/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Alternatives to multilevel modeling for the analysis of clustered data</title>
-      <link>http://localhost:65084/publication/journal-article/alternatives/huang-alternatives-2016/</link>
+      <link>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2016/</link>
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/alternatives/huang-alternatives-2016/</guid>
+      <guid>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2016/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Prevalence of aggressive attitudes and willingness to report threats in middle school</title>
-      <link>http://localhost:65084/publication/journal-article/bullying/millspaugh-prevalence-2015/</link>
+      <link>http://localhost:1313/publication/journal-article/bullying/millspaugh-prevalence-2015/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/bullying/millspaugh-prevalence-2015/</guid>
+      <guid>http://localhost:1313/publication/journal-article/bullying/millspaugh-prevalence-2015/</guid>
       <description></description>
     </item>
     
     <item>
       <title>School counselor use of peer nominations to identify victims of bullying</title>
-      <link>http://localhost:65084/publication/journal-article/test2/cornell-school-2015/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/cornell-school-2015/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/cornell-school-2015/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/cornell-school-2015/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Successive teacher expectation effects across the early school years</title>
-      <link>http://localhost:65084/publication/journal-article/test2/rubie-davies-successive-2014/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/rubie-davies-successive-2014/</link>
       <pubDate>Thu, 01 May 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/rubie-davies-successive-2014/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/rubie-davies-successive-2014/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>It takes a village: The effects of 10th grade college-going expectations of students, parents, and teachers four years later</title>
-      <link>http://localhost:65084/publication/journal-article/2018/gregory-it-2013/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/gregory-it-2013/</link>
       <pubDate>Sun, 01 Sep 2013 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/gregory-it-2013/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/gregory-it-2013/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>The differential effects of preschool: Evidence from Virginia</title>
-      <link>http://localhost:65084/publication/journal-article/test2/huang-differential-2012/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-differential-2012/</link>
       <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/test2/huang-differential-2012/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-differential-2012/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Is experience the best teacher? A multilevel analysis of teacher characteristics and student achievement in low performing schools</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-is-2009/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-is-2009/</link>
       <pubDate>Sat, 01 Aug 2009 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-is-2009/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-is-2009/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Corruption and educational outcomes: Two steps forward, one step back</title>
-      <link>http://localhost:65084/publication/journal-article/2018/huang-corruption-2008/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-corruption-2008/</link>
       <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2018/huang-corruption-2008/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-corruption-2008/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>

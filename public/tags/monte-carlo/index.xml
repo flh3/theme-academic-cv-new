@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Monte Carlo | FLH Website</title>
-    <link>http://localhost:65084/tags/monte-carlo/</link>
-      <atom:link href="http://localhost:65084/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/tags/monte-carlo/</link>
+      <atom:link href="http://localhost:57190/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
     <description>Monte Carlo</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 27 Oct 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Monte Carlo</title>
-      <link>http://localhost:65084/tags/monte-carlo/</link>
+      <link>http://localhost:57190/tags/monte-carlo/</link>
     </image>
     
     <item>
       <title>🖩 Logistic regression with matrices</title>
-      <link>http://localhost:65084/post/logreg_matrix/</link>
+      <link>http://localhost:57190/post/logreg_matrix/</link>
       <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/logreg_matrix/</guid>
+      <guid>http://localhost:57190/post/logreg_matrix/</guid>
       <description>
 
 
@@ -261,9 +261,9 @@ pv &amp;lt;- 2 * pt(-abs(z), df = Inf) #get the p values&lt;/code&gt;&lt;/pre&gt
     
     <item>
       <title>🎉 Simulating two level data</title>
-      <link>http://localhost:65084/post/sim2data/</link>
+      <link>http://localhost:57190/post/sim2data/</link>
       <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/post/sim2data/</guid>
+      <guid>http://localhost:57190/post/sim2data/</guid>
       <description>
 
 

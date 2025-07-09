@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Teacher Emotional Exhaustion | FLH Website</title>
-    <link>http://localhost:65084/tags/teacher-emotional-exhaustion/</link>
-      <atom:link href="http://localhost:65084/tags/teacher-emotional-exhaustion/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:57190/tags/teacher-emotional-exhaustion/</link>
+      <atom:link href="http://localhost:57190/tags/teacher-emotional-exhaustion/index.xml" rel="self" type="application/rss+xml" />
     <description>Teacher Emotional Exhaustion</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:65084/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Teacher Emotional Exhaustion</title>
-      <link>http://localhost:65084/tags/teacher-emotional-exhaustion/</link>
+      <link>http://localhost:57190/tags/teacher-emotional-exhaustion/</link>
     </image>
     
     <item>
       <title>Does teacher emotional exhaustion and efficacy predict student discipline sanctions?</title>
-      <link>http://localhost:65084/publication/journal-article/2020/eddy-does-2020/</link>
+      <link>http://localhost:57190/publication/journal-article/2020/eddy-does-2020/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65084/publication/journal-article/2020/eddy-does-2020/</guid>
+      <guid>http://localhost:57190/publication/journal-article/2020/eddy-does-2020/</guid>
       <description>&lt;p&gt;[School Psychology Review, article of the year]&lt;/p&gt;
 </description>
     </item>
