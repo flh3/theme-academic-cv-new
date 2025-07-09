@@ -35,7 +35,6 @@ sections:
       title: 📰 Updates
       subtitle: 'My subtitle'
       text: |-
-        <li> See you at AERA! (2025.04.20) 📣 
         <li> Due to the cancellation of several federally-funded contracts, our team has cancelled our PD on large scale assessments at AERA (sorry)
         <li> Finally updated my website! (2025.04.16) :v: 
   - block: markdown
