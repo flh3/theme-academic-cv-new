@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Large Scale Assessments | FLH Website</title>
-    <link>http://localhost:57190/tags/large-scale-assessments/</link>
-      <atom:link href="http://localhost:57190/tags/large-scale-assessments/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/large-scale-assessments/</link>
+      <atom:link href="http://localhost:1313/tags/large-scale-assessments/index.xml" rel="self" type="application/rss+xml" />
     <description>Large Scale Assessments</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 05 Jun 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Large Scale Assessments</title>
-      <link>http://localhost:57190/tags/large-scale-assessments/</link>
+      <link>http://localhost:1313/tags/large-scale-assessments/</link>
     </image>
     
     <item>
       <title>Plausible Values as Predictors</title>
-      <link>http://localhost:57190/post/2025_pv_rhs/</link>
+      <link>http://localhost:1313/post/2025_pv_rhs/</link>
       <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2025_pv_rhs/</guid>
+      <guid>http://localhost:1313/post/2025_pv_rhs/</guid>
       <description>&lt;p&gt;Although the &lt;code&gt;mixPV&lt;/code&gt; function was introduced as a way to analyze large
 scale assessments using multiple plausible values (PV), the function
 only works if the plausible values are used as the outcome (i.e., it is
@@ -99,9 +99,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
     
     <item>
       <title>Working with missing data in large-scale assessments (with plausible values)</title>
-      <link>http://localhost:57190/post/2025_lsa_mi/</link>
+      <link>http://localhost:1313/post/2025_lsa_mi/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2025_lsa_mi/</guid>
+      <guid>http://localhost:1313/post/2025_lsa_mi/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies
 the article:&lt;/p&gt;
@@ -466,9 +466,9 @@ modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#3
     
     <item>
       <title>Working with missing data in large-scale assessments (without plausible  values)</title>
-      <link>http://localhost:57190/post/2025_lsa_mi_a/</link>
+      <link>http://localhost:1313/post/2025_lsa_mi_a/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2025_lsa_mi_a/</guid>
+      <guid>http://localhost:1313/post/2025_lsa_mi_a/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (without &lt;strong&gt;plausible values&lt;/strong&gt;). This is Appendix
 A and accompanies the article:&lt;/p&gt;
@@ -944,26 +944,26 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
     
     <item>
       <title>Working with missing data in large-scale assessments</title>
-      <link>http://localhost:57190/publication/journal-article/2025/lsa-mi/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/lsa-mi/</link>
       <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2025/lsa-mi/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/lsa-mi/</guid>
       <description>&lt;p&gt;The article is open access. Additional syntax can also be seen &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. An updated, corrected version of the article can be accessed &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/MIwithLSA.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Reassessing weights in large-scale assessments and multilevel models</title>
-      <link>http://localhost:57190/publication/journal-article/2025/lsa-weights/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/lsa-weights/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2025/lsa-weights/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/lsa-weights/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Weights with Multilevel Models</title>
-      <link>http://localhost:57190/post/weights_2025/</link>
+      <link>http://localhost:1313/post/weights_2025/</link>
       <pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/weights_2025/</guid>
+      <guid>http://localhost:1313/post/weights_2025/</guid>
       <description>&lt;p&gt;This is an applied example regarding the use of weights in multilevel
 models when using large scale assessments. This is using the Germany
 TIMSS dataset. This accompanies the article:&lt;/p&gt;
@@ -1870,9 +1870,9 @@ level-1 weight only, they are (probably incorrect).&lt;/p&gt;
     
     <item>
       <title>Selecting the proper weights in LSAs with multilevel models</title>
-      <link>http://localhost:57190/post/2024_lsa/</link>
+      <link>http://localhost:1313/post/2024_lsa/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2024_lsa/</guid>
+      <guid>http://localhost:1313/post/2024_lsa/</guid>
       <description>&lt;p&gt;A common question with the use of large-scale assessments (LSAs) is related to the use of weights. Another issue is how to specify these weights properly.&lt;/p&gt;
 &lt;p&gt;Software such as SAS and Mplus, when specifying weights at two levels, require the use of conditional weights at level 1 if the level-2 weight is specified (or you can just use the level-2 weights alone; see Mang et al., 2021, see bottom part of this post).&lt;/p&gt;
 &lt;p&gt;To illustrate this using R (with the &lt;code&gt;mixPV&lt;/code&gt; function):&lt;/p&gt;
@@ -3149,9 +3149,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R (update)</title>
-      <link>http://localhost:57190/post/lsa2/</link>
+      <link>http://localhost:1313/post/lsa2/</link>
       <pubDate>Sat, 08 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/lsa2/</guid>
+      <guid>http://localhost:1313/post/lsa2/</guid>
       <description>&lt;p&gt;This is an update to:&lt;/p&gt;
 &lt;p&gt;Huang, F. (2024). Using plausible values when fitting multilevel models with large-scale assessment data using R. &lt;a href=&#34;https://largescaleassessmentsineducation.springeropen.com/articles/10.1186/s40536-024-00192-0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Large-scale Assessments in Education.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
@@ -3243,9 +3243,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Multilevel Modeling with Large-Scale International Databases Using HLM (Philadelphia)</title>
-      <link>http://localhost:57190/event/mlm_ph/</link>
+      <link>http://localhost:1313/event/mlm_ph/</link>
       <pubDate>Wed, 10 Apr 2024 13:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/event/mlm_ph/</guid>
+      <guid>http://localhost:1313/event/mlm_ph/</guid>
       <description>&lt;p&gt;
 
 
@@ -3268,7 +3268,7 @@ and type of scaling need to be specified:&lt;/p&gt;
                /event/mlm_ph/lecture_hu_993d7e4e9432b042.webp 400w,
                /event/mlm_ph/lecture_hu_391cd18ed58d733c.webp 760w,
                /event/mlm_ph/lecture_hu_243d7193e5c88939.webp 1200w&#34;
-               src=&#34;http://localhost:57190/event/mlm_ph/lecture_hu_993d7e4e9432b042.webp&#34;
+               src=&#34;http://localhost:1313/event/mlm_ph/lecture_hu_993d7e4e9432b042.webp&#34;
                width=&#34;760&#34;
                height=&#34;570&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -3281,9 +3281,9 @@ and type of scaling need to be specified:&lt;/p&gt;
     
     <item>
       <title>Using plausible values when fitting multilevel models with large-scale assessment data using R</title>
-      <link>http://localhost:57190/publication/journal-article/test3/huang-using-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2024/</link>
       <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/test3/huang-using-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2024/</guid>
       <description>&lt;p&gt;
 
 
@@ -3311,9 +3311,9 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>Using Plausible Values with Multilevel Models Using R</title>
-      <link>http://localhost:57190/post/lsa_1/</link>
+      <link>http://localhost:1313/post/lsa_1/</link>
       <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/lsa_1/</guid>
+      <guid>http://localhost:1313/post/lsa_1/</guid>
       <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
   &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;

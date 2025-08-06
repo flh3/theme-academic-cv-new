@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Poverty | FLH Website</title>
-    <link>http://localhost:57190/tags/poverty/</link>
-      <atom:link href="http://localhost:57190/tags/poverty/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/poverty/</link>
+      <atom:link href="http://localhost:1313/tags/poverty/index.xml" rel="self" type="application/rss+xml" />
     <description>Poverty</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Sep 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Poverty</title>
-      <link>http://localhost:57190/tags/poverty/</link>
+      <link>http://localhost:1313/tags/poverty/</link>
     </image>
     
     <item>
       <title>Interaction of socioeconomic status and class relations on reading</title>
-      <link>http://localhost:57190/publication/journal-article/2022/olsen-interaction-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/olsen-interaction-2022/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2022/olsen-interaction-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/olsen-interaction-2022/</guid>
       <description></description>
     </item>
     

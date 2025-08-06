@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Maximum Likelihood | FLH Website</title>
-    <link>http://localhost:57190/tags/maximum-likelihood/</link>
-      <atom:link href="http://localhost:57190/tags/maximum-likelihood/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/maximum-likelihood/</link>
+      <atom:link href="http://localhost:1313/tags/maximum-likelihood/index.xml" rel="self" type="application/rss+xml" />
     <description>Maximum Likelihood</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Maximum Likelihood</title>
-      <link>http://localhost:57190/tags/maximum-likelihood/</link>
+      <link>http://localhost:1313/tags/maximum-likelihood/</link>
     </image>
     
     <item>
       <title>🎉 Using maximum likelihood</title>
-      <link>http://localhost:57190/post/ml/</link>
+      <link>http://localhost:1313/post/ml/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/ml/</guid>
-      <description>&lt;script src=&#34;http://localhost:57190/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+      <guid>http://localhost:1313/post/ml/</guid>
+      <description>&lt;script src=&#34;http://localhost:1313/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;em&gt;Notes to self.&lt;/em&gt; Often, discussions related to maximum likelihood refer to (A) estimating parameters likely to have come from some (B) probability distribution (PD) by (C) maximizing a likelihood function (from Wikipedia).&lt;/p&gt;
 &lt;p&gt;In many cases, (A) is the unknown which we want to figure out (e.g., means, variances, regression coefficients). We make an assumption about the PD where the data come from and determine the likelihood or the log likelihood of observing the datum. Get the product of all the likelihoods (multiplicative) or the sum of the log likelihoods (additive) and you will get the total likelihood.&lt;/p&gt;
 &lt;p&gt;An example will help:&lt;/p&gt;

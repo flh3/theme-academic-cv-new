@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Missing Data | FLH Website</title>
-    <link>http://localhost:57190/tags/missing-data/</link>
-      <atom:link href="http://localhost:57190/tags/missing-data/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/missing-data/</link>
+      <atom:link href="http://localhost:1313/tags/missing-data/index.xml" rel="self" type="application/rss+xml" />
     <description>Missing Data</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Missing Data</title>
-      <link>http://localhost:57190/tags/missing-data/</link>
+      <link>http://localhost:1313/tags/missing-data/</link>
     </image>
     
     <item>
       <title>Working with missing data in large-scale assessments (with plausible values)</title>
-      <link>http://localhost:57190/post/2025_lsa_mi/</link>
+      <link>http://localhost:1313/post/2025_lsa_mi/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2025_lsa_mi/</guid>
+      <guid>http://localhost:1313/post/2025_lsa_mi/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies
 the article:&lt;/p&gt;
@@ -381,9 +381,9 @@ modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#3
     
     <item>
       <title>Working with missing data in large-scale assessments (without plausible  values)</title>
-      <link>http://localhost:57190/post/2025_lsa_mi_a/</link>
+      <link>http://localhost:1313/post/2025_lsa_mi_a/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2025_lsa_mi_a/</guid>
+      <guid>http://localhost:1313/post/2025_lsa_mi_a/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (without &lt;strong&gt;plausible values&lt;/strong&gt;). This is Appendix
 A and accompanies the article:&lt;/p&gt;
@@ -859,18 +859,18 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
     
     <item>
       <title>Working with missing data in large-scale assessments</title>
-      <link>http://localhost:57190/publication/journal-article/2025/lsa-mi/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/lsa-mi/</link>
       <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2025/lsa-mi/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/lsa-mi/</guid>
       <description>&lt;p&gt;The article is open access. Additional syntax can also be seen &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. An updated, corrected version of the article can be accessed &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/MIwithLSA.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Using FIML in R for Multilevel Data</title>
-      <link>http://localhost:57190/post/mi_pt3/</link>
+      <link>http://localhost:1313/post/mi_pt3/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/mi_pt3/</guid>
+      <guid>http://localhost:1313/post/mi_pt3/</guid>
       <description>&lt;h2 id=&#34;using-fiml-in-r-with-multilevel-data-part-3&#34;&gt;Using FIML in R with Multilevel Data (Part 3)&lt;/h2&gt;
 &lt;p&gt;A recurring question that I get asked is how to use full information maximum likelihood (FIML) when performing a multiple regression analysis BUT this time, accounting for nesting or clustered data structure. For this example, I use the the &lt;code&gt;leadership&lt;/code&gt; dataset in the &lt;code&gt;mitml&lt;/code&gt; package (Grund et al., 2021). We&amp;rsquo;ll also use &lt;code&gt;lavaan&lt;/code&gt; (Roseel, 2012) to estimate the two-level model. The chapter of Grund et al. (2019) is available &lt;a href=&#34;https://simongrund1.github.io/publications/2019-chap-apa/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. We&amp;rsquo;ll replicate the &lt;code&gt;Mplus&lt;/code&gt; FIML results in Table 16.3 in the chapter and is shown below:&lt;/p&gt;
 &lt;p&gt;
@@ -895,7 +895,7 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
                /post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp 400w,
                /post/mi_pt3/table_grund_hu_bf963bf355d4e4b2.webp 760w,
                /post/mi_pt3/table_grund_hu_d949c2b383c220e8.webp 1200w&#34;
-               src=&#34;http://localhost:57190/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
+               src=&#34;http://localhost:1313/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
                width=&#34;511&#34;
                height=&#34;292&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -940,7 +940,7 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
                /post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp 400w,
                /post/mi_pt3/unnamed-chunk-1-1_hu_59cbb56c16052742.webp 760w,
                /post/mi_pt3/unnamed-chunk-1-1_hu_2325058c725a745e.webp 1200w&#34;
-               src=&#34;http://localhost:57190/post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp&#34;
+               src=&#34;http://localhost:1313/post/mi_pt3/unnamed-chunk-1-1_hu_689816dd8762718c.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1267,7 +1267,7 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
                /post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp 400w,
                /post/mi_pt3/table_grund_hu_bf963bf355d4e4b2.webp 760w,
                /post/mi_pt3/table_grund_hu_d949c2b383c220e8.webp 1200w&#34;
-               src=&#34;http://localhost:57190/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
+               src=&#34;http://localhost:1313/post/mi_pt3/table_grund_hu_f0aa75ed6d78a6a3.webp&#34;
                width=&#34;511&#34;
                height=&#34;292&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1282,9 +1282,9 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
     
     <item>
       <title>🎉 Using FIML and MI in R</title>
-      <link>http://localhost:57190/post/mdata/</link>
+      <link>http://localhost:1313/post/mdata/</link>
       <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/mdata/</guid>
+      <guid>http://localhost:1313/post/mdata/</guid>
       <description>&lt;div id=&#34;using-fiml-in-r-part-2&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Using FIML in R (Part 2)&lt;/h2&gt;
 &lt;p&gt;A recurring question that I get asked is how to handle missing data when researchers are interested in performing a multiple regression analysis. There are so many excellent articles, books, and websites that discuss the theory and rationale behind what can be done. Often, what is recommended is to either use full information likelihood (FIML) or multiple imputation (MI). Many excellent articles explain in detail how these work. The purpose though of this post is to show &lt;em&gt;how&lt;/em&gt; (again) to just run these models in &lt;code&gt;R&lt;/code&gt; (the examples I show here are just for single-level data). I had already shown some of this before over &lt;a href=&#34;https://francish.netlify.com/post/01_missing/&#34;&gt;here&lt;/a&gt; though I am adding to those notes to show some comparability with Mplus results. I will use &lt;code&gt;lavaan&lt;/code&gt; for getting FIML results.&lt;/p&gt;

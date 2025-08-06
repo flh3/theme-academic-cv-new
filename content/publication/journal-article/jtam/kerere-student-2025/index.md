@@ -1,6 +1,6 @@
 ---
 title: 'Student attacks following a school threat assessment: Statewide trends in
-  student and case characteristics.'
+  student and case characteristics'
 
 # Authors
 # A YAML list of author names

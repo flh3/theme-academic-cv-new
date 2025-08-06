@@ -2,23 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Job Postings | FLH Website</title>
-    <link>http://localhost:57190/tags/job-postings/</link>
-      <atom:link href="http://localhost:57190/tags/job-postings/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/job-postings/</link>
+      <atom:link href="http://localhost:1313/tags/job-postings/index.xml" rel="self" type="application/rss+xml" />
     <description>Job Postings</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 27 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 09 Jul 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Job Postings</title>
-      <link>http://localhost:57190/tags/job-postings/</link>
+      <link>http://localhost:1313/tags/job-postings/</link>
     </image>
     
     <item>
       <title>🎉 Job postings 2024-2025</title>
-      <link>http://localhost:57190/post/jobs-2025/</link>
-      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/jobs-2025/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of Feb 2025.&lt;/strong&gt;&lt;/p&gt;
+      <link>http://localhost:1313/post/jobs-2025/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/jobs-2025/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of July 2025.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Postings for (2024-2025):&lt;/p&gt;
+&lt;p&gt;As of 2025.07&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Post-doctoral Associate (5 openings!) &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=179180338&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rutgers University&lt;/a&gt;, New Jersey.&lt;/li&gt;
+&lt;li&gt;Post-doctoral Associate (w/Guanglei Hong) [University of Chicago](&amp;ldquo;att/postdoc ad_GH_2025-2026_OOP_approved.docx&amp;rdquo;), Chicago, IL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of 2025.06&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Post-doctoral Associate, University of Southern Denmark&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;As of 2025.01&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Post-doctoral Research Associate- Educational Measurement and Statistics- &lt;a href=&#34;https://www.higheredjobs.com/details.cfm?JobCode=179041668&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;University of Tennessee&lt;/a&gt;, Knoxville, Knoxville, TN&lt;/li&gt;
@@ -79,9 +88,9 @@
     
     <item>
       <title>🎉 Job postings 2023-2024</title>
-      <link>http://localhost:57190/post/jobs-2024/</link>
+      <link>http://localhost:1313/post/jobs-2024/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/jobs-2024/</guid>
+      <guid>http://localhost:1313/post/jobs-2024/</guid>
       <description>&lt;p&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of April 2024.&lt;/p&gt;
 &lt;p&gt;Postings for (2023-2024):&lt;/p&gt;
 &lt;p&gt;As of 2024.04&lt;/p&gt;
@@ -215,9 +224,9 @@
     
     <item>
       <title>🎉 Job postings 2022-2023</title>
-      <link>http://localhost:57190/post/jobs-2023/</link>
+      <link>http://localhost:1313/post/jobs-2023/</link>
       <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/jobs-2023/</guid>
+      <guid>http://localhost:1313/post/jobs-2023/</guid>
       <description>&lt;p&gt;&lt;strong&gt;List of Research, Statistics, and Evaluation job postings (that I&amp;rsquo;ve seen) as of Feb 2023.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Postings for (2022-2023):&lt;/p&gt;
 &lt;ul&gt;

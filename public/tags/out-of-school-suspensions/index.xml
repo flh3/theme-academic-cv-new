@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Out-of-School Suspensions | FLH Website</title>
-    <link>http://localhost:57190/tags/out-of-school-suspensions/</link>
-      <atom:link href="http://localhost:57190/tags/out-of-school-suspensions/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/out-of-school-suspensions/</link>
+      <atom:link href="http://localhost:1313/tags/out-of-school-suspensions/index.xml" rel="self" type="application/rss+xml" />
     <description>Out-of-School Suspensions</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Out-of-School Suspensions</title>
-      <link>http://localhost:57190/tags/out-of-school-suspensions/</link>
+      <link>http://localhost:1313/tags/out-of-school-suspensions/</link>
     </image>
     
     <item>
       <title>Do Black students misbehave more? Investigating the differential involvement hypothesis and out-of-school suspensions</title>
-      <link>http://localhost:57190/publication/journal-article/2018/huang-black-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-black-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2018/huang-black-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-black-2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Student attitudes and behaviors as explanations for the Black-White suspension gap</title>
-      <link>http://localhost:57190/publication/journal-article/test2/huang-student-2017/</link>
+      <link>http://localhost:1313/publication/journal-article/test2/huang-student-2017/</link>
       <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/test2/huang-student-2017/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test2/huang-student-2017/</guid>
       <description>&lt;p&gt;Add the &lt;strong&gt;full text&lt;/strong&gt; or &lt;strong&gt;supplementary notes&lt;/strong&gt; for the publication here using Markdown formatting.&lt;/p&gt;
 </description>
     </item>

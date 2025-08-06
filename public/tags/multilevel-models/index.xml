@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Multilevel Models | FLH Website</title>
-    <link>http://localhost:57190/tags/multilevel-models/</link>
-      <atom:link href="http://localhost:57190/tags/multilevel-models/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/multilevel-models/</link>
+      <atom:link href="http://localhost:1313/tags/multilevel-models/index.xml" rel="self" type="application/rss+xml" />
     <description>Multilevel Models</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 05 Jun 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Multilevel Models</title>
-      <link>http://localhost:57190/tags/multilevel-models/</link>
+      <link>http://localhost:1313/tags/multilevel-models/</link>
     </image>
     
     <item>
       <title>Plausible Values as Predictors</title>
-      <link>http://localhost:57190/post/2025_pv_rhs/</link>
+      <link>http://localhost:1313/post/2025_pv_rhs/</link>
       <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2025_pv_rhs/</guid>
+      <guid>http://localhost:1313/post/2025_pv_rhs/</guid>
       <description>&lt;p&gt;Although the &lt;code&gt;mixPV&lt;/code&gt; function was introduced as a way to analyze large
 scale assessments using multiple plausible values (PV), the function
 only works if the plausible values are used as the outcome (i.e., it is
@@ -99,9 +99,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
     
     <item>
       <title>Working with missing data in large-scale assessments (with plausible values)</title>
-      <link>http://localhost:57190/post/2025_lsa_mi/</link>
+      <link>http://localhost:1313/post/2025_lsa_mi/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2025_lsa_mi/</guid>
+      <guid>http://localhost:1313/post/2025_lsa_mi/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (with &lt;strong&gt;plausible values&lt;/strong&gt;). This accompanies
 the article:&lt;/p&gt;
@@ -466,9 +466,9 @@ modelsummary(list(&#39;90% comp&#39; = l1a, &#39;82% comp&#39; = l1b, &#39;MI&#3
     
     <item>
       <title>Working with missing data in large-scale assessments (without plausible  values)</title>
-      <link>http://localhost:57190/post/2025_lsa_mi_a/</link>
+      <link>http://localhost:1313/post/2025_lsa_mi_a/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/2025_lsa_mi_a/</guid>
+      <guid>http://localhost:1313/post/2025_lsa_mi_a/</guid>
       <description>&lt;p&gt;This is the syntax for accounting for missing data/imputing data with
 large scale assessments (without &lt;strong&gt;plausible values&lt;/strong&gt;). This is Appendix
 A and accompanies the article:&lt;/p&gt;
@@ -944,34 +944,34 @@ level-2 coefficients (see &lt;code&gt;lackstaff&lt;/code&gt; results).&lt;/p&gt;
     
     <item>
       <title>Working with missing data in large-scale assessments</title>
-      <link>http://localhost:57190/publication/journal-article/2025/lsa-mi/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/lsa-mi/</link>
       <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2025/lsa-mi/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/lsa-mi/</guid>
       <description>&lt;p&gt;The article is open access. Additional syntax can also be seen &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. An updated, corrected version of the article can be accessed &lt;a href=&#34;https://francish.net/post/2025_lsa_mi/MIwithLSA.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Reassessing weights in large-scale assessments and multilevel models</title>
-      <link>http://localhost:57190/publication/journal-article/2025/lsa-weights/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/lsa-weights/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2025/lsa-weights/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/lsa-weights/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cluster-robust standard errors with three-level data</title>
-      <link>http://localhost:57190/publication/journal-article/2025/huang-cluster-robust-2025/</link>
+      <link>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2025/huang-cluster-robust-2025/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2025/huang-cluster-robust-2025/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using plausible values when fitting multilevel models with large-scale assessment data using R</title>
-      <link>http://localhost:57190/publication/journal-article/test3/huang-using-2024/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2024/</link>
       <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/test3/huang-using-2024/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2024/</guid>
       <description>&lt;p&gt;
 
 
@@ -999,18 +999,18 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>Accounting for heteroskedasticity resulting from between-group differences in multilevel models</title>
-      <link>http://localhost:57190/publication/journal-article/test3/huang-accounting-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-accounting-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/test3/huang-accounting-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-accounting-2023/</guid>
       <description>&lt;p&gt;Robust standard errors for multilevel models.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Practical multilevel modeling using R</title>
-      <link>http://localhost:57190/publication/book/huang-practical-2023/</link>
+      <link>http://localhost:1313/publication/book/huang-practical-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/book/huang-practical-2023/</guid>
+      <guid>http://localhost:1313/publication/book/huang-practical-2023/</guid>
       <description>&lt;p&gt;Check out the latest info on the book &lt;a href=&#34;https://francish.net/MLMusingR/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;sample chapters&lt;/li&gt;
@@ -1027,18 +1027,18 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>Using robust standard errors for the analysis of binary outcomes with a small number of clusters</title>
-      <link>http://localhost:57190/publication/journal-article/test3/huang-using-2023/</link>
+      <link>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/test3/huang-using-2023/</guid>
+      <guid>http://localhost:1313/publication/journal-article/test3/huang-using-2023/</guid>
       <description>&lt;p&gt;CR2 plug in for SPSS can be downloaded from: &lt;a href=&#34;https://github.com/flh3/CR2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Analyzing cross-sectionally clustered data using generalized estimating equations</title>
-      <link>http://localhost:57190/publication/journal-article/2022/huang-analyzing-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2022/huang-analyzing-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/</guid>
       <description>&lt;p&gt;As of 2024.10.03, the most read article on JEBS (for the last 6 months)!&lt;/p&gt;
 &lt;p&gt;
 
@@ -1062,7 +1062,7 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp 400w,
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_c2fa98b20b25e821.webp 760w,
                /publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_bc691bc4ace80636.webp 1200w&#34;
-               src=&#34;http://localhost:57190/publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp&#34;
+               src=&#34;http://localhost:1313/publication/journal-article/2022/huang-analyzing-2022/jebs_most_read_hu_59359045a62af85a.webp&#34;
                width=&#34;760&#34;
                height=&#34;536&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1087,43 +1087,43 @@ Article is open access. The &lt;code&gt;mixPV&lt;/code&gt; function can now be a
     
     <item>
       <title>Using cluster-robust standard errors when analyzing group-randomized trials with few clusters</title>
-      <link>http://localhost:57190/publication/journal-article/2022/huang-using-2022/</link>
+      <link>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2022/huang-using-2022/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2022/huang-using-2022/</guid>
       <description>&lt;p&gt;The SPSS version can be accessed here: &lt;a href=&#34;https://github.com/flh3/CR2/tree/master/SPSS&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flh3/CR2/tree/master/SPSS&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Alternatives to logistic regression models when analyzing cluster randomized trials with binary outcomes</title>
-      <link>http://localhost:57190/publication/journal-article/alternatives/huang-alternatives-2021/</link>
+      <link>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/alternatives/huang-alternatives-2021/</guid>
+      <guid>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Multilevel modeling myths</title>
-      <link>http://localhost:57190/publication/journal-article/2018/huang-multilevel-2018-1/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018-1/</link>
       <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2018/huang-multilevel-2018-1/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018-1/</guid>
       <description>&lt;p&gt;Preprint available &lt;a href=&#34;05_Multilevel_myths_complete.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Multilevel modeling and ordinary least squares regression:  How comparable are they?</title>
-      <link>http://localhost:57190/publication/journal-article/2018/huang-multilevel-2018/</link>
+      <link>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2018/huang-multilevel-2018/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2018/huang-multilevel-2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Alternatives to multilevel modeling for the analysis of clustered data</title>
-      <link>http://localhost:57190/publication/journal-article/alternatives/huang-alternatives-2016/</link>
+      <link>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2016/</link>
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/alternatives/huang-alternatives-2016/</guid>
+      <guid>http://localhost:1313/publication/journal-article/alternatives/huang-alternatives-2016/</guid>
       <description></description>
     </item>
     

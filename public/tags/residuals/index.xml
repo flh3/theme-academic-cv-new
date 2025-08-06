@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Residuals | FLH Website</title>
-    <link>http://localhost:57190/tags/residuals/</link>
-      <atom:link href="http://localhost:57190/tags/residuals/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/residuals/</link>
+      <atom:link href="http://localhost:1313/tags/residuals/index.xml" rel="self" type="application/rss+xml" />
     <description>Residuals</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Residuals</title>
-      <link>http://localhost:57190/tags/residuals/</link>
+      <link>http://localhost:1313/tags/residuals/</link>
     </image>
     
     <item>
       <title>Residuals with Multilevel Models</title>
-      <link>http://localhost:57190/post/residuals_mlm/</link>
+      <link>http://localhost:1313/post/residuals_mlm/</link>
       <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/residuals_mlm/</guid>
+      <guid>http://localhost:1313/post/residuals_mlm/</guid>
       <description>&lt;p&gt;(MLM notes). Residuals are often used for model diagnostics or for spotting outliers in the data. For single-level models, these are merely the observed - predicted data (i.e., $y_i - \hat{y}_i$). However, for multilevel models, these are a bit more complicated to compute. Since we have two error terms (in this example), we will have two sets of residuals. For example, a multilevel model with a single predictor at level one can be written as:&lt;/p&gt;
 $$y_{ij} = \gamma_{00} + \gamma_{01}x_{ij} + u_{0j} + r_{ij}$$&lt;p&gt;
 The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be normally distributed with a mean of 0 and variance of $\tau_{00}$ or $\mathcal{N}\sim(0, \tau_{00})$.&lt;/p&gt;
@@ -55,7 +55,7 @@ The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be nor
                /post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp 400w,
                /post/residuals_mlm/unnamed-chunk-1-1_hu_428b99cb8edbbc2.webp 760w,
                /post/residuals_mlm/unnamed-chunk-1-1_hu_28a467643da43829.webp 1200w&#34;
-               src=&#34;http://localhost:57190/post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp&#34;
+               src=&#34;http://localhost:1313/post/residuals_mlm/unnamed-chunk-1-1_hu_c760d42701693f15.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -217,7 +217,7 @@ The $u_{0j}$ represent the estimated level-2 residuals and are assumed to be nor
                /post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp 400w,
                /post/residuals_mlm/unnamed-chunk-11-1_hu_2db523d52d9cff62.webp 760w,
                /post/residuals_mlm/unnamed-chunk-11-1_hu_167e45d12bd7e4e8.webp 1200w&#34;
-               src=&#34;http://localhost:57190/post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp&#34;
+               src=&#34;http://localhost:1313/post/residuals_mlm/unnamed-chunk-11-1_hu_ae9f38f8173320f9.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -266,9 +266,9 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
     
     <item>
       <title>Fun with residuals</title>
-      <link>http://localhost:57190/post/residuals/</link>
+      <link>http://localhost:1313/post/residuals/</link>
       <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/post/residuals/</guid>
+      <guid>http://localhost:1313/post/residuals/</guid>
       <description>&lt;h2 id=&#34;random-stuff-ii-plotting-residuals&#34;&gt;Random stuff II: Plotting residuals&lt;/h2&gt;
 &lt;p&gt;I was poking around my old teaching files and I found an old file and I wasn&amp;rsquo;t sure what it was:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;read.table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://raw.githubusercontent.com/flh3/pubdata/main/Stefanski_2007/mizzo_1_data_yx1x5.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -309,7 +309,7 @@ $$r_{c, stud} = \frac{r_{cond}}{\sqrt{Var(r_c)}}$$&lt;p&gt;Computing $Var(r_c) =
                /post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp 400w,
                /post/residuals/unnamed-chunk-3-1_hu_551e92a96ff14f04.webp 760w,
                /post/residuals/unnamed-chunk-3-1_hu_5d481a04fc9b0af8.webp 1200w&#34;
-               src=&#34;http://localhost:57190/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
+               src=&#34;http://localhost:1313/post/residuals/unnamed-chunk-3-1_hu_f68fef3d32881ffe.webp&#34;
                width=&#34;504&#34;
                height=&#34;504&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

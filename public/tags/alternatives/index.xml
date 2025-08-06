@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Alternatives | FLH Website</title>
-    <link>http://localhost:57190/tags/alternatives/</link>
-      <atom:link href="http://localhost:57190/tags/alternatives/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/tags/alternatives/</link>
+      <atom:link href="http://localhost:1313/tags/alternatives/index.xml" rel="self" type="application/rss+xml" />
     <description>Alternatives</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:57190/media/icon_hu_7c4bcaa7031a3f50.png</url>
+      <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Alternatives</title>
-      <link>http://localhost:57190/tags/alternatives/</link>
+      <link>http://localhost:1313/tags/alternatives/</link>
     </image>
     
     <item>
       <title>MANOVA: A procedure whose time has passed?</title>
-      <link>http://localhost:57190/publication/journal-article/2020/huang-manova-2020/</link>
+      <link>http://localhost:1313/publication/journal-article/2020/huang-manova-2020/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57190/publication/journal-article/2020/huang-manova-2020/</guid>
+      <guid>http://localhost:1313/publication/journal-article/2020/huang-manova-2020/</guid>
       <description></description>
     </item>
     
