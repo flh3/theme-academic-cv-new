@@ -1,11 +1,15 @@
 ---
 title: 🎉 Job postings 2024-2025
-summary: Job postings
+author: admin
 date: 2025-07-09
-authors:
-- admin
-tags:
-- job postings
+tags: 
+  - job postings
+header:
+  caption: ''
+  image: ''
+  preview: yes
+draft: false
+
 ---
   
 **List of Research, Statistics, and Evaluation job postings (that I've seen) as of July 2025.**

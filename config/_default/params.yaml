@@ -60,6 +60,20 @@ features:
     enable: true
   privacy_pack:
     enable: false
+  comment:   # must be inside "features"
+    provider: giscus
+    giscus:
+      repo: 'flh3/theme-academic-cv-new'
+      repo_id: 'R_kgDOOCdy8Q'
+      category: 'General'
+      category_id: 'DIC_kwDOOCdy8c4CutAy'
+      mapping: pathname
+      strict: 0
+      reactions_enabled: 1
+      emit_metadata: 0
+      input_position: bottom
+      theme: preferred_color_scheme
+      lang: en
 extensions:
   academicons:
     enable: true

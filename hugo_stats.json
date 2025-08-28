@@ -667,6 +667,7 @@
       "bonus-analyses",
       "by-construction-x1-and-x2-are-not-correlated-with-each-other",
       "cluster-robust",
+      "comments",
       "comparing-different-standard-errors",
       "computing-studentized-conditional-residuals",
       "computing-the-cr0-standard-errors",

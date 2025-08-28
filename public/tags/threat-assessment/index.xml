@@ -5,7 +5,7 @@
     <link>http://localhost:1313/tags/threat-assessment/</link>
       <atom:link href="http://localhost:1313/tags/threat-assessment/index.xml" rel="self" type="application/rss+xml" />
     <description>Threat Assessment</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 28 Aug 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu_7c4bcaa7031a3f50.png</url>
       <title>Threat Assessment</title>
@@ -13,7 +13,15 @@
     </image>
     
     <item>
-      <title>Student attacks following a school threat assessment: Statewide trends in student and case characteristics.</title>
+      <title>UVA Threat Assessment Research</title>
+      <link>http://localhost:1313/project/uva_ta/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/uva_ta/</guid>
+      <description>&lt;p&gt;Conducting threat assessment research at UVA.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Student attacks following a school threat assessment: Statewide trends in student and case characteristics</title>
       <link>http://localhost:1313/publication/journal-article/jtam/kerere-student-2025/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/publication/journal-article/jtam/kerere-student-2025/</guid>
