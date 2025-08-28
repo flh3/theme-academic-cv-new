@@ -1,25 +1,17 @@
 ---
-title: 🖩 Logistic regression with matrices
-summary: 
+title: Logistic regression with matrices
+author: admin
 date: 2023-10-27
-
-# Featured image
-# Place an image named `featured.jpg/png` in this page's folder and customize its options here.
-image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com)'
-
-authors:
-  - admin
-spacing:
-    # Customize the section spacing. Order is top, right, bottom, left.
-    padding: ["20px", "0", "20px", "0"]
 tags:
   - Logistic regression
   - Monte Carlo
   - Simulation
+header:
+  caption: ''
+  image: ''
+  preview: yes
+draft: false
 ---
-
-{{< toc mobile_only=true is_open=true >}}
 
 
 <p>Logistic regression is a modeling technique that has attracted a lot of attention, especially from folks interested in classification, machine learning, and prediction using binary outcomes. One of the neat things about using R is that users can revisit commonly used procedures and figure out how they work.</p>

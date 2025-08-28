@@ -13,21 +13,11 @@
     </image>
     
     <item>
-      <title>🖩 Logistic regression with matrices</title>
+      <title>Logistic regression with matrices</title>
       <link>http://localhost:1313/post/logreg_matrix/</link>
       <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/post/logreg_matrix/</guid>
-      <description>
-
-
-&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
-  &lt;summary&gt;Table of Contents&lt;/summary&gt;
-  &lt;div class=&#34;text-sm&#34;&gt;
-  &lt;nav id=&#34;TableOfContents&#34;&gt;&lt;/nav&gt;
-  &lt;/div&gt;
-&lt;/details&gt;
-
-&lt;p&gt;Logistic regression is a modeling technique that has attracted a lot of attention, especially from folks interested in classification, machine learning, and prediction using binary outcomes. One of the neat things about using R is that users can revisit commonly used procedures and figure out how they work.&lt;/p&gt;
+      <description>&lt;p&gt;Logistic regression is a modeling technique that has attracted a lot of attention, especially from folks interested in classification, machine learning, and prediction using binary outcomes. One of the neat things about using R is that users can revisit commonly used procedures and figure out how they work.&lt;/p&gt;
 &lt;p&gt;What follows are some logistic regression notes (this is not on interpreting results). Even though I’ve written about how other &lt;a href=&#34;../applied-example-for-alternatives-to-logistic-regression/&#34;&gt;alternatives&lt;/a&gt; might be simpler than logistic regression or that there are challenges when comparing coefficients across &lt;a href=&#34;../comparing-coefficients-across-logistic-regression-models/&#34;&gt;models&lt;/a&gt;, it is interesting to see how the procedure works.&lt;/p&gt;
 &lt;p&gt;I show a few things:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
